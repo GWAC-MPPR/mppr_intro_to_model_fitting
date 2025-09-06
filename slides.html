@@ -589,7 +589,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="least-squares-the-intuitive-approach" class="slide level2">
 <h2>Least Squares: The Intuitive Approach</h2>
-<p><strong><span style="color: #FFFF00;">Core Idea:</span></strong> Minimize the sum of squared differences between model predictions and observations</p>
+<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Minimize the sum of squared differences between model predictions and observations</p>
 </section>
 <section class="slide level2">
 
@@ -604,7 +604,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="why-squared-errors">Why Squared Errors?</h3>
-<p><strong><span style="color: #FFFF00;">Advantages:</span></strong></p>
+<p><span style="color: #FFFF00;"><strong>Advantages:</strong></span></p>
 <ul>
 <li><span style="color: #FFFF00;">Penalizes large errors more heavily</span></li>
 <li><span style="color: #FFFF00;">Differentiable (smooth optimization)</span></li>
@@ -636,7 +636,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section id="implementing-least-squares" class="slide level2">
 <h2>Implementing Least Squares</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Define objective function</span></span>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Define objective function</span></span>
 <span id="cb1-2"><a href=""></a>sse_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params, data) {</span>
 <span id="cb1-3"><a href=""></a>  beta <span class="ot">&lt;-</span> params[<span class="dv">1</span>]</span>
 <span id="cb1-4"><a href=""></a>  gamma <span class="ot">&lt;-</span> params[<span class="dv">2</span>]</span>
@@ -649,41 +649,42 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <span id="cb1-11"><a href=""></a>    <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma)</span>
 <span id="cb1-12"><a href=""></a>  )</span>
 <span id="cb1-13"><a href=""></a>  </span>
-<span id="cb1-14"><a href=""></a>  <span class="co"># Calculate sum of squared errors</span></span>
+<span id="cb1-14"><a href=""></a>  <span class="co">#  Extract and rescale the predicted cases</span></span>
 <span id="cb1-15"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[, <span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb1-16"><a href=""></a>  sse <span class="ot">&lt;-</span> <span class="fu">sum</span>((data<span class="sc">$</span>observed <span class="sc">-</span> predicted)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-17"><a href=""></a>  </span>
-<span id="cb1-18"><a href=""></a>  <span class="fu">return</span>(sse)</span>
-<span id="cb1-19"><a href=""></a>}</span>
-<span id="cb1-20"><a href=""></a></span>
-<span id="cb1-21"><a href=""></a><span class="co"># Prepare data</span></span>
-<span id="cb1-22"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> times, <span class="at">observed =</span> observed_cases)</span>
-<span id="cb1-23"><a href=""></a></span>
-<span id="cb1-24"><a href=""></a><span class="co"># Test different parameter values</span></span>
-<span id="cb1-25"><a href=""></a>test_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb1-26"><a href=""></a>  <span class="at">beta =</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="at">length.out =</span> <span class="dv">10</span>),</span>
-<span id="cb1-27"><a href=""></a>  <span class="at">gamma =</span> <span class="fu">seq</span>(<span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb1-28"><a href=""></a>)</span>
-<span id="cb1-29"><a href=""></a></span>
-<span id="cb1-30"><a href=""></a><span class="co"># Calculate SSE for each combination</span></span>
-<span id="cb1-31"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(test_params)){</span>
-<span id="cb1-32"><a href=""></a>  test_params<span class="sc">$</span>sse[i] <span class="ot">&lt;-</span> <span class="fu">sse_function</span>(</span>
-<span id="cb1-33"><a href=""></a>    <span class="fu">c</span>(</span>
-<span id="cb1-34"><a href=""></a>      test_params[i, <span class="dv">1</span>],</span>
-<span id="cb1-35"><a href=""></a>      test_params[i, <span class="dv">2</span>]</span>
-<span id="cb1-36"><a href=""></a>    ),</span>
-<span id="cb1-37"><a href=""></a>    data</span>
-<span id="cb1-38"><a href=""></a>  )</span>
-<span id="cb1-39"><a href=""></a>}</span>
-<span id="cb1-40"><a href=""></a></span>
-<span id="cb1-41"><a href=""></a><span class="co"># Find minimum</span></span>
-<span id="cb1-42"><a href=""></a>best_idx <span class="ot">&lt;-</span> <span class="fu">which.min</span>(test_params<span class="sc">$</span>sse)</span>
-<span id="cb1-43"><a href=""></a>best_params <span class="ot">&lt;-</span> test_params[best_idx, ]</span>
-<span id="cb1-44"><a href=""></a><span class="fu">cat</span>(<span class="st">"True parameters: Beta ="</span>, true_params[<span class="dv">1</span>], <span class="st">", Gamma ="</span>, true_params[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href=""></a>  <span class="co"># Calculate sum of squared errors</span></span>
+<span id="cb1-17"><a href=""></a>  sse <span class="ot">&lt;-</span> <span class="fu">sum</span>((data<span class="sc">$</span>observed <span class="sc">-</span> predicted)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-18"><a href=""></a>  </span>
+<span id="cb1-19"><a href=""></a>  <span class="fu">return</span>(sse)</span>
+<span id="cb1-20"><a href=""></a>}</span>
+<span id="cb1-21"><a href=""></a></span>
+<span id="cb1-22"><a href=""></a><span class="co"># Prepare data</span></span>
+<span id="cb1-23"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> times, <span class="at">observed =</span> observed_cases)</span>
+<span id="cb1-24"><a href=""></a></span>
+<span id="cb1-25"><a href=""></a><span class="co"># Test different parameter values</span></span>
+<span id="cb1-26"><a href=""></a>test_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb1-27"><a href=""></a>  <span class="at">beta =</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="at">length.out =</span> <span class="dv">10</span>),</span>
+<span id="cb1-28"><a href=""></a>  <span class="at">gamma =</span> <span class="fu">seq</span>(<span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb1-29"><a href=""></a>)</span>
+<span id="cb1-30"><a href=""></a></span>
+<span id="cb1-31"><a href=""></a><span class="co"># Calculate SSE for each combination</span></span>
+<span id="cb1-32"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(test_params)){</span>
+<span id="cb1-33"><a href=""></a>  test_params<span class="sc">$</span>sse[i] <span class="ot">&lt;-</span> <span class="fu">sse_function</span>(</span>
+<span id="cb1-34"><a href=""></a>    <span class="fu">c</span>(</span>
+<span id="cb1-35"><a href=""></a>      test_params[i, <span class="dv">1</span>],</span>
+<span id="cb1-36"><a href=""></a>      test_params[i, <span class="dv">2</span>]</span>
+<span id="cb1-37"><a href=""></a>    ),</span>
+<span id="cb1-38"><a href=""></a>    data</span>
+<span id="cb1-39"><a href=""></a>  )</span>
+<span id="cb1-40"><a href=""></a>}</span>
+<span id="cb1-41"><a href=""></a></span>
+<span id="cb1-42"><a href=""></a><span class="co"># Find minimum</span></span>
+<span id="cb1-43"><a href=""></a>best_idx <span class="ot">&lt;-</span> <span class="fu">which.min</span>(test_params<span class="sc">$</span>sse)</span>
+<span id="cb1-44"><a href=""></a>best_params <span class="ot">&lt;-</span> test_params[best_idx, ]</span>
+<span id="cb1-45"><a href=""></a><span class="fu">cat</span>(<span class="st">"True parameters: Beta ="</span>, true_params[<span class="dv">1</span>], <span class="st">", Gamma ="</span>, true_params[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True parameters: Beta = 0.3 , Gamma = 0.1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Best fit parameters: Beta ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>beta, <span class="dv">3</span>), <span class="st">", Gamma ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>gamma, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Best fit parameters: Beta ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>beta, <span class="dv">3</span>), <span class="st">", Gamma ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>gamma, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best fit parameters: Beta = 0.322 , Gamma = 0.1 </code></pre>
 </div>
@@ -735,66 +736,6 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>Assumes measurement error only</li>
 </ul>
 </section>
-<section id="example-problem" class="slide level2">
-<h2>Example Problem</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Show how different parameter combinations can give similar fits</span></span>
-<span id="cb5-2"><a href=""></a>param_combos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-3"><a href=""></a>  <span class="at">beta =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.35</span>, <span class="fl">0.30</span>),</span>
-<span id="cb5-4"><a href=""></a>  <span class="at">gamma =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.12</span>, <span class="fl">0.10</span>),</span>
-<span id="cb5-5"><a href=""></a>  <span class="at">label =</span> <span class="fu">c</span>(<span class="st">"Low β, Low γ"</span>, <span class="st">"High β, High γ"</span>, <span class="st">"True"</span>)</span>
-<span id="cb5-6"><a href=""></a>)</span>
-<span id="cb5-7"><a href=""></a></span>
-<span id="cb5-8"><a href=""></a><span class="co"># Plot different fits</span></span>
-<span id="cb5-9"><a href=""></a><span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span></span>
-<span id="cb5-10"><a href=""></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> observed), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb5-11"><a href=""></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> true_model), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-12"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (days)"</span>, <span class="at">y =</span> <span class="st">"Number of Cases"</span>,</span>
-<span id="cb5-13"><a href=""></a>       <span class="at">title =</span> <span class="st">"Multiple Parameter Sets Can Give Similar Fits"</span>) <span class="sc">+</span></span>
-<span id="cb5-14"><a href=""></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/ls-limitation-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/ls-limitation-1.png" width="960"></a></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Add lines for different parameter combinations</span></span>
-<span id="cb6-2"><a href=""></a>out_test <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
-<span id="cb6-3"><a href=""></a>    <span class="at">y =</span> init_conds,</span>
-<span id="cb6-4"><a href=""></a>    <span class="at">times =</span> times,</span>
-<span id="cb6-5"><a href=""></a>    <span class="at">func =</span> sir_model,</span>
-<span id="cb6-6"><a href=""></a>    <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> param_combos<span class="sc">$</span>beta[<span class="dv">1</span>],</span>
-<span id="cb6-7"><a href=""></a>              <span class="at">gamma =</span> param_combos<span class="sc">$</span>gamma[<span class="dv">1</span>]</span>
-<span id="cb6-8"><a href=""></a>    ))</span>
-<span id="cb6-9"><a href=""></a></span>
-<span id="cb6-10"><a href=""></a><span class="fu">plot</span>(times, out_test[, <span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span>,</span>
-<span id="cb6-11"><a href=""></a>     <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>)[<span class="dv">1</span>],</span>
-<span id="cb6-12"><a href=""></a>     <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb6-13"><a href=""></a>)</span>
-<span id="cb6-14"><a href=""></a></span>
-<span id="cb6-15"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(param_combos)) {</span>
-<span id="cb6-16"><a href=""></a>  out_test <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
-<span id="cb6-17"><a href=""></a>    <span class="at">y =</span> init_conds,</span>
-<span id="cb6-18"><a href=""></a>    <span class="at">times =</span> times,</span>
-<span id="cb6-19"><a href=""></a>    <span class="at">func =</span> sir_model,</span>
-<span id="cb6-20"><a href=""></a>    <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> param_combos<span class="sc">$</span>beta[i],</span>
-<span id="cb6-21"><a href=""></a>              <span class="at">gamma =</span> param_combos<span class="sc">$</span>gamma[i]</span>
-<span id="cb6-22"><a href=""></a>    ))</span>
-<span id="cb6-23"><a href=""></a>  <span class="fu">lines</span>(times, out_test[, <span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span>,</span>
-<span id="cb6-24"><a href=""></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>)[i],</span>
-<span id="cb6-25"><a href=""></a>        <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb6-26"><a href=""></a>  )</span>
-<span id="cb6-27"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/ls-limitation-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="slides_files/figure-revealjs/ls-limitation-2.png" width="960"></a></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="r-implementation-practicals" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2>R implementation practicals</h2>
 <ul>
@@ -808,9 +749,16 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="maximum-likelihood-the-probabilistic-approach" class="slide level2">
 <h2>Maximum Likelihood: The Probabilistic Approach</h2>
-<p><strong><span style="color: #FFFF00;">Core Idea:</span></strong> Find parameter values that make the observed data most probable</p>
+<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Find parameter values that make the observed data most probable</p>
+</section>
+<section class="slide level2">
+
 <p><strong>Mathematical Formulation:</strong> <span class="math display">\[\hat{\theta} = \arg\max_{\theta} L(\theta) = \arg\max_{\theta} \prod_{i=1}^{n} f(y_i | \theta)\]</span></p>
-<p>Where: - <span class="math inline">\(L(\theta)\)</span> = likelihood function - <span class="math inline">\(f(y_i | \theta)\)</span> = probability density of observation <span class="math inline">\(i\)</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(L(\theta)\)</span> = likelihood function</li>
+<li><span class="math inline">\(f(y_i | \theta)\)</span> = probability density of observation <span class="math inline">\(i\)</span></li>
+</ul>
 </section>
 <section class="slide level2">
 
@@ -818,27 +766,27 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="why-maximum-likelihood" class="slide level2">
 <h2>Why Maximum Likelihood?</h2>
-<p><strong><span style="color: #FFFF00;">Theoretical Advantages:</span></strong></p>
+<h3 id="theoretical-advantages">Theoretical Advantages:</h3>
 <ul>
-<li><span style="color: #FFFF00;">Principled statistical framework</span></li>
-<li><span style="color: #FFFF00;">Provides uncertainty quantification</span></li>
-<li><span style="color: #FFFF00;">Enables model comparison (AIC, BIC)</span></li>
-<li><span style="color: #FFFF00;">Asymptotically optimal properties</span></li>
+<li>Principled <span style="color: #FFFF00;">statistical framework</span></li>
+<li>Provides <span style="color: #FFFF00;">uncertainty quantification</span></li>
+<li>Enables <span style="color: #FFFF00;">model comparison (AIC, BIC)</span></li>
+<li><span style="color: #FFFF00;">Asymptotically</span> optimal properties</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><strong><span style="color: tomato;">Practical Benefits:</span></strong></p>
+<h3 id="practical-benefits-1">Practical Benefits</h3>
 <ul>
-<li><span style="color: tomato;">Confidence intervals</span></li>
-<li><span style="color: tomato;">Hypothesis testing</span></li>
-<li><span style="color: tomato;">Model selection</span></li>
-<li><span style="color: tomato;">Incorporates different error structures</span></li>
+<li>Confidence intervals</li>
+<li>Hypothesis testing</li>
+<li>Model selection</li>
+<li>Incorporates different error structures</li>
 </ul>
 </section>
 <section id="choosing-a-probability-distribution" class="slide level2">
 <h2>Choosing a Probability Distribution</h2>
-<p><strong>For Count Data (Cases):</strong></p>
+<p><strong>For <span style="color: #FFFF00;">Count Data</span> (e.g., Cases):</strong></p>
 <ul>
 <li><strong>Poisson</strong>: <span class="math inline">\(Y_i \sim \text{Poisson}(\lambda_i)\)</span></li>
 <li><strong>Negative Binomial</strong>: <span class="math inline">\(Y_i \sim \text{NB}(\mu_i, \phi)\)</span></li>
@@ -846,57 +794,71 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="choosing-a-probability-distribution-1" class="slide level2">
 <h2>Choosing a Probability Distribution</h2>
-<p><strong>For Continuous Data:</strong></p>
+<p><strong>For <span style="color: #FFFF00;">Continuous Data:</span></strong></p>
 <ul>
 <li><strong>Normal</strong>: <span class="math inline">\(Y_i \sim N(\mu_i, \sigma^2)\)</span></li>
 <li><strong>Log-normal</strong>: <span class="math inline">\(\log Y_i \sim N(\log \mu_i, \sigma^2)\)</span></li>
 </ul>
-<p><strong>For Our SIR Example:</strong> We’ll use Poisson since we’re modeling case counts</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><span style="color:yellow"><strong>For Our SIR Example:</strong></span> We’ll use <span style="yellow">Poisson</span> since we’re modeling case counts</p>
+</div>
+</div>
+</div>
 </section>
 <section id="mle-implementation-poisson-likelihood" class="slide level2">
 <h2>MLE Implementation: Poisson Likelihood</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Define negative log-likelihood function</span></span>
-<span id="cb7-2"><a href=""></a>nll_function <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, data) {</span>
-<span id="cb7-3"><a href=""></a>  <span class="co"># Simulate model</span></span>
-<span id="cb7-4"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
-<span id="cb7-5"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
-<span id="cb7-6"><a href=""></a></span>
-<span id="cb7-7"><a href=""></a>  <span class="co"># Model predictions (scaled to cases)</span></span>
-<span id="cb7-8"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb7-9"><a href=""></a></span>
-<span id="cb7-10"><a href=""></a>  <span class="co"># Poisson negative log-likelihood</span></span>
-<span id="cb7-11"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dpois</span>(data<span class="sc">$</span>observed, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb7-12"><a href=""></a></span>
-<span id="cb7-13"><a href=""></a>  <span class="fu">return</span>(nll)</span>
-<span id="cb7-14"><a href=""></a>}</span>
-<span id="cb7-15"><a href=""></a></span>
-<span id="cb7-16"><a href=""></a><span class="co"># Use optimization to find MLE</span></span>
-<span id="cb7-17"><a href=""></a><span class="fu">library</span>(bbmle)</span>
-<span id="cb7-18"><a href=""></a>fit_mle <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_function,</span>
-<span id="cb7-19"><a href=""></a>                <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>),</span>
-<span id="cb7-20"><a href=""></a>                <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
-<span id="cb7-21"><a href=""></a>                <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
-<span id="cb7-22"><a href=""></a>                <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>),</span>
-<span id="cb7-23"><a href=""></a>                <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>))</span>
-<span id="cb7-24"><a href=""></a></span>
-<span id="cb7-25"><a href=""></a><span class="co"># Extract results</span></span>
-<span id="cb7-26"><a href=""></a>mle_params <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_mle)</span>
-<span id="cb7-27"><a href=""></a>mle_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcov</span>(fit_mle)))</span>
-<span id="cb7-28"><a href=""></a></span>
-<span id="cb7-29"><a href=""></a><span class="fu">cat</span>(<span class="st">"MLE Results:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MLE Results:</code></pre>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Define negative log-likelihood function</span></span>
+<span id="cb5-2"><a href=""></a>nll_function <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, data) {</span>
+<span id="cb5-3"><a href=""></a>  <span class="co"># Simulate model</span></span>
+<span id="cb5-4"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
+<span id="cb5-5"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>  <span class="co"># Model predictions (scaled to cases)</span></span>
+<span id="cb5-8"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a>  <span class="co"># Poisson negative log-likelihood</span></span>
+<span id="cb5-11"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dpois</span>(data<span class="sc">$</span>observed, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-12"><a href=""></a></span>
+<span id="cb5-13"><a href=""></a>  <span class="fu">return</span>(nll)</span>
+<span id="cb5-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Beta:"</span>, <span class="fu">round</span>(mle_params[<span class="dv">1</span>], <span class="dv">3</span>), <span class="st">"±"</span>, <span class="fu">round</span>(mle_se[<span class="dv">1</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-2|3|4|6|7-8|1-8|10-11|12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Use optimization to find MLE</span></span>
+<span id="cb6-2"><a href=""></a><span class="fu">library</span>(bbmle)</span>
+<span id="cb6-3"><a href=""></a>fit_mle <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_function,</span>
+<span id="cb6-4"><a href=""></a>                <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>),</span>
+<span id="cb6-5"><a href=""></a>                <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
+<span id="cb6-6"><a href=""></a>                <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
+<span id="cb6-7"><a href=""></a>                <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>),</span>
+<span id="cb6-8"><a href=""></a>                <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>))</span>
+<span id="cb6-9"><a href=""></a></span>
+<span id="cb6-10"><a href=""></a><span class="co"># Extract results</span></span>
+<span id="cb6-11"><a href=""></a>mle_params <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_mle)</span>
+<span id="cb6-12"><a href=""></a>mle_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcov</span>(fit_mle)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="mle-results">MLE Results</h3>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Beta: 0.291 ± 0.003 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Gamma:"</span>, <span class="fu">round</span>(mle_params[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">"±"</span>, <span class="fu">round</span>(mle_se[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gamma: 0.05 ± 0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"R0:"</span>, <span class="fu">round</span>(mle_params[<span class="dv">1</span>]<span class="sc">/</span>mle_params[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R0: 5.79 </code></pre>
 </div>
@@ -905,42 +867,43 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section id="uncertainty-quantification-with-mle" class="slide level2">
 <h2>Uncertainty Quantification with MLE</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co"># Profile likelihood for uncertainty</span></span>
-<span id="cb15-2"><a href=""></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
-<span id="cb15-3"><a href=""></a><span class="fu">plot</span>(prof, <span class="at">absVal =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Profile Likelihood"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co"># Profile likelihood for uncertainty</span></span>
+<span id="cb10-2"><a href=""></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
+<span id="cb10-3"><a href=""></a><span class="fu">plot</span>(prof, <span class="at">absVal =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Profile Likelihood"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/mle-uncertainty-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="slides_files/figure-revealjs/mle-uncertainty-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/mle-uncertainty-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/mle-uncertainty-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co"># Confidence intervals</span></span>
-<span id="cb16-2"><a href=""></a><span class="fu">confint</span>(fit_mle, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Confidence intervals</span></span>
+<span id="cb11-2"><a href=""></a><span class="fu">confint</span>(fit_mle, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           2.5 %     97.5 %
 beta  0.28620452 0.29599639
 gamma 0.04961407 0.05089814</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># Compare with true values</span></span>
-<span id="cb18-2"><a href=""></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Comparison with True Values:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Comparison with True Values:</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"True Beta:"</span>, true_params[<span class="dv">1</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<h3 id="mle-estimates-vs-true-values">MLE Estimates vs True Values</h3>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>True Beta: 0.3 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"MLE Beta:"</span>, <span class="fu">round</span>(mle_params[<span class="dv">1</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>MLE Beta: 0.291 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"True Gamma:"</span>, true_params[<span class="dv">2</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True Gamma: 0.1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"MLE Gamma:"</span>, <span class="fu">round</span>(mle_params[<span class="dv">2</span>], <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>MLE Gamma: 0.05 </code></pre>
 </div>
@@ -949,45 +912,47 @@ Comparison with True Values:</code></pre>
 <section id="model-comparison-with-mle" class="slide level2">
 <h2>Model Comparison with MLE</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="co"># Fit different models and compare</span></span>
-<span id="cb28-2"><a href=""></a><span class="co"># Model 1: SIR with Poisson</span></span>
-<span id="cb28-3"><a href=""></a><span class="co"># Model 2: SIR with Negative Binomial</span></span>
-<span id="cb28-4"><a href=""></a></span>
-<span id="cb28-5"><a href=""></a><span class="co"># Negative Binomial likelihood</span></span>
-<span id="cb28-6"><a href=""></a>nll_nb <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, phi, data) {</span>
-<span id="cb28-7"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
-<span id="cb28-8"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
-<span id="cb28-9"><a href=""></a></span>
-<span id="cb28-10"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb28-11"><a href=""></a></span>
-<span id="cb28-12"><a href=""></a>  <span class="co"># Negative Binomial negative log-likelihood</span></span>
-<span id="cb28-13"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnbinom</span>(data<span class="sc">$</span>observed, <span class="at">mu =</span> predicted, <span class="at">size =</span> phi, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb28-14"><a href=""></a></span>
-<span id="cb28-15"><a href=""></a>  <span class="fu">return</span>(nll)</span>
-<span id="cb28-16"><a href=""></a>}</span>
-<span id="cb28-17"><a href=""></a></span>
-<span id="cb28-18"><a href=""></a><span class="co"># Fit NB model</span></span>
-<span id="cb28-19"><a href=""></a>fit_nb <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_nb,</span>
-<span id="cb28-20"><a href=""></a>               <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">phi =</span> <span class="dv">10</span>),</span>
-<span id="cb28-21"><a href=""></a>               <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
-<span id="cb28-22"><a href=""></a>               <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
-<span id="cb28-23"><a href=""></a>               <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>),</span>
-<span id="cb28-24"><a href=""></a>               <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>, <span class="dv">100</span>))</span>
-<span id="cb28-25"><a href=""></a></span>
-<span id="cb28-26"><a href=""></a><span class="co"># Compare models</span></span>
-<span id="cb28-27"><a href=""></a><span class="fu">cat</span>(<span class="st">"Model Comparison:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Model Comparison:</code></pre>
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="1|2|3|5-6|7-8|10-11|13-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="co"># Fit different models and compare</span></span>
+<span id="cb17-2"><a href=""></a><span class="co"># Model 1: SIR with Poisson</span></span>
+<span id="cb17-3"><a href=""></a><span class="co"># Model 2: SIR with Negative Binomial</span></span>
+<span id="cb17-4"><a href=""></a></span>
+<span id="cb17-5"><a href=""></a><span class="co"># Negative Binomial likelihood</span></span>
+<span id="cb17-6"><a href=""></a>nll_nb <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, phi, data) {</span>
+<span id="cb17-7"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
+<span id="cb17-8"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
+<span id="cb17-9"><a href=""></a></span>
+<span id="cb17-10"><a href=""></a>  <span class="co"># Extract and scale predictions to cases</span></span>
+<span id="cb17-11"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb17-12"><a href=""></a></span>
+<span id="cb17-13"><a href=""></a>  <span class="co"># Negative Binomial negative log-likelihood</span></span>
+<span id="cb17-14"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnbinom</span>(data<span class="sc">$</span>observed, <span class="at">mu =</span> predicted, <span class="at">size =</span> phi, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb17-15"><a href=""></a></span>
+<span id="cb17-16"><a href=""></a>  <span class="fu">return</span>(nll)</span>
+<span id="cb17-17"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Poisson AIC:"</span>, <span class="fu">AIC</span>(fit_mle), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1-2|3|5|6-7|1-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co"># Fit NB model</span></span>
+<span id="cb18-2"><a href=""></a>fit_nb <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_nb,</span>
+<span id="cb18-3"><a href=""></a>               <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">phi =</span> <span class="dv">10</span>),</span>
+<span id="cb18-4"><a href=""></a>               <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
+<span id="cb18-5"><a href=""></a>               <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
+<span id="cb18-6"><a href=""></a>               <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>),</span>
+<span id="cb18-7"><a href=""></a>               <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>, <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="model-comparison">Model Comparison</h3>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Poisson AIC: 19650.9 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Negative Binomial AIC:"</span>, <span class="fu">AIC</span>(fit_nb), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Negative Binomial AIC: 3189.442 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Delta AIC:"</span>, <span class="fu">AIC</span>(fit_nb) <span class="sc">-</span> <span class="fu">AIC</span>(fit_mle), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Delta AIC: -16461.45 </code></pre>
 </div>
@@ -1003,7 +968,7 @@ Comparison with True Values:</code></pre>
 <li>Enables formal hypothesis testing</li>
 </ul>
 </section>
-<section id="practical-benefits-1" class="slide level2">
+<section id="practical-benefits-2" class="slide level2">
 <h2>Practical Benefits</h2>
 <ul>
 <li>Confidence intervals and standard errors</li>
@@ -1113,59 +1078,59 @@ Comparison with True Values:</code></pre>
 <section id="example-with-stan" class="slide level2">
 <h2>Example with Stan</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="3-15|17-24|26-30|32-40|42-47|49-52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="co"># Stan model for SIR fitting</span></span>
-<span id="cb36-2"><a href=""></a><span class="st">"</span></span>
-<span id="cb36-3"><a href=""></a><span class="st">// SIR model in Stan (walkthrough)                                        </span></span>
-<span id="cb36-4"><a href=""></a><span class="st">// Functions block: derivative of [S, I, R]                               </span></span>
-<span id="cb36-5"><a href=""></a><span class="st">functions {</span></span>
-<span id="cb36-6"><a href=""></a><span class="st">  vector SIR(real t, vector y, array[] real theta) {                      </span></span>
-<span id="cb36-7"><a href=""></a><span class="st">    real S = y[1]; real I = y[2]; real R = y[3];</span></span>
-<span id="cb36-8"><a href=""></a><span class="st">    real beta = theta[1]; real gamma = theta[2];</span></span>
-<span id="cb36-9"><a href=""></a><span class="st">    vector[3] dydt;</span></span>
-<span id="cb36-10"><a href=""></a><span class="st">    dydt[1] = -beta * S * I;</span></span>
-<span id="cb36-11"><a href=""></a><span class="st">    dydt[2] =  beta * S * I - gamma * I;</span></span>
-<span id="cb36-12"><a href=""></a><span class="st">    dydt[3] =  gamma * I;</span></span>
-<span id="cb36-13"><a href=""></a><span class="st">    return dydt;</span></span>
-<span id="cb36-14"><a href=""></a><span class="st">  }</span></span>
-<span id="cb36-15"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-16"><a href=""></a></span>
-<span id="cb36-17"><a href=""></a><span class="st">// Data block: obs counts &amp; time grid                                     </span></span>
-<span id="cb36-18"><a href=""></a><span class="st">data {</span></span>
-<span id="cb36-19"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_obs;</span></span>
-<span id="cb36-20"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_pop;</span></span>
-<span id="cb36-21"><a href=""></a><span class="st">  array[n_obs] int y;</span></span>
-<span id="cb36-22"><a href=""></a><span class="st">  real t0;</span></span>
-<span id="cb36-23"><a href=""></a><span class="st">  array[n_obs] real ts;</span></span>
-<span id="cb36-24"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-25"><a href=""></a></span>
-<span id="cb36-26"><a href=""></a><span class="st">// Parameters: beta, gamma, S0                                             </span></span>
-<span id="cb36-27"><a href=""></a><span class="st">parameters {</span></span>
-<span id="cb36-28"><a href=""></a><span class="st">  array[2] real&lt;lower=0&gt; theta;     // {beta, gamma}</span></span>
-<span id="cb36-29"><a href=""></a><span class="st">  real&lt;lower=0,upper=1&gt; S0;         // initial susceptible fraction</span></span>
-<span id="cb36-30"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-31"><a href=""></a></span>
-<span id="cb36-32"><a href=""></a><span class="st">// Transformed params: ODE solve + Poisson rate                            </span></span>
-<span id="cb36-33"><a href=""></a><span class="st">transformed parameters {</span></span>
-<span id="cb36-34"><a href=""></a><span class="st">  vector[3] y_init;</span></span>
-<span id="cb36-35"><a href=""></a><span class="st">  array[n_obs] vector[3] y_hat;</span></span>
-<span id="cb36-36"><a href=""></a><span class="st">  array[n_obs] real lambda;</span></span>
-<span id="cb36-37"><a href=""></a><span class="st">  y_init[1] = S0; y_init[2] = 1 - S0; y_init[3] = 0;</span></span>
-<span id="cb36-38"><a href=""></a><span class="st">  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span></span>
-<span id="cb36-39"><a href=""></a><span class="st">  for (i in 1:n_obs) lambda[i] = y_hat[i, 2] * n_pop;</span></span>
-<span id="cb36-40"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-41"><a href=""></a></span>
-<span id="cb36-42"><a href=""></a><span class="st">// Model: priors + likelihood                                             </span></span>
-<span id="cb36-43"><a href=""></a><span class="st">model {</span></span>
-<span id="cb36-44"><a href=""></a><span class="st">  theta ~ lognormal(0, 1);</span></span>
-<span id="cb36-45"><a href=""></a><span class="st">  S0    ~ beta(1, 1);</span></span>
-<span id="cb36-46"><a href=""></a><span class="st">  y     ~ poisson(lambda);</span></span>
-<span id="cb36-47"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-48"><a href=""></a></span>
-<span id="cb36-49"><a href=""></a><span class="st">// GQ: derived R0                                                          </span></span>
-<span id="cb36-50"><a href=""></a><span class="st">generated quantities {</span></span>
-<span id="cb36-51"><a href=""></a><span class="st">  real R_0 = theta[1] / theta[2];</span></span>
-<span id="cb36-52"><a href=""></a><span class="st">}</span></span>
-<span id="cb36-53"><a href=""></a><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="3-15|17-24|26-30|32-40|42-47|49-52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># Stan model for SIR fitting</span></span>
+<span id="cb22-2"><a href=""></a><span class="st">"</span></span>
+<span id="cb22-3"><a href=""></a><span class="st">// SIR model in Stan (walkthrough)                                        </span></span>
+<span id="cb22-4"><a href=""></a><span class="st">// Functions block: derivative of [S, I, R]                               </span></span>
+<span id="cb22-5"><a href=""></a><span class="st">functions {</span></span>
+<span id="cb22-6"><a href=""></a><span class="st">  vector SIR(real t, vector y, array[] real theta) {                      </span></span>
+<span id="cb22-7"><a href=""></a><span class="st">    real S = y[1]; real I = y[2]; real R = y[3];</span></span>
+<span id="cb22-8"><a href=""></a><span class="st">    real beta = theta[1]; real gamma = theta[2];</span></span>
+<span id="cb22-9"><a href=""></a><span class="st">    vector[3] dydt;</span></span>
+<span id="cb22-10"><a href=""></a><span class="st">    dydt[1] = -beta * S * I;</span></span>
+<span id="cb22-11"><a href=""></a><span class="st">    dydt[2] =  beta * S * I - gamma * I;</span></span>
+<span id="cb22-12"><a href=""></a><span class="st">    dydt[3] =  gamma * I;</span></span>
+<span id="cb22-13"><a href=""></a><span class="st">    return dydt;</span></span>
+<span id="cb22-14"><a href=""></a><span class="st">  }</span></span>
+<span id="cb22-15"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-16"><a href=""></a></span>
+<span id="cb22-17"><a href=""></a><span class="st">// Data block: obs counts &amp; time grid                                     </span></span>
+<span id="cb22-18"><a href=""></a><span class="st">data {</span></span>
+<span id="cb22-19"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_obs;</span></span>
+<span id="cb22-20"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_pop;</span></span>
+<span id="cb22-21"><a href=""></a><span class="st">  array[n_obs] int y;</span></span>
+<span id="cb22-22"><a href=""></a><span class="st">  real t0;</span></span>
+<span id="cb22-23"><a href=""></a><span class="st">  array[n_obs] real ts;</span></span>
+<span id="cb22-24"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-25"><a href=""></a></span>
+<span id="cb22-26"><a href=""></a><span class="st">// Parameters: beta, gamma, S0                                             </span></span>
+<span id="cb22-27"><a href=""></a><span class="st">parameters {</span></span>
+<span id="cb22-28"><a href=""></a><span class="st">  array[2] real&lt;lower=0&gt; theta;     // {beta, gamma}</span></span>
+<span id="cb22-29"><a href=""></a><span class="st">  real&lt;lower=0,upper=1&gt; S0;         // initial susceptible fraction</span></span>
+<span id="cb22-30"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-31"><a href=""></a></span>
+<span id="cb22-32"><a href=""></a><span class="st">// Transformed params: ODE solve + Poisson rate                            </span></span>
+<span id="cb22-33"><a href=""></a><span class="st">transformed parameters {</span></span>
+<span id="cb22-34"><a href=""></a><span class="st">  vector[3] y_init;</span></span>
+<span id="cb22-35"><a href=""></a><span class="st">  array[n_obs] vector[3] y_hat;</span></span>
+<span id="cb22-36"><a href=""></a><span class="st">  array[n_obs] real lambda;</span></span>
+<span id="cb22-37"><a href=""></a><span class="st">  y_init[1] = S0; y_init[2] = 1 - S0; y_init[3] = 0;</span></span>
+<span id="cb22-38"><a href=""></a><span class="st">  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span></span>
+<span id="cb22-39"><a href=""></a><span class="st">  for (i in 1:n_obs) lambda[i] = y_hat[i, 2] * n_pop;</span></span>
+<span id="cb22-40"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-41"><a href=""></a></span>
+<span id="cb22-42"><a href=""></a><span class="st">// Model: priors + likelihood                                             </span></span>
+<span id="cb22-43"><a href=""></a><span class="st">model {</span></span>
+<span id="cb22-44"><a href=""></a><span class="st">  theta ~ lognormal(0, 1);</span></span>
+<span id="cb22-45"><a href=""></a><span class="st">  S0    ~ beta(1, 1);</span></span>
+<span id="cb22-46"><a href=""></a><span class="st">  y     ~ poisson(lambda);</span></span>
+<span id="cb22-47"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-48"><a href=""></a></span>
+<span id="cb22-49"><a href=""></a><span class="st">// GQ: derived R0                                                          </span></span>
+<span id="cb22-50"><a href=""></a><span class="st">generated quantities {</span></span>
+<span id="cb22-51"><a href=""></a><span class="st">  real R_0 = theta[1] / theta[2];</span></span>
+<span id="cb22-52"><a href=""></a><span class="st">}</span></span>
+<span id="cb22-53"><a href=""></a><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="particle-filtering" class="slide level2">
@@ -1191,27 +1156,27 @@ Comparison with True Values:</code></pre>
 <section id="example-application" class="slide level2">
 <h2>Example Application</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
-<span id="cb37-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
-<span id="cb37-3"><a href=""></a></span>
-<span id="cb37-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
-<span id="cb37-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
-<span id="cb37-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
-<span id="cb37-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
-<span id="cb37-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
-<span id="cb37-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
-<span id="cb37-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
-<span id="cb37-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
-<span id="cb37-12"><a href=""></a>  ),</span>
-<span id="cb37-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
-<span id="cb37-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
-<span id="cb37-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
-<span id="cb37-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
-<span id="cb37-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
-<span id="cb37-18"><a href=""></a>)</span>
-<span id="cb37-19"><a href=""></a></span>
-<span id="cb37-20"><a href=""></a><span class="co"># Run particle filter</span></span>
-<span id="cb37-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
+<span id="cb23-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
+<span id="cb23-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
+<span id="cb23-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
+<span id="cb23-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
+<span id="cb23-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
+<span id="cb23-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
+<span id="cb23-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
+<span id="cb23-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
+<span id="cb23-12"><a href=""></a>  ),</span>
+<span id="cb23-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
+<span id="cb23-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
+<span id="cb23-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
+<span id="cb23-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
+<span id="cb23-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
+<span id="cb23-18"><a href=""></a>)</span>
+<span id="cb23-19"><a href=""></a></span>
+<span id="cb23-20"><a href=""></a><span class="co"># Run particle filter</span></span>
+<span id="cb23-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="approximate-bayesian-computation-abc" class="slide level2">
@@ -2116,7 +2081,7 @@ Comparison with True Values:</code></pre>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

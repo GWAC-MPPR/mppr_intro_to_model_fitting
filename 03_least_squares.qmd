@@ -4,7 +4,7 @@
 
 ## Least Squares: The Intuitive Approach
 
-**<span style="color: #FFFF00;">Core Idea:</span>** Minimize the sum of squared differences between model predictions and observations
+[**Core Idea:**]{style="color: #FFFF00;"} Minimize the sum of squared differences between model predictions and observations
 
 ------------------------------------------------------------------------
 
@@ -12,28 +12,28 @@
 
 Where:
 
-- $y_i$ = observed value at time $t_i$
-- $f(t_i, \theta)$ = model prediction at time $t_i$
-- $\theta$ = parameter vector
+-   $y_i$ = observed value at time $t_i$
+-   $f(t_i, \theta)$ = model prediction at time $t_i$
+-   $\theta$ = parameter vector
 
 ------------------------------------------------------------------------
 
 ### Why Squared Errors?
 
-**<span style="color: #FFFF00;">Advantages:</span>**
+[**Advantages:**]{style="color: #FFFF00;"}
 
--   <span style="color: #FFFF00;">Penalizes large errors more heavily</span>
--   <span style="color: #FFFF00;">Differentiable (smooth optimization)</span>
--   <span style="color: #FFFF00;">Mathematically tractable</span>
--   <span style="color: #FFFF00;">Gives maximum likelihood estimates when errors are normal distributed</span>
+-   [Penalizes large errors more heavily]{style="color: #FFFF00;"}
+-   [Differentiable (smooth optimization)]{style="color: #FFFF00;"}
+-   [Mathematically tractable]{style="color: #FFFF00;"}
+-   [Gives maximum likelihood estimates when errors are normal distributed]{style="color: #FFFF00;"}
 
 ------------------------------------------------------------------------
 
-### <span style="color: tomato;">Disadvantages</span>
+### [Disadvantages]{style="color: tomato;"}
 
--   <span style="color: tomato;">Sensitive to outliers</span>
--   <span style="color: tomato;">Assumes constant variance</span>
--   <span style="color: tomato;">No probabilistic interpretation</span>
+-   [Sensitive to outliers]{style="color: tomato;"}
+-   [Assumes constant variance]{style="color: tomato;"}
+-   [No probabilistic interpretation]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ plot_data <- data.frame(
 
 ggplot(plot_data, aes(x = time)) +
   geom_point(aes(y = observed), color = "red", alpha = 0.7) +
-  geom_line(aes(y = true_model), color = "blue", size = 1) +
+  geom_line(aes(y = true_model), color = "blue", linewidth = 1) +
   labs(x = "Time (days)", y = "Number of Cases",
        title = "SIR Model: True vs Observed Data") +
   theme_minimal()
@@ -87,6 +87,7 @@ ggplot(plot_data, aes(x = time)) +
 ## Implementing Least Squares
 
 ```{r ls-implementation, echo=TRUE}
+#| code-line-numbers: "1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45" 
 # Define objective function
 sse_function <- function(params, data) {
   beta <- params[1]
@@ -100,8 +101,9 @@ sse_function <- function(params, data) {
     parms = c(beta = beta, gamma = gamma)
   )
   
-  # Calculate sum of squared errors
+  #  Extract and rescale the predicted cases
   predicted <- out[, "I"] * 1000
+  # Calculate sum of squared errors
   sse <- sum((data$observed - predicted)^2)
   
   return(sse)
@@ -185,55 +187,6 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Example Problem
-
-```{r ls-limitation, echo=TRUE, fig.width=10, fig.height=6}
-# Show how different parameter combinations can give similar fits
-param_combos <- data.frame(
-  beta = c(0.25, 0.35, 0.30),
-  gamma = c(0.08, 0.12, 0.10),
-  label = c("Low β, Low γ", "High β, High γ", "True")
-)
-
-# Plot different fits
-ggplot(plot_data, aes(x = time)) +
-  geom_point(aes(y = observed), color = "red", alpha = 0.7) +
-  geom_line(aes(y = true_model), color = "blue", linetype = 1) +
-  labs(x = "Time (days)", y = "Number of Cases",
-       title = "Multiple Parameter Sets Can Give Similar Fits") +
-  theme_minimal()
-
-# Add lines for different parameter combinations
-out_test <- ode(
-    y = init_conds,
-    times = times,
-    func = sir_model,
-    parms = c(beta = param_combos$beta[1],
-              gamma = param_combos$gamma[1]
-    ))
-
-plot(times, out_test[, "I"] * 1000,
-     col = c("green", "orange", "purple")[1],
-     lty = 2, lwd = 2
-)
-
-for(i in 2:nrow(param_combos)) {
-  out_test <- ode(
-    y = init_conds,
-    times = times,
-    func = sir_model,
-    parms = c(beta = param_combos$beta[i],
-              gamma = param_combos$gamma[i]
-    ))
-  lines(times, out_test[, "I"] * 1000,
-        col = c("green", "orange", "purple")[i],
-        lty = 2, lwd = 2
-  )
-}
-```
-
-------------------------------------------------------------------------
-
 ## R implementation practicals {background-color="#447099" transition="fade-in"}
 
-- Let's turn to the [tutorials](https://github.com/jamesmbaazam/mppr_intro_to_fitting_practicals)
+-   Let's turn to the [tutorials](https://github.com/jamesmbaazam/mppr_intro_to_fitting_practicals)
