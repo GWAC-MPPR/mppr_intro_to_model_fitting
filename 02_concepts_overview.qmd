@@ -4,7 +4,7 @@
 
 ## What is model fitting?
 
-**<span style="color: #FFFF00;">Definition:</span>** The process of finding parameter values that make a mathematical model's predictions as close as possible to observed data.
+[**Definition:**]{style="color: #FFFF00;"} The process of finding parameter values that make a mathematical model's predictions as close as possible to observed data.
 
 ------------------------------------------------------------------------
 
@@ -30,15 +30,15 @@ $$\frac{dS}{dt} = -\beta SI$$ $$\frac{dI}{dt} = \beta SI - \gamma I$$ $$\frac{dR
 
 ### Parameters to estimate
 
--   <span style="color: tomato;">$\beta$ = transmission rate</span>
--   <span style="color: tomato;">$\gamma$ = recovery rate</span>
+-   [$\beta$ = transmission rate]{style="color: tomato;"}
+-   [$\gamma$ = recovery rate]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ## Key quantities
 
--   <span style="color: #FFFF00;">$R_0 = \frac{\beta}{\gamma}$ (basic reproduction number)</span>
--   <span style="color: #FFFF00;">Infectious period = $\frac{1}{\gamma}$</span>
+-   [$R_0 = \frac{\beta}{\gamma}$ (basic reproduction number)]{style="color: #FFFF00;"}
+-   [Infectious period = $\frac{1}{\gamma}$]{style="color: #FFFF00;"}
 
 ------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ $$\frac{dS}{dt} = -\beta SI$$ $$\frac{dI}{dt} = \beta SI - \gamma I$$ $$\frac{dR
 
 ## The fitting challenge
 
-**<span style="color: tomato;">Identifiability Problem:</span>** Multiple parameter combinations can produce similar model outputs
+[**Identifiability Problem:**]{style="color: tomato;"} Multiple parameter combinations can produce similar model outputs
 
 **Example:**
 
@@ -84,4 +84,4 @@ $$\frac{dS}{dt} = -\beta SI$$ $$\frac{dI}{dt} = \beta SI - \gamma I$$ $$\frac{dR
 
 Both might give similar epidemic curves!
 
-**<span style="color: #FFFF00;">Solution:</span>** Use additional information (e.g., known infectious period)
+[**Solution:**]{style="color: #FFFF00;"} Use additional information (e.g., known infectious period)
