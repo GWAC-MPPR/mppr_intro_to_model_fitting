@@ -24,11 +24,11 @@ Where:
 
 **Differential Equations:**
 
-$$\begin{align}
+\begin{align}
 \frac{dS}{dt} &= -\beta SI \\
 \frac{dI}{dt} &= \beta SI - \gamma I \\
 \frac{dR}{dt} &= \gamma I
-\end{align}$$
+\end{align}
 
 ------------------------------------------------------------------------
 
