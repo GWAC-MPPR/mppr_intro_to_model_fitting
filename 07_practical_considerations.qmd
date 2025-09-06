@@ -4,7 +4,7 @@
 
 ## Common fitting problems
 
-**Convergence Issues:**
+### Convergence issues
 
 -   Poor starting values
 -   Flat likelihood surfaces
@@ -13,7 +13,7 @@
 
 ------------------------------------------------------------------------
 
-**Identifiability Problems:**
+### Identifiability problems
 
 -   Multiple solutions
 -   Correlated parameters
@@ -22,7 +22,7 @@
 
 ------------------------------------------------------------------------
 
-**Solutions:**
+## Solutions
 
 -   Multiple starting points
 -   Profile likelihood
@@ -32,7 +32,7 @@
 
 ## Troubleshooting guide
 
-**If Optimization Fails:**
+### If Optimization fails
 
 1.  Check starting values
 2.  Verify parameter bounds
@@ -42,7 +42,7 @@
 
 ------------------------------------------------------------------------
 
-**If Parameters Are Unidentifiable:**
+### If parameters are unidentifiable
 
 1.  Fix some parameters
 2.  Use additional data
@@ -52,7 +52,7 @@
 
 ------------------------------------------------------------------------
 
-**If Results Are Unrealistic:**
+### If results are unrealistic
 
 1.  Check model assumptions
 2.  Verify data quality
@@ -64,7 +64,7 @@
 
 ## Best practices
 
-**Before Fitting:**
+### Before fitting
 
 -   Understand your data
 -   Check model assumptions
@@ -73,7 +73,7 @@
 
 ------------------------------------------------------------------------
 
-**During Fitting:**
+### During fitting
 
 -   Monitor convergence
 -   Check for local minima
@@ -82,7 +82,7 @@
 
 ------------------------------------------------------------------------
 
-**After Fitting:**
+### After fitting
 
 -   Assess goodness of fit
 -   Quantify uncertainty
