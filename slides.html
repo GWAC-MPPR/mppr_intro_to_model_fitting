@@ -420,13 +420,13 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li><a href="#/introduction-motivation" id="/toc-introduction-motivation">Introduction &amp; Motivation</a></li>
-<li><a href="#/conceptual-foundations" id="/toc-conceptual-foundations">Conceptual Foundations</a></li>
-<li><a href="#/least-squares-estimation" id="/toc-least-squares-estimation">Least Squares Estimation</a></li>
-<li><a href="#/maximum-likelihood-estimation" id="/toc-maximum-likelihood-estimation">Maximum Likelihood Estimation</a></li>
-<li><a href="#/comparison-of-methods" id="/toc-comparison-of-methods">Comparison of Methods</a></li>
-<li><a href="#/advanced-methods" id="/toc-advanced-methods">Advanced Methods</a></li>
-<li><a href="#/practical-considerations" id="/toc-practical-considerations">Practical Considerations</a></li>
+<li><a href="#/introduction-motivation" id="/toc-introduction-motivation">Introduction &amp; motivation</a></li>
+<li><a href="#/conceptual-foundations" id="/toc-conceptual-foundations">Conceptual foundations</a></li>
+<li><a href="#/least-squares-estimation" id="/toc-least-squares-estimation">Least squares estimation</a></li>
+<li><a href="#/maximum-likelihood-estimation" id="/toc-maximum-likelihood-estimation">Maximum likelihood estimation</a></li>
+<li><a href="#/comparison-of-methods" id="/toc-comparison-of-methods">Comparison of methods</a></li>
+<li><a href="#/advanced-methods" id="/toc-advanced-methods">Advanced methods</a></li>
+<li><a href="#/practical-considerations" id="/toc-practical-considerations">Practical considerations</a></li>
 <li><a href="#/conclusions" id="/toc-conclusions">Conclusions</a></li>
 </ul>
 </nav>
@@ -445,22 +445,21 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section>
 <section id="introduction-motivation" class="title-slide slide level1 center">
-<h1>Introduction &amp; Motivation</h1>
+<h1>Introduction &amp; motivation</h1>
 
 </section>
 <section id="why-model-fitting-matters" class="slide level2">
-<h2>Why Model Fitting Matters</h2>
-<h3 id="the-challenge">The Challenge</h3>
-<p><strong>The Challenge:</strong></p>
+<h2>Why model fitting matters</h2>
+<h3 id="the-challenge">The challenge</h3>
 <ul>
 <li>We have mathematical models (e.g., SIR, SEIR)</li>
 <li>We have real-world data (case counts, hospitalizations)</li>
-<li><strong><span style="color: tomato;">How do we connect them?</span></strong></li>
+<li><span style="color: tomato;"><strong>How do we connect them?</strong></span></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="the-goal">The Goal</h3>
+<h3 id="the-goal">The goal</h3>
 <ul>
 <li><span style="color: #FFFF00;">Find parameter values that make our model predictions match observed data</span></li>
 <li><span style="color: #FFFF00;">Quantify uncertainty in our estimates</span></li>
@@ -468,7 +467,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="example-outbreak-data" class="slide level2">
-<h2>Example: Outbreak data</h2>
+<h2>Example: outbreak data</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -478,38 +477,38 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </div>
 </div>
-<p><strong><span style="color: tomato;">Question:</span></strong> How do we estimate <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> from this noisy data?</p>
+<p><span style="color: tomato;"><strong>Question:</strong></span> How do we estimate <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> from this noisy data?</p>
 </section>
 <section id="types-of-fitting-methods" class="slide level2">
-<h2>Types of Fitting Methods</h2>
-<h3 id="deterministic-methods">Deterministic Methods</h3>
+<h2>Types of fitting methods</h2>
+<h3 id="deterministic-methods">Deterministic methods</h3>
 <ul>
-<li><strong><span style="color: tomato;">Least Squares</span></strong></li>
-<li><strong><span style="color: tomato;">Maximum Likelihood Estimation (MLE)</span></strong></li>
+<li><span style="color: tomato;"><strong>Least Squares</strong></span></li>
+<li><span style="color: tomato;"><strong>Maximum Likelihood Estimation (MLE)</strong></span></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="stochastic-methods">Stochastic Methods</h3>
+<h3 id="stochastic-methods">Stochastic methods</h3>
 <ul>
-<li><strong><span style="color: #FFFF00;">Markov Chain Monte Carlo (MCMC)</span></strong></li>
-<li><strong><span style="color: #FFFF00;">Sequential Monte Carlo (SMC)</span></strong></li>
-<li><strong><span style="color: #FFFF00;">Particle MCMC (pMCMC)</span></strong></li>
-<li><strong><span style="color: #FFFF00;">Approximate Bayesian Computation (ABC)</span></strong></li>
+<li><span style="color: #FFFF00;"><strong>Markov Chain Monte Carlo (MCMC)</strong></span></li>
+<li><span style="color: #FFFF00;"><strong>Sequential Monte Carlo (SMC)</strong></span></li>
+<li><span style="color: #FFFF00;"><strong>Particle MCMC (pMCMC)</strong></span></li>
+<li><span style="color: #FFFF00;"><strong>Approximate Bayesian Computation (ABC)</strong></span></li>
 </ul>
-<p><strong><span style="color: tomato;">Today’s Focus:</span></strong> Least Squares and MLE as foundations</p>
+<p><span style="color: tomato;"><strong>Today’s Focus:</strong></span> Least Squares and MLE as foundations</p>
 </section></section>
 <section>
 <section id="conceptual-foundations" class="title-slide slide level1 center">
-<h1>Conceptual Foundations</h1>
+<h1>Conceptual foundations</h1>
 
 </section>
 <section id="what-is-model-fitting" class="slide level2">
-<h2>What is Model Fitting?</h2>
+<h2>What is model fitting?</h2>
 <p><strong><span style="color: #FFFF00;">Definition:</span></strong> The process of finding parameter values that make a mathematical model’s predictions as close as possible to observed data.</p>
 </section>
 <section id="mathematical-formulation" class="slide level2">
-<h2>Mathematical Formulation</h2>
+<h2>Mathematical formulation</h2>
 <p><span class="math display">\[\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})\]</span></p>
 <p>Where:</p>
 <ul>
@@ -519,28 +518,28 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="the-sir-model-as-our-example" class="slide level2">
-<h2>The SIR Model as Our Example</h2>
+<h2>The SIR model as our example</h2>
 <p><strong>Differential Equations:</strong></p>
 <p><span class="math display">\[\frac{dS}{dt} = -\beta SI\]</span> <span class="math display">\[\frac{dI}{dt} = \beta SI - \gamma I\]</span> <span class="math display">\[\frac{dR}{dt} = \gamma I\]</span></p>
 </section>
 <section class="slide level2">
 
-<h3 id="parameters-to-estimate">Parameters to Estimate</h3>
+<h3 id="parameters-to-estimate">Parameters to estimate</h3>
 <ul>
 <li><span style="color: tomato;"><span class="math inline">\(\beta\)</span> = transmission rate</span></li>
 <li><span style="color: tomato;"><span class="math inline">\(\gamma\)</span> = recovery rate</span></li>
 </ul>
 </section>
 <section id="key-quantities" class="slide level2">
-<h2>Key Quantities</h2>
+<h2>Key quantities</h2>
 <ul>
 <li><span style="color: #FFFF00;"><span class="math inline">\(R_0 = \frac{\beta}{\gamma}\)</span> (basic reproduction number)</span></li>
 <li><span style="color: #FFFF00;">Infectious period = <span class="math inline">\(\frac{1}{\gamma}\)</span></span></li>
 </ul>
 </section>
 <section id="sources-of-uncertainty" class="slide level2">
-<h2>Sources of Uncertainty</h2>
-<h3 id="model-uncertainty">Model Uncertainty</h3>
+<h2>Sources of uncertainty</h2>
+<h3 id="model-uncertainty">Model uncertainty</h3>
 <ul>
 <li>Wrong model structure</li>
 <li>Missing compartments or processes</li>
@@ -548,7 +547,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="parameter-uncertainty">Parameter Uncertainty</h3>
+<h3 id="parameter-uncertainty">Parameter uncertainty</h3>
 <ul>
 <li>True parameter values unknown</li>
 <li>Multiple parameter sets give similar fits</li>
@@ -556,7 +555,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="observation-uncertainty">Observation Uncertainty</h3>
+<h3 id="observation-uncertainty">Observation uncertainty</h3>
 <ul>
 <li>Measurement error</li>
 <li>Reporting delays</li>
@@ -565,14 +564,14 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="process-uncertainty">Process Uncertainty</h3>
+<h3 id="process-uncertainty">Process uncertainty</h3>
 <ul>
 <li>Stochasticity in disease transmission</li>
 <li>Environmental variability</li>
 </ul>
 </section>
 <section id="the-fitting-challenge" class="slide level2">
-<h2>The Fitting Challenge</h2>
+<h2>The fitting challenge</h2>
 <p><strong><span style="color: tomato;">Identifiability Problem:</span></strong> Multiple parameter combinations can produce similar model outputs</p>
 <p><strong>Example:</strong></p>
 <ul>
@@ -584,11 +583,11 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section></section>
 <section>
 <section id="least-squares-estimation" class="title-slide slide level1 center">
-<h1>Least Squares Estimation</h1>
+<h1>Least squares estimation</h1>
 
 </section>
 <section id="least-squares-the-intuitive-approach" class="slide level2">
-<h2>Least Squares: The Intuitive Approach</h2>
+<h2>Least squares: the intuitive approach</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Minimize the sum of squared differences between model predictions and observations</p>
 </section>
 <section class="slide level2">
@@ -603,7 +602,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="why-squared-errors">Why Squared Errors?</h3>
+<h3 id="why-squared-errors">Why squared errors?</h3>
 <p><span style="color: #FFFF00;"><strong>Advantages:</strong></span></p>
 <ul>
 <li><span style="color: #FFFF00;">Penalizes large errors more heavily</span></li>
@@ -622,7 +621,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="least-squares-example-sir-model" class="slide level2">
-<h2>Least Squares Example: SIR Model</h2>
+<h2>Least squares example: SIR model</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -634,7 +633,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </section>
 <section id="implementing-least-squares" class="slide level2">
-<h2>Implementing Least Squares</h2>
+<h2>Implementing least squares</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Define objective function</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>sse_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params, data) {</span>
@@ -691,7 +690,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </section>
 <section id="strengths-of-least-squares" class="slide level2">
-<h2>Strengths of Least Squares</h2>
+<h2>Strengths of least squares</h2>
 <p><strong>Computational Advantages:</strong></p>
 <ul>
 <li>Fast and efficient</li>
@@ -701,7 +700,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="statistical-properties" class="slide level2">
-<h2>Statistical Properties</h2>
+<h2>Statistical properties</h2>
 <ul>
 <li>Unbiased estimates (under certain conditions)</li>
 <li>Minimum variance among linear unbiased estimators</li>
@@ -709,7 +708,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="practical-benefits" class="slide level2">
-<h2>Practical Benefits</h2>
+<h2>Practical benefits</h2>
 <ul>
 <li>Intuitive interpretation</li>
 <li>Widely understood</li>
@@ -717,7 +716,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="limitations-of-least-squares" class="slide level2">
-<h2>Limitations of Least Squares</h2>
+<h2>Limitations of least squares</h2>
 <p><strong>Statistical Limitations:</strong></p>
 <ul>
 <li>Limited uncertainty quantification</li>
@@ -727,7 +726,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="practical-limitations" class="slide level2">
-<h2>Practical Limitations</h2>
+<h2>Practical limitations</h2>
 <p><strong>Practical Limitations:</strong></p>
 <ul>
 <li>Parameter identifiability issues</li>
@@ -744,11 +743,11 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section></section>
 <section>
 <section id="maximum-likelihood-estimation" class="title-slide slide level1 center">
-<h1>Maximum Likelihood Estimation</h1>
+<h1>Maximum likelihood estimation</h1>
 
 </section>
 <section id="maximum-likelihood-the-probabilistic-approach" class="slide level2">
-<h2>Maximum Likelihood: The Probabilistic Approach</h2>
+<h2>Maximum likelihood: the probabilistic approach</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Find parameter values that make the observed data most probable</p>
 </section>
 <section class="slide level2">
@@ -765,8 +764,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p><strong>In Practice:</strong> Maximize log-likelihood <span class="math display">\[\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i | \theta)\]</span></p>
 </section>
 <section id="why-maximum-likelihood" class="slide level2">
-<h2>Why Maximum Likelihood?</h2>
-<h3 id="theoretical-advantages">Theoretical Advantages:</h3>
+<h2>Why maximum likelihood?</h2>
+<h3 id="theoretical-advantages">Theoretical advantages:</h3>
 <ul>
 <li>Principled <span style="color: #FFFF00;">statistical framework</span></li>
 <li>Provides <span style="color: #FFFF00;">uncertainty quantification</span></li>
@@ -776,7 +775,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="practical-benefits-1">Practical Benefits</h3>
+<h3 id="practical-benefits-1">Practical benefits</h3>
 <ul>
 <li>Confidence intervals</li>
 <li>Hypothesis testing</li>
@@ -785,7 +784,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="choosing-a-probability-distribution" class="slide level2">
-<h2>Choosing a Probability Distribution</h2>
+<h2>Choosing a probability distribution</h2>
 <p><strong>For <span style="color: #FFFF00;">Count Data</span> (e.g., Cases):</strong></p>
 <ul>
 <li><strong>Poisson</strong>: <span class="math inline">\(Y_i \sim \text{Poisson}(\lambda_i)\)</span></li>
@@ -793,7 +792,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </ul>
 </section>
 <section id="choosing-a-probability-distribution-1" class="slide level2">
-<h2>Choosing a Probability Distribution</h2>
+<h2>Choosing a probability distribution</h2>
 <p><strong>For <span style="color: #FFFF00;">Continuous Data:</span></strong></p>
 <ul>
 <li><strong>Normal</strong>: <span class="math inline">\(Y_i \sim N(\mu_i, \sigma^2)\)</span></li>
@@ -814,7 +813,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </section>
 <section id="mle-implementation-poisson-likelihood" class="slide level2">
-<h2>MLE Implementation: Poisson Likelihood</h2>
+<h2>MLE implementation: Poisson likelihood</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Define negative log-likelihood function</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>nll_function <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, data) {</span>
@@ -851,7 +850,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="mle-results">MLE Results</h3>
+<h3 id="mle-results">MLE results</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Beta: 0.291 ± 0.003 </code></pre>
@@ -865,7 +864,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </section>
 <section id="uncertainty-quantification-with-mle" class="slide level2">
-<h2>Uncertainty Quantification with MLE</h2>
+<h2>Uncertainty quantification with MLE</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Profile likelihood for uncertainty</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
@@ -893,7 +892,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section class="slide level2">
 
-<h3 id="mle-estimates-vs-true-values">MLE Estimates vs True Values</h3>
+<h3 id="mle-estimates-vs-true-values">MLE estimates vs true values</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>True Beta: 0.3 </code></pre>
@@ -910,13 +909,13 @@ gamma 0.04961407 0.05089814</code></pre>
 </div>
 </section>
 <section id="model-comparison-with-mle" class="slide level2">
-<h2>Model Comparison with MLE</h2>
+<h2>Model comparison with MLE</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17" data-code-line-numbers="1|2|3|5-6|7-8|10-11|13-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Fit different models and compare</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co"># Model 1: SIR with Poisson</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># Model 2: SIR with Negative Binomial</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># Model 2: SIR with negative binomial</span></span>
 <span id="cb17-4"><a href="#cb17-4"></a></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="co"># Negative Binomial likelihood</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co"># Negative binomial likelihood</span></span>
 <span id="cb17-6"><a href="#cb17-6"></a>nll_nb <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, phi, data) {</span>
 <span id="cb17-7"><a href="#cb17-7"></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
 <span id="cb17-8"><a href="#cb17-8"></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
@@ -945,7 +944,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section class="slide level2">
 
-<h3 id="model-comparison">Model Comparison</h3>
+<h3 id="model-comparison">Model comparison</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Poisson AIC: 19650.9 </code></pre>
@@ -959,7 +958,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </div>
 </section>
 <section id="strengths-of-maximum-likelihood" class="slide level2">
-<h2>Strengths of Maximum Likelihood</h2>
+<h2>Strengths of maximum likelihood</h2>
 <p><strong>Statistical Rigor:</strong></p>
 <ul>
 <li>Principled probabilistic framework</li>
@@ -969,7 +968,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="practical-benefits-2" class="slide level2">
-<h2>Practical Benefits</h2>
+<h2>Practical benefits</h2>
 <ul>
 <li>Confidence intervals and standard errors</li>
 <li>Model comparison via AIC/BIC</li>
@@ -978,7 +977,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="limitations-of-maximum-likelihood" class="slide level2">
-<h2>Limitations of Maximum Likelihood</h2>
+<h2>Limitations of maximum likelihood</h2>
 <p><strong>Computational Challenges:</strong></p>
 <ul>
 <li>More complex than least squares</li>
@@ -988,7 +987,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="statistical-assumptions" class="slide level2">
-<h2>Statistical Assumptions</h2>
+<h2>Statistical assumptions</h2>
 <ul>
 <li>Requires specification of error distribution</li>
 <li>Assumes model structure is correct</li>
@@ -997,7 +996,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="identifiability-issues" class="slide level2">
-<h2>Identifiability Issues</h2>
+<h2>Identifiability issues</h2>
 <ul>
 <li>Still suffers from parameter identifiability</li>
 <li>Profile likelihood can be computationally expensive</li>
@@ -1012,11 +1011,11 @@ gamma 0.04961407 0.05089814</code></pre>
 </section></section>
 <section>
 <section id="comparison-of-methods" class="title-slide slide level1 center">
-<h1>Comparison of Methods</h1>
+<h1>Comparison of methods</h1>
 
 </section>
 <section id="when-to-use-each-method" class="slide level2">
-<h2>When to Use Each Method</h2>
+<h2>When to use each method</h2>
 <p><strong>Use Least Squares When:</strong></p>
 <ul>
 <li>Quick exploratory analysis needed</li>
@@ -1038,11 +1037,11 @@ gamma 0.04961407 0.05089814</code></pre>
 </section></section>
 <section>
 <section id="advanced-methods" class="title-slide slide level1 center">
-<h1>Advanced Methods</h1>
+<h1>Advanced methods</h1>
 
 </section>
 <section id="beyond-least-squares-and-mle" class="slide level2">
-<h2>Beyond Least Squares and MLE</h2>
+<h2>Beyond least squares and MLE</h2>
 <p><span style="color: tomato;"><strong>Why We Need Advanced Methods:</strong></span></p>
 <ul>
 <li>Parameter identifiability issues</li>
@@ -1053,7 +1052,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="advanced-approaches" class="slide level2 scrollable">
-<h2>Advanced Approaches</h2>
+<h2>Advanced approaches</h2>
 <ol type="1">
 <li><strong>Bayesian Methods</strong> (MCMC)</li>
 <li><strong>Particle Filtering</strong></li>
@@ -1062,7 +1061,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ol>
 </section>
 <section id="bayesian-methods-mcmc" class="slide level2">
-<h2>Bayesian Methods: MCMC</h2>
+<h2>Bayesian methods: MCMC</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Treat parameters as random variables with prior distributions</p>
 <p><strong>Bayes’ Theorem:</strong> <span class="math display">\[P(\theta | \mathbf{y}) = \frac{P(\mathbf{y} | \theta) P(\theta)}{P(\mathbf{y})}\]</span></p>
 </section>
@@ -1134,7 +1133,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </div>
 </section>
 <section id="particle-filtering" class="slide level2">
-<h2>Particle Filtering</h2>
+<h2>Particle filtering</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Sequential Monte Carlo method for state-space models</p>
 <p><strong>When to Use:</strong></p>
 <ul>
@@ -1154,7 +1153,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="example-application" class="slide level2">
-<h2>Example Application</h2>
+<h2>Example application</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Particle filter for SIR model</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">library</span>(pomp)</span>
@@ -1180,7 +1179,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </div>
 </section>
 <section id="approximate-bayesian-computation-abc" class="slide level2">
-<h2>Approximate Bayesian Computation (ABC)</h2>
+<h2>Approximate Bayesian computation (ABC)</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Approximate posterior without likelihood evaluation</p>
 <p><strong>When to Use:</strong></p>
 <ul>
@@ -1211,7 +1210,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="ensemble-methods" class="slide level2">
-<h2>Ensemble Methods</h2>
+<h2>Ensemble methods</h2>
 <p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Combine multiple models or methods</p>
 <p><strong>Types:</strong></p>
 <ul>
@@ -1231,11 +1230,11 @@ gamma 0.04961407 0.05089814</code></pre>
 </section></section>
 <section>
 <section id="practical-considerations" class="title-slide slide level1 center">
-<h1>Practical Considerations</h1>
+<h1>Practical considerations</h1>
 
 </section>
 <section id="common-fitting-problems" class="slide level2">
-<h2>Common Fitting Problems</h2>
+<h2>Common fitting problems</h2>
 <p><strong>Convergence Issues:</strong></p>
 <ul>
 <li>Poor starting values</li>
@@ -1264,7 +1263,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="troubleshooting-guide" class="slide level2 scrollable">
-<h2>Troubleshooting Guide</h2>
+<h2>Troubleshooting guide</h2>
 <p><strong>If Optimization Fails:</strong></p>
 <ol type="1">
 <li>Check starting values</li>
@@ -1297,7 +1296,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ol>
 </section>
 <section id="best-practices" class="slide level2">
-<h2>Best Practices</h2>
+<h2>Best practices</h2>
 <p><strong>Before Fitting:</strong></p>
 <ul>
 <li>Understand your data</li>
@@ -1327,7 +1326,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="software-recommendations" class="slide level2">
-<h2>Software Recommendations</h2>
+<h2>Software recommendations</h2>
 <p><strong>R Packages:</strong></p>
 <ul>
 <li><code>bbmle</code>: Maximum likelihood</li>
@@ -1350,7 +1349,7 @@ gamma 0.04961407 0.05089814</code></pre>
 
 </section>
 <section id="key-takeaways" class="slide level2">
-<h2>Key Takeaways</h2>
+<h2>Key takeaways</h2>
 <p><strong>Least Squares:</strong></p>
 <ul>
 <li>Fast and intuitive</li>
@@ -1380,7 +1379,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </ul>
 </section>
 <section id="choosing-the-right-method" class="slide level2">
-<h2>Choosing the Right Method</h2>
+<h2>Choosing the right method</h2>
 <p><strong>For Quick Exploration:</strong> Least Squares</p>
 <p><strong>For Publication:</strong> Maximum Likelihood</p>
 <p><strong>For Complex Models:</strong> Bayesian Methods</p>
@@ -1389,7 +1388,7 @@ gamma 0.04961407 0.05089814</code></pre>
 <p><span style="color: tomato;"><strong>General Principle:</strong></span> Start simple, add complexity as needed</p>
 </section>
 <section id="final-thoughts" class="slide level2">
-<h2>Final Thoughts</h2>
+<h2>Final thoughts</h2>
 <p><span style="color: tomato;"><strong>Model fitting is both art and science:</strong></span></p>
 <ul>
 <li>Requires domain expertise</li>
@@ -2046,7 +2045,7 @@ gamma 0.04961407 0.05089814</code></pre>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});</script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});</script>
     
 
 </body></html>
