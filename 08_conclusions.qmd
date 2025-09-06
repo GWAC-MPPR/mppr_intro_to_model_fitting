@@ -2,7 +2,7 @@
 
 ------------------------------------------------------------------------
 
-## Key Takeaways
+## Key takeaways
 
 **Least Squares:**
 
@@ -31,7 +31,7 @@
 
 ------------------------------------------------------------------------
 
-## Choosing the Right Method
+## Choosing the right method
 
 **For Quick Exploration:** Least Squares
 
@@ -47,7 +47,7 @@
 
 ------------------------------------------------------------------------
 
-## Final Thoughts
+## Final thoughts
 
 [**Model fitting is both art and science:**]{style="color: tomato;"}
 

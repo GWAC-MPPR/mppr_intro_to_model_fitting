@@ -1,8 +1,8 @@
-# Practical Considerations
+# Practical considerations
 
 ------------------------------------------------------------------------
 
-## Common Fitting Problems
+## Common fitting problems
 
 **Convergence Issues:**
 
@@ -30,7 +30,7 @@
 
 ------------------------------------------------------------------------
 
-## Troubleshooting Guide
+## Troubleshooting guide
 
 **If Optimization Fails:**
 
@@ -62,7 +62,7 @@
 
 ------------------------------------------------------------------------
 
-## Best Practices
+## Best practices
 
 **Before Fitting:**
 
@@ -91,7 +91,7 @@
 
 ------------------------------------------------------------------------
 
-## Software Recommendations
+## Software recommendations
 
 **R Packages:**
 

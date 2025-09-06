@@ -1,28 +1,26 @@
-# Introduction & Motivation
+# Introduction & motivation
 
 ------------------------------------------------------------------------
 
-## Why Model Fitting Matters
+## Why model fitting matters
 
-### The Challenge
-
-**The Challenge:**
+### The challenge
 
 -   We have mathematical models (e.g., SIR, SEIR)
 -   We have real-world data (case counts, hospitalizations)
--   **<span style="color: tomato;">How do we connect them?</span>**
+-   [**How do we connect them?**]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
-### The Goal
+### The goal
 
--   <span style="color: #FFFF00;">Find parameter values that make our model predictions match observed data</span>
--   <span style="color: #FFFF00;">Quantify uncertainty in our estimates</span>
--   <span style="color: #FFFF00;">Make reliable predictions and policy recommendations</span>
+-   [Find parameter values that make our model predictions match observed data]{style="color: #FFFF00;"}
+-   [Quantify uncertainty in our estimates]{style="color: #FFFF00;"}
+-   [Make reliable predictions and policy recommendations]{style="color: #FFFF00;"}
 
 ------------------------------------------------------------------------
 
-## Example: Outbreak data
+## Example: outbreak data
 
 ```{r covid-example, echo=FALSE, fig.width=10, fig.height=6}
 # Simulate COVID-19-like data
@@ -59,22 +57,22 @@ legend("topright", c("Observed", "True Model"),
        col = c("red", "blue"), pch = c(16, NA), lty = c(NA, 1))
 ```
 
-**<span style="color: tomato;">Question:</span>** How do we estimate $\beta$ and $\gamma$ from this noisy data?
+[**Question:**]{style="color: tomato;"} How do we estimate $\beta$ and $\gamma$ from this noisy data?
 
-## Types of Fitting Methods
+## Types of fitting methods
 
-### Deterministic Methods
+### Deterministic methods
 
--   **<span style="color: tomato;">Least Squares</span>**
--   **<span style="color: tomato;">Maximum Likelihood Estimation (MLE)</span>**
+-   [**Least Squares**]{style="color: tomato;"}
+-   [**Maximum Likelihood Estimation (MLE)**]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
-### Stochastic Methods
+### Stochastic methods
 
--   **<span style="color: #FFFF00;">Markov Chain Monte Carlo (MCMC)</span>**
--   **<span style="color: #FFFF00;">Sequential Monte Carlo (SMC)</span>**
--   **<span style="color: #FFFF00;">Particle MCMC (pMCMC)</span>**
--   **<span style="color: #FFFF00;">Approximate Bayesian Computation (ABC)</span>**
+-   [**Markov Chain Monte Carlo (MCMC)**]{style="color: #FFFF00;"}
+-   [**Sequential Monte Carlo (SMC)**]{style="color: #FFFF00;"}
+-   [**Particle MCMC (pMCMC)**]{style="color: #FFFF00;"}
+-   [**Approximate Bayesian Computation (ABC)**]{style="color: #FFFF00;"}
 
-**<span style="color: tomato;">Today's Focus:</span>** Least Squares and MLE as foundations
+[**Today's Focus:**]{style="color: tomato;"} Least Squares and MLE as foundations

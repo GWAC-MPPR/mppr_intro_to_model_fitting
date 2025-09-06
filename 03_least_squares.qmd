@@ -1,8 +1,8 @@
-# Least Squares Estimation
+# Least squares estimation
 
 ------------------------------------------------------------------------
 
-## Least Squares: The Intuitive Approach
+## Least squares: the intuitive approach
 
 [**Core Idea:**]{style="color: #FFFF00;"} Minimize the sum of squared differences between model predictions and observations
 
@@ -18,7 +18,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-### Why Squared Errors?
+### Why squared errors?
 
 [**Advantages:**]{style="color: #FFFF00;"}
 
@@ -37,7 +37,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-## Least Squares Example: SIR Model
+## Least squares example: SIR model
 
 ```{r ls-example, echo=FALSE, fig.width=10, fig.height=6}
 # Load required packages
@@ -84,7 +84,7 @@ ggplot(plot_data, aes(x = time)) +
 
 ------------------------------------------------------------------------
 
-## Implementing Least Squares
+## Implementing least squares
 
 ```{r ls-implementation, echo=TRUE}
 #| code-line-numbers: "1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45" 
@@ -138,7 +138,7 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Strengths of Least Squares
+## Strengths of least squares
 
 **Computational Advantages:**
 
@@ -149,7 +149,7 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Statistical Properties
+## Statistical properties
 
 -   Unbiased estimates (under certain conditions)
 -   Minimum variance among linear unbiased estimators
@@ -157,7 +157,7 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Practical Benefits
+## Practical benefits
 
 -   Intuitive interpretation
 -   Widely understood
@@ -165,7 +165,7 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Limitations of Least Squares
+## Limitations of least squares
 
 **Statistical Limitations:**
 
@@ -176,7 +176,7 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ------------------------------------------------------------------------
 
-## Practical Limitations
+## Practical limitations
 
 **Practical Limitations:**
 

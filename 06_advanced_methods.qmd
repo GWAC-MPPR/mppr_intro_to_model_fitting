@@ -1,8 +1,8 @@
-# Advanced Methods
+# Advanced methods
 
 ------------------------------------------------------------------------
 
-## Beyond Least Squares and MLE
+## Beyond least squares and MLE
 
 [**Why We Need Advanced Methods:**]{style="color: tomato;"}
 
@@ -14,7 +14,7 @@
 
 ------------------------------------------------------------------------
 
-## Advanced Approaches
+## Advanced approaches
 
 1.  **Bayesian Methods** (MCMC)
 2.  **Particle Filtering**
@@ -23,7 +23,7 @@
 
 ------------------------------------------------------------------------
 
-## Bayesian Methods: MCMC
+## Bayesian methods: MCMC
 
 [**Core Idea:**]{style="color: #FFFF00;"} Treat parameters as random variables with prior distributions
 
@@ -101,7 +101,7 @@ generated quantities {
 
 ------------------------------------------------------------------------
 
-## Particle Filtering
+## Particle filtering
 
 [**Core Idea:**]{style="color: #FFFF00;"} Sequential Monte Carlo method for state-space models
 
@@ -123,7 +123,7 @@ generated quantities {
 
 ------------------------------------------------------------------------
 
-## Example Application
+## Example application
 
 ```{r particle-filter, echo=TRUE, eval=FALSE}
 # Particle filter for SIR model
@@ -151,7 +151,7 @@ pf <- pfilter(sir_pomp, Np = 1000, params = c(beta = 0.3, gamma = 0.1, sigma = 1
 
 ------------------------------------------------------------------------
 
-## Approximate Bayesian Computation (ABC)
+## Approximate Bayesian computation (ABC)
 
 [**Core Idea:**]{style="color: #FFFF00;"} Approximate posterior without likelihood evaluation
 
@@ -182,7 +182,7 @@ pf <- pfilter(sir_pomp, Np = 1000, params = c(beta = 0.3, gamma = 0.1, sigma = 1
 
 ------------------------------------------------------------------------
 
-## Ensemble Methods
+## Ensemble methods
 
 [**Core Idea:**]{style="color: #FFFF00;"} Combine multiple models or methods
 

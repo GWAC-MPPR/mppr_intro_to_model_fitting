@@ -1,8 +1,8 @@
-# Comparison of Methods
+# Comparison of methods
 
 ------------------------------------------------------------------------
 
-## When to Use Each Method
+## When to use each method
 
 **Use Least Squares When:**
 

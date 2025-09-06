@@ -1,14 +1,14 @@
-# Conceptual Foundations
+# Conceptual foundations
 
 ------------------------------------------------------------------------
 
-## What is Model Fitting?
+## What is model fitting?
 
 **<span style="color: #FFFF00;">Definition:</span>** The process of finding parameter values that make a mathematical model's predictions as close as possible to observed data.
 
 ------------------------------------------------------------------------
 
-## Mathematical Formulation
+## Mathematical formulation
 
 $$\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})$$
 
@@ -20,7 +20,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-## The SIR Model as Our Example
+## The SIR model as our example
 
 **Differential Equations:**
 
@@ -28,37 +28,37 @@ $$\frac{dS}{dt} = -\beta SI$$ $$\frac{dI}{dt} = \beta SI - \gamma I$$ $$\frac{dR
 
 ------------------------------------------------------------------------
 
-### Parameters to Estimate
+### Parameters to estimate
 
 -   <span style="color: tomato;">$\beta$ = transmission rate</span>
 -   <span style="color: tomato;">$\gamma$ = recovery rate</span>
 
 ------------------------------------------------------------------------
 
-## Key Quantities
+## Key quantities
 
 -   <span style="color: #FFFF00;">$R_0 = \frac{\beta}{\gamma}$ (basic reproduction number)</span>
 -   <span style="color: #FFFF00;">Infectious period = $\frac{1}{\gamma}$</span>
 
 ------------------------------------------------------------------------
 
-## Sources of Uncertainty
+## Sources of uncertainty
 
-### Model Uncertainty
+### Model uncertainty
 
 -   Wrong model structure
 -   Missing compartments or processes
 
 ------------------------------------------------------------------------
 
-### Parameter Uncertainty
+### Parameter uncertainty
 
 -   True parameter values unknown
 -   Multiple parameter sets give similar fits
 
 ------------------------------------------------------------------------
 
-### Observation Uncertainty
+### Observation uncertainty
 
 -   Measurement error
 -   Reporting delays
@@ -66,14 +66,14 @@ $$\frac{dS}{dt} = -\beta SI$$ $$\frac{dI}{dt} = \beta SI - \gamma I$$ $$\frac{dR
 
 ------------------------------------------------------------------------
 
-### Process Uncertainty
+### Process uncertainty
 
 -   Stochasticity in disease transmission
 -   Environmental variability
 
 ------------------------------------------------------------------------
 
-## The Fitting Challenge
+## The fitting challenge
 
 **<span style="color: tomato;">Identifiability Problem:</span>** Multiple parameter combinations can produce similar model outputs
 

@@ -1,8 +1,8 @@
-# Maximum Likelihood Estimation
+# Maximum likelihood estimation
 
 ------------------------------------------------------------------------
 
-## Maximum Likelihood: The Probabilistic Approach
+## Maximum likelihood: the probabilistic approach
 
 [**Core Idea:**]{style="color: #FFFF00;"} Find parameter values that make the observed data most probable
 
@@ -21,9 +21,9 @@ Where:
 
 ------------------------------------------------------------------------
 
-## Why Maximum Likelihood?
+## Why maximum likelihood?
 
-### Theoretical Advantages:
+### Theoretical advantages:
 
 -   Principled [statistical framework]{style="color: #FFFF00;"} 
 -   Provides [uncertainty quantification]{style="color: #FFFF00;"}
@@ -32,7 +32,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-### Practical Benefits
+### Practical benefits
 
 -   Confidence intervals
 -   Hypothesis testing
@@ -41,7 +41,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-## Choosing a Probability Distribution
+## Choosing a probability distribution
 
 **For [Count Data]{style="color: #FFFF00;"} (e.g., Cases):**
 
@@ -50,7 +50,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-## Choosing a Probability Distribution
+## Choosing a probability distribution
 
 **For [Continuous Data:]{style="color: #FFFF00;"}**
 
@@ -63,7 +63,7 @@ Where:
 
 ------------------------------------------------------------------------
 
-## MLE Implementation: Poisson Likelihood
+## MLE implementation: Poisson likelihood
 
 ```{r mle-implementation, echo=TRUE}
 #| code-line-numbers: "1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27" 
@@ -103,7 +103,7 @@ mle_se <- sqrt(diag(vcov(fit_mle)))
 
 ------------------------------------------------------------------------
 
-### MLE Results
+### MLE results
 
 ```{r mle-results, echo=FALSE}
 cat("Beta:", round(mle_params[1], 3), "±", round(mle_se[1], 3), "\n")
@@ -113,7 +113,7 @@ cat("R0:", round(mle_params[1]/mle_params[2], 2), "\n")
 
 ------------------------------------------------------------------------
 
-## Uncertainty Quantification with MLE
+## Uncertainty quantification with MLE
 
 ```{r mle-uncertainty, echo=TRUE, fig.width=10, fig.height=6}
 # Profile likelihood for uncertainty
@@ -130,7 +130,7 @@ confint(fit_mle, level = 0.95)
 
 ------------------------------------------------------------------------
 
-### MLE Estimates vs True Values
+### MLE estimates vs true values
 ```{r mle-comparison, echo=FALSE}
 # Compare with true values
 cat("True Beta:", true_params[1], "\n")
@@ -141,15 +141,15 @@ cat("MLE Gamma:", round(mle_params[2], 3), "\n")
 
 ------------------------------------------------------------------------
 
-## Model Comparison with MLE
+## Model comparison with MLE
 
 ```{r model-comparison, echo=TRUE}
 #| code-line-numbers: "1|2|3|5-6|7-8|10-11|13-16" 
 # Fit different models and compare
 # Model 1: SIR with Poisson
-# Model 2: SIR with Negative Binomial
+# Model 2: SIR with negative binomial
 
-# Negative Binomial likelihood
+# Negative binomial likelihood
 nll_nb <- function(beta, gamma, phi, data) {
   out <- ode(y = init_conds, times = data$time,
              func = sir_model, parms = c(beta = beta, gamma = gamma))
@@ -179,7 +179,7 @@ fit_nb <- mle2(nll_nb,
 
 ------------------------------------------------------------------------
 
-### Model Comparison
+### Model comparison
 ```{r model-comparison-results, echo=FALSE}
 # Compare models
 cat("Poisson AIC:", AIC(fit_mle), "\n")
@@ -189,7 +189,7 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ------------------------------------------------------------------------
 
-## Strengths of Maximum Likelihood
+## Strengths of maximum likelihood
 
 **Statistical Rigor:**
 
@@ -200,7 +200,7 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ------------------------------------------------------------------------
 
-## Practical Benefits
+## Practical benefits
 
 -   Confidence intervals and standard errors
 -   Model comparison via AIC/BIC
@@ -209,7 +209,7 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ------------------------------------------------------------------------
 
-## Limitations of Maximum Likelihood
+## Limitations of maximum likelihood
 
 **Computational Challenges:**
 
@@ -220,7 +220,7 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ------------------------------------------------------------------------
 
-## Statistical Assumptions
+## Statistical assumptions
 
 -   Requires specification of error distribution
 -   Assumes model structure is correct
@@ -229,7 +229,7 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ------------------------------------------------------------------------
 
-## Identifiability Issues
+## Identifiability issues
 
 -   Still suffers from parameter identifiability
 -   Profile likelihood can be computationally expensive
