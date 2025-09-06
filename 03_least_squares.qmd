@@ -87,7 +87,7 @@ ggplot(plot_data, aes(x = time)) +
 ## Implementing least squares
 
 ```{r ls-implementation, echo=TRUE}
-#| code-line-numbers: "1-2|3-12|14-15|16-19|22-23|25-29|31-40|42-43|44-45" 
+#| code-line-numbers: "1-2|3-12|14-15|1-15" 
 # Define objective function
 sse_function <- function(params, data) {
   beta <- params[1]
@@ -108,7 +108,12 @@ sse_function <- function(params, data) {
   
   return(sse)
 }
+```
 
+-------------------------------------------------------------------------
+
+```{r ls-fitting, echo=TRUE}
+#| code-line-numbers: "1-2|4-8|6|7|4-7" 
 # Prepare data
 data <- data.frame(time = times, observed = observed_cases)
 
@@ -117,9 +122,14 @@ test_params <- expand.grid(
   beta = seq(0.1, 0.5, length.out = 10),
   gamma = seq(0.05, 0.2, length.out = 10)
 )
+```
 
+--------------------------------------------------------------------------
+
+```{r ls-fitting-2, echo=TRUE}
+#| code-line-numbers: "1-2|3|4-7|1-7"
 # Calculate SSE for each combination
-for(i in 1:nrow(test_params)){
+for (i in 1:nrow(test_params)) {
   test_params$sse[i] <- sse_function(
     c(
       test_params[i, 1],
@@ -128,7 +138,12 @@ for(i in 1:nrow(test_params)){
     data
   )
 }
+```
 
+--------------------------------------------------------------------------
+
+```{r ls-results, echo=TRUE}
+#| code-line-numbers: "1-2|3|4-7|1-7"
 # Find minimum
 best_idx <- which.min(test_params$sse)
 best_params <- test_params[best_idx, ]
