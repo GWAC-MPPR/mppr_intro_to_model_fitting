@@ -93,17 +93,20 @@
 
 ## Software recommendations
 
-**R Packages:**
+### R Packages
 
--   `bbmle`: Maximum likelihood
--   `rstan`: Bayesian inference
--   `pomp`: Particle filtering
+-   [`bbmle`](https://cran.r-project.org/web/packages/bbmle/vignettes/mle.pdf): Maximum likelihood in R
+-   [`rstan`](https://cran.r-project.org/web/packages/rstan/vignettes/rstan.pdf) and [`cmdstanr`](https://mc-stan.org/cmdstanr/): Bayesian inference in R
+-   [`pomp`](https://kingaa.github.io/pomp/vignettes/getting_started.html): Particle filtering
+-   [`brms`](https://paul-buerkner.github.io/brms/index.html): Bayesian inference in R
+-   [`nimble`](https://r-nimble.org/): Bayesian inference in R
 
 ------------------------------------------------------------------------
 
-**Specialized Software:**
+### Specialized Software
 
--   `Stan`: Probabilistic programming
--   `JAGS`: Bayesian analysis
--   `PyMC`: Bayesian inference
-
+-   [`Stan`](https://mc-stan.org): Probabilistic programming
+-   [`OpenBUGS`](https://sourceforge.net/p/openbugs/wiki/Home/): Bayesian inference
+-   [`JAGS`](https://mcmc-jags.sourceforge.io): Bayesian analysis
+-   [`PyMC`](https://www.pymc.io/welcome.html): Bayesian inference in Python
+-   [`Turing.jl`](https://turinglang.org/): Bayesian inference in Julia
