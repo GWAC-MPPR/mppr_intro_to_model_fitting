@@ -14,6 +14,6 @@ See the course's 2026 schedule [here](https://vclass.g-wac.org/local/gwac_landin
 
 * [Web-based slides](https://gwac-mppr.github.io/mppr_intro_to_model_fitting/#/title-slide) and [pdf version](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting/releases/latest/download/slides.pdf)
 
-* [R practicals](https://github.com/GWAC-MPPR/mppr_intro_to_fitting_practicals)
+* [R practicals](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals)
 
 The materials here were prepared and taught by [Dr. James Mba Azam](https://jamesmbaazam.github.io/jamesmbaazam/)

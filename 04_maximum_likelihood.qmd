@@ -239,4 +239,4 @@ cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
 
 ## R implementation practicals {background-color="#447099" transition="fade-in"}
 
--   Let's turn to the [tutorials](https://github.com/GWAC-MPPR/mppr_intro_to_fitting_practicals)
+-   Let's turn to the [tutorials](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals)
