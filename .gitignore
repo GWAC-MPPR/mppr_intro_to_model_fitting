@@ -30,3 +30,6 @@
 *.fdb_latexmk
 
 **/*.quarto_ipynb
+
+# Rendered deck; CI renders and publishes it to gh-pages
+slides.html
