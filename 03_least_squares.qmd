@@ -204,4 +204,4 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 ## R implementation practicals {background-color="#447099" transition="fade-in"}
 
-- Let's turn to the [tutorials](https://github.com/jamesmbaazam/mppr_intro_to_fitting_practicals)
+- Let's turn to the [tutorials](https://github.com/GWAC-MPPR/mppr_intro_to_fitting_practicals)
