@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Model Fitting and Calibration"
-subtitle: "Modelling for Pandemic Preparedness and Response Modular Shortcourse, 2025"
+subtitle: "Modelling for Pandemic Preparedness and Response Modular Shortcourse, 2026"
 author:
   - name: "James Mba Azam, PhD"
     orcid: 0000-0001-5782-7330
@@ -32,7 +32,7 @@ format:
     progress: true
     code-copy: true
     code-annotations: hover
-    code-overflow: wrap
+    code-overflow: scroll
     code-line-numbers: true
     code-block-bg: true
   beamer:
@@ -49,12 +49,12 @@ editor_options:
 
 By the end of this lecture, you will be able to:
 
--   Understand the [fundamental concepts]{style="color: tomato;"} of [model fitting]{style="color: tomato;"} and [calibration]{style="color: tomato;"}
--   Apply [least squares estimation]{style="color: tomato;"} to [compartmental models]{style="color: tomato;"}
--   Implement [maximum likelihood estimation]{style="color: tomato;"} for [epidemic models]{style="color: tomato;"}
--   Compare the [strengths and weaknesses]{style="color: tomato;"} of different [fitting methods]{style="color: tomato;"}
--   Recognize when to use [advanced methods]{style="color: tomato;"} like [MCMC]{style="color: tomato;"} and [particle filtering]{style="color: tomato;"}
--   [Troubleshoot]{style="color: tomato;"} common [fitting problems]{style="color: tomato;"}
+- Understand the [fundamental concepts]{style="color: tomato;"} of [model fitting]{style="color: tomato;"} and [calibration]{style="color: tomato;"}
+- Apply [least squares estimation]{style="color: tomato;"} to [compartmental models]{style="color: tomato;"}
+- Implement [maximum likelihood estimation]{style="color: tomato;"} for [epidemic models]{style="color: tomato;"}
+- Compare the [strengths and weaknesses]{style="color: tomato;"} of different [fitting methods]{style="color: tomato;"}
+- Recognize when to use [advanced methods]{style="color: tomato;"} like [MCMC]{style="color: tomato;"} and [particle filtering]{style="color: tomato;"}
+- [Troubleshoot]{style="color: tomato;"} common [fitting problems]{style="color: tomato;"}
 
 {{< include 01_introduction.qmd >}}
 

@@ -12,9 +12,9 @@
 
 Where:
 
--   $y_i$ = observed value at time $t_i$
--   $f(t_i, \theta)$ = model prediction at time $t_i$
--   $\theta$ = parameter vector
+- $y_i$ = observed value at time $t_i$
+- $f(t_i, \theta)$ = model prediction at time $t_i$
+- $\theta$ = parameter vector
 
 ------------------------------------------------------------------------
 
@@ -22,18 +22,18 @@ Where:
 
 [**Advantages:**]{style="color: #FFFF00;"}
 
--   [Penalizes large errors more heavily]{style="color: #FFFF00;"}
--   [Differentiable (smooth optimization)]{style="color: #FFFF00;"}
--   [Mathematically tractable]{style="color: #FFFF00;"}
--   [Gives maximum likelihood estimates when errors are normal distributed]{style="color: #FFFF00;"}
+- [Penalizes large errors more heavily]{style="color: #FFFF00;"}
+- [Differentiable (smooth optimization)]{style="color: #FFFF00;"}
+- [Mathematically tractable]{style="color: #FFFF00;"}
+- [Gives maximum likelihood estimates when errors are normal distributed]{style="color: #FFFF00;"}
 
 ------------------------------------------------------------------------
 
 ### [Disadvantages]{style="color: tomato;"}
 
--   [Sensitive to outliers]{style="color: tomato;"}
--   [Assumes constant variance]{style="color: tomato;"}
--   [No probabilistic interpretation]{style="color: tomato;"}
+- [Sensitive to outliers]{style="color: tomato;"}
+- [Assumes constant variance]{style="color: tomato;"}
+- [No probabilistic interpretation]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ ggplot(plot_data, aes(x = time)) +
 
 ## Implementing least squares
 
-```{r ls-implementation, echo=TRUE}
+```{r ls-implementation, echo=TRUE, size="tiny"}
 #| code-line-numbers: "1-2|3-12|14-15|16-19|1-15"
 # Define objective function
 sse_function <- function(params, data) {
@@ -110,7 +110,7 @@ sse_function <- function(params, data) {
 }
 ```
 
--------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ```{r ls-fitting, echo=TRUE}
 #| code-line-numbers: "1-2|4-8|6|7|4-7" 
@@ -124,7 +124,7 @@ test_params <- expand.grid(
 )
 ```
 
---------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ```{r ls-fitting-2, echo=TRUE}
 #| code-line-numbers: "1-2|3|4-7|8|1-7"
@@ -140,7 +140,7 @@ for (i in 1:nrow(test_params)) {
 }
 ```
 
---------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ```{r ls-results, echo=TRUE}
 #| code-line-numbers: "1-2|3|4-7|1-7"
@@ -157,26 +157,26 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 **Computational Advantages:**
 
--   Fast and efficient
--   Well-established algorithms
--   Easy to implement
--   Good for initial parameter estimates
+- Fast and efficient
+- Well-established algorithms
+- Easy to implement
+- Good for initial parameter estimates
 
 ------------------------------------------------------------------------
 
 ## Statistical properties
 
--   Unbiased estimates (under certain conditions)
--   Minimum variance among linear unbiased estimators
--   Maximum likelihood when errors are normal
+- Unbiased estimates (under certain conditions)
+- Minimum variance among linear unbiased estimators
+- Maximum likelihood when errors are normal
 
 ------------------------------------------------------------------------
 
 ## Practical benefits
 
--   Intuitive interpretation
--   Widely understood
--   Good starting point for more complex methods
+- Intuitive interpretation
+- Widely understood
+- Good starting point for more complex methods
 
 ------------------------------------------------------------------------
 
@@ -184,10 +184,10 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 **Statistical Limitations:**
 
--   Limited uncertainty quantification
--   Assumes constant variance
--   Sensitive to outliers
--   No probabilistic framework
+- Limited uncertainty quantification
+- Assumes constant variance
+- Sensitive to outliers
+- No probabilistic framework
 
 ------------------------------------------------------------------------
 
@@ -195,13 +195,13 @@ cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", roun
 
 **Practical Limitations:**
 
--   Parameter identifiability issues
--   No confidence intervals
--   Difficult to compare models
--   Assumes measurement error only
+- Parameter identifiability issues
+- No confidence intervals
+- Difficult to compare models
+- Assumes measurement error only
 
 ------------------------------------------------------------------------
 
 ## R implementation practicals {background-color="#447099" transition="fade-in"}
 
--   Let's turn to the [tutorials](https://github.com/jamesmbaazam/mppr_intro_to_fitting_practicals)
+- Let's turn to the [tutorials](https://github.com/jamesmbaazam/mppr_intro_to_fitting_practicals)
