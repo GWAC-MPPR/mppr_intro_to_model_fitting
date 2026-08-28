@@ -28,3 +28,5 @@
 *.vrb
 *.fls
 *.fdb_latexmk
+
+**/*.quarto_ipynb
