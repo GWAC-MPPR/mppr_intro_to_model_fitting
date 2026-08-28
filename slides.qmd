@@ -12,7 +12,7 @@ date: "last-modified"
 license: "CC BY"
 copyright:
   holder: James Mba Azam
-  year: 2025
+  year: 2026
 execute:
   echo: true
   cache: true
@@ -35,9 +35,6 @@ format:
     code-overflow: scroll
     code-line-numbers: true
     code-block-bg: true
-  beamer:
-    theme: metropolis
-    code-annotations: hover
 # bibliography: references.bib
 link-citations: true
 engine: knitr

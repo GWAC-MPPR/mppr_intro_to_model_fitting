@@ -1,0 +1,10 @@
+# PDF profile, used by CI as `quarto render slides.qmd --profile pdf --to beamer`.
+#
+# The beamer format lives here rather than in slides.qmd so that a plain render
+# — and `quarto publish gh-pages` in particular — sees revealjs only. When both
+# formats are declared on the document, publish sweeps the rendered slides.pdf
+# into the gh-pages branch alongside the site.
+format:
+  beamer:
+    theme: metropolis
+    code-annotations: hover

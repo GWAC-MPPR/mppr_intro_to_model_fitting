@@ -10,16 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      # Quarto queries the GitHub API to resolve the latest TinyTeX release.
+      # Unauthenticated that call gets rate-limited to a 403 and fails setup.
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: 1.4.515
+          version: 1.9.37
+          tinytex: true
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
@@ -27,22 +31,45 @@ jobs:
           use-public-rspm: true
 
       - name: Install renv
-        run: |
-          install.packages("renv")
+        run: install.packages("renv")
         shell: Rscript {0}
 
+      # The committed _freeze/ usually spares CI from executing the R chunks,
+      # but restore keeps the library correct for any render that misses it.
       - name: Restore renv dependencies
-        run: |
-          renv::restore()
+        run: renv::restore()
         shell: Rscript {0}
 
-      # Install TinyTeX for PDF rendering
-      - name: Install TinyTeX
-        run: |
-          quarto install tinytex
+      # On main the publish step below does its own render. Off main nothing
+      # publishes, so render here purely to prove the deck still builds.
+      - name: Render slides to revealjs (build check)
+        if: github.ref != 'refs/heads/main'
+        run: quarto render slides.qmd --to revealjs
 
-      - name: Render and Publish
+      # Publishing is outward-facing, so it only runs on main. Let the action
+      # render rather than passing render: false — with --no-render quarto
+      # skips resource discovery and figures never reach gh-pages.
+      - name: Publish slides to gh-pages
+        if: github.ref == 'refs/heads/main'
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
           path: slides.qmd
+
+      # Deliberately after the publish step: slides.pdf must not exist in the
+      # working tree while quarto publish is copying output to gh-pages, or the
+      # PDF gets committed to that branch on every build.
+      #
+      # beamertheme-metropolis is installed by Quarto on demand during this
+      # render. Do not add an explicit `tlmgr install` step: its `update
+      # --self` moves TinyTeX ahead of whichever CTAN mirror tlmgr picks, and
+      # the mirror then refuses every subsequent install, breaking Quarto's
+      # auto-install too.
+      - name: Render slides to PDF
+        run: quarto render slides.qmd --profile pdf --to beamer
+
+      # The README links to releases/latest/download/slides.pdf, so refreshing
+      # the asset on this release keeps that link current.
+      - name: Attach PDF to the slides release
+        if: github.ref == 'refs/heads/main'
+        run: gh release upload slides-2026 slides.pdf --clobber
