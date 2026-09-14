@@ -2,38 +2,33 @@
 
 ------------------------------------------------------------------------
 
-## Least squares: the intuitive approach
+## The simplest idea: minimise the distance
 
-**Core Idea:** Minimize the sum of squared differences between model predictions and observations
+For each day, take the gap between what we observed and what the model predicts, square it, and add the squares up
 
-------------------------------------------------------------------------
+$$\text{SSE} = \sum_{i=1}^{n} \bigl(y_i - f(t_i, \theta)\bigr)^2$$
 
-**Mathematical Formulation:** $$\text{SSE} = \sum_{i=1}^{n} (y_i - f(t_i, \theta))^2$$
+- $y_i$ is the observation on day $t_i$
+- $f(t_i, \theta)$ is what the model predicts for that day with parameters $\theta$
 
-Where:
-
-- $y_i$ = observed value at time $t_i$
-- $f(t_i, \theta)$ = model prediction at time $t_i$
-- $\theta$ = parameter vector
+The parameters that make this sum smallest are the [least squares estimates]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
-### Why squared errors?
+### Why square the errors?
 
-**Advantages:**
-
-- Penalizes large errors more heavily
-- Differentiable (smooth optimization)
-- Mathematically tractable
-- Gives maximum likelihood estimates when errors are normal distributed
+- Squaring makes every gap positive, so gaps above and below the curve do not cancel
+- Big misses are punished much more than small ones
+- The sum is smooth in $\theta$, which the optimisers we are about to use rely on
+- If the errors were normally distributed with the same variance everywhere, least squares would be the maximum likelihood answer
 
 ------------------------------------------------------------------------
 
-### Disadvantages
+### What the squares do not know
 
-- Sensitive to outliers
-- Assumes constant variance
-- No probabilistic interpretation
+- A single outlier can pull the whole fit towards itself
+- Every day counts the same, whether 3 pupils were in bed or 300, which is rarely how counts behave
+- The number that comes out has no probability attached to it
 
 ------------------------------------------------------------------------
 
@@ -90,52 +85,19 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ------------------------------------------------------------------------
 
-## Strengths of least squares
+## What least squares gives you
 
-**Computational Advantages:**
-
-- Fast and efficient
-- Well-established algorithms
-- Easy to implement
-- Good for initial parameter estimates
+- An answer in seconds, with algorithms that have been around for two centuries and are in every piece of software
+- A method everyone in the room can explain to everyone else
+- A good starting point for the methods that follow, which is how we will use it in the next section
 
 ------------------------------------------------------------------------
 
-## Statistical properties
+## What it does not give you {.smaller}
 
-- Unbiased estimates (under certain conditions)
-- Minimum variance among linear unbiased estimators
-- Maximum likelihood when errors are normal
-
-------------------------------------------------------------------------
-
-## Practical benefits
-
-- Intuitive interpretation
-- Widely understood
-- Good starting point for more complex methods
-
-------------------------------------------------------------------------
-
-## Limitations of least squares
-
-**Statistical Limitations:**
-
-- Limited uncertainty quantification
-- Assumes constant variance
-- Sensitive to outliers
-- No probabilistic framework
-
-------------------------------------------------------------------------
-
-## Practical limitations
-
-**Practical Limitations:**
-
-- Parameter identifiability issues
-- No confidence intervals
-- Difficult to compare models
-- Assumes measurement error only
+- Any measure of how sure we are: the valley in the landscape was clearly tilted and wide, and the estimate says nothing about that
+- A way to compare two models that both fit reasonably well
+- A justification for treating every day the same way, when the counts plainly vary more at the peak than in the tails
 
 ------------------------------------------------------------------------
 

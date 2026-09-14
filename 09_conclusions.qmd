@@ -2,77 +2,52 @@
 
 ------------------------------------------------------------------------
 
-## Key takeaways
+## What to take away
 
-**Least Squares:**
+### Least squares
 
--   Fast and intuitive
--   Good for exploration
--   Limited uncertainty quantification
--   Sensitive to assumptions
+Fast, and everyone understands it. It gives you a fit and a starting point for everything else, and nothing about how sure you should be
 
 ------------------------------------------------------------------------
 
-**Maximum Likelihood:**
+### Maximum likelihood
 
--   Principled statistical framework
--   Natural uncertainty quantification
--   Enables model comparison
--   More computationally intensive
+Rests on a probability model for the data, so it gives you intervals and lets you compare models. It costs you a choice of that probability model and an optimiser to look after
 
 ------------------------------------------------------------------------
 
-**Bayesian inference and MCMC:**
+### Bayesian inference and MCMC
 
--   Priors make assumptions explicit, and checkable
--   The posterior is the full answer: estimates, credible intervals, predictions
--   Metropolis is a few lines of code; the work is in tuning and diagnostics
--   Never trust a chain you have not checked
-
-------------------------------------------------------------------------
-
-**Advanced Methods:**
-
--   Handle complex scenarios
--   Provide robust uncertainty
--   Require more expertise
--   Often computationally expensive
+- Priors put your assumptions on the table, where they can be checked
+- The posterior is the whole answer: estimates, credible intervals and predictions all come from the same samples
+- The Metropolis algorithm is a few lines of code. The effort goes into tuning it and checking the chains
+- Never trust a chain you have not looked at
 
 ------------------------------------------------------------------------
 
-## Choosing the right method
+### Beyond that
 
-**For Quick Exploration:** Least Squares
-
-**For Publication:** Maximum Likelihood
-
-**For Complex Models:** Bayesian Methods
-
-**For Real-time:** Particle Filtering
-
-**For Model Comparison:** ABC or MCMC
-
-[**General Principle:**]{style="color: tomato;"} Start simple, add complexity as needed
+Particle filters, ABC and ensembles handle stochastic models, missing likelihoods and model uncertainty. They need more expertise and more computing than anything we did today
 
 ------------------------------------------------------------------------
 
-## Final thoughts
+## Which method, when
 
-[**Model fitting is both art and science:**]{style="color: tomato;"}
+- A quick look at the data: least squares
+- A result for a report: maximum likelihood
+- A model with many parameters, or prior knowledge you want to use: Bayesian inference
+- A stochastic model, or estimates that must update in real time: particle filtering
+- A model whose likelihood you cannot write: ABC
 
--   Requires domain expertise
--   Demands statistical rigor
--   Benefits from computational tools
--   Needs careful validation
+Whatever the problem, [start simple and add complexity only when the simple version fails you]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
-**The goal is not just to fit models, but to:**
+## A last thought
 
--   Understand disease dynamics
--   Make reliable predictions
--   Inform policy decisions
--   Advance scientific knowledge
+Fitting a model well takes three things at once: knowledge of the disease and the setting, statistical care, and the patience to check everything
+
+The fit is never the point. The point is to understand how the disease spreads, to predict what happens next, and to give the people making decisions something they can rely on
 
 ------------------------------------------------------------------------
 

@@ -2,64 +2,45 @@
 
 ------------------------------------------------------------------------
 
-## Maximum likelihood: the probabilistic approach
+## A different question: how probable are the data?
 
-**Core Idea:** Find parameter values that make the observed data most probable
+Instead of asking how far the curve is from the points, ask how probable the observed counts are, if the model with parameters $\theta$ is true. The answer is the [likelihood]{style="color: tomato;"}
 
-------------------------------------------------------------------------
+$$L(\theta) = \prod_{i=1}^{n} f(y_i \mid \theta)$$
 
-**Mathematical Formulation:** $$\hat{\theta} = \arg\max_{\theta} L(\theta) = \arg\max_{\theta} \prod_{i=1}^{n} f(y_i | \theta)$$
-
-Where:
-
-- $L(\theta)$ = likelihood function
-- $f(y_i | \theta)$ = probability density of observation $i$
+where $f(y_i \mid \theta)$ is the probability of observing $y_i$ on day $i$. The maximum likelihood estimate is the $\theta$ that makes the data most probable
 
 ------------------------------------------------------------------------
 
-**In Practice:** Maximize log-likelihood $$\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i | \theta)$$
+### In practice we work with the log
+
+A product of fourteen small probabilities is a very small number. Taking logs turns it into a sum, which behaves
+
+$$\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i \mid \theta)$$
+
+Most software minimises, so what we actually hand to the optimiser is the *negative* log-likelihood
 
 ------------------------------------------------------------------------
 
-## Why maximum likelihood?
+## Why bother? {.smaller}
 
-### Theoretical advantages:
-
--   Principled statistical framework 
--   Provides uncertainty quantification
--   Enables model comparison (AIC, BIC)
--   Asymptotically optimal properties
+- The likelihood comes from a stated probability model for the data, so every assumption is on the table
+- Its shape around the maximum tells us how sure we are: standard errors and confidence intervals follow directly
+- Two models fitted to the same data can be compared by their likelihoods, with AIC or BIC to keep the comparison fair
+- We can say how the counts vary: Poisson, negative binomial, or anything else that matches the data
 
 ------------------------------------------------------------------------
 
-### Practical benefits
+## Choosing the probability model for the data {.smaller}
 
--   Confidence intervals
--   Hypothesis testing
--   Model selection
--   Incorporates different error structures
+The data are counts, so the natural choices are
 
-------------------------------------------------------------------------
+- [Poisson:]{style="color: tomato;"} $Y_i \sim \text{Poisson}(\lambda_i)$, one parameter, variance equal to the mean
+- [Negative binomial:]{style="color: tomato;"} $Y_i \sim \text{NB}(\mu_i, \phi)$, with an extra parameter for how much the counts scatter beyond Poisson
 
-## Choosing a probability distribution
+For continuous measurements the usual choices are the normal, $Y_i \sim N(\mu_i, \sigma^2)$, or the log-normal, $\log Y_i \sim N(\log \mu_i, \sigma^2)$
 
-**For Count Data (e.g., Cases):**
-
--   **Poisson**: $Y_i \sim \text{Poisson}(\lambda_i)$
--   **Negative Binomial**: $Y_i \sim \text{NB}(\mu_i, \phi)$
-
-------------------------------------------------------------------------
-
-## Choosing a probability distribution
-
-**For Continuous Data:**
-
--   **Normal**: $Y_i \sim N(\mu_i, \sigma^2)$
--   **Log-normal**: $\log Y_i \sim N(\log \mu_i, \sigma^2)$
-
-::: {.callout-note}
-**For Our SIR Example:** We'll use Poisson since we're modeling case counts
-:::
+We start with Poisson, and come back to the negative binomial at the end
 
 ------------------------------------------------------------------------
 
@@ -86,7 +67,7 @@ The least squares estimates are a good place to start the optimiser, which is on
 
 ------------------------------------------------------------------------
 
-## Uncertainty quantification with MLE
+## Uncertainty from the shape of the likelihood
 
 ```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_uncertainty"}
 ```
@@ -117,7 +98,7 @@ The least squares estimates are a good place to start the optimiser, which is on
 
 ------------------------------------------------------------------------
 
-## Model comparison with MLE
+## Comparing models: is Poisson the right choice?
 
 ```{.r include="scripts/04_maximum_likelihood.R" snippet="model_comparison" code-line-numbers="1-2|3-6"}
 ```
@@ -138,51 +119,21 @@ The negative binomial wins by a wide margin. The counts scatter around the curve
 
 ------------------------------------------------------------------------
 
-## Strengths of maximum likelihood
+## What maximum likelihood gives you {.smaller}
 
-**Statistical Rigor:**
-
--   Principled probabilistic framework
--   Asymptotic optimality properties
--   Natural uncertainty quantification
--   Enables formal hypothesis testing
+- Estimates that rest on a stated probability model, with standard errors and confidence intervals as part of the package
+- Model comparison through AIC and BIC, as we just used it
+- The freedom to describe the data honestly, whether they are Poisson counts, overdispersed counts, or something continuous
+- Good large-sample properties: with enough data the estimates are as precise as any method can be
 
 ------------------------------------------------------------------------
 
-## Practical benefits
+## What it asks of you {.smaller}
 
--   Confidence intervals and standard errors
--   Model comparison via AIC/BIC
--   Handles different error structures
--   Extensible to complex models
-
-------------------------------------------------------------------------
-
-## Limitations of maximum likelihood
-
-**Computational Challenges:**
-
--   More complex than least squares
--   Requires optimization algorithms
--   Can get stuck in local minima
--   Sensitive to starting values
-
-------------------------------------------------------------------------
-
-## Statistical assumptions
-
--   Requires specification of error distribution
--   Assumes model structure is correct
--   Asymptotic properties may not hold
--   Can be sensitive to outliers
-
-------------------------------------------------------------------------
-
-## Identifiability issues
-
--   Still suffers from parameter identifiability
--   Profile likelihood can be computationally expensive
--   May not converge for complex models
+- A probability model for the data, which you have to choose and can get wrong
+- An optimiser that needs sensible starting values and can settle in the wrong valley; we started from the least squares fit for exactly that reason
+- Confidence intervals that rely on large-sample arguments, which fourteen data points may not satisfy
+- No escape from identifiability: the profiles were narrow here, but only because these data are unusually clean
 
 ------------------------------------------------------------------------
 

@@ -2,21 +2,19 @@
 
 ------------------------------------------------------------------------
 
-## When to use each method
+## When to reach for each
 
-**Use Least Squares When:**
+### Least squares
 
--   Quick exploratory analysis needed
--   Getting initial parameter estimates
--   Computational speed is critical
--   Simple error structure assumed
+- When you want a first look at the data and a rough answer quickly
+- When you need starting values for something better
+- When the fit itself is what matters and nobody will ask for an interval
 
 ------------------------------------------------------------------------
 
-**Use Maximum Likelihood When:**
+### Maximum likelihood
 
--   Uncertainty quantification needed
--   Comparing different models
--   Formal statistical inference required
--   Complex error structures present
--   Publication-quality results needed
+- When you need to say how sure you are
+- When you have more than one candidate model and have to choose
+- When the counts are overdispersed, or the errors are otherwise not the same everywhere
+- When the result is going into a report or a paper

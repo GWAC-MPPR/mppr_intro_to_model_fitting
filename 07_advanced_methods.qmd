@@ -2,102 +2,68 @@
 
 ------------------------------------------------------------------------
 
-## Beyond least squares and MLE
+## When the methods so far run out {.smaller}
 
-[**Why We Need Advanced Methods:**]{style="color: tomato;"}
+Everything today assumed we could write down the likelihood and evaluate it quickly. That stops being true when
 
--   Parameter identifiability issues
--   Complex error structures
--   Model uncertainty
--   Computational challenges
--   Real-time fitting requirements
-
-------------------------------------------------------------------------
-
-## Advanced approaches
-
-1.  **Bayesian methods** (MCMC): the previous section
-2.  **Particle filtering**
-3.  **Approximate Bayesian Computation (ABC)**
-4.  **Ensemble methods**
+- the model is stochastic, so the same parameters give a different epidemic every run
+- the state of the system (how many are infected right now) is itself unknown and has to be estimated along with the parameters
+- the model is expensive enough that even MCMC's thousands of evaluations are too many
+- estimates are needed as the outbreak unfolds, updated every time new data arrive
 
 ------------------------------------------------------------------------
 
-## Particle filtering
+## Three families
 
-**Core Idea:** Sequential Monte Carlo method for state-space models
+1.  Bayesian inference with MCMC, which we have just done
+2.  Particle filtering, for stochastic models where the state is hidden
+3.  Approximate Bayesian computation, for when the likelihood cannot be written down at all
 
-**When to Use:**
-
--   Real-time parameter estimation
--   State estimation in stochastic models
--   Handling of missing data
--   Time-varying parameters
+And, cutting across all of them, ensembles: combining several models or several fits rather than betting on one
 
 ------------------------------------------------------------------------
 
-## Advantages
+## Particle filtering {.smaller}
 
--   Handles stochasticity naturally
--   Real-time updates
--   No assumption of constant parameters
--   Robust to model misspecification
+A particle filter runs the stochastic model forward as a cloud of simulations, the *particles*. Each time a new data point arrives, the particles that agree with it are kept and multiplied, and the ones that do not are dropped. The surviving cloud is the distribution of the hidden state given the data so far
+
+It is the tool of choice when
+
+- the model is stochastic and the noise in transmission matters
+- you need the current state, not just the parameters
+- parameters change over time, or data go missing for a while
+- the answer has to be updated in real time
+
+Put a particle filter inside an MCMC loop and you have particle MCMC, which estimates the parameters of a stochastic model properly
 
 ------------------------------------------------------------------------
 
-## Example application
+## What it looks like in `pomp`
 
 ```{.r include="scripts/07_particle_filter.R" snippet="particle_filter"}
 ```
 
 ------------------------------------------------------------------------
 
-## Approximate Bayesian computation (ABC)
+## Approximate Bayesian computation {.smaller}
 
-**Core Idea:** Approximate posterior without likelihood evaluation
+If you can simulate from the model but cannot write its likelihood, ABC still gets you a posterior:
 
-**When to Use:**
+1.  Draw parameters from the prior
+2.  Simulate an outbreak with them
+3.  Compare the simulated outbreak with the real one, usually through a few summary statistics
+4.  Keep the parameters if the two are close enough, throw them away otherwise
 
--   Complex likelihoods
--   Intractable models
--   High-dimensional parameter spaces
--   Model comparison
-
-------------------------------------------------------------------------
-
-**Algorithm:**
-
-1.  Sample parameters from prior
-2.  Simulate data from model
-3.  Compare simulated to observed data
-4.  Accept if distance \< threshold
+The kept parameters are draws from an approximate posterior. The approximation is only as good as the summaries and the threshold, and the method spends most of its simulations on parameters it then rejects, but it works for models nothing else can touch
 
 ------------------------------------------------------------------------
 
-**Advantages:**
+## Ensembles {.smaller}
 
--   No likelihood required
--   Handles complex models
--   Model comparison
--   Intuitive approach
+Rather than choosing one model, one method or one dataset and standing behind it:
 
-------------------------------------------------------------------------
+- average the predictions of several models
+- combine estimates from least squares, MLE and MCMC
+- refit the same model to resampled versions of the data, the bootstrap
 
-## Ensemble methods
-
-**Core Idea:** Combine multiple models or methods
-
-**Types:**
-
--   **Model Ensembles**: Average predictions from different models
--   **Method Ensembles**: Combine LS, MLE, MCMC results
--   **Bootstrap Ensembles**: Multiple fits with resampled data
-
-------------------------------------------------------------------------
-
-## Advantages:
-
--   Reduces overfitting
--   Quantifies model uncertainty
--   More robust predictions
--   Handles model selection uncertainty
+The spread across the ensemble is a measure of the uncertainty that comes from those choices, which none of the individual fits can show you, and averaged predictions tend to overfit less than any single member

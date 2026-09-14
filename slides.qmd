@@ -44,12 +44,14 @@ editor_options:
 By the end of this lecture, you will be able to:
 
 - Understand the [fundamental concepts]{style="color: tomato;"} of [model fitting]{style="color: tomato;"} and [calibration]{style="color: tomato;"}
-- Apply [least squares estimation]{style="color: tomato;"} to [compartmental models]{style="color: tomato;"}
-- Implement [maximum likelihood estimation]{style="color: tomato;"} for [epidemic models]{style="color: tomato;"}
-- Compare the [strengths and weaknesses]{style="color: tomato;"} of different [fitting methods]{style="color: tomato;"}
-- Explain [Bayesian inference]{style="color: tomato;"} and fit a model with the [Metropolis algorithm]{style="color: tomato;"}, and judge whether an [MCMC]{style="color: tomato;"} run can be trusted
-- Recognize when to use [advanced methods]{style="color: tomato;"} like [particle filtering]{style="color: tomato;"} and [ABC]{style="color: tomato;"}
-- [Troubleshoot]{style="color: tomato;"} common [fitting problems]{style="color: tomato;"}
+- Apply [least squares estimation]{style="color: tomato;"} and [maximum likelihood estimation]{style="color: tomato;"} to [compartmental models]{style="color: tomato;"}
+- Compare the [strengths and weaknesses]{style="color: tomato;"} of the two approaches.
+
+------------------------------------------------------------------------
+
+- Understand the need for [Bayesian inference]{style="color: tomato;"} and fit a model with MCMC, using the [Metropolis Hastings algorithm]{style="color: tomato;"}, and judge whether an [MCMC]{style="color: tomato;"} model fit can be trusted
+- Recognize when to use [advanced methods]{style="color: tomato;"} like [particle filtering]{style="color: tomato;"} and [Approximate Bayesian Computation]{style="color: tomato;"}
+- [Troubleshoot]{style="color: tomato;"} common [model fitting problems]{style="color: tomato;"}
 
 {{< include 01_introduction.qmd >}}
 

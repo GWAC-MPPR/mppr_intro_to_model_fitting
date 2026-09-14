@@ -2,111 +2,95 @@
 
 ------------------------------------------------------------------------
 
-## Common fitting problems
+## When the fit goes wrong
 
-### Convergence issues
+### The optimiser does not converge
 
--   Poor starting values
--   Flat likelihood surfaces
--   Numerical instabilities
--   Parameter bounds
+::: {style="font-size: 0.8em;"}
+Usually one of four things:
 
-------------------------------------------------------------------------
-
-### Identifiability problems
-
--   Multiple solutions
--   Correlated parameters
--   Insufficient data
--   Model overparameterization
+- the starting values are far from any reasonable fit, so the search walks off into parameter values where the model breaks
+- the likelihood is flat in some direction, so there is no slope to follow
+- the parameters live on wildly different scales, as $\beta$ and $\gamma$ did today
+- the optimiser has hit a bound, or has no bound where it needed one
+:::
 
 ------------------------------------------------------------------------
 
-## Solutions
+### The estimates cannot be pinned down
 
--   Multiple starting points
--   Profile likelihood
--   Data augmentation
-
-------------------------------------------------------------------------
-
-## Troubleshooting guide
-
-### If Optimization fails
-
-1.  Check starting values
-2.  Verify parameter bounds
-3.  Examine objective function
-4.  Try different algorithms
-5.  Simplify the model
+- Several parameter combinations fit equally well, so the answer depends on where you started
+- Two parameters are strongly correlated and only their ratio is determined, as with $\beta$ and $\gamma$
+- There simply are not enough data for the number of parameters you are trying to estimate
 
 ------------------------------------------------------------------------
 
-### If parameters are unidentifiable
+### What to try
 
-1.  Fix some parameters
-2.  Use additional data
-3.  Add regularization
-4.  Consider model reduction
-5.  Use prior information
-
-------------------------------------------------------------------------
-
-### If results are unrealistic
-
-1.  Check model assumptions
-2.  Verify data quality
-3.  Examine residuals
-4.  Test sensitivity
-5.  Consider alternative models
+::: {style="font-size: 0.8em;"}
+- Start from several different places and check that they agree
+- Look at the profile likelihood or the posterior for each parameter, not just the point estimate
+- Fix a parameter you know from elsewhere, or put a prior on it
+- Bring in another kind of data that speaks to the parameter the outbreak curve cannot
+- Simplify the model until it is identifiable, then add complexity back one piece at a time
+:::
 
 ------------------------------------------------------------------------
 
-## Best practices
+### The estimates converge, but they are nonsense
+
+::: {style="font-size: 0.8em;"}
+- Check the model's assumptions against what you know about the disease and the setting
+- Check the data: reporting changes, backfilled counts, a definition that changed halfway through
+- Plot the residuals over time; a pattern in them is the model telling you what it is missing
+- See how much the estimates move when you change something you were unsure about
+- Fit a different model and compare
+:::
+
+------------------------------------------------------------------------
+
+## Habits that save time
 
 ### Before fitting
 
--   Understand your data
--   Check model assumptions
--   Set realistic parameter bounds
--   Prepare multiple starting values
+- Plot the data and understand how they were collected
+- Decide what you believe about each parameter before the data tell you, and write it down as bounds or priors
+- Prepare several starting values
 
 ------------------------------------------------------------------------
 
-### During fitting
+### While fitting
 
--   Monitor convergence
--   Check for local minima
--   Validate results
--   Document everything
+- Watch the optimiser or the chain, rather than only reading the final number
+- Check that different starts land in the same place
+- Keep a record of every fit, including the ones that failed
 
 ------------------------------------------------------------------------
 
 ### After fitting
 
--   Assess goodness of fit
--   Quantify uncertainty
--   Test sensitivity
--   Validate predictions
+- Plot the fit over the data, with its uncertainty
+- Report intervals, not just estimates
+- See what happens to the conclusions when the assumptions change
+- If the model will be used to predict, test it on data it has not seen
 
 ------------------------------------------------------------------------
 
-## Software recommendations
+## Software
 
-### R Packages
+### R packages
 
--   [`bbmle`](https://cran.r-project.org/web/packages/bbmle/vignettes/mle.pdf): Maximum likelihood in R
--   [`rstan`](https://cran.r-project.org/web/packages/rstan/vignettes/rstan.pdf) and [`cmdstanr`](https://mc-stan.org/cmdstanr/): Bayesian inference in R
--   [`pomp`](https://kingaa.github.io/pomp/vignettes/getting_started.html): Particle filtering
--   [`brms`](https://paul-buerkner.github.io/brms/index.html): Bayesian inference in R
--   [`nimble`](https://r-nimble.org/): Bayesian inference in R
+-   [`bbmle`](https://cran.r-project.org/web/packages/bbmle/vignettes/mle.pdf): maximum likelihood, profiles and confidence intervals, as used today
+-   [`rstan`](https://cran.r-project.org/web/packages/rstan/vignettes/rstan.pdf) and [`cmdstanr`](https://mc-stan.org/cmdstanr/): Stan from R
+-   [`pomp`](https://kingaa.github.io/pomp/vignettes/getting_started.html): particle filtering and particle MCMC
+-   [`brms`](https://paul-buerkner.github.io/brms/index.html): Bayesian regression models with Stan underneath
+-   [`nimble`](https://r-nimble.org/): Bayesian models with your own choice of MCMC algorithm
 
 ------------------------------------------------------------------------
 
-### Specialized Software
+### Beyond R
 
--   [`Stan`](https://mc-stan.org): Probabilistic programming
--   [`OpenBUGS`](https://sourceforge.net/p/openbugs/wiki/Home/): Bayesian inference
--   [`JAGS`](https://mcmc-jags.sourceforge.io): Bayesian analysis
+-   [`Stan`](https://mc-stan.org): the probabilistic programming language behind `rstan`, `cmdstanr` and `brms`
+-   [`OpenBUGS`](https://sourceforge.net/p/openbugs/wiki/Home/) and [`JAGS`](https://mcmc-jags.sourceforge.io): the older generation of Gibbs samplers, still widely used
 -   [`PyMC`](https://www.pymc.io/welcome.html): Bayesian inference in Python
 -   [`Turing.jl`](https://turinglang.org/): Bayesian inference in Julia

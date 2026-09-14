@@ -22,13 +22,28 @@
 
 ------------------------------------------------------------------------
 
-## The data we will use all day
+## The data we will use today
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 - Influenza in a boarding school in England, January 1978
 - 763 pupils, one of whom brought the virus back from holiday
+:::
+
+::: {.column width="55%"}
+![](figures/01_flu_data.png)
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## The data we will use today
+
+:::: {.columns}
+
+::: {.column width="45%"}
 - The school recorded how many pupils were in bed each day for 14 days
 - Nobody left or arrived, and every case was seen, which makes this about as clean as outbreak data get
 :::
@@ -41,7 +56,7 @@
 
 ------------------------------------------------------------------------
 
-## The model we will use all day {.smaller}
+## The model we will use today {.smaller}
 
 :::: {.columns}
 
@@ -51,16 +66,15 @@
 \frac{dI}{dt} &= \beta SI - \gamma I \\
 \frac{dR}{dt} &= \gamma I
 \end{align}
-
-- $S$, $I$, $R$ count pupils, so $S + I + R = N = 763$
-- Two unknowns: [$\beta$, the transmission rate]{style="color: tomato;"}, and [$\gamma$, the recovery rate]{style="color: tomato;"}
 :::
 
 ::: {.column width="55%"}
-- The quantities we actually want come from these two:
-  - $R_0 = \beta N / \gamma$, the basic reproduction number
-  - $1 / \gamma$, the mean infectious period in days
+- $S$, $I$, $R$ count pupils, so $S + I + R = N = 763$
 - Give the model 762 susceptible pupils and 1 infectious pupil on day 0 and it draws a curve of $I(t)$ for us to compare with the data
+- The quantities we actually want come from these two:
+  - $R_0 = \beta / \gamma$, the basic reproduction number
+  - $1 / \gamma$, the mean infectious period in days
+- Two unknowns: [$\beta$, the transmission rate]{style="color: tomato;"}, and [$\gamma$, the recovery rate]{style="color: tomato;"}
 :::
 
 ::::
@@ -81,9 +95,9 @@
 
 ------------------------------------------------------------------------
 
-## Three answers to the question {.smaller}
+## Approaches to answer the question {.smaller}
 
-Each one fixes a problem with the one before it
+There are many approaches to answer the question but we'll cover:
 
 1. [**Least squares:**]{style="color: tomato;"} measure how far the curve is from the data and make that distance as small as possible. Simple and fast, but it says nothing reliable about uncertainty
 2. [**Maximum likelihood:**]{style="color: tomato;"} measure the *probability* of the data under the model instead. This gives us confidence intervals and a way to compare models
