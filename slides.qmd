@@ -70,3 +70,11 @@ By the end of this lecture, you will be able to:
 {{< include 08_practical_considerations.qmd >}}
 
 {{< include 09_conclusions.qmd >}}
+
+## Contact Information
+
+{{< include _contact_info.qmd >}}
+
+------------------------------------------------------------------------
+
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This presentation is made available through a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
