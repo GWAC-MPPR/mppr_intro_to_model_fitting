@@ -1,0 +1,9 @@
+One model run takes about 0.6 ms on this laptop
+
+parameters  grid points (15^p)             time
+1                           15      0.0 seconds
+2                          225      0.1 seconds
+3                        3,375      2.0 seconds
+4                       50,625     30.6 seconds
+6                   11,390,625          2 hours
+10             576,650,390,625         11 years

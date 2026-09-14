@@ -113,7 +113,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 ::: {.column width="38%"}
 - If you want a single number, the posterior gives you three to choose from: the [mode]{style="color: tomato;"}, the [median]{style="color: tomato;"} and the [mean]{style="color: tomato;"}
 - They agree when the posterior is symmetric and differ when it is skewed, as it usually is for a rate
-- The median is the usual choice: it does not move when the tail is long
+- The [median is the usual choice]{style="color:tomato"}: it does not move when the tail is long
 :::
 
 ::: {.column width="62%"}
@@ -130,8 +130,8 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 ::::: columns
 ::: {.column width="38%"}
 - A [95% credible interval]{style="color: tomato;"} is the range holding 95% of the posterior probability, here the 2.5% and 97.5% quantiles
-- You can read it literally: "there is a 95% probability that [$R_0$]{style="color: steelblue;"} lies between [1.5 and 4.1]{style="color: steelblue;"}"
-- A confidence interval does not allow that sentence; it is a statement about repeated sampling, not about [$R_0$]{style="color: steelblue;"}
+- You can read it literally: ["there is a 95% probability that $R_0$]{style="color: tomato;"} lies between [1.5 and 4.1]{style="color: steelblue;"}"
+- A confidence interval is rather a statement about repeated sampling, not about [$R_0$]{style="color: steelblue;"}
 :::
 
 ::: {.column width="62%"}
@@ -148,7 +148,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 ::::: columns
 ::: {.column width="38%"}
 - We sample [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="color: steelblue;"}, but what we want is [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}
-- Compute it for every draw and you have its posterior, correlation between the parameters included, at no extra cost
+- Compute it for every draw and you have its posterior, [correlation between the parameters]{style="color:tomato"} included, at no extra cost
 - The same goes for the infectious period, the peak size, or the final attack rate
 :::
 
@@ -165,9 +165,9 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 ::: {style="font-size: 0.75em;"}
 ::::: columns
 ::: {.column width="38%"}
-- Run the model once for each draw and you get a whole family of epidemic curves rather than one
+- Run the model [once for each draw]{style="color:tomato"} and you get a whole [family of epidemic curves]{style="color:tomato"} rather than one
 - Their spread is the [prediction uncertainty]{style="color: tomato;"} that comes from not knowing the parameters exactly
-- Summarise them as a median curve and a 95% band, and compare the band with the data
+- [Summarise them]{style="color:tomato"} as a median curve and a 95% band, and compare the band with the data
 :::
 
 ::: {.column width="62%"}
@@ -191,17 +191,49 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### Grid evaluation does not scale
+### The obvious approach: evaluate the posterior on a grid
 
-| Parameters | Grid points at 15 values each |
-|-----------:|------------------------------:|
-|          2 |                           225 |
-|          4 |                        50,625 |
-|          6 |                    11,390,625 |
-|         10 |               576,650,390,625 |
+::: {style="font-size: 0.8em;"}
+::::: columns
+::: {.column width="38%"}
+- We cannot integrate the posterior, but we can [evaluate it anywhere]{style="color: tomato;"}
+- So choose a set of values for [$\beta$]{style="color: steelblue;"}, run the model at each, and record [$p(y \mid \beta)\, p(\beta)$]{style="color: steelblue;"}
+- With [$\gamma$]{style="color: steelblue;"} held fixed, 15 values means [15 model runs]{style="color: tomato;"}, and the shape of the posterior appears
+:::
 
-- With two parameters a grid is a fine way to *look at* the posterior
-- With six it is [out of the question]{style="color: tomato;"}
+::: {.column width="62%"}
+![](figures/06_grid_1d.png)
+:::
+:::::
+:::
+
+------------------------------------------------------------------------
+
+### Two parameters: a grid of grids
+
+::: {style="font-size: 0.8em;"}
+::::: columns
+::: {.column width="38%"}
+- Now let [$\gamma$]{style="color: steelblue;"} vary too: 15 values of each, so every value of [$\beta$]{style="color: steelblue;"} is paired with every value of [$\gamma$]{style="color: steelblue;"}
+- That is [$15 \times 15 = 225$]{style="color: steelblue;"} combinations, and [225 model runs]{style="color: tomato;"}
+- A third parameter would multiply that by 15 again: a cube of [3,375]{style="color: steelblue;"} points
+:::
+
+::: {.column width="62%"}
+![](figures/06_grid_2d.png)
+:::
+:::::
+:::
+
+------------------------------------------------------------------------
+
+### Every extra parameter multiplies the cost by 15
+
+```{.default include="results/06_grid_cost.txt" code-line-numbers="false"}
+```
+
+- The number of runs is [$15^p$]{style="color: steelblue;"} for [$p$]{style="color: steelblue;"} parameters: this is the [curse of dimensionality]{style="color: tomato;"}
+- With two parameters a grid is a fine way to *look at* the posterior; an SEIR model with reporting and a latent period has six or more, and is [out of the question]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -209,7 +241,8 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ![](figures/06_flu_grid_posterior.png)
 
-[3,600]{style="color: steelblue;"} model runs, and [nearly all of them landed where the posterior is zero]{style="color: tomato;"}
+- Worse, a grid spends its runs evenly, and the posterior is not spread evenly: over the range of the prior, [3,600]{style="color: steelblue;"} runs and [nearly all of them landed where the posterior is zero]{style="color: tomato;"}
+- What we want is a method that spends its model runs [where the posterior is large]{style="color: tomato;"}, and that is what MCMC does
 
 ------------------------------------------------------------------------
 

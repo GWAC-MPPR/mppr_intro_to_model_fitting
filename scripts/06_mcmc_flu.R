@@ -4,7 +4,10 @@
 #
 # Writes:
 #   figures/06_flu_prior_predictive.png  epidemics simulated from the prior
+#   figures/06_grid_1d.png               the posterior of beta on a grid of 15 values
+#   figures/06_grid_2d.png               the posterior on a 15 x 15 grid of (beta, gamma)
 #   figures/06_flu_grid_posterior.png    the posterior on a (beta, gamma) grid
+#   results/06_grid_cost.txt             grid size and run time against number of parameters
 #   figures/06_flu_traces.png            four chains, after burn-in
 #   figures/06_flu_posterior.png         marginal posteriors and the joint
 #   figures/06_flu_fit.png               posterior trajectories against the data
@@ -91,6 +94,62 @@ image(zoom_beta, zoom_gamma, grid_posterior(zoom_beta, zoom_gamma),
 contour(zoom_beta, zoom_gamma, grid_posterior(zoom_beta, zoom_gamma),
         levels = c(0.01, 0.1, 0.5, 0.9), add = TRUE, col = "grey30")
 dev.off()
+
+# ---- Building up the grid idea ---------------------------------------------
+
+# One parameter: gamma fixed at its MLE, 15 values of beta
+gamma_fixed <- 0.476
+beta_15 <- seq(0.00205, 0.0024, length.out = 15)
+lp_15 <- sapply(beta_15, function(b) log_posterior(c(log(b), log(gamma_fixed))))
+beta_fine <- seq(0.00205, 0.0024, length.out = 300)
+lp_fine <- sapply(beta_fine, function(b) log_posterior(c(log(b), log(gamma_fixed))))
+post_15 <- exp(lp_15 - max(lp_fine)); post_fine <- exp(lp_fine - max(lp_fine))
+
+fig("06_grid_1d.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(beta_fine, post_fine, type = "l", col = "grey70", lwd = 2, xlab = expression(beta),
+     ylab = "Posterior (relative to its peak)", main = expression("15 values of " * beta * ", with " * gamma * " fixed: 15 model runs"))
+segments(beta_15, 0, beta_15, post_15, col = "steelblue", lwd = 3)
+points(beta_15, post_15, pch = 16, cex = 1.4, col = "steelblue")
+points(beta_15, rep(0, 15), pch = 4, cex = 1.2, col = "grey30")
+legend("topright", bty = "n", pch = c(4, 16, NA), lwd = c(NA, 3, 2), col = c("grey30", "steelblue", "grey70"),
+       legend = c("grid points", "posterior evaluated at each", "what the grid is trying to picture"))
+dev.off()
+
+# Two parameters: 15 x 15 grid
+beta_g <- seq(0.00205, 0.0024, length.out = 15)
+gamma_g <- seq(0.42, 0.54, length.out = 15)
+grid2 <- expand.grid(beta = beta_g, gamma = gamma_g)
+grid2$post <- exp(mapply(function(b, g) log_posterior(c(log(b), log(g))), grid2$beta, grid2$gamma))
+grid2$post <- grid2$post / max(grid2$post)
+n_useful <- sum(grid2$post > 0.01)
+
+fig("06_grid_2d.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(grid2$beta, grid2$gamma, pch = 21, cex = 1.9, lwd = 0.5,
+     bg = hcl.colors(50, "YlOrRd", rev = TRUE)[pmax(1, ceiling(grid2$post * 50))],
+     xlab = expression(beta), ylab = expression(gamma),
+     main = "15 values of each: 15 x 15 = 225 model runs")
+dev.off()
+
+# How the cost grows: one model run timed, then multiplied up
+run_time <- system.time(for (i in 1:200) predict_cases(0.0022, 0.476))[["elapsed"]] / 200
+cost <- data.frame(parameters = c(1, 2, 3, 4, 6, 10))
+cost$grid_points <- 15^cost$parameters
+cost$time <- cost$grid_points * run_time
+fmt_time <- function(s) {
+  ifelse(s < 60, sprintf("%.1f seconds", s),
+  ifelse(s < 3600, sprintf("%.0f minutes", s / 60),
+  ifelse(s < 86400, sprintf("%.0f hours", s / 3600),
+  ifelse(s < 3.2e7, sprintf("%.0f days", s / 86400), sprintf("%.0f years", s / 3.15e7)))))
+}
+sink("results/06_grid_cost.txt")
+cat(sprintf("One model run takes about %.1f ms on this laptop\n\n", 1000 * run_time))
+cat(sprintf("%-11s %18s %16s\n", "parameters", "grid points (15^p)", "time"))
+for (i in seq_len(nrow(cost))) {
+  cat(sprintf("%-11d %18s %16s\n", cost$parameters[i], format(cost$grid_points[i], big.mark = ","), fmt_time(cost$time[i])))
+}
+sink()
 
 # ---- Metropolis sampler for several parameters -----------------------------
 
