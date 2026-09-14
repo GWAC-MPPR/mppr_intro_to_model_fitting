@@ -51,7 +51,9 @@ The fit itself is not the goal. The goal is to [understand the transmission dyna
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 

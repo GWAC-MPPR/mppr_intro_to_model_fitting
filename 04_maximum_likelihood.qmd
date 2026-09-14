@@ -26,7 +26,9 @@ Optimisation software minimises by convention, so in practice we minimise the [*
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 
@@ -54,6 +56,8 @@ For continuous measurements the usual choices are the normal, [$Y_i \sim N(\mu_i
 We start with Poisson, and come back to the negative binomial at the end
 
 ------------------------------------------------------------------------
+
+## {background-color="#447099" transition="fade-in"}
 
 ::: {.callout-important icon="false"}
 ### Discussion
@@ -139,6 +143,8 @@ The negative binomial model is [strongly preferred]{style="color: tomato;"}: the
 
 ------------------------------------------------------------------------
 
+## {background-color="#447099" transition="fade-in"}
+
 ::: {.callout-important icon="false"}
 ### Discussion
 
@@ -166,6 +172,8 @@ The negative binomial model is [strongly preferred]{style="color: tomato;"}: the
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::

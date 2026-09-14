@@ -49,6 +49,8 @@ Even with the right [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="c
 
 ------------------------------------------------------------------------
 
+## {background-color="#447099" transition="fade-in"}
+
 ::: {.callout-important icon="false"}
 ### Discussion
 
@@ -78,6 +80,8 @@ We start with the simplest objective function there is, the [sum of squared dist
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::

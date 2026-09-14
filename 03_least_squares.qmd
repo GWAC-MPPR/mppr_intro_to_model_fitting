@@ -68,6 +68,8 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ------------------------------------------------------------------------
 
+## {background-color="#447099" transition="fade-in"}
+
 ::: {.callout-important icon="false"}
 ### Discussion
 
@@ -114,6 +116,8 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::

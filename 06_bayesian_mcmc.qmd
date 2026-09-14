@@ -93,6 +93,8 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
+## {background-color="#447099" transition="fade-in"}
+
 ::: {.callout-important icon="false"}
 ### Discussion
 
@@ -151,7 +153,9 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 
@@ -255,7 +259,9 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 
@@ -317,11 +323,15 @@ Any Questions?
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 
 ------------------------------------------------------------------------
+
+## {background-color="#447099" transition="fade-in"}
 
 ::: {.callout-important icon="false"}
 ### Discussion
@@ -387,6 +397,8 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
+## {background-color="#447099" transition="fade-in"}
+
 ::: {.callout-important icon="false"}
 ### Discussion
 
@@ -430,7 +442,9 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
-::: {.fragment style="font-size: 450%"}
+## {background-color="#447099" transition="fade-in"}
+
+::: {.fragment style="font-size: 450%; color: white;"}
 Any Questions?
 :::
 
