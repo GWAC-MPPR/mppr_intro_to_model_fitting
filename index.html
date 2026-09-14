@@ -6,14 +6,14 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="slides_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="slides_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="James Mba Azam, PhD">
-  <meta name="dcterms.date" content="2026-08-28">
+  <meta name="dcterms.date" content="2026-09-14">
   <title>Introduction to Model Fitting and Calibration</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -63,46 +63,46 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
+        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #f8f8f2;  }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-2d8e84c42d8e215c02eb9e2db41ced63.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-45fece1ceb1a3324bce0efb03c1c5125.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,7 +198,7 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -220,7 +220,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
     </div>
 </div>
 
-  <p class="date">2026-08-28</p>
+  <p class="date">2026-09-14</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
@@ -230,22 +230,32 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li><a href="#/least-squares-estimation" id="/toc-least-squares-estimation">Least squares estimation</a></li>
 <li><a href="#/maximum-likelihood-estimation" id="/toc-maximum-likelihood-estimation">Maximum likelihood estimation</a></li>
 <li><a href="#/comparison-of-methods" id="/toc-comparison-of-methods">Comparison of methods</a></li>
+<li><a href="#/bayesian-inference-and-mcmc" id="/toc-bayesian-inference-and-mcmc">Bayesian inference and MCMC</a></li>
 <li><a href="#/advanced-methods" id="/toc-advanced-methods">Advanced methods</a></li>
 <li><a href="#/practical-considerations" id="/toc-practical-considerations">Practical considerations</a></li>
 <li><a href="#/conclusions" id="/toc-conclusions">Conclusions</a></li>
 </ul>
 </nav>
 </section>
+<section id="course-roadmap" class="slide level2">
+<h2>Course roadmap</h2>
+<p><a href="figures/00_course_roadmap.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="figures/00_course_roadmap.png"></a></p>
+</section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
 <p>By the end of this lecture, you will be able to:</p>
 <ul>
 <li>Understand the <span style="color: tomato;">fundamental concepts</span> of <span style="color: tomato;">model fitting</span> and <span style="color: tomato;">calibration</span></li>
-<li>Apply <span style="color: tomato;">least squares estimation</span> to <span style="color: tomato;">compartmental models</span></li>
-<li>Implement <span style="color: tomato;">maximum likelihood estimation</span> for <span style="color: tomato;">epidemic models</span></li>
-<li>Compare the <span style="color: tomato;">strengths and weaknesses</span> of different <span style="color: tomato;">fitting methods</span></li>
-<li>Recognize when to use <span style="color: tomato;">advanced methods</span> like <span style="color: tomato;">MCMC</span> and <span style="color: tomato;">particle filtering</span></li>
-<li><span style="color: tomato;">Troubleshoot</span> common <span style="color: tomato;">fitting problems</span></li>
+<li>Apply <span style="color: tomato;">least squares estimation</span> and <span style="color: tomato;">maximum likelihood estimation</span> to <span style="color: tomato;">compartmental models</span></li>
+<li>Compare the <span style="color: tomato;">strengths and weaknesses</span> of the two approaches.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Understand the need for <span style="color: tomato;">Bayesian inference</span> and fit a model with MCMC, using the <span style="color: tomato;">Metropolis Hastings algorithm</span>, and judge whether an <span style="color: tomato;">MCMC</span> model fit can be trusted</li>
+<li>Recognize when to use <span style="color: tomato;">advanced methods</span> like <span style="color: tomato;">particle filtering</span> and <span style="color: tomato;">Approximate Bayesian Computation</span></li>
+<li><span style="color: tomato;">Troubleshoot</span> common <span style="color: tomato;">model fitting problems</span></li>
 </ul>
 </section>
 <section>
@@ -253,582 +263,567 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <h1>Introduction &amp; motivation</h1>
 
 </section>
-<section id="why-model-fitting-matters" class="slide level2">
-<h2>Why model fitting matters</h2>
-<h3 id="the-challenge">The challenge</h3>
+<section id="the-challenge" class="slide level2">
+<h2>The challenge</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
 <ul>
-<li>We have mathematical models (e.g., SIR, SEIR)</li>
-<li>We have real-world data (case counts, hospitalizations)</li>
-<li><span style="color: tomato;"><strong>How do we connect them?</strong></span></li>
+<li>On one side, <span style="color: tomato;">data</span> from the real world: case counts, hospital admissions, deaths</li>
+<li>On the other, mathematical <span style="color: tomato;">models</span> such as SIR and SEIR</li>
+<li><span style="color: tomato;"><strong>How do we connect the two?</strong></span></li>
 </ul>
+</div><div class="column" style="width:55%;">
+<p><a href="figures/01_flu_data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="figures/01_flu_data.png"></a></p>
+<p><a href="figures/01_sir_schematic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="figures/01_sir_schematic.png"></a></p>
+</div></div>
+</section>
+<section id="the-data-we-will-use-today" class="slide level2">
+<h2>The data we will use today</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>Influenza in a boarding school in England, January 1978</li>
+<li>763 pupils, one of whom brought the virus back from holiday</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<p><a href="figures/01_flu_data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="figures/01_flu_data.png"></a></p>
+</div></div>
+</section>
+<section id="the-data-we-will-use-today-1" class="slide level2">
+<h2>The data we will use today</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li>The school recorded <span style="color: tomato;">how many pupils were in bed each day for 14 days</span></li>
+<li>Nobody left or arrived, and every case was seen, which makes this <span style="color: tomato;">about as clean as outbreak data get</span></li>
+</ul>
+</div><div class="column" style="width:55%;">
+<p><a href="figures/01_flu_data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="figures/01_flu_data.png"></a></p>
+</div></div>
+</section>
+<section id="the-model-we-will-use-today" class="slide level2 smaller">
+<h2>The model we will use today</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div style="color: steelblue;">
+<p><span class="math display">\[\begin{align}
+\frac{dS}{dt} &amp;= -\beta SI \\
+\frac{dI}{dt} &amp;= \beta SI - \gamma I \\
+\frac{dR}{dt} &amp;= \gamma I
+\end{align}\]</span></p>
+</div>
+</div><div class="column" style="width:55%;">
+<ul>
+<li><span style="color: steelblue;"><span class="math inline">\(S\)</span>, <span class="math inline">\(I\)</span>, <span class="math inline">\(R\)</span></span> count pupils, so <span style="color: steelblue;"><span class="math inline">\(S + I + R = N = 763\)</span></span></li>
+<li>Give the model 762 susceptible pupils and 1 infectious pupil on day 0 and it draws a curve of <span style="color: steelblue;"><span class="math inline">\(I(t)\)</span></span> for us to compare with the data</li>
+<li>The quantities we actually want come from these two:
+<ul>
+<li><span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span>, the <span style="color: tomato;">basic reproduction number</span></li>
+<li><span style="color: steelblue;"><span class="math inline">\(1 / \gamma\)</span></span>, the mean <span style="color: tomato;">infectious period</span> in days</li>
+</ul></li>
+<li>Two unknowns: <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span>, the <span style="color: tomato;">transmission rate</span>, and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span>, the <span style="color: tomato;">recovery rate</span></li>
+</ul>
+</div></div>
+</section>
+<section id="the-calibration-problem" class="slide level2">
+<h2>The calibration problem</h2>
+<p><a href="figures/01_candidate_fits.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="figures/01_candidate_fits.png"></a></p>
 </section>
 <section class="slide level2">
 
-<h3 id="the-goal">The goal</h3>
+<h3 id="parameter-estimation-and-uncertainty-quantification">Parameter estimation and uncertainty quantification</h3>
 <ul>
-<li><span style="color: #FFFF00;">Find parameter values that make our model predictions match observed data</span></li>
-<li><span style="color: #FFFF00;">Quantify uncertainty in our estimates</span></li>
-<li><span style="color: #FFFF00;">Make reliable predictions and policy recommendations</span></li>
+<li>Some guesses are obviously wrong and some are close, but by eye we cannot rank the close ones. We need a rule that says which is <span style="color: tomato;"><em>best</em></span></li>
+<li>A best guess on its own is worth little without knowing <span style="color: tomato;">how sure we can be</span>. Would <span style="color: steelblue;"><span class="math inline">\(\gamma = 0.4\)</span></span> have done just as well as <span style="color: steelblue;"><span class="math inline">\(0.5\)</span></span>?</li>
+<li>Once we have both, we can estimate <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span>, forecast the second week, or ask what closing the school early would have changed</li>
 </ul>
 </section>
-<section id="example-outbreak-data" class="slide level2">
-<h2>Example: outbreak data</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/covid-example-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="slides_files/figure-revealjs/covid-example-1.png" width="960"></a></p>
-</figure>
+<section id="section" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Look at the three guesses again. Which of the two parameters do you think the data pin down better, and why?</li>
+<li>What else could the school have recorded in 1978 that would help us estimate <span class="math inline">\(\gamma\)</span> directly?</li>
+</ul>
 </div>
 </div>
 </div>
-<p><span style="color: tomato;"><strong>Question:</strong></span> How do we estimate <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> from this noisy data?</p>
 </section>
-<section id="types-of-fitting-methods" class="slide level2">
-<h2>Types of fitting methods</h2>
-<h3 id="deterministic-methods">Deterministic methods</h3>
-<ul>
-<li><span style="color: tomato;"><strong>Least Squares</strong></span></li>
-<li><span style="color: tomato;"><strong>Maximum Likelihood Estimation (MLE)</strong></span></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="stochastic-methods">Stochastic methods</h3>
-<ul>
-<li><span style="color: #FFFF00;"><strong>Markov Chain Monte Carlo (MCMC)</strong></span></li>
-<li><span style="color: #FFFF00;"><strong>Sequential Monte Carlo (SMC)</strong></span></li>
-<li><span style="color: #FFFF00;"><strong>Particle MCMC (pMCMC)</strong></span></li>
-<li><span style="color: #FFFF00;"><strong>Approximate Bayesian Computation (ABC)</strong></span></li>
-</ul>
-<p><span style="color: tomato;"><strong>Today’s Focus:</strong></span> Least Squares and MLE as foundations</p>
+<section id="approaches-to-parameter-estimation" class="slide level2 smaller scrollable">
+<h2>Approaches to parameter estimation</h2>
+<p>There are many approaches to answer the question but we’ll cover:</p>
+<ol type="1">
+<li><span style="color: tomato;"><strong>Least squares:</strong></span> measure how far the curve is from the data and make that distance as small as possible. Simple and fast, but it says nothing reliable about uncertainty</li>
+<li><span style="color: tomato;"><strong>Maximum likelihood:</strong></span> measure the <em>probability</em> of the data under the model instead. This gives us confidence intervals and a way to compare models</li>
+<li><span style="color: tomato;"><strong>Bayesian inference:</strong></span> ask how plausible every value is, rather than which single value is best. This lets us use what we already know, and gives uncertainty that still makes sense for awkward models. The cost is that the answer has to be sampled, with <span style="color: tomato;">MCMC</span></li>
+</ol>
+<p>We finish with a short look at what to do when even the <span style="color: tomato;">likelihood</span> cannot be written down</p>
 </section></section>
 <section>
 <section id="conceptual-foundations" class="title-slide slide level1 center">
 <h1>Conceptual foundations</h1>
 
 </section>
-<section id="what-is-model-fitting" class="slide level2">
-<h2>What is model fitting?</h2>
-<p><span style="color: #FFFF00;"><strong>Definition:</strong></span> The process of finding parameter values that make a mathematical model’s predictions as close as possible to observed data.</p>
+<section id="definition-of-model-fitting" class="slide level2">
+<h2>Definition of model fitting</h2>
+<p>Choose the parameters <span style="color: steelblue;"><span class="math inline">\(\theta = (\beta, \gamma)\)</span></span> so that the model’s output is <span style="color: tomato;">as close as possible</span> to the data <span style="color: steelblue;"><span class="math inline">\(\mathbf{y}\)</span></span></p>
+<ul>
+<li>Everything depends on what we mean by <em>close</em></li>
+<li>Whatever we decide, we write it as a number: an <span style="color: tomato;">objective function</span> <span style="color: steelblue;"><span class="math inline">\(\mathcal{L}(\theta, \mathbf{y})\)</span></span> that is small when the curve is near the data and large when it is far away</li>
+<li>Fitting then means searching over <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> for the values that make that number small</li>
+</ul>
 </section>
-<section id="mathematical-formulation" class="slide level2">
-<h2>Mathematical formulation</h2>
+<section id="two-formulations-of-the-fitting-problem" class="slide level2">
+<h2>Two formulations of the fitting problem</h2>
+<h3 id="point-estimation">Point estimation</h3>
+<div style="color: steelblue;">
 <p><span class="math display">\[\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})\]</span></p>
-<p>Where:</p>
-<ul>
-<li><span class="math inline">\(\theta\)</span> = parameter vector (e.g., <span class="math inline">\(\beta, \gamma\)</span>)</li>
-<li><span class="math inline">\(\mathbf{y}\)</span> = observed data</li>
-<li><span class="math inline">\(\mathcal{L}\)</span> = loss/objective function</li>
-</ul>
-</section>
-<section id="the-sir-model-as-our-example" class="slide level2">
-<h2>The SIR model as our example</h2>
-<p><strong>Differential Equations:</strong></p>
-<p><span class="math display">\[\begin{align}
-\frac{dS}{dt} &amp;= -\beta SI \\
-\frac{dI}{dt} &amp;= \beta SI - \gamma I \\
-\frac{dR}{dt} &amp;= \gamma I
-\end{align}\]</span></p>
+</div>
+<p>The next two sections use two different choices of <span style="color: steelblue;"><span class="math inline">\(\mathcal{L}\)</span></span>, the <span style="color: tomato;">sum of squared errors</span> and then the <span style="color: tomato;">negative log-likelihood</span></p>
 </section>
 <section class="slide level2">
 
-<h3 id="parameters-to-estimate">Parameters to estimate</h3>
-<ul>
-<li><span style="color: tomato;"><span class="math inline">\(\beta\)</span> = transmission rate</span></li>
-<li><span style="color: tomato;"><span class="math inline">\(\gamma\)</span> = recovery rate</span></li>
-</ul>
+<h3 id="posterior-distribution">Posterior distribution</h3>
+<p>A probability for <em>every</em> <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> given the data, rather than the one best value</p>
+<div style="color: steelblue;">
+<p><span class="math display">\[p(\theta \mid \mathbf{y})\]</span></p>
+</div>
+<p>This is <span style="color: tomato;">Bayesian inference</span>, and it is where the lecture ends up. The two answers share the <span style="color: tomato;">likelihood</span>, which we build in section 4</p>
 </section>
-<section id="key-quantities" class="slide level2">
-<h2>Key quantities</h2>
-<ul>
-<li><span style="color: #FFFF00;"><span class="math inline">\(R_0 = \frac{\beta}{\gamma}\)</span> (basic reproduction number)</span></li>
-<li><span style="color: #FFFF00;">Infectious period = <span class="math inline">\(\frac{1}{\gamma}\)</span></span></li>
-</ul>
-</section>
-<section id="sources-of-uncertainty" class="slide level2">
+<section id="sources-of-uncertainty" class="slide level2 smaller">
 <h2>Sources of uncertainty</h2>
-<h3 id="model-uncertainty">Model uncertainty</h3>
-<ul>
-<li>Wrong model structure</li>
-<li>Missing compartments or processes</li>
-</ul>
+<p>Even with the right <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span> the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>In the flu data</th>
+<th>Where we deal with it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Observation</td>
+<td>Not every pupil in bed was infectious, or counted</td>
+<td>The likelihood (4)</td>
+</tr>
+<tr class="even">
+<td>Parameter</td>
+<td>Several <span class="math inline">\((\beta, \gamma)\)</span> pairs fit almost as well</td>
+<td>Confidence intervals (4), the posterior (6)</td>
+</tr>
+<tr class="odd">
+<td>Model</td>
+<td>No latent period; everyone mixes with everyone</td>
+<td>Model comparison (4)</td>
+</tr>
+<tr class="even">
+<td>Process</td>
+<td>Chance in who infected whom, day by day</td>
+<td>Particle filtering (7)</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section class="slide level2">
-
-<h3 id="parameter-uncertainty">Parameter uncertainty</h3>
+<section id="section-1" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>True parameter values unknown</li>
-<li>Multiple parameter sets give similar fits</li>
+<li>Which of these four sources do you expect to matter most for the boarding-school data?</li>
+<li>And for weekly reported COVID-19 cases in a district of Ghana? What changes?</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
-<section class="slide level2">
-
-<h3 id="observation-uncertainty">Observation uncertainty</h3>
+<section id="identifiability" class="slide level2 smaller">
+<h2>Identifiability</h2>
+<p><span style="color: tomato;"><strong>The problem:</strong></span> different parameter combinations can produce nearly the same curve</p>
 <ul>
-<li>Measurement error</li>
-<li>Reporting delays</li>
-<li>Underreporting</li>
+<li>A high <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> with a high <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span>: fast spread, quick recovery</li>
+<li>A low <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> with a low <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span>: slow spread, long infections</li>
+<li>Both can give a similar epidemic, because what the data pin down is mostly the ratio <span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span></li>
 </ul>
+<p>We will meet this three times today: as a tilted valley in the least squares surface, as wide profile likelihoods, and as a tilted cloud of posterior samples</p>
+<p><span style="color: tomato;"><strong>Remedy:</strong></span> bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a <span style="color: tomato;">prior</span> is</p>
 </section>
-<section class="slide level2">
-
-<h3 id="process-uncertainty">Process uncertainty</h3>
-<ul>
-<li>Stochasticity in disease transmission</li>
-<li>Environmental variability</li>
-</ul>
+<section id="starting-point-least-squares" class="slide level2">
+<h2>Starting point: least squares</h2>
+<p>We start with the simplest objective function there is, the <span style="color: tomato;">sum of squared distances</span> between the points and the curve</p>
 </section>
-<section id="the-fitting-challenge" class="slide level2">
-<h2>The fitting challenge</h2>
-<p><span style="color: tomato;"><strong>Identifiability Problem:</strong></span> Multiple parameter combinations can produce similar model outputs</p>
-<p><strong>Example:</strong></p>
-<ul>
-<li>High <span class="math inline">\(\beta\)</span>, high <span class="math inline">\(\gamma\)</span></li>
-<li>Low <span class="math inline">\(\beta\)</span>, low <span class="math inline">\(\gamma\)</span></li>
-</ul>
-<p>Both might give similar epidemic curves!</p>
-<p><span style="color: #FFFF00;"><strong>Solution:</strong></span> Use additional information (e.g., known infectious period)</p>
+<section id="section-2" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
 </section></section>
 <section>
 <section id="least-squares-estimation" class="title-slide slide level1 center">
 <h1>Least squares estimation</h1>
 
 </section>
-<section id="least-squares-the-intuitive-approach" class="slide level2">
-<h2>Least squares: the intuitive approach</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Minimize the sum of squared differences between model predictions and observations</p>
+<section id="the-least-squares-criterion" class="slide level2 smaller">
+<h2>The least squares criterion</h2>
+<p>The <span style="color: tomato;">residual</span> for each day is the difference between the observation and the model prediction. The least squares criterion is the <span style="color: tomato;">sum of squared residuals</span>, the <span style="color: steelblue;">SSE</span></p>
+<div style="color: steelblue;">
+<p><span class="math display">\[\text{SSE} = \sum_{i=1}^{n} \bigl(y_i - f(t_i, \theta)\bigr)^2\]</span></p>
+</div>
+<ul>
+<li><span style="color: steelblue;"><span class="math inline">\(y_i\)</span></span> is the observation on day <span style="color: steelblue;"><span class="math inline">\(t_i\)</span></span></li>
+<li><span style="color: steelblue;"><span class="math inline">\(f(t_i, \theta)\)</span></span> is what the model predicts for that day with parameters <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span></li>
+</ul>
+<p>The parameters that make this sum smallest are the <span style="color: tomato;">least squares estimates</span></p>
 </section>
 <section class="slide level2">
 
-<p><strong>Mathematical Formulation:</strong> <span class="math display">\[\text{SSE} = \sum_{i=1}^{n} (y_i - f(t_i, \theta))^2\]</span></p>
-<p>Where:</p>
+<h3 id="properties-of-the-squared-error-criterion">Properties of the squared error criterion</h3>
 <ul>
-<li><span class="math inline">\(y_i\)</span> = observed value at time <span class="math inline">\(t_i\)</span></li>
-<li><span class="math inline">\(f(t_i, \theta)\)</span> = model prediction at time <span class="math inline">\(t_i\)</span></li>
-<li><span class="math inline">\(\theta\)</span> = parameter vector</li>
+<li>Squaring makes every residual positive, so residuals above and below the curve do not cancel</li>
+<li>Large residuals are <span style="color: tomato;">penalised much more heavily</span> than small ones</li>
+<li>The SSE is a <span style="color: tomato;">differentiable</span> function of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, which gradient-based optimisers rely on</li>
+<li>Under normally distributed errors with constant variance (<span style="color: tomato;">homoscedasticity</span>), the least squares estimate is also the <span style="color: tomato;">maximum likelihood estimate</span></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="why-squared-errors">Why squared errors?</h3>
-<p><span style="color: #FFFF00;"><strong>Advantages:</strong></span></p>
+<h3 id="limitations-of-the-squared-error-criterion">Limitations of the squared error criterion</h3>
 <ul>
-<li><span style="color: #FFFF00;">Penalizes large errors more heavily</span></li>
-<li><span style="color: #FFFF00;">Differentiable (smooth optimization)</span></li>
-<li><span style="color: #FFFF00;">Mathematically tractable</span></li>
-<li><span style="color: #FFFF00;">Gives maximum likelihood estimates when errors are normal distributed</span></li>
+<li>The criterion is <span style="color: tomato;">sensitive to outliers</span>: a single extreme observation can pull the whole fit towards itself</li>
+<li>It <span style="color: tomato;">assumes constant variance</span>, treating a day with 3 pupils in bed the same as a day with 300, which count data rarely satisfy</li>
+<li>It has <span style="color: tomato;">no probabilistic interpretation</span>, so it provides no measure of uncertainty on its own</li>
 </ul>
 </section>
+<section id="least-squares-for-the-flu-outbreak" class="slide level2">
+<h2>Least squares for the flu outbreak</h2>
+<h3 id="step-1-model-implementation">Step 1: model implementation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-code-line-numbers="1|3-10|12-14|16-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(deSolve)</span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a>sir_model <span class="ot">&lt;-</span> <span class="cf">function</span>(t, y, params) {</span>
+<span id="cb1-4"><a href=""></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(y, params)), {</span>
+<span id="cb1-5"><a href=""></a>    dS <span class="ot">&lt;-</span> <span class="sc">-</span>beta <span class="sc">*</span> S <span class="sc">*</span> I</span>
+<span id="cb1-6"><a href=""></a>    dI <span class="ot">&lt;-</span> beta <span class="sc">*</span> S <span class="sc">*</span> I <span class="sc">-</span> gamma <span class="sc">*</span> I</span>
+<span id="cb1-7"><a href=""></a>    dR <span class="ot">&lt;-</span> gamma <span class="sc">*</span> I</span>
+<span id="cb1-8"><a href=""></a>    <span class="fu">list</span>(<span class="fu">c</span>(dS, dI, dR))</span>
+<span id="cb1-9"><a href=""></a>  })</span>
+<span id="cb1-10"><a href=""></a>}</span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a>N <span class="ot">&lt;-</span> <span class="dv">763</span>                            <span class="co"># pupils in the school</span></span>
+<span id="cb1-13"><a href=""></a>init <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">S =</span> <span class="dv">762</span>, <span class="at">I =</span> <span class="dv">1</span>, <span class="at">R =</span> <span class="dv">0</span>)    <span class="co"># one index case on day 0</span></span>
+<span id="cb1-14"><a href=""></a>times <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">14</span>                       <span class="co"># the data are days 1 to 14</span></span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a><span class="co"># Model prediction of the number of pupils in bed on days 1 to 14</span></span>
+<span id="cb1-17"><a href=""></a>predict_cases <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma) {</span>
+<span id="cb1-18"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init, <span class="at">times =</span> times, <span class="at">func =</span> sir_model,</span>
+<span id="cb1-19"><a href=""></a>             <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
+<span id="cb1-20"><a href=""></a>  out[<span class="sc">-</span><span class="dv">1</span>, <span class="st">"I"</span>]</span>
+<span id="cb1-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section class="slide level2">
 
-<h3 id="disadvantages"><span style="color: tomato;">Disadvantages</span></h3>
+<h3 id="step-2-the-objective-function">Step 2: the objective function</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-code-line-numbers="1-7|9-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># The objective function: how far is the model from the data?</span></span>
+<span id="cb2-2"><a href=""></a>sse_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params) {</span>
+<span id="cb2-3"><a href=""></a>  beta <span class="ot">&lt;-</span> params[<span class="dv">1</span>]</span>
+<span id="cb2-4"><a href=""></a>  gamma <span class="ot">&lt;-</span> params[<span class="dv">2</span>]</span>
+<span id="cb2-5"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(beta, gamma)</span>
+<span id="cb2-6"><a href=""></a>  <span class="fu">sum</span>((flu<span class="sc">$</span>cases <span class="sc">-</span> predicted)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb2-7"><a href=""></a>}</span>
+<span id="cb2-8"><a href=""></a></span>
+<span id="cb2-9"><a href=""></a><span class="co"># The three guesses from the introduction</span></span>
+<span id="cb2-10"><a href=""></a>sse_guesses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="fu">sse_function</span>(<span class="fu">c</span>(<span class="fl">0.0015</span>, <span class="fl">0.5</span>)),</span>
+<span id="cb2-11"><a href=""></a>                 <span class="at">B =</span> <span class="fu">sse_function</span>(<span class="fu">c</span>(<span class="fl">0.0030</span>, <span class="fl">0.6</span>)),</span>
+<span id="cb2-12"><a href=""></a>                 <span class="at">C =</span> <span class="fu">sse_function</span>(<span class="fu">c</span>(<span class="fl">0.0022</span>, <span class="fl">0.4</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a>     A      B      C </span>
+<span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a>208791 124476   8082 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The numbers agree with what we saw: guess C was closest and guess A was worst</p>
+</section>
+<section class="slide level2">
+
+<h3 id="step-3-grid-search">Step 3: grid search</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="1-5|7-9|11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Try a grid of parameter values</span></span>
+<span id="cb4-2"><a href=""></a>test_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb4-3"><a href=""></a>  <span class="at">beta =</span> <span class="fu">seq</span>(<span class="fl">0.0015</span>, <span class="fl">0.0030</span>, <span class="at">length.out =</span> <span class="dv">20</span>),</span>
+<span id="cb4-4"><a href=""></a>  <span class="at">gamma =</span> <span class="fu">seq</span>(<span class="fl">0.30</span>, <span class="fl">0.70</span>, <span class="at">length.out =</span> <span class="dv">20</span>)</span>
+<span id="cb4-5"><a href=""></a>)</span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(test_params))) {</span>
+<span id="cb4-8"><a href=""></a>  test_params<span class="sc">$</span>sse[i] <span class="ot">&lt;-</span> <span class="fu">sse_function</span>(<span class="fu">c</span>(test_params<span class="sc">$</span>beta[i], test_params<span class="sc">$</span>gamma[i]))</span>
+<span id="cb4-9"><a href=""></a>}</span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a>best <span class="ot">&lt;-</span> test_params[<span class="fu">which.min</span>(test_params<span class="sc">$</span>sse), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="the-objective-function-surface">The objective function surface</h3>
+<p><a href="figures/03_sse_surface.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="figures/03_sse_surface.png"></a></p>
+</section>
+<section id="section-3" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li><span style="color: tomato;">Sensitive to outliers</span></li>
-<li><span style="color: tomato;">Assumes constant variance</span></li>
-<li><span style="color: tomato;">No probabilistic interpretation</span></li>
+<li>The valley in the surface is tilted. What does that tell you about how well <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> are determined separately, and about <span class="math inline">\(R_0 = \beta N / \gamma\)</span>?</li>
+<li>If you had to report one number from this fit with a straight face, which would it be?</li>
 </ul>
-</section>
-<section id="least-squares-example-sir-model" class="slide level2">
-<h2>Least squares example: SIR model</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/ls-example-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="slides_files/figure-revealjs/ls-example-1.png" width="960"></a></p>
-</figure>
 </div>
 </div>
-</div>
-</section>
-<section id="implementing-least-squares" class="slide level2">
-<h2>Implementing least squares</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-2|3-12|14-15|16-19|1-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Define objective function</span></span>
-<span id="cb1-2"><a href=""></a>sse_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params, data) {</span>
-<span id="cb1-3"><a href=""></a>  beta <span class="ot">&lt;-</span> params[<span class="dv">1</span>]</span>
-<span id="cb1-4"><a href=""></a>  gamma <span class="ot">&lt;-</span> params[<span class="dv">2</span>]</span>
-<span id="cb1-5"><a href=""></a>  </span>
-<span id="cb1-6"><a href=""></a>  <span class="co"># Simulate model</span></span>
-<span id="cb1-7"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
-<span id="cb1-8"><a href=""></a>    <span class="at">y =</span> init_conds,</span>
-<span id="cb1-9"><a href=""></a>    <span class="at">times =</span> data<span class="sc">$</span>time,</span>
-<span id="cb1-10"><a href=""></a>    <span class="at">func =</span> sir_model,</span>
-<span id="cb1-11"><a href=""></a>    <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma)</span>
-<span id="cb1-12"><a href=""></a>  )</span>
-<span id="cb1-13"><a href=""></a>  </span>
-<span id="cb1-14"><a href=""></a>  <span class="co">#  Extract and rescale the predicted cases</span></span>
-<span id="cb1-15"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[, <span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb1-16"><a href=""></a>  <span class="co"># Calculate sum of squared errors</span></span>
-<span id="cb1-17"><a href=""></a>  sse <span class="ot">&lt;-</span> <span class="fu">sum</span>((data<span class="sc">$</span>observed <span class="sc">-</span> predicted)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-18"><a href=""></a>  </span>
-<span id="cb1-19"><a href=""></a>  <span class="fu">return</span>(sse)</span>
-<span id="cb1-20"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-2|4-8|6|7|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Prepare data</span></span>
-<span id="cb2-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> times, <span class="at">observed =</span> observed_cases)</span>
-<span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a><span class="co"># Test different parameter values</span></span>
-<span id="cb2-5"><a href=""></a>test_params <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
-<span id="cb2-6"><a href=""></a>  <span class="at">beta =</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="at">length.out =</span> <span class="dv">10</span>),</span>
-<span id="cb2-7"><a href=""></a>  <span class="at">gamma =</span> <span class="fu">seq</span>(<span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb2-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<h3 id="step-4-numerical-optimisation">Step 4: numerical optimisation</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Let an optimiser polish the best grid point</span></span>
+<span id="cb5-2"><a href=""></a>fit_ls <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(best<span class="sc">$</span>beta, best<span class="sc">$</span>gamma), <span class="at">fn =</span> sse_function)</span>
+<span id="cb5-3"><a href=""></a>ls_estimates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">beta =</span> fit_ls<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">gamma =</span> fit_ls<span class="sc">$</span>par[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Best grid point:  beta ="</span>, <span class="fu">signif</span>(best<span class="sc">$</span>beta, <span class="dv">3</span>), <span class="st">" gamma ="</span>, <span class="fu">signif</span>(best<span class="sc">$</span>gamma, <span class="dv">3</span>),</span>
+<span id="cb6-2"><a href=""></a>    <span class="st">" SSE ="</span>, <span class="fu">round</span>(best<span class="sc">$</span>sse), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-3"><a href=""></a><span class="fu">cat</span>(<span class="st">"After optim():    beta ="</span>, <span class="fu">signif</span>(ls_estimates[<span class="st">"beta"</span>], <span class="dv">3</span>),</span>
+<span id="cb6-4"><a href=""></a>    <span class="st">" gamma ="</span>, <span class="fu">signif</span>(ls_estimates[<span class="st">"gamma"</span>], <span class="dv">3</span>), <span class="st">" SSE ="</span>, <span class="fu">round</span>(fit_ls<span class="sc">$</span>value), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-5"><a href=""></a><span class="fu">cat</span>(<span class="st">"R0 = beta N / gamma ="</span>, <span class="fu">round</span>(ls_estimates[<span class="st">"beta"</span>] <span class="sc">*</span> N <span class="sc">/</span> ls_estimates[<span class="st">"gamma"</span>], <span class="dv">2</span>),</span>
+<span id="cb6-6"><a href=""></a>    <span class="st">"  infectious period ="</span>, <span class="fu">round</span>(<span class="dv">1</span> <span class="sc">/</span> ls_estimates[<span class="st">"gamma"</span>], <span class="dv">2</span>), <span class="st">"days</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a>Best grid point:  beta = 0.00221  gamma = 0.447  SSE = 4286 </span>
+<span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a>After optim():    beta = 0.00219  gamma = 0.443  SSE = 4122 </span>
+<span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a>R0 = beta N / gamma = 3.76   infectious period = 2.26 days</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1-2|3|4-7|8|1-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Calculate SSE for each combination</span></span>
-<span id="cb3-2"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(test_params)) {</span>
-<span id="cb3-3"><a href=""></a>  test_params<span class="sc">$</span>sse[i] <span class="ot">&lt;-</span> <span class="fu">sse_function</span>(</span>
-<span id="cb3-4"><a href=""></a>    <span class="fu">c</span>(</span>
-<span id="cb3-5"><a href=""></a>      test_params[i, <span class="dv">1</span>],</span>
-<span id="cb3-6"><a href=""></a>      test_params[i, <span class="dv">2</span>]</span>
-<span id="cb3-7"><a href=""></a>    ),</span>
-<span id="cb3-8"><a href=""></a>    data</span>
-<span id="cb3-9"><a href=""></a>  )</span>
-<span id="cb3-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<h3 id="the-least-squares-fit">The least squares fit</h3>
+<p><a href="figures/03_ls_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="figures/03_ls_fit.png"></a></p>
 </section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="1-2|3|4-7|1-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Find minimum</span></span>
-<span id="cb4-2"><a href=""></a>best_idx <span class="ot">&lt;-</span> <span class="fu">which.min</span>(test_params<span class="sc">$</span>sse)</span>
-<span id="cb4-3"><a href=""></a>best_params <span class="ot">&lt;-</span> test_params[best_idx, ]</span>
-<span id="cb4-4"><a href=""></a><span class="fu">cat</span>(<span class="st">"True parameters: Beta ="</span>, true_params[<span class="dv">1</span>], <span class="st">", Gamma ="</span>, true_params[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True parameters: Beta = 0.3 , Gamma = 0.1</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-2|3|4-7|1-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">cat</span>(<span class="st">"Best fit parameters: Beta ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>beta, <span class="dv">3</span>), <span class="st">", Gamma ="</span>, <span class="fu">round</span>(best_params<span class="sc">$</span>gamma, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best fit parameters: Beta = 0.322 , Gamma = 0.1 </code></pre>
-</div>
-</div>
-</section>
-<section id="strengths-of-least-squares" class="slide level2">
+<section id="strengths-of-least-squares" class="slide level2 smaller">
 <h2>Strengths of least squares</h2>
-<p><strong>Computational Advantages:</strong></p>
 <ul>
-<li>Fast and efficient</li>
-<li>Well-established algorithms</li>
-<li>Easy to implement</li>
-<li>Good for initial parameter estimates</li>
+<li><span style="color: tomato;">Computationally cheap</span>, with well-established optimisation algorithms available in every statistical package</li>
+<li>An <span style="color: tomato;">intuitive</span> criterion that is easy to explain and to implement</li>
+<li>Under its assumptions the estimates are <span style="color: tomato;">unbiased</span>, with the <span style="color: tomato;">minimum variance</span> among linear unbiased estimators</li>
+<li>Good <span style="color: tomato;">initial values</span> for the likelihood-based methods that follow, which is how we use it in the next section</li>
 </ul>
 </section>
-<section id="statistical-properties" class="slide level2">
-<h2>Statistical properties</h2>
-<ul>
-<li>Unbiased estimates (under certain conditions)</li>
-<li>Minimum variance among linear unbiased estimators</li>
-<li>Maximum likelihood when errors are normal</li>
-</ul>
-</section>
-<section id="practical-benefits" class="slide level2">
-<h2>Practical benefits</h2>
-<ul>
-<li>Intuitive interpretation</li>
-<li>Widely understood</li>
-<li>Good starting point for more complex methods</li>
-</ul>
-</section>
-<section id="limitations-of-least-squares" class="slide level2">
+<section id="limitations-of-least-squares" class="slide level2 smaller">
 <h2>Limitations of least squares</h2>
-<p><strong>Statistical Limitations:</strong></p>
 <ul>
-<li>Limited uncertainty quantification</li>
-<li>Assumes constant variance</li>
-<li>Sensitive to outliers</li>
-<li>No probabilistic framework</li>
+<li><span style="color: tomato;">No uncertainty quantification</span>: the objective function surface was visibly tilted and elongated, but the point estimate carries none of that information</li>
+<li><span style="color: tomato;">No principled basis for model comparison</span></li>
+<li>The <span style="color: tomato;">constant variance assumption</span> is violated by count data, whose variance grows with the mean</li>
+<li><span style="color: tomato;">Parameter identifiability</span> problems are not diagnosed, only hidden in the shape of the surface</li>
 </ul>
 </section>
-<section id="practical-limitations" class="slide level2">
-<h2>Practical limitations</h2>
-<p><strong>Practical Limitations:</strong></p>
-<ul>
-<li>Parameter identifiability issues</li>
-<li>No confidence intervals</li>
-<li>Difficult to compare models</li>
-<li>Assumes measurement error only</li>
-</ul>
-</section>
-<section id="r-implementation-practicals" class="slide level2" data-background-color="#447099" data-transition="fade-in">
-<h2>R implementation practicals</h2>
-<ul>
-<li>Let’s turn to the <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals">tutorials</a></li>
-</ul>
+<section id="section-4" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
 </section></section>
 <section>
 <section id="maximum-likelihood-estimation" class="title-slide slide level1 center">
 <h1>Maximum likelihood estimation</h1>
 
 </section>
-<section id="maximum-likelihood-the-probabilistic-approach" class="slide level2">
-<h2>Maximum likelihood: the probabilistic approach</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Find parameter values that make the observed data most probable</p>
+<section id="the-likelihood-function" class="slide level2 smaller">
+<h2>The likelihood function</h2>
+<p>Instead of measuring the distance between the curve and the data, we specify a <span style="color: tomato;">probability model for the observations</span> and ask how probable the observed counts are under the model with parameters <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>. This probability, viewed as a function of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, is the <span style="color: tomato;">likelihood</span></p>
+<div style="color: steelblue;">
+<p><span class="math display">\[L(\theta) = \prod_{i=1}^{n} f(y_i \mid \theta)\]</span></p>
+</div>
+<p>where <span style="color: steelblue;"><span class="math inline">\(f(y_i \mid \theta)\)</span></span> is the probability (or density) of observation <span style="color: steelblue;"><span class="math inline">\(y_i\)</span></span>, and the product follows from assuming the observations are <span style="color: tomato;">conditionally independent</span> given the model. The <span style="color: tomato;">maximum likelihood estimate (MLE)</span> is the <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> that maximises <span style="color: steelblue;"><span class="math inline">\(L(\theta)\)</span></span></p>
 </section>
 <section class="slide level2">
 
-<p><strong>Mathematical Formulation:</strong> <span class="math display">\[\hat{\theta} = \arg\max_{\theta} L(\theta) = \arg\max_{\theta} \prod_{i=1}^{n} f(y_i | \theta)\]</span></p>
-<p>Where:</p>
+<h3 id="the-log-likelihood">The log-likelihood</h3>
+<p>A product of fourteen small probabilities underflows numerically. Taking logarithms turns the product into a sum, the <span style="color: tomato;">log-likelihood</span> <span style="color: steelblue;"><span class="math inline">\(\ell(\theta)\)</span></span>, which has the same maximiser</p>
+<div style="color: steelblue;">
+<p><span class="math display">\[\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i \mid \theta)\]</span></p>
+</div>
+<p>Optimisation software minimises by convention, so in practice we minimise the <span style="color: tomato;"><em>negative</em> log-likelihood</span></p>
+</section>
+<section id="section-5" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="advantages-of-maximum-likelihood" class="slide level2 smaller">
+<h2>Advantages of maximum likelihood</h2>
 <ul>
-<li><span class="math inline">\(L(\theta)\)</span> = likelihood function</li>
-<li><span class="math inline">\(f(y_i | \theta)\)</span> = probability density of observation <span class="math inline">\(i\)</span></li>
+<li><span style="color: tomato;">A principled statistical framework</span>: the likelihood follows from an explicit probability model for the data, so every assumption is stated</li>
+<li><span style="color: tomato;">Uncertainty quantification</span>: the curvature of the log-likelihood at its maximum gives <span style="color: tomato;">standard errors</span>, and the <span style="color: tomato;">profile likelihood</span> gives confidence intervals</li>
+<li><span style="color: tomato;">Model comparison</span>: models fitted to the same data can be compared through their maximised likelihoods, penalised for complexity by <span style="color: tomato;">AIC</span> or <span style="color: tomato;">BIC</span></li>
+<li><span style="color: tomato;">Flexible observation models</span>: Poisson, negative binomial, normal, or whatever matches how the data arise</li>
+<li><span style="color: tomato;">Asymptotic optimality</span>: with enough data the MLE is <span style="color: tomato;">consistent, asymptotically normal and efficient</span></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<p><strong>In Practice:</strong> Maximize log-likelihood <span class="math display">\[\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i | \theta)\]</span></p>
-</section>
-<section id="why-maximum-likelihood" class="slide level2">
-<h2>Why maximum likelihood?</h2>
-<h3 id="theoretical-advantages">Theoretical advantages:</h3>
+<section id="choosing-an-observation-model" class="slide level2 smaller">
+<h2>Choosing an observation model</h2>
+<p>The data are counts, so the natural choices are</p>
 <ul>
-<li>Principled <span style="color: #FFFF00;">statistical framework</span></li>
-<li>Provides <span style="color: #FFFF00;">uncertainty quantification</span></li>
-<li>Enables <span style="color: #FFFF00;">model comparison (AIC, BIC)</span></li>
-<li><span style="color: #FFFF00;">Asymptotically</span> optimal properties</li>
+<li><span style="color: tomato;">Poisson:</span> <span style="color: steelblue;"><span class="math inline">\(Y_i \sim \text{Poisson}(\lambda_i)\)</span></span>, a single parameter, with variance equal to the mean (<span style="color: tomato;">equidispersion</span>)</li>
+<li><span style="color: tomato;">Negative binomial:</span> <span style="color: steelblue;"><span class="math inline">\(Y_i \sim \text{NB}(\mu_i, \phi)\)</span></span>, with a dispersion parameter <span style="color: steelblue;"><span class="math inline">\(\phi\)</span></span> that allows the variance to exceed the mean (<span style="color: tomato;">overdispersion</span>)</li>
 </ul>
+<p>For continuous measurements the usual choices are the normal, <span style="color: steelblue;"><span class="math inline">\(Y_i \sim N(\mu_i, \sigma^2)\)</span></span>, or the log-normal, <span style="color: steelblue;"><span class="math inline">\(\log Y_i \sim N(\log \mu_i, \sigma^2)\)</span></span></p>
+<p>We start with Poisson, and come back to the negative binomial at the end</p>
 </section>
-<section class="slide level2">
-
-<h3 id="practical-benefits-1">Practical benefits</h3>
-<ul>
-<li>Confidence intervals</li>
-<li>Hypothesis testing</li>
-<li>Model selection</li>
-<li>Incorporates different error structures</li>
-</ul>
-</section>
-<section id="choosing-a-probability-distribution" class="slide level2">
-<h2>Choosing a probability distribution</h2>
-<p><strong>For <span style="color: #FFFF00;">Count Data</span> (e.g., Cases):</strong></p>
-<ul>
-<li><strong>Poisson</strong>: <span class="math inline">\(Y_i \sim \text{Poisson}(\lambda_i)\)</span></li>
-<li><strong>Negative Binomial</strong>: <span class="math inline">\(Y_i \sim \text{NB}(\mu_i, \phi)\)</span></li>
-</ul>
-</section>
-<section id="choosing-a-probability-distribution-1" class="slide level2">
-<h2>Choosing a probability distribution</h2>
-<p><strong>For <span style="color: #FFFF00;">Continuous Data:</span></strong></p>
-<ul>
-<li><strong>Normal</strong>: <span class="math inline">\(Y_i \sim N(\mu_i, \sigma^2)\)</span></li>
-<li><strong>Log-normal</strong>: <span class="math inline">\(\log Y_i \sim N(\log \mu_i, \sigma^2)\)</span></li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
+<section id="section-6" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
+<p><strong>Discussion</strong></p>
 </div>
 <div class="callout-content">
-<p><span style="color:yellow"><strong>For Our SIR Example:</strong></span> We’ll use <span style="yellow">Poisson</span> since we’re modeling case counts</p>
+<ul>
+<li>Which observation model would you choose for daily deaths? For weekly reported cases with under-reporting? For a serological survey?</li>
+<li>What goes wrong if you use a Poisson model on data that are overdispersed?</li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="mle-implementation-poisson-likelihood" class="slide level2">
-<h2>MLE implementation: Poisson likelihood</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Define negative log-likelihood function</span></span>
-<span id="cb8-2"><a href=""></a>nll_function <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, data) {</span>
-<span id="cb8-3"><a href=""></a>  <span class="co"># Simulate model</span></span>
-<span id="cb8-4"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
-<span id="cb8-5"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
-<span id="cb8-6"><a href=""></a></span>
-<span id="cb8-7"><a href=""></a>  <span class="co"># Model predictions (scaled to cases)</span></span>
-<span id="cb8-8"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb8-9"><a href=""></a></span>
-<span id="cb8-10"><a href=""></a>  <span class="co"># Poisson negative log-likelihood</span></span>
-<span id="cb8-11"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dpois</span>(data<span class="sc">$</span>observed, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb8-12"><a href=""></a></span>
-<span id="cb8-13"><a href=""></a>  <span class="fu">return</span>(nll)</span>
-<span id="cb8-14"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="mle-for-the-flu-outbreak-poisson-likelihood" class="slide level2">
+<h2>MLE for the flu outbreak: Poisson likelihood</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-code-line-numbers="1-3|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co"># Negative log-likelihood, with the parameters on the log scale: the optimiser</span></span>
+<span id="cb8-2"><a href=""></a><span class="co"># can then move freely while beta and gamma stay positive, and the two</span></span>
+<span id="cb8-3"><a href=""></a><span class="co"># parameters are on a comparable scale</span></span>
+<span id="cb8-4"><a href=""></a>nll_function <span class="ot">&lt;-</span> <span class="cf">function</span>(log_beta, log_gamma) {</span>
+<span id="cb8-5"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(<span class="at">beta =</span> <span class="fu">exp</span>(log_beta), <span class="at">gamma =</span> <span class="fu">exp</span>(log_gamma))</span>
+<span id="cb8-6"><a href=""></a>  <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dpois</span>(flu<span class="sc">$</span>cases, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb8-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="1-2|3|4|6|7-8|1-8|10-11|12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co"># Use optimization to find MLE</span></span>
-<span id="cb9-2"><a href=""></a><span class="fu">library</span>(bbmle)</span>
-<span id="cb9-3"><a href=""></a>fit_mle <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_function,</span>
-<span id="cb9-4"><a href=""></a>                <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>),</span>
-<span id="cb9-5"><a href=""></a>                <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
-<span id="cb9-6"><a href=""></a>                <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
-<span id="cb9-7"><a href=""></a>                <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>),</span>
-<span id="cb9-8"><a href=""></a>                <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>))</span>
-<span id="cb9-9"><a href=""></a></span>
-<span id="cb9-10"><a href=""></a><span class="co"># Extract results</span></span>
-<span id="cb9-11"><a href=""></a>mle_params <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit_mle)</span>
-<span id="cb9-12"><a href=""></a>mle_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcov</span>(fit_mle)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<h3 id="numerical-maximisation-with-bbmlemle2">Numerical maximisation with <code>bbmle::mle2()</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-code-line-numbers="1|3-6|8-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">library</span>(bbmle)</span>
+<span id="cb9-2"><a href=""></a></span>
+<span id="cb9-3"><a href=""></a><span class="co"># Start from the least squares estimates</span></span>
+<span id="cb9-4"><a href=""></a>fit_mle <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_function,</span>
+<span id="cb9-5"><a href=""></a>                <span class="at">start =</span> <span class="fu">list</span>(<span class="at">log_beta =</span> <span class="fu">log</span>(ls_estimates[[<span class="st">"beta"</span>]]),</span>
+<span id="cb9-6"><a href=""></a>                             <span class="at">log_gamma =</span> <span class="fu">log</span>(ls_estimates[[<span class="st">"gamma"</span>]])))</span>
+<span id="cb9-7"><a href=""></a></span>
+<span id="cb9-8"><a href=""></a>mle_estimates <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit_mle))              <span class="co"># back to the natural scale</span></span>
+<span id="cb9-9"><a href=""></a><span class="fu">names</span>(mle_estimates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>)</span>
+<span id="cb9-10"><a href=""></a>mle_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">vcov</span>(fit_mle)))              <span class="co"># standard errors, log scale</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The least squares estimates serve as <span style="color: tomato;">initial values</span> for the optimiser, which is one of the standard uses of least squares</p>
 </section>
 <section class="slide level2">
 
 <h3 id="mle-results">MLE results</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Beta: 0.291 ± 0.003 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Gamma: 0.05 ± 0 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>R0: 5.79 </code></pre>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a>beta  = 0.00221  (log-scale SE 0.009 )</span>
+<span id="cb10-2"><a href="" aria-hidden="true" tabindex="-1"></a>gamma = 0.476  (log-scale SE 0.023 )</span>
+<span id="cb10-3"><a href="" aria-hidden="true" tabindex="-1"></a>R0 = beta N / gamma = 3.55 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="uncertainty-quantification-with-mle" class="slide level2">
-<h2>Uncertainty quantification with MLE</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># Profile likelihood for uncertainty</span></span>
-<span id="cb13-2"><a href=""></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
-<span id="cb13-3"><a href=""></a><span class="fu">plot</span>(prof, <span class="at">absVal =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Profile Likelihood"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><a href="slides_files/figure-revealjs/mle-uncertainty-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="slides_files/figure-revealjs/mle-uncertainty-1.png" width="960"></a></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="uncertainty-quantification-the-profile-likelihood" class="slide level2">
+<h2>Uncertainty quantification: the profile likelihood</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Profile likelihood for each parameter</span></span>
+<span id="cb11-2"><a href=""></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
+<span id="cb11-3"><a href=""></a><span class="fu">plot</span>(prof, <span class="at">absVal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="figures/04_profile_likelihood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="figures/04_profile_likelihood.png"></a></p>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Confidence intervals</span></span>
-<span id="cb14-2"><a href=""></a><span class="fu">confint</span>(fit_mle, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           2.5 %     97.5 %
-beta  0.28617565 0.29599639
-gamma 0.04961407 0.05089814</code></pre>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># 95% confidence intervals from the profiles, back on the natural scale</span></span>
+<span id="cb12-2"><a href=""></a>ci <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">confint</span>(fit_mle, <span class="at">level =</span> <span class="fl">0.95</span>))</span>
+<span id="cb12-3"><a href=""></a><span class="fu">rownames</span>(ci) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>)</span>
+<span id="cb12-4"><a href=""></a><span class="fu">print</span>(ci)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a>            2.5 %      97.5 %</span>
+<span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a>beta  0.002175293 0.002253806</span>
+<span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a>gamma 0.455105849 0.498070563</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
-<h3 id="mle-estimates-vs-true-values">MLE estimates vs true values</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>True Beta: 0.3 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MLE Beta: 0.291 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>True Gamma: 0.1 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MLE Gamma: 0.05 </code></pre>
-</div>
-</div>
-</section>
-<section id="model-comparison-with-mle" class="slide level2">
-<h2>Model comparison with MLE</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1|2|3|5-6|7-8|10-11|13-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co"># Fit different models and compare</span></span>
-<span id="cb20-2"><a href=""></a><span class="co"># Model 1: SIR with Poisson</span></span>
-<span id="cb20-3"><a href=""></a><span class="co"># Model 2: SIR with negative binomial</span></span>
-<span id="cb20-4"><a href=""></a></span>
-<span id="cb20-5"><a href=""></a><span class="co"># Negative binomial likelihood</span></span>
-<span id="cb20-6"><a href=""></a>nll_nb <span class="ot">&lt;-</span> <span class="cf">function</span>(beta, gamma, phi, data) {</span>
-<span id="cb20-7"><a href=""></a>  out <span class="ot">&lt;-</span> <span class="fu">ode</span>(<span class="at">y =</span> init_conds, <span class="at">times =</span> data<span class="sc">$</span>time,</span>
-<span id="cb20-8"><a href=""></a>             <span class="at">func =</span> sir_model, <span class="at">parms =</span> <span class="fu">c</span>(<span class="at">beta =</span> beta, <span class="at">gamma =</span> gamma))</span>
-<span id="cb20-9"><a href=""></a></span>
-<span id="cb20-10"><a href=""></a>  <span class="co"># Extract and scale predictions to cases</span></span>
-<span id="cb20-11"><a href=""></a>  predicted <span class="ot">&lt;-</span> out[,<span class="st">"I"</span>] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb20-12"><a href=""></a></span>
-<span id="cb20-13"><a href=""></a>  <span class="co"># Negative Binomial negative log-likelihood</span></span>
-<span id="cb20-14"><a href=""></a>  nll <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnbinom</span>(data<span class="sc">$</span>observed, <span class="at">mu =</span> predicted, <span class="at">size =</span> phi, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb20-15"><a href=""></a></span>
-<span id="cb20-16"><a href=""></a>  <span class="fu">return</span>(nll)</span>
-<span id="cb20-17"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<h3 id="comparison-with-least-squares">Comparison with least squares</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a>               beta    gamma    R0</span>
+<span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a>Least squares  0.00219  0.443   3.76</span>
+<span id="cb14-3"><a href="" aria-hidden="true" tabindex="-1"></a>MLE (Poisson)  0.00221  0.476   3.55</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The two fits are close but not identical: under the Poisson model the variance scales with the mean, so the small counts at the start and end of the outbreak <span style="color: tomato;">carry more weight</span> than under the constant variance implied by least squares</li>
+<li>Only the MLE comes with a <span style="color: tomato;">confidence interval</span></li>
+</ul>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-2|3|5|6-7|1-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Fit NB model</span></span>
-<span id="cb21-2"><a href=""></a>fit_nb <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_nb,</span>
-<span id="cb21-3"><a href=""></a>               <span class="at">start =</span> <span class="fu">list</span>(<span class="at">beta =</span> <span class="fl">0.2</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">phi =</span> <span class="dv">10</span>),</span>
-<span id="cb21-4"><a href=""></a>               <span class="at">data =</span> <span class="fu">list</span>(<span class="at">data =</span> data),</span>
-<span id="cb21-5"><a href=""></a>               <span class="at">method =</span> <span class="st">"L-BFGS-B"</span>,</span>
-<span id="cb21-6"><a href=""></a>               <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>),</span>
-<span id="cb21-7"><a href=""></a>               <span class="at">upper =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>, <span class="dv">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p><a href="figures/04_mle_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="figures/04_mle_fit.png"></a></p>
+</section>
+<section id="model-comparison-poisson-versus-negative-binomial" class="slide level2">
+<h2>Model comparison: Poisson versus negative binomial</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-code-line-numbers="1-2|3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co"># A second observation model: negative binomial counts, which allow more</span></span>
+<span id="cb15-2"><a href=""></a><span class="co"># spread around the trajectory than Poisson (extra parameter phi)</span></span>
+<span id="cb15-3"><a href=""></a>nll_nb <span class="ot">&lt;-</span> <span class="cf">function</span>(log_beta, log_gamma, log_phi) {</span>
+<span id="cb15-4"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(<span class="at">beta =</span> <span class="fu">exp</span>(log_beta), <span class="at">gamma =</span> <span class="fu">exp</span>(log_gamma))</span>
+<span id="cb15-5"><a href=""></a>  <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnbinom</span>(flu<span class="sc">$</span>cases, <span class="at">mu =</span> predicted, <span class="at">size =</span> <span class="fu">exp</span>(log_phi), <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb15-6"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>fit_nb <span class="ot">&lt;-</span> <span class="fu">mle2</span>(nll_nb,</span>
+<span id="cb16-2"><a href=""></a>               <span class="at">start =</span> <span class="fu">list</span>(<span class="at">log_beta =</span> <span class="fu">coef</span>(fit_mle)[[<span class="st">"log_beta"</span>]],</span>
+<span id="cb16-3"><a href=""></a>                            <span class="at">log_gamma =</span> <span class="fu">coef</span>(fit_mle)[[<span class="st">"log_gamma"</span>]],</span>
+<span id="cb16-4"><a href=""></a>                            <span class="at">log_phi =</span> <span class="fu">log</span>(<span class="dv">10</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="model-comparison">Model comparison</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Poisson AIC: 19650.9 </code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a>Poisson AIC:           156.6 </span>
+<span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>Negative binomial AIC: 127.7 </span>
+<span id="cb17-3"><a href="" aria-hidden="true" tabindex="-1"></a>Delta AIC:             -28.9 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The negative binomial model is <span style="color: tomato;">strongly preferred</span>: the data are <span style="color: tomato;">overdispersed</span> relative to the Poisson model, whose variance is fixed at the mean</p>
+</section>
+<section id="section-7" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Negative Binomial AIC: 3189.442 </code></pre>
+<div class="callout-content">
+<ul>
+<li>The negative binomial model fits better by AIC. Does that mean the SIR model is right?</li>
+<li>What would you look at next before trusting the negative binomial fit for prediction?</li>
+</ul>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Delta AIC: -16461.45 </code></pre>
 </div>
 </div>
 </section>
-<section id="strengths-of-maximum-likelihood" class="slide level2">
+<section id="strengths-of-maximum-likelihood" class="slide level2 smaller">
 <h2>Strengths of maximum likelihood</h2>
-<p><strong>Statistical Rigor:</strong></p>
 <ul>
-<li>Principled probabilistic framework</li>
-<li>Asymptotic optimality properties</li>
-<li>Natural uncertainty quantification</li>
-<li>Enables formal hypothesis testing</li>
+<li>A <span style="color: tomato;">principled probabilistic framework</span>, with standard errors and confidence intervals as part of the estimate</li>
+<li><span style="color: tomato;">Formal model comparison</span> through likelihood ratios, AIC and BIC, as we have just used it</li>
+<li><span style="color: tomato;">Observation models that match the data</span>: Poisson counts, overdispersed counts, or continuous measurements</li>
+<li><span style="color: tomato;">Asymptotic optimality</span>: with enough data the estimates are as precise as any unbiased estimator can be</li>
 </ul>
 </section>
-<section id="practical-benefits-2" class="slide level2">
-<h2>Practical benefits</h2>
+<section id="assumptions-and-limitations-of-maximum-likelihood" class="slide level2 smaller">
+<h2>Assumptions and limitations of maximum likelihood</h2>
 <ul>
-<li>Confidence intervals and standard errors</li>
-<li>Model comparison via AIC/BIC</li>
-<li>Handles different error structures</li>
-<li>Extensible to complex models</li>
+<li>An explicit <span style="color: tomato;">observation model</span> must be specified, and can be <span style="color: tomato;">misspecified</span></li>
+<li>Numerical optimisation requires sensible starting values and can converge to a <span style="color: tomato;">local maximum</span>; we started from the least squares fit for exactly that reason</li>
+<li>Standard errors and Wald intervals rest on <span style="color: tomato;">asymptotic (large-sample) arguments</span> that fourteen observations may not satisfy; the profile likelihood is more reliable</li>
+<li><span style="color: tomato;">Parameter identifiability</span> is not resolved by the method: the profiles were narrow here only because these data are unusually clean</li>
 </ul>
 </section>
-<section id="limitations-of-maximum-likelihood" class="slide level2">
-<h2>Limitations of maximum likelihood</h2>
-<p><strong>Computational Challenges:</strong></p>
-<ul>
-<li>More complex than least squares</li>
-<li>Requires optimization algorithms</li>
-<li>Can get stuck in local minima</li>
-<li>Sensitive to starting values</li>
-</ul>
-</section>
-<section id="statistical-assumptions" class="slide level2">
-<h2>Statistical assumptions</h2>
-<ul>
-<li>Requires specification of error distribution</li>
-<li>Assumes model structure is correct</li>
-<li>Asymptotic properties may not hold</li>
-<li>Can be sensitive to outliers</li>
-</ul>
-</section>
-<section id="identifiability-issues" class="slide level2">
-<h2>Identifiability issues</h2>
-<ul>
-<li>Still suffers from parameter identifiability</li>
-<li>Profile likelihood can be computationally expensive</li>
-<li>May not converge for complex models</li>
-</ul>
-</section>
-<section id="r-implementation-practicals-1" class="slide level2" data-background-color="#447099" data-transition="fade-in">
-<h2>R implementation practicals</h2>
-<ul>
-<li>Let’s turn to the <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals">tutorials</a></li>
-</ul>
+<section id="section-8" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
 </section></section>
 <section>
 <section id="comparison-of-methods" class="title-slide slide level1 center">
@@ -837,217 +832,716 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section id="when-to-use-each-method" class="slide level2">
 <h2>When to use each method</h2>
-<p><strong>Use Least Squares When:</strong></p>
+<h3 id="least-squares">Least squares</h3>
 <ul>
-<li>Quick exploratory analysis needed</li>
-<li>Getting initial parameter estimates</li>
-<li>Computational speed is critical</li>
-<li>Simple error structure assumed</li>
+<li><span style="color: tomato;">Exploratory analysis</span>, where a quick point estimate is enough</li>
+<li>Obtaining <span style="color: tomato;">initial values</span> for likelihood-based or Bayesian methods</li>
+<li>Situations where <span style="color: tomato;">computational speed</span> matters and a simple error structure is acceptable</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><strong>Use Maximum Likelihood When:</strong></p>
+<h3 id="maximum-likelihood">Maximum likelihood</h3>
 <ul>
-<li>Uncertainty quantification needed</li>
-<li>Comparing different models</li>
-<li>Formal statistical inference required</li>
-<li>Complex error structures present</li>
-<li>Publication-quality results needed</li>
+<li>Whenever <span style="color: tomato;">uncertainty quantification</span> is required</li>
+<li><span style="color: tomato;">Model comparison and selection</span> between candidate models</li>
+<li>Data with <span style="color: tomato;">overdispersion</span> or other non-constant error structures</li>
+<li><span style="color: tomato;">Formal statistical inference</span> for reports and publications</li>
 </ul>
+</section>
+<section id="r-implementation-practicals" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2>R implementation practicals</h2>
+<h4 id="r-practicals">R Practicals</h4>
+<ul>
+<li><p>Fit the SIR model to the influenza data by least squares and by maximum likelihood, following <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals"><code>01_least_squares_mle_practicals.qmd</code></a></p></li>
+<li><p>Download the file <code>Day05-pack</code> from Moodle or clone it from GitHub using the following command in your terminal</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
+<span id="cb18-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section></section>
+<section>
+<section id="bayesian-inference-and-mcmc" class="title-slide slide level1 center">
+<h1>Bayesian inference and MCMC</h1>
+
+</section>
+<section id="from-point-estimates-to-posterior-distributions" class="slide level2">
+<h2>From point estimates to posterior distributions</h2>
+<h3 id="point-estimation-least-squares-and-maximum-likelihood">Point estimation: least squares and maximum likelihood</h3>
+<ul>
+<li>One <span style="color: tomato;">best</span> value for each parameter, <span style="color: steelblue;"><span class="math inline">\(\hat{\theta}\)</span></span></li>
+<li>Uncertainty came afterwards, from <span style="color: tomato;">standard errors</span> or the <span style="color: tomato;">profile likelihood</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="the-bayesian-formulation">The Bayesian formulation</h3>
+<p>So far we have asked <em>which</em> <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> fits best. A Bayesian asks</p>
+<p><span style="color: tomato;">**“How plausible is each value of** <span class="math inline">\(\theta\)</span>, given the data?”</span></p>
+<ul>
+<li>The answer is a <span style="color: tomato;">probability distribution</span> over <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span></li>
+<li>Every estimate, interval and prediction we report comes from that one distribution</li>
+</ul>
+</section>
+<section id="bayesian-inference-is-reallocation-of-credibility" class="slide level2 smaller">
+<h2>Bayesian inference is reallocation of credibility</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<ul>
+<li>Before we see any data, each possible value of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> has some <span style="color: tomato;">prior</span> credibility</li>
+<li>The data then make some values more believable and others less</li>
+<li><span style="color: tomato;">Bayes’ rule</span> is the rule for moving credibility towards the values that explain the data well</li>
+</ul>
+<p><em>Bayesian analysis is reallocation of credibility across possibilities. The rest is details.</em></p>
+</div><div class="column" style="width:58%;">
+<p><a href="figures/06_bayes_update.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="figures/06_bayes_update.png"></a></p>
+</div></div>
+</section>
+<section id="bayes-rule" class="slide level2">
+<h2>Bayes’ rule</h2>
+<div style="color: steelblue;">
+<p><span class="math display">\[p(\theta \mid y) = \frac{p(y \mid \theta)\, p(\theta)}{p(y)}\]</span></p>
+</div>
+<ul>
+<li><span style="color: steelblue;"><span class="math inline">\(p(\theta)\)</span></span> is the <span style="color: tomato;">prior</span>, what we believed before seeing the data <span class="math inline">\(y\)</span></li>
+<li><span style="color: steelblue;"><span class="math inline">\(p(y \mid \theta)\)</span></span> is the <span style="color: tomato;">likelihood</span>, the same function we maximised in the MLE section</li>
+<li><span style="color: steelblue;"><span class="math inline">\(p(\theta \mid y)\)</span></span> is the <span style="color: tomato;">posterior</span>, what we believe now</li>
+<li><span style="color: steelblue;"><span class="math inline">\(p(y)\)</span></span> is a <span style="color: tomato;">normalising constant</span>. It is the same number for every <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, so it does not change the shape of the posterior</li>
+</ul>
+<div style="color: steelblue;">
+<p><span class="math display">\[\text{posterior} \propto \text{likelihood} \times \text{prior}\]</span></p>
+</div>
+</section>
+<section id="the-prior" class="slide level2">
+<h2>The prior</h2>
+<h3 id="sources-of-prior-information">Sources of prior information</h3>
+<ul>
+<li><span style="color: tomato;">Earlier outbreaks and the literature</span>, for example the infectious period of influenza</li>
+<li><span style="color: tomato;">Constraints</span>: rates are positive, proportions lie between 0 and 1</li>
+<li><span style="color: tomato;">Expert judgement</span>: what the people who know the disease think</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="vague-and-informative-priors">Vague and informative priors</h3>
+<ul>
+<li>A <span style="color: tomato;">vague</span> prior spreads credibility widely and leaves the work to the data</li>
+<li>An <span style="color: tomato;">informative</span> prior writes down what we already know. It matters most when the data are thin</li>
+<li>Either way the prior is part of the model, so <span style="color: tomato;">say what it is, and check what it implies</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="prior-predictive-checks">Prior predictive checks</h3>
+<div style="font-size: 0.8em;">
+<div class="columns">
+<div class="column" style="width:42%;">
+<ul>
+<li>Nobody has intuition for a prior on <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span>. Everybody has intuition for an epidemic curve</li>
+<li>So <span style="color: tomato;">draw parameter values from the prior, run the model</span>, and look at the epidemics it produces</li>
+<li>If half of them put the whole school in bed by day two, the prior is telling you something you did not intend</li>
+</ul>
+</div><div class="column" style="width:58%;">
+<p><a href="figures/06_flu_prior_predictive.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="figures/06_flu_prior_predictive.png"></a></p>
+</div></div>
+</div>
+</section>
+<section id="section-9" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>What prior would you put on the infectious period of influenza? Of Ebola? Where would you get it from?</li>
+<li>Is a prior that puts the whole school in bed by day two “wrong”, or just vague?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-posterior" class="slide level2">
+<h2>The posterior</h2>
+<h3 id="posterior-summaries">Posterior summaries</h3>
+<div style="font-size: 0.8em;">
+<ul>
+<li>A <span style="color: tomato;">point estimate</span>, if you want one: the posterior mean or median</li>
+<li>A <span style="color: tomato;">95% credible interval</span>, the range that holds 95% of the posterior probability</li>
+<li>You can read it literally: *“there is a 95% probability that* <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span> lies between <span style="color: steelblue;">3.4 and 3.7</span>”. A confidence interval does not allow that sentence</li>
+<li>Anything you can compute from the parameters, such as <span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span>, comes with its own distribution at no extra cost</li>
+<li><span style="color: tomato;">Predictions</span> that carry the parameter uncertainty through</li>
+</ul>
+</div>
+</section>
+<section id="the-posterior-is-intractable" class="slide level2">
+<h2>The posterior is intractable</h2>
+<h3 id="the-normalising-constant">The normalising constant</h3>
+<div style="color: steelblue;">
+<p><span class="math display">\[p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta\]</span></p>
+</div>
+<ul>
+<li>This is an <span style="color: tomato;">integral over every combination of parameter values</span>, and for an ODE model there is no formula for it</li>
+<li>What we <em>can</em> do is evaluate <span style="color: steelblue;"><span class="math inline">\(p(y \mid \theta)\, p(\theta)\)</span></span> at any <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> we like, which gives us the posterior <span style="color: tomato;">up to that unknown constant</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="grid-evaluation-does-not-scale">Grid evaluation does not scale</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Parameters</th>
+<th style="text-align: right;">Grid points at 15 values each</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">225</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">50,625</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">11,390,625</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">576,650,390,625</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>With two parameters a grid is a fine way to <em>look at</em> the posterior</li>
+<li>With six it is <span style="color: tomato;">out of the question</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="grid-evaluation-for-the-influenza-outbreak">Grid evaluation for the influenza outbreak</h3>
+<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
+<p><span style="color: steelblue;">3,600</span> model runs, and <span style="color: tomato;">nearly all of them landed where the posterior is zero</span></p>
+</section>
+<section id="section-10" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="monte-carlo-estimation" class="slide level2 smaller">
+<h2>Monte Carlo estimation</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<ul>
+<li>If you want the mean height of the people of Kumasi you do not measure everyone. You measure a <span style="color: tomato;">sample</span></li>
+<li>A posterior can be treated the same way. Given enough draws of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, the <span style="color: tomato;">mean, the quantiles and the histogram of the sample</span> are as good as the real thing</li>
+</ul>
+</div><div class="column" style="width:58%;">
+<p><a href="figures/06_monte_carlo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="figures/06_monte_carlo.png"></a></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="sampling-from-an-unnormalised-density">Sampling from an unnormalised density</h3>
+<ul>
+<li>Monte Carlo needs <span style="color: tomato;">samples</span> from the posterior</li>
+<li>All we can do is <span style="color: tomato;">evaluate</span> the posterior, up to a constant, at any point we choose</li>
+</ul>
+<p><span style="color: tomato;"><strong>How do you draw samples from something you can only evaluate?</strong></span></p>
+</section>
+<section id="markov-chain-monte-carlo" class="slide level2 smaller">
+<h2>Markov chain Monte Carlo</h2>
+<p><span style="color: tomato;"><strong>Core idea:</strong></span> generate the samples one after another as a <span style="color: tomato;">chain</span>, where each new value depends only on the one before it (that is what <em>Markov</em> means), and set up the rule for the next step so that the chain spends time in each region in proportion to the posterior density</p>
+<ul>
+<li>Start somewhere. Propose a small move. Accept or reject it depending on how the posterior changes. Repeat</li>
+<li>Run it long enough and the values in the chain are draws from the posterior, and we <span style="color: tomato;">never had to compute <span class="math inline">\(p(y)\)</span></span></li>
+<li>The original version is the <span style="color: tomato;">Metropolis algorithm</span>, which is what we build next</li>
+</ul>
+</section>
+<section id="the-metropolis-algorithm" class="slide level2 smaller scrollable">
+<h2>The Metropolis algorithm</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li>Start at some <span style="color: steelblue;"><span class="math inline">\(\theta^{(0)}\)</span></span></li>
+<li>Propose <span style="color: steelblue;"><span class="math inline">\(\theta^* = \theta + \varepsilon\)</span></span>, where <span style="color: steelblue;"><span class="math inline">\(\varepsilon\)</span></span> comes from a <span style="color: tomato;">symmetric</span> proposal distribution such as <span style="color: steelblue;"><span class="math inline">\(N(0, \sigma^2)\)</span></span></li>
+<li>Compute <span style="color: steelblue;"><span class="math inline">\(r = \dfrac{p(\theta^* \mid y)}{p(\theta \mid y)}\)</span></span>. The constant <span style="color: steelblue;"><span class="math inline">\(p(y)\)</span></span> appears top and bottom and <span style="color: tomato;">cancels</span></li>
+<li>Draw <span style="color: steelblue;"><span class="math inline">\(u \sim U(0, 1)\)</span></span>. If <span style="color: steelblue;"><span class="math inline">\(u &lt; r\)</span></span> <span style="color: tomato;">accept</span> the move (<span style="color: steelblue;"><span class="math inline">\(\theta \leftarrow \theta^*\)</span></span>); otherwise <span style="color: tomato;">stay where you are</span></li>
+<li>Record <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> and go back to step 2</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<p><a href="figures/06_metropolis_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="figures/06_metropolis_flowchart.png"></a></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="the-acceptance-rule">The acceptance rule</h3>
+<p><a href="figures/06_metropolis_step.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="figures/06_metropolis_step.png"></a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="consequences-of-the-acceptance-rule">Consequences of the acceptance rule</h3>
+<ul>
+<li>If the proposal has higher posterior density than where we are, we <span style="color: tomato;">always</span> take it</li>
+<li>If it has lower density we take it <span style="color: tomato;">with probability <span class="math inline">\(r\)</span></span>. The chain can walk downhill, which is why it explores the distribution instead of climbing to the top and staying there</li>
+<li>When a proposal is rejected the current value is <span style="color: tomato;">written down again</span>. Those repeats are part of the sample, so do not throw them away</li>
+<li>Put together, the chain visits each region <span style="color: tomato;">in proportion to its posterior density</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="detailed-balance-and-the-stationary-distribution">Detailed balance and the stationary distribution</h3>
+<div style="font-size: 0.8em;">
+<ul>
+<li>The acceptance rule gives the chain <span style="color: tomato;">detailed balance</span>: as much probability flows from <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\theta^*\)</span> as flows back, so nothing piles up anywhere <span style="color: steelblue;"><span class="math display">\[p(\theta \mid y)\, q(\theta^* \mid \theta)\, \alpha(\theta, \theta^*) = p(\theta^* \mid y)\, q(\theta \mid \theta^*)\, \alpha(\theta^*, \theta)\]</span></span></li>
+<li><span style="color: steelblue;"><span class="math inline">\(\alpha = \min(1, r)\)</span></span> is the smallest correction that makes this hold</li>
+<li>The posterior is then the chain’s <span style="color: tomato;">stationary distribution</span>. Run it long enough and its values are posterior draws</li>
+<li>With an asymmetric proposal the ratio needs a correction. That is <span style="color: tomato;">Metropolis–Hastings</span>: <span style="color: steelblue;"><span class="math display">\[r = \frac{p(\theta^* \mid y)\, q(\theta \mid \theta^*)}{p(\theta \mid y)\, q(\theta^* \mid \theta)}\]</span></span></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="implementation-in-r">Implementation in R</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-code-line-numbers="1-5|7-9|10-16|17-18|20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>metropolis_1d <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_sd) {</span>
+<span id="cb19-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_iter)</span>
+<span id="cb19-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
+<span id="cb19-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
+<span id="cb19-5"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb19-6"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
+<span id="cb19-7"><a href=""></a>    <span class="co"># 1. propose a move: current value plus symmetric noise</span></span>
+<span id="cb19-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> proposal_sd)</span>
+<span id="cb19-9"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
+<span id="cb19-10"><a href=""></a>    <span class="co"># 2. accept with probability min(1, p(proposal) / p(theta)); on the log</span></span>
+<span id="cb19-11"><a href=""></a>    <span class="co">#    scale that is: accept if log(u) &lt; log_p_proposal - log_p</span></span>
+<span id="cb19-12"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
+<span id="cb19-13"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
+<span id="cb19-14"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
+<span id="cb19-15"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb19-16"><a href=""></a>    }</span>
+<span id="cb19-17"><a href=""></a>    <span class="co"># 3. record where the chain is (the old value again, if we rejected)</span></span>
+<span id="cb19-18"><a href=""></a>    samples[i] <span class="ot">&lt;-</span> theta</span>
+<span id="cb19-19"><a href=""></a>  }</span>
+<span id="cb19-20"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
+<span id="cb19-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Everything is done on the <span style="color: tomato;">log scale</span>, so the products become sums and the tiny likelihoods do not underflow to zero</p>
+</section>
+<section class="slide level2">
+
+<h3 id="validation-on-a-known-target-distribution">Validation on a known target distribution</h3>
+<p>The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on <span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span>, where we know what the answer should look like.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="figures/06_metropolis_normal.png"></a></p>
+</section>
+<section id="section-11" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="practical-implementation" class="slide level2">
+<h2>Practical implementation</h2>
+<h3 id="tuning-the-proposal">Tuning the proposal</h3>
+<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="figures/06_proposal_tuning.png"></a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="proposal-scale-and-acceptance-rate">Proposal scale and acceptance rate</h3>
+<ul>
+<li>Make the proposal <span style="color: tomato;">too narrow</span> and nearly every move is accepted, but each move is tiny and the chain crawls</li>
+<li>Make it <span style="color: tomato;">too wide</span> and nearly every move is rejected, so the chain sits still for long stretches</li>
+<li>For a random walk proposal, aim for an acceptance rate of about <span style="color: tomato;">44% with one parameter, down to about 23% with many</span></li>
+<li>If the parameters are <span style="color: tomato;">correlated</span> in the posterior, the proposal should be correlated the same way</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="burn-in">Burn-in</h3>
+<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_burn_in.png"></a></p>
+<ul>
+<li>We chose the starting point, so the first part of the chain says more about that choice than about the posterior</li>
+<li>Throw those early samples away. This is the <span style="color: tomato;">burn-in</span>. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it</li>
+<li>How much to discard is decided <span style="color: tomato;">after looking at the chain</span>, never before</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="convergence-assessment-with-multiple-chains">Convergence assessment with multiple chains</h3>
+<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="figures/06_convergence.png"></a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="convergence-diagnostics">Convergence diagnostics</h3>
+<div style="font-size: 0.8em;">
+<ul>
+<li>A single chain cannot tell you about the places it has never been</li>
+<li>So start <span style="color: tomato;">several chains far apart</span>. If they end up indistinguishable, they have found the same distribution</li>
+<li><span style="color: tomato;"><span class="math inline">\(\hat{R}\)</span></span> turns that into a number by comparing the variance between chains with the variance within them. We want <span style="color: steelblue;"><span class="math inline">\(\hat{R}\)</span> below 1.01</span></li>
+<li>Consecutive draws are correlated, so 20,000 of them carry less information than 20,000 independent draws would. The <span style="color: tomato;">effective sample size</span> is the number that matters</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Gelman-Rubin R-hat: variance between chains relative to variance within them.</span></span>
+<span id="cb21-2"><a href=""></a><span class="co"># Chains that have found the same distribution give R-hat close to 1.</span></span>
+<span id="cb21-3"><a href=""></a>rhat <span class="ot">&lt;-</span> <span class="cf">function</span>(chains) {</span>
+<span id="cb21-4"><a href=""></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(chains[[<span class="dv">1</span>]])</span>
+<span id="cb21-5"><a href=""></a>  W <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(chains, var))            <span class="co"># mean within-chain variance</span></span>
+<span id="cb21-6"><a href=""></a>  B <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="fu">var</span>(<span class="fu">sapply</span>(chains, mean))        <span class="co"># n x variance of the chain means</span></span>
+<span id="cb21-7"><a href=""></a>  <span class="fu">sqrt</span>(((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> W <span class="sc">+</span> B <span class="sc">/</span> n) <span class="sc">/</span> W)</span>
+<span id="cb21-8"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="convergence-checklist">Convergence checklist</h3>
+<ul>
+<li>The <span style="color: tomato;">trace plots</span> show no trend, the same spread at the start as at the end, and the chains lie on top of each other</li>
+<li>The <span style="color: tomato;">acceptance rate</span> is in a sensible range</li>
+<li><span style="color: steelblue;"><span class="math inline">\(\hat{R}\)</span></span> is close to 1 and the <span style="color: tomato;">effective sample size</span> is in the hundreds at least</li>
+<li><span style="color: tomato;">Any of these checks can show you a problem. None of them can prove there is not one</span></li>
+</ul>
+</section>
+<section id="section-12" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="section-13" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>You run one chain for a million iterations and its trace plot looks perfect. What can it still not tell you?</li>
+<li>The acceptance rate is 95%. Is that good news?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcmc-for-the-1978-influenza-outbreak" class="slide level2">
+<h2>MCMC for the 1978 influenza outbreak</h2>
+<p>The data, the model and <code>predict_cases()</code> are the ones from the least squares and MLE sections. From here on we do something different with the <span style="color: tomato;">likelihood</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="prior-likelihood-posterior">Prior, likelihood, posterior</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-code-line-numbers="1|3-8|10-15|17-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># Sample theta = (log beta, log gamma): the chain roams freely, the rates stay positive</span></span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a><span class="co"># Prior: normal on the logs (lognormal on beta and gamma), centred on R0 = 2 and a</span></span>
+<span id="cb22-4"><a href=""></a><span class="co"># 2-day infectious period, with sd 1 on the log scale (a factor of ~2.7 either way)</span></span>
+<span id="cb22-5"><a href=""></a>log_prior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
+<span id="cb22-6"><a href=""></a>  <span class="fu">dnorm</span>(theta[<span class="dv">1</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href=""></a>    <span class="fu">dnorm</span>(theta[<span class="dv">2</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.5</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-8"><a href=""></a>}</span>
+<span id="cb22-9"><a href=""></a></span>
+<span id="cb22-10"><a href=""></a><span class="co"># Likelihood: Poisson counts around the model trajectory, as in the MLE section</span></span>
+<span id="cb22-11"><a href=""></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
+<span id="cb22-12"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(<span class="at">beta =</span> <span class="fu">exp</span>(theta[<span class="dv">1</span>]), <span class="at">gamma =</span> <span class="fu">exp</span>(theta[<span class="dv">2</span>]))</span>
+<span id="cb22-13"><a href=""></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(predicted)) <span class="sc">||</span> <span class="fu">any</span>(predicted <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="cn">Inf</span>)  <span class="co"># solver hiccup</span></span>
+<span id="cb22-14"><a href=""></a>  <span class="fu">sum</span>(<span class="fu">dpois</span>(flu<span class="sc">$</span>cases, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-15"><a href=""></a>}</span>
+<span id="cb22-16"><a href=""></a></span>
+<span id="cb22-17"><a href=""></a><span class="co"># Posterior up to a constant: all the Metropolis ratio needs</span></span>
+<span id="cb22-18"><a href=""></a>log_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">log_prior</span>(theta) <span class="sc">+</span> <span class="fu">log_likelihood</span>(theta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="the-multivariate-metropolis-sampler">The multivariate Metropolis sampler</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-code-line-numbers="1-6|8-10|11-15|16|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>metropolis <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_cov) {</span>
+<span id="cb23-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_iter, <span class="at">ncol =</span> <span class="fu">length</span>(init))</span>
+<span id="cb23-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
+<span id="cb23-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
+<span id="cb23-5"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.finite</span>(log_p)) <span class="fu">stop</span>(<span class="st">"the starting value has zero posterior density"</span>)</span>
+<span id="cb23-6"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb23-7"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
+<span id="cb23-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(<span class="dv">1</span>, <span class="at">mu =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(init)),</span>
+<span id="cb23-9"><a href=""></a>                                      <span class="at">Sigma =</span> proposal_cov)</span>
+<span id="cb23-10"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
+<span id="cb23-11"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
+<span id="cb23-12"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
+<span id="cb23-13"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
+<span id="cb23-14"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb23-15"><a href=""></a>    }</span>
+<span id="cb23-16"><a href=""></a>    samples[i, ] <span class="ot">&lt;-</span> theta</span>
+<span id="cb23-17"><a href=""></a>  }</span>
+<span id="cb23-18"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
+<span id="cb23-19"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="adaptive-tuning-and-multiple-chains">Adaptive tuning and multiple chains</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-code-line-numbers="1-4|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="co"># Pilot run: a rough, uncorrelated proposal to find the region of high posterior</span></span>
+<span id="cb24-2"><a href=""></a>pilot <span class="ot">&lt;-</span> <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">3000</span>,</span>
+<span id="cb24-3"><a href=""></a>                    <span class="at">init =</span> <span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="fu">log</span>(<span class="fl">0.5</span>)),</span>
+<span id="cb24-4"><a href=""></a>                    <span class="at">proposal_cov =</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb24-5"><a href=""></a></span>
+<span id="cb24-6"><a href=""></a><span class="co"># Tune: scale the covariance of the pilot samples (Roberts &amp; Rosenthal's 2.38^2/d)</span></span>
+<span id="cb24-7"><a href=""></a>tuned_cov <span class="ot">&lt;-</span> <span class="fl">2.38</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cov</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-code-line-numbers="1-6|7-8|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co"># Four chains from starting points spread well beyond the posterior (a factor</span></span>
+<span id="cb25-2"><a href=""></a><span class="co"># of ~1.6 either side of the pilot centre), so that agreement between them means</span></span>
+<span id="cb25-3"><a href=""></a><span class="co"># something</span></span>
+<span id="cb25-4"><a href=""></a>centre <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span>
+<span id="cb25-5"><a href=""></a>starts <span class="ot">&lt;-</span> <span class="fu">list</span>(centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>),</span>
+<span id="cb25-6"><a href=""></a>               centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
+<span id="cb25-7"><a href=""></a>chains <span class="ot">&lt;-</span> <span class="fu">lapply</span>(starts, <span class="cf">function</span>(s) <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">6000</span>,</span>
+<span id="cb25-8"><a href=""></a>                                                 <span class="at">init =</span> s, <span class="at">proposal_cov =</span> tuned_cov))</span>
+<span id="cb25-9"><a href=""></a>burn_in <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb25-10"><a href=""></a>posterior_samples <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(chains, <span class="cf">function</span>(ch) ch<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burn_in), ]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="convergence-diagnostics-for-the-influenza-fit">Convergence diagnostics for the influenza fit</h3>
+<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="figures/06_flu_traces.png"></a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="marginal-and-joint-posterior-distributions">Marginal and joint posterior distributions</h3>
+<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="figures/06_flu_posterior.png"></a></p>
+</section>
+<section class="slide level2">
+
+<h3 id="posterior-estimates">Posterior estimates</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>Posterior summaries: 4 chains x 5,000 draws after burn-in</span>
+<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>                       mean    median  2.5%    97.5%  </span>
+<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>beta                   0.00221 0.00221 0.00218 0.00225</span>
+<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a>gamma                  0.476   0.476   0.455   0.497  </span>
+<span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a>R0                     3.55    3.55    3.40    3.71   </span>
+<span id="cb26-7"><a href="" aria-hidden="true" tabindex="-1"></a>infectious_period_days 2.10    2.10    2.01    2.20   </span>
+<span id="cb26-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="" aria-hidden="true" tabindex="-1"></a>Acceptance rates: 45%, 44%, 45%, 44% </span>
+<span id="cb26-10"><a href="" aria-hidden="true" tabindex="-1"></a>R-hat: beta 1.000, gamma 1.001</span>
+<span id="cb26-11"><a href="" aria-hidden="true" tabindex="-1"></a>Effective sample size: beta 2456, gamma 2799 of 20000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="posterior-predictive-fit">Posterior predictive fit</h3>
+<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_flu_fit.png"></a></p>
+</section>
+<section id="section-14" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>The 95% credible interval for <span class="math inline">\(R_0\)</span> is 3.40 to 3.71. What does that interval assume, and what could make it wrong?</li>
+<li>The posterior predictive band misses the peak. Which of the sources of uncertainty from section 2 is the model missing?</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="beyond-the-metropolis-algorithm" class="slide level2 smaller">
+<h2>Beyond the Metropolis algorithm</h2>
+<ul>
+<li><span style="color: tomato;">Metropolis-within-Gibbs</span> updates one parameter, or one block of parameters, at a time, which helps when the parameters are correlated</li>
+<li><span style="color: tomato;">Adaptive MCMC</span> learns the proposal covariance from the chain while it runs, so you do not have to tune it by hand</li>
+<li><span style="color: tomato;">Hamiltonian Monte Carlo</span>, and its self-tuning version NUTS, uses the gradient of the log posterior to propose long moves in a sensible direction. It is the default sampler in Stan</li>
+<li><span style="color: tomato;">Particle MCMC</span> is for stochastic models, where the likelihood itself has to be estimated by simulation. That is the next section</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="probabilistic-programming-languages">Probabilistic programming languages</h3>
+<ul>
+<li>You write down the <span style="color: tomato;">model, the prior and the likelihood</span>. The software does the sampling and reports the diagnostics</li>
+<li>Stan (through <code>rstan</code> or <code>cmdstanr</code>), <code>nimble</code>, <code>brms</code>, PyMC and Turing.jl all work this way</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="example-the-sir-model-in-stan">Example: the SIR model in Stan</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-code-line-numbers="1-13|15-22|24-28|30-38|40-45|47-50"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb27-1"><a href=""></a><span class="co">// SIR model in Stan (walkthrough)</span></span>
+<span id="cb27-2"><a href=""></a><span class="co">// Functions block: derivative of [S, I, R]</span></span>
+<span id="cb27-3"><a href=""></a><span class="kw">functions</span> {</span>
+<span id="cb27-4"><a href=""></a>  <span class="dt">vector</span> SIR(<span class="dt">real</span> t, <span class="dt">vector</span> y, <span class="dt">array</span>[] <span class="dt">real</span> theta) {</span>
+<span id="cb27-5"><a href=""></a>    <span class="dt">real</span> S = y[<span class="dv">1</span>]; <span class="dt">real</span> I = y[<span class="dv">2</span>]; <span class="dt">real</span> R = y[<span class="dv">3</span>];</span>
+<span id="cb27-6"><a href=""></a>    <span class="dt">real</span> beta = theta[<span class="dv">1</span>]; <span class="dt">real</span> gamma = theta[<span class="dv">2</span>];</span>
+<span id="cb27-7"><a href=""></a>    <span class="dt">vector</span>[<span class="dv">3</span>] dydt;</span>
+<span id="cb27-8"><a href=""></a>    dydt[<span class="dv">1</span>] = -beta * S * I;</span>
+<span id="cb27-9"><a href=""></a>    dydt[<span class="dv">2</span>] =  beta * S * I - gamma * I;</span>
+<span id="cb27-10"><a href=""></a>    dydt[<span class="dv">3</span>] =  gamma * I;</span>
+<span id="cb27-11"><a href=""></a>    <span class="cf">return</span> dydt;</span>
+<span id="cb27-12"><a href=""></a>  }</span>
+<span id="cb27-13"><a href=""></a>}</span>
+<span id="cb27-14"><a href=""></a></span>
+<span id="cb27-15"><a href=""></a><span class="co">// Data block: obs counts &amp; time grid</span></span>
+<span id="cb27-16"><a href=""></a><span class="kw">data</span> {</span>
+<span id="cb27-17"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_obs;</span>
+<span id="cb27-18"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_pop;</span>
+<span id="cb27-19"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">int</span> y;</span>
+<span id="cb27-20"><a href=""></a>  <span class="dt">real</span> t0;</span>
+<span id="cb27-21"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> ts;</span>
+<span id="cb27-22"><a href=""></a>}</span>
+<span id="cb27-23"><a href=""></a></span>
+<span id="cb27-24"><a href=""></a><span class="co">// Parameters: beta, gamma, S0</span></span>
+<span id="cb27-25"><a href=""></a><span class="kw">parameters</span> {</span>
+<span id="cb27-26"><a href=""></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; theta;     <span class="co">// {beta, gamma}</span></span>
+<span id="cb27-27"><a href=""></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; S0;         <span class="co">// initial susceptible fraction</span></span>
+<span id="cb27-28"><a href=""></a>}</span>
+<span id="cb27-29"><a href=""></a></span>
+<span id="cb27-30"><a href=""></a><span class="co">// Transformed params: ODE solve + Poisson rate</span></span>
+<span id="cb27-31"><a href=""></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb27-32"><a href=""></a>  <span class="dt">vector</span>[<span class="dv">3</span>] y_init;</span>
+<span id="cb27-33"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">vector</span>[<span class="dv">3</span>] y_hat;</span>
+<span id="cb27-34"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> lambda;</span>
+<span id="cb27-35"><a href=""></a>  y_init[<span class="dv">1</span>] = S0; y_init[<span class="dv">2</span>] = <span class="dv">1</span> - S0; y_init[<span class="dv">3</span>] = <span class="dv">0</span>;</span>
+<span id="cb27-36"><a href=""></a>  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span>
+<span id="cb27-37"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span>:n_obs) lambda[i] = y_hat[i, <span class="dv">2</span>] * n_pop;</span>
+<span id="cb27-38"><a href=""></a>}</span>
+<span id="cb27-39"><a href=""></a></span>
+<span id="cb27-40"><a href=""></a><span class="co">// Model: priors + likelihood</span></span>
+<span id="cb27-41"><a href=""></a><span class="kw">model</span> {</span>
+<span id="cb27-42"><a href=""></a>  theta ~ lognormal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb27-43"><a href=""></a>  S0    ~ beta(<span class="dv">1</span>, <span class="dv">1</span>);</span>
+<span id="cb27-44"><a href=""></a>  y     ~ poisson(lambda);</span>
+<span id="cb27-45"><a href=""></a>}</span>
+<span id="cb27-46"><a href=""></a></span>
+<span id="cb27-47"><a href=""></a><span class="co">// GQ: derived R0</span></span>
+<span id="cb27-48"><a href=""></a><span class="kw">generated quantities</span> {</span>
+<span id="cb27-49"><a href=""></a>  <span class="dt">real</span> R_0 = theta[<span class="dv">1</span>] / theta[<span class="dv">2</span>];</span>
+<span id="cb27-50"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-bayesian-workflow" class="slide level2 scrollable">
+<h2>The Bayesian workflow</h2>
+<ol type="1">
+<li>Write down the <span style="color: tomato;">model and the prior</span>, and check the prior by simulating from it</li>
+<li>Write down the <span style="color: tomato;">likelihood</span>, that is, how the data arise from the model</li>
+<li><span style="color: tomato;">Sample the posterior</span> with MCMC, using several chains started far apart</li>
+<li><span style="color: tomato;">Check the chains</span>: trace plots, acceptance rate, <span style="color: steelblue;"><span class="math inline">\(\hat{R}\)</span></span>, effective sample size</li>
+<li><span style="color: tomato;">Summarise the posterior</span>: means, credible intervals, and derived quantities such as <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span></li>
+<li><span style="color: tomato;">Check the fit</span> by plotting posterior predictions against the data</li>
+</ol>
+</section>
+<section id="section-15" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="r-implementation-practicals-1" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2>R implementation practicals</h2>
+<h4 id="r-practicals-1">R Practicals</h4>
+<ul>
+<li><p>Fit the SIR model to the influenza data with a Metropolis sampler you write yourself, following <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals"><code>02_mcmc_practicals.qmd</code></a></p></li>
+<li><p>Download the file <code>Day05-pack</code> from Moodle or clone it from GitHub using the following command in your terminal</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
+<span id="cb28-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="advanced-methods" class="title-slide slide level1 center">
 <h1>Advanced methods</h1>
 
 </section>
-<section id="beyond-least-squares-and-mle" class="slide level2">
-<h2>Beyond least squares and MLE</h2>
-<p><span style="color: tomato;"><strong>Why We Need Advanced Methods:</strong></span></p>
+<section id="limitations-of-likelihood-based-inference" class="slide level2 smaller">
+<h2>Limitations of likelihood-based inference</h2>
+<p>Everything today assumed we could <span style="color: tomato;">write down the likelihood and evaluate it quickly</span>. That stops being true when</p>
 <ul>
-<li>Parameter identifiability issues</li>
-<li>Complex error structures</li>
-<li>Model uncertainty</li>
-<li>Computational challenges</li>
-<li>Real-time fitting requirements</li>
+<li>the model is <span style="color: tomato;">stochastic</span>, so the same parameters give a different epidemic every run</li>
+<li>the <span style="color: tomato;">state of the system</span> (how many are infected right now) is itself unknown and has to be estimated along with the parameters</li>
+<li>the model is <span style="color: tomato;">expensive</span> enough that even MCMC’s thousands of evaluations are too many</li>
+<li>estimates are needed <span style="color: tomato;">as the outbreak unfolds</span>, updated every time new data arrive</li>
 </ul>
 </section>
-<section id="advanced-approaches" class="slide level2 scrollable">
-<h2>Advanced approaches</h2>
+<section id="overview-of-advanced-methods" class="slide level2 scrollable">
+<h2>Overview of advanced methods</h2>
 <ol type="1">
-<li><strong>Bayesian Methods</strong> (MCMC)</li>
-<li><strong>Particle Filtering</strong></li>
-<li><strong>Approximate Bayesian Computation (ABC)</strong></li>
-<li><strong>Ensemble Methods</strong></li>
+<li><span style="color: tomato;">Bayesian inference with MCMC</span>, which we have just done</li>
+<li><span style="color: tomato;">Particle filtering</span>, for stochastic models where the state is hidden</li>
+<li><span style="color: tomato;">Approximate Bayesian computation</span>, for when the likelihood cannot be written down at all</li>
 </ol>
+<p>And, cutting across all of them, <span style="color: tomato;">ensembles</span>: combining several models or several fits rather than betting on one</p>
 </section>
-<section id="bayesian-methods-mcmc" class="slide level2">
-<h2>Bayesian methods: MCMC</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Treat parameters as random variables with prior distributions</p>
-<p><strong>Bayes’ Theorem:</strong> <span class="math display">\[P(\theta | \mathbf{y}) = \frac{P(\mathbf{y} | \theta) P(\theta)}{P(\mathbf{y})}\]</span></p>
-</section>
-<section id="advantages" class="slide level2">
-<h2>Advantages</h2>
-<ul>
-<li>Natural uncertainty quantification</li>
-<li>Incorporates prior knowledge</li>
-<li>Handles parameter identifiability</li>
-<li>Model comparison via Bayes factors</li>
-</ul>
-</section>
-<section id="example-with-stan" class="slide level2">
-<h2>Example with Stan</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3-15|17-24|26-30|32-40|42-47|49-52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co"># Stan model for SIR fitting</span></span>
-<span id="cb25-2"><a href=""></a><span class="st">"</span></span>
-<span id="cb25-3"><a href=""></a><span class="st">// SIR model in Stan (walkthrough)                                        </span></span>
-<span id="cb25-4"><a href=""></a><span class="st">// Functions block: derivative of [S, I, R]                               </span></span>
-<span id="cb25-5"><a href=""></a><span class="st">functions {</span></span>
-<span id="cb25-6"><a href=""></a><span class="st">  vector SIR(real t, vector y, array[] real theta) {                      </span></span>
-<span id="cb25-7"><a href=""></a><span class="st">    real S = y[1]; real I = y[2]; real R = y[3];</span></span>
-<span id="cb25-8"><a href=""></a><span class="st">    real beta = theta[1]; real gamma = theta[2];</span></span>
-<span id="cb25-9"><a href=""></a><span class="st">    vector[3] dydt;</span></span>
-<span id="cb25-10"><a href=""></a><span class="st">    dydt[1] = -beta * S * I;</span></span>
-<span id="cb25-11"><a href=""></a><span class="st">    dydt[2] =  beta * S * I - gamma * I;</span></span>
-<span id="cb25-12"><a href=""></a><span class="st">    dydt[3] =  gamma * I;</span></span>
-<span id="cb25-13"><a href=""></a><span class="st">    return dydt;</span></span>
-<span id="cb25-14"><a href=""></a><span class="st">  }</span></span>
-<span id="cb25-15"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-16"><a href=""></a></span>
-<span id="cb25-17"><a href=""></a><span class="st">// Data block: obs counts &amp; time grid                                     </span></span>
-<span id="cb25-18"><a href=""></a><span class="st">data {</span></span>
-<span id="cb25-19"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_obs;</span></span>
-<span id="cb25-20"><a href=""></a><span class="st">  int&lt;lower=1&gt; n_pop;</span></span>
-<span id="cb25-21"><a href=""></a><span class="st">  array[n_obs] int y;</span></span>
-<span id="cb25-22"><a href=""></a><span class="st">  real t0;</span></span>
-<span id="cb25-23"><a href=""></a><span class="st">  array[n_obs] real ts;</span></span>
-<span id="cb25-24"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-25"><a href=""></a></span>
-<span id="cb25-26"><a href=""></a><span class="st">// Parameters: beta, gamma, S0                                             </span></span>
-<span id="cb25-27"><a href=""></a><span class="st">parameters {</span></span>
-<span id="cb25-28"><a href=""></a><span class="st">  array[2] real&lt;lower=0&gt; theta;     // {beta, gamma}</span></span>
-<span id="cb25-29"><a href=""></a><span class="st">  real&lt;lower=0,upper=1&gt; S0;         // initial susceptible fraction</span></span>
-<span id="cb25-30"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-31"><a href=""></a></span>
-<span id="cb25-32"><a href=""></a><span class="st">// Transformed params: ODE solve + Poisson rate                            </span></span>
-<span id="cb25-33"><a href=""></a><span class="st">transformed parameters {</span></span>
-<span id="cb25-34"><a href=""></a><span class="st">  vector[3] y_init;</span></span>
-<span id="cb25-35"><a href=""></a><span class="st">  array[n_obs] vector[3] y_hat;</span></span>
-<span id="cb25-36"><a href=""></a><span class="st">  array[n_obs] real lambda;</span></span>
-<span id="cb25-37"><a href=""></a><span class="st">  y_init[1] = S0; y_init[2] = 1 - S0; y_init[3] = 0;</span></span>
-<span id="cb25-38"><a href=""></a><span class="st">  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span></span>
-<span id="cb25-39"><a href=""></a><span class="st">  for (i in 1:n_obs) lambda[i] = y_hat[i, 2] * n_pop;</span></span>
-<span id="cb25-40"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-41"><a href=""></a></span>
-<span id="cb25-42"><a href=""></a><span class="st">// Model: priors + likelihood                                             </span></span>
-<span id="cb25-43"><a href=""></a><span class="st">model {</span></span>
-<span id="cb25-44"><a href=""></a><span class="st">  theta ~ lognormal(0, 1);</span></span>
-<span id="cb25-45"><a href=""></a><span class="st">  S0    ~ beta(1, 1);</span></span>
-<span id="cb25-46"><a href=""></a><span class="st">  y     ~ poisson(lambda);</span></span>
-<span id="cb25-47"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-48"><a href=""></a></span>
-<span id="cb25-49"><a href=""></a><span class="st">// GQ: derived R0                                                          </span></span>
-<span id="cb25-50"><a href=""></a><span class="st">generated quantities {</span></span>
-<span id="cb25-51"><a href=""></a><span class="st">  real R_0 = theta[1] / theta[2];</span></span>
-<span id="cb25-52"><a href=""></a><span class="st">}</span></span>
-<span id="cb25-53"><a href=""></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="particle-filtering" class="slide level2">
+<section id="particle-filtering" class="slide level2 smaller">
 <h2>Particle filtering</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Sequential Monte Carlo method for state-space models</p>
-<p><strong>When to Use:</strong></p>
-<ul>
-<li>Real-time parameter estimation</li>
-<li>State estimation in stochastic models</li>
-<li>Handling of missing data</li>
-<li>Time-varying parameters</li>
-</ul>
-</section>
-<section id="advantages-1" class="slide level2">
-<h2>Advantages</h2>
-<ul>
-<li>Handles stochasticity naturally</li>
-<li>Real-time updates</li>
-<li>No assumption of constant parameters</li>
-<li>Robust to model misspecification</li>
-</ul>
-</section>
-<section id="example-application" class="slide level2">
-<h2>Example application</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
-<span id="cb26-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
-<span id="cb26-3"><a href=""></a></span>
-<span id="cb26-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
-<span id="cb26-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
-<span id="cb26-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
-<span id="cb26-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
-<span id="cb26-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
-<span id="cb26-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
-<span id="cb26-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
-<span id="cb26-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
-<span id="cb26-12"><a href=""></a>  ),</span>
-<span id="cb26-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
-<span id="cb26-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
-<span id="cb26-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
-<span id="cb26-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
-<span id="cb26-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
-<span id="cb26-18"><a href=""></a>)</span>
-<span id="cb26-19"><a href=""></a></span>
-<span id="cb26-20"><a href=""></a><span class="co"># Run particle filter</span></span>
-<span id="cb26-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="approximate-bayesian-computation-abc" class="slide level2">
-<h2>Approximate Bayesian computation (ABC)</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Approximate posterior without likelihood evaluation</p>
-<p><strong>When to Use:</strong></p>
-<ul>
-<li>Complex likelihoods</li>
-<li>Intractable models</li>
-<li>High-dimensional parameter spaces</li>
-<li>Model comparison</li>
-</ul>
-</section>
-<section class="slide level2 scrollable">
-
-<p><strong>Algorithm:</strong></p>
-<ol type="1">
-<li>Sample parameters from prior</li>
-<li>Simulate data from model</li>
-<li>Compare simulated to observed data</li>
-<li>Accept if distance &lt; threshold</li>
-</ol>
+<p>A particle filter, or <span style="color: tomato;">sequential Monte Carlo</span>, treats the model as a <span style="color: tomato;">state-space model</span>: a hidden state (the true numbers of susceptible, infectious and recovered) observed with error. It runs the stochastic model forward as a set of simulations, the <span style="color: tomato;"><em>particles</em></span>. At each observation the particles are <span style="color: tomato;">weighted by their likelihood and resampled</span>, so those consistent with the data are kept and multiplied and the rest are discarded. The surviving particles approximate the <span style="color: tomato;">filtering distribution</span> of the hidden state given the data so far</p>
 </section>
 <section class="slide level2">
 
-<p><strong>Advantages:</strong></p>
+<h3 id="when-particle-filtering-is-appropriate">When particle filtering is appropriate</h3>
+<p>It is the tool of choice when</p>
 <ul>
-<li>No likelihood required</li>
-<li>Handles complex models</li>
-<li>Model comparison</li>
-<li>Intuitive approach</li>
+<li>the model is stochastic and the noise in transmission matters</li>
+<li>you need the current state, not just the parameters</li>
+<li>parameters change over time, or data go missing for a while</li>
+<li>the answer has to be updated in real time</li>
 </ul>
+<p>The filter also yields an unbiased estimate of the <span style="color: tomato;">marginal likelihood</span>. Using that estimate inside a Metropolis–Hastings sampler gives <span style="color: tomato;">particle MCMC (pMCMC)</span>, which performs full Bayesian inference for the parameters of a stochastic model</p>
 </section>
-<section id="ensemble-methods" class="slide level2">
+<section id="particle-filtering-in-pomp" class="slide level2">
+<h2>Particle filtering in <code>pomp</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
+<span id="cb29-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
+<span id="cb29-3"><a href=""></a></span>
+<span id="cb29-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
+<span id="cb29-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
+<span id="cb29-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
+<span id="cb29-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
+<span id="cb29-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
+<span id="cb29-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
+<span id="cb29-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
+<span id="cb29-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
+<span id="cb29-12"><a href=""></a>  ),</span>
+<span id="cb29-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
+<span id="cb29-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
+<span id="cb29-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
+<span id="cb29-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
+<span id="cb29-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
+<span id="cb29-18"><a href=""></a>)</span>
+<span id="cb29-19"><a href=""></a></span>
+<span id="cb29-20"><a href=""></a><span class="co"># Run particle filter</span></span>
+<span id="cb29-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="approximate-bayesian-computation" class="slide level2 smaller scrollable">
+<h2>Approximate Bayesian computation</h2>
+<p>When the likelihood is intractable but the model can be simulated from, <span style="color: tomato;">approximate Bayesian computation (ABC)</span> replaces likelihood evaluation with simulation:</p>
+<ol type="1">
+<li>Draw parameters from the prior</li>
+<li>Simulate an outbreak with them</li>
+<li>Compare the simulated outbreak with the observed one through a distance between <span style="color: tomato;">summary statistics</span></li>
+<li><span style="color: tomato;">Accept</span> the parameters if the distance is below a tolerance <span style="color: steelblue;"><span class="math inline">\(\epsilon\)</span></span>, reject them otherwise</li>
+</ol>
+<p>The accepted parameters are draws from an <span style="color: tomato;">approximate posterior</span>. The quality of the approximation depends on the summary statistics and the tolerance, and the acceptance rate is typically low, but the method applies to models for which no likelihood can be written</p>
+</section>
+<section id="ensemble-methods" class="slide level2 smaller">
 <h2>Ensemble methods</h2>
-<p><span style="color: #FFFF00;"><strong>Core Idea:</strong></span> Combine multiple models or methods</p>
-<p><strong>Types:</strong></p>
+<p>Ensemble methods combine several models, methods or fits rather than relying on a single one:</p>
 <ul>
-<li><strong>Model Ensembles</strong>: Average predictions from different models</li>
-<li><strong>Method Ensembles</strong>: Combine LS, MLE, MCMC results</li>
-<li><strong>Bootstrap Ensembles</strong>: Multiple fits with resampled data</li>
+<li><span style="color: tomato;">model ensembles</span>: average the predictions of several models, weighted or unweighted</li>
+<li><span style="color: tomato;">method ensembles</span>: combine estimates from least squares, MLE and MCMC</li>
+<li><span style="color: tomato;">bootstrap ensembles</span>: refit the same model to resampled versions of the data</li>
 </ul>
+<p>The spread across the ensemble quantifies <span style="color: tomato;">model and method uncertainty</span>, which no single fit can show, and averaged predictions are more robust and less prone to overfitting than any single member</p>
 </section>
-<section id="advantages-2" class="slide level2">
-<h2>Advantages:</h2>
-<ul>
-<li>Reduces overfitting</li>
-<li>Quantifies model uncertainty</li>
-<li>More robust predictions</li>
-<li>Handles model selection uncertainty</li>
-</ul>
+<section id="section-16" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
+<p>Any Questions?</p>
+</div>
+</section>
+<section id="section-17" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<p>Which of today’s methods would you reach for, and why: real-time estimation of Ebola transmission with under-reporting; a within-host model whose likelihood cannot be written; a forecast to be presented to a minister next week?</p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="practical-considerations" class="title-slide slide level1 center">
@@ -1056,113 +1550,111 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section id="common-fitting-problems" class="slide level2">
 <h2>Common fitting problems</h2>
-<h3 id="convergence-issues">Convergence issues</h3>
+<h3 id="convergence-failure">Convergence failure</h3>
+<div style="font-size: 0.8em;">
+<p>Usually one of four things:</p>
 <ul>
-<li>Poor starting values</li>
-<li>Flat likelihood surfaces</li>
-<li>Numerical instabilities</li>
-<li>Parameter bounds</li>
+<li><span style="color: tomato;">Poor starting values</span>: the search moves into parameter values where the model or the solver breaks down</li>
+<li>A <span style="color: tomato;">flat likelihood surface</span> in some direction, so there is no gradient to follow</li>
+<li><span style="color: tomato;">Poorly scaled parameters</span>, as <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span> were today; a <span style="color: tomato;">log transformation</span> fixed it</li>
+<li><span style="color: tomato;">Numerical instability</span> at parameter bounds, or missing bounds where they were needed</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="parameter-identifiability-problems">Parameter identifiability problems</h3>
+<ul>
+<li><span style="color: tomato;">Multiple solutions</span>: several parameter combinations fit equally well, so the estimate depends on the starting value</li>
+<li><span style="color: tomato;">Correlated parameters</span>: only a combination such as the ratio <span style="color: steelblue;"><span class="math inline">\(\beta / \gamma\)</span></span> is determined by the data</li>
+<li><span style="color: tomato;">Insufficient data</span> or an <span style="color: tomato;">overparameterised model</span></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="identifiability-problems">Identifiability problems</h3>
+<h3 id="remedies-for-identifiability-problems">Remedies for identifiability problems</h3>
+<div style="font-size: 0.8em;">
 <ul>
-<li>Multiple solutions</li>
-<li>Correlated parameters</li>
-<li>Insufficient data</li>
-<li>Model overparameterization</li>
+<li><span style="color: tomato;">Multiple starting values</span>, checking that they converge to the same estimate</li>
+<li><span style="color: tomato;">Profile likelihoods or posterior distributions</span> for each parameter, not point estimates alone</li>
+<li><span style="color: tomato;">Fixing parameters</span> known from other sources, or placing <span style="color: tomato;">informative priors</span> on them</li>
+<li><span style="color: tomato;">Additional data</span> that inform the parameters the outbreak curve cannot</li>
+<li><span style="color: tomato;">Model reduction</span>: simplify until the model is identifiable, then add complexity back one piece at a time</li>
 </ul>
+</div>
 </section>
-<section id="solutions" class="slide level2">
-<h2>Solutions</h2>
+<section class="slide level2">
+
+<h3 id="implausible-estimates">Implausible estimates</h3>
+<div style="font-size: 0.8em;">
 <ul>
-<li>Multiple starting points</li>
-<li>Profile likelihood</li>
-<li>Data augmentation</li>
+<li>Check the <span style="color: tomato;">model assumptions</span> against what is known about the disease and the setting</li>
+<li>Check <span style="color: tomato;">data quality</span>: reporting changes, backfilled counts, case definitions that changed during the outbreak</li>
+<li><span style="color: tomato;">Residual analysis</span>: a pattern in the residuals over time indicates a missing process in the model</li>
+<li><span style="color: tomato;">Sensitivity analysis</span>: how much the estimates move when uncertain assumptions are changed</li>
+<li>Fit <span style="color: tomato;">alternative models</span> and compare them formally</li>
 </ul>
+</div>
 </section>
-<section id="troubleshooting-guide" class="slide level2 scrollable">
-<h2>Troubleshooting guide</h2>
-<h3 id="if-optimization-fails">If Optimization fails</h3>
-<ol type="1">
-<li>Check starting values</li>
-<li>Verify parameter bounds</li>
-<li>Examine objective function</li>
-<li>Try different algorithms</li>
-<li>Simplify the model</li>
-</ol>
-</section>
-<section class="slide level2 scrollable">
-
-<h3 id="if-parameters-are-unidentifiable">If parameters are unidentifiable</h3>
-<ol type="1">
-<li>Fix some parameters</li>
-<li>Use additional data</li>
-<li>Add regularization</li>
-<li>Consider model reduction</li>
-<li>Use prior information</li>
-</ol>
-</section>
-<section class="slide level2 scrollable">
-
-<h3 id="if-results-are-unrealistic">If results are unrealistic</h3>
-<ol type="1">
-<li>Check model assumptions</li>
-<li>Verify data quality</li>
-<li>Examine residuals</li>
-<li>Test sensitivity</li>
-<li>Consider alternative models</li>
-</ol>
+<section id="section-18" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Discussion</strong></p>
+</div>
+<div class="callout-content">
+<p>Think of a fitting problem from your own work or reading. Which of these failure modes have you met, and what did you do about it?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="best-practices" class="slide level2">
 <h2>Best practices</h2>
 <h3 id="before-fitting">Before fitting</h3>
 <ul>
-<li>Understand your data</li>
-<li>Check model assumptions</li>
-<li>Set realistic parameter bounds</li>
-<li>Prepare multiple starting values</li>
+<li>Plot the data and understand how they were collected</li>
+<li>Check the model assumptions against the setting</li>
+<li>Set realistic <span style="color: tomato;">parameter bounds or priors</span> before fitting</li>
+<li>Prepare several starting values</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="during-fitting">During fitting</h3>
+<h3 id="while-fitting">While fitting</h3>
 <ul>
-<li>Monitor convergence</li>
-<li>Check for local minima</li>
-<li>Validate results</li>
-<li>Document everything</li>
+<li><span style="color: tomato;">Monitor convergence</span> of the optimiser or the chain, rather than reading only the final estimate</li>
+<li>Check for <span style="color: tomato;">local optima</span> by comparing runs from different starting values</li>
+<li><span style="color: tomato;">Document every fit</span>, including the ones that failed</li>
 </ul>
 </section>
 <section class="slide level2">
 
 <h3 id="after-fitting">After fitting</h3>
 <ul>
-<li>Assess goodness of fit</li>
-<li>Quantify uncertainty</li>
-<li>Test sensitivity</li>
-<li>Validate predictions</li>
+<li>Assess <span style="color: tomato;">goodness of fit</span> by plotting the fitted model over the data with its uncertainty</li>
+<li>Report <span style="color: tomato;">confidence or credible intervals</span>, not point estimates alone</li>
+<li>Carry out a <span style="color: tomato;">sensitivity analysis</span> of the conclusions to the assumptions</li>
+<li><span style="color: tomato;">Validate predictions</span> on data not used in fitting</li>
 </ul>
 </section>
-<section id="software-recommendations" class="slide level2">
-<h2>Software recommendations</h2>
-<h3 id="r-packages">R Packages</h3>
+<section id="software" class="slide level2">
+<h2>Software</h2>
+<h3 id="r-packages">R packages</h3>
 <ul>
-<li><a href="https://cran.r-project.org/web/packages/bbmle/vignettes/mle.pdf"><code>bbmle</code></a>: Maximum likelihood in R</li>
-<li><a href="https://cran.r-project.org/web/packages/rstan/vignettes/rstan.pdf"><code>rstan</code></a> and <a href="https://mc-stan.org/cmdstanr/"><code>cmdstanr</code></a>: Bayesian inference in R</li>
-<li><a href="https://kingaa.github.io/pomp/vignettes/getting_started.html"><code>pomp</code></a>: Particle filtering</li>
-<li><a href="https://paul-buerkner.github.io/brms/index.html"><code>brms</code></a>: Bayesian inference in R</li>
-<li><a href="https://r-nimble.org/"><code>nimble</code></a>: Bayesian inference in R</li>
+<li><a href="https://cran.r-project.org/web/packages/bbmle/vignettes/mle.pdf"><code>bbmle</code></a>: maximum likelihood, profiles and confidence intervals, as used today</li>
+<li><a href="https://cran.r-project.org/web/packages/rstan/vignettes/rstan.pdf"><code>rstan</code></a> and <a href="https://mc-stan.org/cmdstanr/"><code>cmdstanr</code></a>: Stan from R</li>
+<li><a href="https://kingaa.github.io/pomp/vignettes/getting_started.html"><code>pomp</code></a>: particle filtering and particle MCMC</li>
+<li><a href="https://paul-buerkner.github.io/brms/index.html"><code>brms</code></a>: Bayesian regression models with Stan underneath</li>
+<li><a href="https://r-nimble.org/"><code>nimble</code></a>: Bayesian models with your own choice of MCMC algorithm</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="specialized-software">Specialized Software</h3>
+<h3 id="other-software">Other software</h3>
 <ul>
-<li><a href="https://mc-stan.org"><code>Stan</code></a>: Probabilistic programming</li>
-<li><a href="https://sourceforge.net/p/openbugs/wiki/Home/"><code>OpenBUGS</code></a>: Bayesian inference</li>
-<li><a href="https://mcmc-jags.sourceforge.io"><code>JAGS</code></a>: Bayesian analysis</li>
+<li><a href="https://mc-stan.org"><code>Stan</code></a>: the probabilistic programming language behind <code>rstan</code>, <code>cmdstanr</code> and <code>brms</code></li>
+<li><a href="https://sourceforge.net/p/openbugs/wiki/Home/"><code>OpenBUGS</code></a> and <a href="https://mcmc-jags.sourceforge.io"><code>JAGS</code></a>: the older generation of Gibbs samplers, still widely used</li>
 <li><a href="https://www.pymc.io/welcome.html"><code>PyMC</code></a>: Bayesian inference in Python</li>
 <li><a href="https://turinglang.org/"><code>Turing.jl</code></a>: Bayesian inference in Julia</li>
 </ul>
@@ -1174,66 +1666,48 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section id="key-takeaways" class="slide level2">
 <h2>Key takeaways</h2>
-<p><strong>Least Squares:</strong></p>
+<h3 id="least-squares-1">Least squares</h3>
+<p><span style="color: tomato;">Fast and intuitive</span>. It provides a point estimate and initial values for other methods, but <span style="color: tomato;">no uncertainty quantification</span> and no basis for model comparison</p>
+</section>
+<section class="slide level2">
+
+<h3 id="maximum-likelihood-1">Maximum likelihood</h3>
+<p>A <span style="color: tomato;">principled statistical framework</span> built on an explicit observation model. It provides <span style="color: tomato;">confidence intervals and formal model comparison</span>, at the cost of specifying that observation model and managing a numerical optimiser</p>
+</section>
+<section class="slide level2">
+
+<h3 id="bayesian-inference-and-mcmc-1">Bayesian inference and MCMC</h3>
 <ul>
-<li>Fast and intuitive</li>
-<li>Good for exploration</li>
-<li>Limited uncertainty quantification</li>
-<li>Sensitive to assumptions</li>
+<li><span style="color: tomato;">Priors</span> make assumptions explicit and allow them to be checked by prior predictive simulation</li>
+<li>The <span style="color: tomato;">posterior distribution</span> is the complete answer: point estimates, credible intervals and predictions all come from the same samples</li>
+<li>The <span style="color: tomato;">Metropolis algorithm</span> is a few lines of code; the effort goes into tuning the proposal and diagnosing convergence</li>
+<li><span style="color: tomato;">Never trust a chain whose diagnostics you have not examined</span></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p><strong>Maximum Likelihood:</strong></p>
+<h3 id="advanced-methods-1">Advanced methods</h3>
+<p><span style="color: tomato;">Particle filtering, approximate Bayesian computation and ensemble methods</span> handle stochastic models, intractable likelihoods and model uncertainty. They require more expertise and more computation than anything covered today</p>
+</section>
+<section id="choosing-a-method" class="slide level2">
+<h2>Choosing a method</h2>
 <ul>
-<li>Principled statistical framework</li>
-<li>Natural uncertainty quantification</li>
-<li>Enables model comparison</li>
-<li>More computationally intensive</li>
+<li>Exploratory analysis: <span style="color: tomato;">least squares</span></li>
+<li>Formal inference for a report or publication: <span style="color: tomato;">maximum likelihood</span></li>
+<li>Many parameters, or prior information to incorporate: <span style="color: tomato;">Bayesian inference with MCMC</span></li>
+<li>Stochastic models, hidden states, or real-time estimation: <span style="color: tomato;">particle filtering</span></li>
+<li>Intractable likelihoods: <span style="color: tomato;">approximate Bayesian computation</span></li>
 </ul>
+<p>Whatever the problem, <span style="color: tomato;">start simple and add complexity only when the simple version fails you</span></p>
 </section>
-<section class="slide level2">
-
-<p><strong>Advanced Methods:</strong></p>
-<ul>
-<li>Handle complex scenarios</li>
-<li>Provide robust uncertainty</li>
-<li>Require more expertise</li>
-<li>Often computationally expensive</li>
-</ul>
+<section id="closing-remarks" class="slide level2">
+<h2>Closing remarks</h2>
+<p>Model fitting requires <span style="color: tomato;">domain expertise, statistical rigour and careful validation</span>, all at once</p>
+<p>The fit itself is not the goal. The goal is to <span style="color: tomato;">understand the transmission dynamics</span>, to <span style="color: tomato;">make reliable predictions</span>, and to <span style="color: tomato;">inform the decisions</span> that depend on them</p>
 </section>
-<section id="choosing-the-right-method" class="slide level2">
-<h2>Choosing the right method</h2>
-<p><strong>For Quick Exploration:</strong> Least Squares</p>
-<p><strong>For Publication:</strong> Maximum Likelihood</p>
-<p><strong>For Complex Models:</strong> Bayesian Methods</p>
-<p><strong>For Real-time:</strong> Particle Filtering</p>
-<p><strong>For Model Comparison:</strong> ABC or MCMC</p>
-<p><span style="color: tomato;"><strong>General Principle:</strong></span> Start simple, add complexity as needed</p>
-</section>
-<section id="final-thoughts" class="slide level2">
-<h2>Final thoughts</h2>
-<p><span style="color: tomato;"><strong>Model fitting is both art and science:</strong></span></p>
-<ul>
-<li>Requires domain expertise</li>
-<li>Demands statistical rigor</li>
-<li>Benefits from computational tools</li>
-<li>Needs careful validation</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p><span style="color: #FFFF00;"><strong>The goal is not just to fit models, but to:</strong></span></p>
-<ul>
-<li>Understand disease dynamics</li>
-<li>Make reliable predictions</li>
-<li>Inform policy decisions</li>
-<li>Advance scientific knowledge</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<div class="fragment" style="font-size: 450%">
+<section id="section-19" class="slide level2" data-background-color="#447099" data-transition="fade-in">
+<h2></h2>
+<div class="fragment" style="font-size: 450%; color: white;">
 <p>Any Questions?</p>
 </div>
 </section>
@@ -1255,7 +1729,7 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section class="slide level2">
 
-<h3 id="least-squares">Least squares</h3>
+<h3 id="least-squares-2">Least squares</h3>
 <ul>
 <li><em>Key tutorial on the least squares method</em>: <a href="https://www.sciencedirect.com/science/article/pii/S2468042717300234">Fitting dynamic models to epidemic outbreaks with quantified uncertainty: A primer for parameter uncertainty, identifiability, and forecasts</a></li>
 <li><a href="https://web.stanford.edu/class/earthsys214/notes/fit.html">Fitting Epidemic Models to Data by James Holland Jones</a></li>
@@ -1271,10 +1745,13 @@ gamma 0.04961407 0.05089814</code></pre>
 </section>
 <section class="slide level2">
 
-<h3 id="mcmc">MCMC</h3>
+<h3 id="bayesian-inference-and-mcmc-2">Bayesian inference and MCMC</h3>
 <ul>
-<li><a href="10.1093/ije/dyt043">Markov Chain Monte Carlo: an introduction for epidemiologists</a></li>
-<li><a href="10.3758/s13423-016-1015-8">A simple introduction to Markov Chain Monte–Carlo sampling</a></li>
+<li><a href="https://doi.org/10.3758/s13423-017-1272-1">Bayesian data analysis for newcomers</a> (Kruschke &amp; Liddell, 2018)</li>
+<li><a href="https://doi.org/10.3758/s13423-016-1015-8">A simple introduction to Markov Chain Monte–Carlo sampling</a> (van Ravenzwaaij et al., 2018)</li>
+<li><a href="https://doi.org/10.1080/00031305.1995.10476177">Understanding the Metropolis–Hastings algorithm</a> (Chib &amp; Greenberg, 1995)</li>
+<li><a href="https://doi.org/10.1093/ije/dyt043">Markov Chain Monte Carlo: an introduction for epidemiologists</a></li>
+<li><a href="https://doi.org/10.1214/aoap/1034625254">Weak convergence and optimal scaling of random walk Metropolis algorithms</a> (Roberts, Gelman &amp; Gilks, 1997): the 23% rule</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1309,6 +1786,21 @@ gamma 0.04961407 0.05089814</code></pre>
 <li>King, A.A. et al.&nbsp;(2016). “Statistical inference for partially observed Markov processes via the R package pomp.” <em>Journal of Statistical Software</em>.</li>
 <li>Carpenter, B. et al.&nbsp;(2017). “Stan: A probabilistic programming language.” <em>Journal of Statistical Software</em>.</li>
 </ul>
+</section>
+<section id="contact-information" class="slide level2">
+<h2>Contact Information</h2>
+<p><strong>James Mba Azam, PhD</strong></p>
+<p><a href="https://www.lshtm.ac.uk/"><em>London School of Hygiene and Tropical Medicine, UK</em></a></p>
+<p><strong>Email:</strong> <a href="mailto:james.azam@lshtm.ac.uk">james.azam@lshtm.ac.uk</a></p>
+<p><strong>ORCID:</strong> <a href="https://orcid.org/0000-0001-5782-7330">0000-0001-5782-7330</a></p>
+<p><strong>Social Media:</strong></p>
+<p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/james-azam-phd-6b5b00176/">James Azam</a></p>
+<p><strong>Twitter:</strong> <a href="https://twitter.com/james_azam">james_azam</a></p>
+<p><strong>GitHub:</strong> <a href="https://github.com/jamesmbaazam">jamesmbaazam</a></p>
+</section>
+<section class="slide level2">
+
+<p><img data-src="https://i.creativecommons.org/l/by/4.0/88x31.png"> This presentation is made available through a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
 
 </section></section>
     </div>
@@ -1528,44 +2020,6 @@ gamma 0.04961407 0.05089814</code></pre>
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
