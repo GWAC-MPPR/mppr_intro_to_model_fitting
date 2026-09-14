@@ -9,7 +9,9 @@ format:
     toc: true
     link-external-newwindow: true
 
+# Code on the slides is pulled from scripts/ by this filter, so the deck holds
+# no executable chunks and renders without R.
+filters:
+  - filters/include-code.lua
+
 editor: visual
-engine: knitr
-execute:
-  freeze: auto

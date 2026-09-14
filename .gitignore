@@ -1,24 +1,20 @@
+# R session files
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 
+# Quarto internals and rendered output. CI renders slides.qmd and publishes the
+# deck to gh-pages and the PDF to a release, so nothing rendered is tracked.
 /.quarto/
 /_site/
-
-# Quarto rendered outputs
 *.html
 *.pdf
-
-# Reveal.js support files (if copied locally)
 *_files/
 *_cache/
+**/*.quarto_ipynb
 
-# Quarto metadata
-.DS_Store
-.quarto/
-
-# LaTeX build artifacts (from beamer/pdf)
+# LaTeX build artifacts from the beamer render
 *.aux
 *.log
 *.nav
@@ -29,7 +25,7 @@
 *.fls
 *.fdb_latexmk
 
-**/*.quarto_ipynb
+# Reference papers for the MCMC section: not ours to redistribute
+mcmc_papers/
 
-# Rendered deck; CI renders and publishes it to gh-pages
-slides.html
+.DS_Store

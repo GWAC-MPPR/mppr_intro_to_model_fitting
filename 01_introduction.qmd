@@ -6,73 +6,64 @@
 
 ### The challenge
 
--   We have mathematical models (e.g., SIR, SEIR)
--   We have real-world data (case counts, hospitalizations)
--   [**How do we connect them?**]{style="color: tomato;"}
+:::: {.columns}
+
+::: {.column width="45%"}
+- We have real-world data (case counts, hospitalizations)
+- We have mathematical models (e.g., SIR, SEIR)
+- [**How do we connect them?**]{style="color: tomato;"}
+:::
+
+::: {.column width="55%"}
+![](figures/01_outbreak_data.png)
+:::
+
+::::
 
 ------------------------------------------------------------------------
 
 ### The goal
 
--   [Find parameter values that make our model predictions match observed data]{style="color: #FFFF00;"}
--   [Quantify uncertainty in our estimates]{style="color: #FFFF00;"}
--   [Make reliable predictions and policy recommendations]{style="color: #FFFF00;"}
+- Find parameter values that make our model predictions match observed data
+- Quantify uncertainty in our estimates
+- Make reliable predictions and policy recommendations
 
 ------------------------------------------------------------------------
 
 ## Example: outbreak data
 
-```{r covid-example, echo=FALSE, fig.width=10, fig.height=6}
-# Simulate COVID-19-like data
-set.seed(123)
-days <- 1:100
-true_beta <- 0.3
-true_gamma <- 0.1
-true_R0 <- true_beta / true_gamma
+:::: {.columns}
 
-# SIR model simulation
-sir_sim <- function(t, y, params) {
-  with(as.list(c(y, params)), {
-    dS <- -beta * S * I
-    dI <- beta * S * I - gamma * I
-    dR <- gamma * I
-    list(c(dS, dI, dR))
-  })
-}
+::: {.column width="45%"}
+[**Question:**]{style="color: tomato;"} How do we estimate $\beta$ and $\gamma$ from noisy data?
 
-library(deSolve)
-out <- ode(y = c(S = 0.99, I = 0.01, R = 0),
-           times = days,
-           func = sir_sim,
-           parms = c(beta = true_beta, gamma = true_gamma))
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \\
+\frac{dI}{dt} &= \beta SI - \gamma I \\
+\frac{dR}{dt} &= \gamma I
+\end{align}
+:::
 
-# Add noise to simulate real data
-observed_cases <- rpois(length(days), out[,"I"] * 1000 + 10)
+::: {.column width="55%"}
+![](figures/01_outbreak_data.png)
+:::
+:::
 
-plot(days, observed_cases, pch = 16, col = "red",
-     xlab = "Days", ylab = "Daily Cases",
-     main = "Outbreak Data")
-lines(days, out[,"I"] * 1000, col = "blue", lwd = 2)
-legend("topright", c("Observed", "True Model"),
-       col = c("red", "blue"), pch = c(16, NA), lty = c(NA, 1))
-```
-
-[**Question:**]{style="color: tomato;"} How do we estimate $\beta$ and $\gamma$ from this noisy data?
 
 ## Types of fitting methods
 
-### Deterministic methods
+### Frequentist methods
 
--   [**Least Squares**]{style="color: tomato;"}
--   [**Maximum Likelihood Estimation (MLE)**]{style="color: tomato;"}
+- Method of Least Squares
+- Maximum Likelihood Estimation (MLE)
 
 ------------------------------------------------------------------------
 
-### Stochastic methods
+### Bayesian methods
 
--   [**Markov Chain Monte Carlo (MCMC)**]{style="color: #FFFF00;"}
--   [**Sequential Monte Carlo (SMC)**]{style="color: #FFFF00;"}
--   [**Particle MCMC (pMCMC)**]{style="color: #FFFF00;"}
--   [**Approximate Bayesian Computation (ABC)**]{style="color: #FFFF00;"}
+- Markov Chain Monte Carlo (MCMC)
+- Sequential Monte Carlo (SMC)
+- Particle MCMC (pMCMC)
+- Approximate Bayesian Computation (ABC)
 
-[**Today's Focus:**]{style="color: tomato;"} Least Squares and MLE as foundations
+[**Today's Focus:**]{style="color: tomato;"} Frequentist methods: Least Squares and Maximum Likelihood Estimation 

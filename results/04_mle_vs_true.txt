@@ -1,0 +1,4 @@
+True Beta: 0.3 
+MLE Beta: 0.291 
+True Gamma: 0.1 
+MLE Gamma: 0.05 

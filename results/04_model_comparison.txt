@@ -1,0 +1,3 @@
+Poisson AIC: 19650.9 
+Negative Binomial AIC: 3189.442 
+Delta AIC: -16461.45 

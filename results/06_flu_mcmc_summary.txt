@@ -1,0 +1,11 @@
+Posterior summaries: 4 chains x 5,000 draws after burn-in
+
+                       mean    median  2.5%    97.5%  
+beta                   0.00221 0.00221 0.00218 0.00225
+gamma                  0.476   0.476   0.455   0.497  
+R0                     3.55    3.55    3.40    3.71   
+infectious_period_days 2.10    2.10    2.01    2.20   
+
+Acceptance rates: 45%, 44%, 45%, 44% 
+R-hat: beta 1.000, gamma 1.001
+Effective sample size: beta 2456, gamma 2799 of 20000

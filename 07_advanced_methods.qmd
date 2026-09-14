@@ -1,0 +1,103 @@
+# Advanced methods
+
+------------------------------------------------------------------------
+
+## Beyond least squares and MLE
+
+[**Why We Need Advanced Methods:**]{style="color: tomato;"}
+
+-   Parameter identifiability issues
+-   Complex error structures
+-   Model uncertainty
+-   Computational challenges
+-   Real-time fitting requirements
+
+------------------------------------------------------------------------
+
+## Advanced approaches
+
+1.  **Bayesian methods** (MCMC): the previous section
+2.  **Particle filtering**
+3.  **Approximate Bayesian Computation (ABC)**
+4.  **Ensemble methods**
+
+------------------------------------------------------------------------
+
+## Particle filtering
+
+**Core Idea:** Sequential Monte Carlo method for state-space models
+
+**When to Use:**
+
+-   Real-time parameter estimation
+-   State estimation in stochastic models
+-   Handling of missing data
+-   Time-varying parameters
+
+------------------------------------------------------------------------
+
+## Advantages
+
+-   Handles stochasticity naturally
+-   Real-time updates
+-   No assumption of constant parameters
+-   Robust to model misspecification
+
+------------------------------------------------------------------------
+
+## Example application
+
+```{.r include="scripts/07_particle_filter.R" snippet="particle_filter"}
+```
+
+------------------------------------------------------------------------
+
+## Approximate Bayesian computation (ABC)
+
+**Core Idea:** Approximate posterior without likelihood evaluation
+
+**When to Use:**
+
+-   Complex likelihoods
+-   Intractable models
+-   High-dimensional parameter spaces
+-   Model comparison
+
+------------------------------------------------------------------------
+
+**Algorithm:**
+
+1.  Sample parameters from prior
+2.  Simulate data from model
+3.  Compare simulated to observed data
+4.  Accept if distance \< threshold
+
+------------------------------------------------------------------------
+
+**Advantages:**
+
+-   No likelihood required
+-   Handles complex models
+-   Model comparison
+-   Intuitive approach
+
+------------------------------------------------------------------------
+
+## Ensemble methods
+
+**Core Idea:** Combine multiple models or methods
+
+**Types:**
+
+-   **Model Ensembles**: Average predictions from different models
+-   **Method Ensembles**: Combine LS, MLE, MCMC results
+-   **Bootstrap Ensembles**: Multiple fits with resampled data
+
+------------------------------------------------------------------------
+
+## Advantages:
+
+-   Reduces overfitting
+-   Quantifies model uncertainty
+-   More robust predictions
+-   Handles model selection uncertainty

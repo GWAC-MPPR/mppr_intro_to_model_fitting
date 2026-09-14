@@ -13,15 +13,9 @@ license: "CC BY"
 copyright:
   holder: James Mba Azam
   year: 2026
-execute:
-  echo: true
-  cache: true
-  message: false
-  warning: false
-  freeze: auto
 format:
   revealjs:
-    theme: [dark]
+    theme: [solarized]
     slide-number: true
     scrollable: true
     chalkboard: true
@@ -37,7 +31,6 @@ format:
     code-block-bg: true
 # bibliography: references.bib
 link-citations: true
-engine: knitr
 editor_options:
   chunk_output_type: console
 ---
@@ -50,7 +43,8 @@ By the end of this lecture, you will be able to:
 - Apply [least squares estimation]{style="color: tomato;"} to [compartmental models]{style="color: tomato;"}
 - Implement [maximum likelihood estimation]{style="color: tomato;"} for [epidemic models]{style="color: tomato;"}
 - Compare the [strengths and weaknesses]{style="color: tomato;"} of different [fitting methods]{style="color: tomato;"}
-- Recognize when to use [advanced methods]{style="color: tomato;"} like [MCMC]{style="color: tomato;"} and [particle filtering]{style="color: tomato;"}
+- Explain [Bayesian inference]{style="color: tomato;"} and fit a model with the [Metropolis algorithm]{style="color: tomato;"}, and judge whether an [MCMC]{style="color: tomato;"} run can be trusted
+- Recognize when to use [advanced methods]{style="color: tomato;"} like [particle filtering]{style="color: tomato;"} and [ABC]{style="color: tomato;"}
 - [Troubleshoot]{style="color: tomato;"} common [fitting problems]{style="color: tomato;"}
 
 {{< include 01_introduction.qmd >}}
@@ -63,8 +57,10 @@ By the end of this lecture, you will be able to:
 
 {{< include 05_least_squares_vs_mle.qmd >}}
 
-{{< include 06_advanced_methods.qmd >}}
+{{< include 06_bayesian_mcmc.qmd >}}
 
-{{< include 07_practical_considerations.qmd >}}
+{{< include 07_advanced_methods.qmd >}}
 
-{{< include 08_conclusions.qmd >}}
+{{< include 08_practical_considerations.qmd >}}
+
+{{< include 09_conclusions.qmd >}}

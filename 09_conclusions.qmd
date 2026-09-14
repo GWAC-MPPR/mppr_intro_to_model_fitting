@@ -1,0 +1,147 @@
+# Conclusions
+
+------------------------------------------------------------------------
+
+## Key takeaways
+
+**Least Squares:**
+
+-   Fast and intuitive
+-   Good for exploration
+-   Limited uncertainty quantification
+-   Sensitive to assumptions
+
+------------------------------------------------------------------------
+
+**Maximum Likelihood:**
+
+-   Principled statistical framework
+-   Natural uncertainty quantification
+-   Enables model comparison
+-   More computationally intensive
+
+------------------------------------------------------------------------
+
+**Bayesian inference and MCMC:**
+
+-   Priors make assumptions explicit, and checkable
+-   The posterior is the full answer: estimates, credible intervals, predictions
+-   Metropolis is a few lines of code; the work is in tuning and diagnostics
+-   Never trust a chain you have not checked
+
+------------------------------------------------------------------------
+
+**Advanced Methods:**
+
+-   Handle complex scenarios
+-   Provide robust uncertainty
+-   Require more expertise
+-   Often computationally expensive
+
+------------------------------------------------------------------------
+
+## Choosing the right method
+
+**For Quick Exploration:** Least Squares
+
+**For Publication:** Maximum Likelihood
+
+**For Complex Models:** Bayesian Methods
+
+**For Real-time:** Particle Filtering
+
+**For Model Comparison:** ABC or MCMC
+
+[**General Principle:**]{style="color: tomato;"} Start simple, add complexity as needed
+
+------------------------------------------------------------------------
+
+## Final thoughts
+
+[**Model fitting is both art and science:**]{style="color: tomato;"}
+
+-   Requires domain expertise
+-   Demands statistical rigor
+-   Benefits from computational tools
+-   Needs careful validation
+
+------------------------------------------------------------------------
+
+**The goal is not just to fit models, but to:**
+
+-   Understand disease dynamics
+-   Make reliable predictions
+-   Inform policy decisions
+-   Advance scientific knowledge
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
+
+## Resources
+
+### Full courses (free)
+
+-   Model fitting and inference for infectious disease dynamics by Sebastian Funk, Anton Camacho, Helen Johnson, Amanda Minter, Kathleen O'Reilly and Nicholas Davies. [Link](https://sbfnk.github.io/mfiidd/index.html)
+
+------------------------------------------------------------------------
+
+### Core concepts
+
+-   [Introduction to the Concept of Likelihood and Its Applications](https://journals.sagepub.com/doi/10.1177/2515245917744314)
+-   *Key considerations for model fitting and calibration*: [Choices and trade-offs in inference with infectious disease models](https://www.sciencedirect.com/science/article/pii/S1755436519300441?via%3Dihub)
+-   *A compilation of model fitting tutorials*: [Tooling-up for infectious disease transmission modelling](https://www.sciencedirect.com/science/article/pii/S1755436520300220)
+
+------------------------------------------------------------------------
+
+### Least squares
+
+-   *Key tutorial on the least squares method*: [Fitting dynamic models to epidemic outbreaks with quantified uncertainty: A primer for parameter uncertainty, identifiability, and forecasts](https://www.sciencedirect.com/science/article/pii/S2468042717300234)
+-   [Fitting Epidemic Models to Data by James Holland Jones](https://web.stanford.edu/class/earthsys214/notes/fit.html)
+
+------------------------------------------------------------------------
+
+### MLE
+
+-   [Fitting Epidemic Models to Data by James Holland Jones](https://web.stanford.edu/class/earthsys214/notes/fit.html)
+-   *R tutorial on MLE*: [Estimating model parameters by maximum likelihood](https://daphnia.ecology.uga.edu/drakelab/wp-content/uploads/2014/07/likelihood.pdf)
+
+------------------------------------------------------------------------
+
+### Bayesian inference and MCMC
+
+-   [Bayesian data analysis for newcomers](https://doi.org/10.3758/s13423-017-1272-1) (Kruschke & Liddell, 2018)
+-   [A simple introduction to Markov Chain Monte–Carlo sampling](https://doi.org/10.3758/s13423-016-1015-8) (van Ravenzwaaij et al., 2018)
+-   [Understanding the Metropolis–Hastings algorithm](https://doi.org/10.1080/00031305.1995.10476177) (Chib & Greenberg, 1995)
+-   [Markov Chain Monte Carlo: an introduction for epidemiologists](https://doi.org/10.1093/ije/dyt043)
+-   [Weak convergence and optimal scaling of random walk Metropolis algorithms](https://doi.org/10.1214/aoap/1034625254) (Roberts, Gelman & Gilks, 1997): the 23% rule
+
+------------------------------------------------------------------------
+
+### pMCMC
+
+-   [Introduction to particle Markov-chain Monte Carlo for disease dynamics modellers](https://www.sciencedirect.com/science/article/pii/S1755436519300301)
+
+------------------------------------------------------------------------
+
+### ABC
+
+-   [Approximate Bayesian Computation for infectious disease modelling](%5B10.1016/j.epidem.2019.100368%5D(https://doi.org/10.1016/j.epidem.2019.100368))
+
+------------------------------------------------------------------------
+
+### Others
+
+-   [Bayesian workflow for disease transmission modeling in Stan](https://mc-stan.org/learn-stan/case-studies/boarding_school_case_study.html)
+-   [POMP](https://kingaa.github.io/pomp/vignettes/getting_started.html)
+-   [Odin and Monty](https://mrc-ide.github.io/odin-monty/)
+
+## References
+
+-   Anderson, R.M. and May, R.M. (1991). *Infectious Diseases of Humans: Dynamics and Control*. Oxford University Press.
+-   Keeling, M.J. and Rohani, P. (2008). *Modeling Infectious Diseases in Humans and Animals*. Princeton University Press.
+-   Bolker, B. (2008). *Ecological Models and Data in R*. Princeton University Press.
+-   King, A.A. et al. (2016). "Statistical inference for partially observed Markov processes via the R package pomp." *Journal of Statistical Software*.
+-   Carpenter, B. et al. (2017). "Stan: A probabilistic programming language." *Journal of Statistical Software*.

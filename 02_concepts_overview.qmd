@@ -4,7 +4,7 @@
 
 ## What is model fitting?
 
-[**Definition:**]{style="color: #FFFF00;"} The process of finding parameter values that make a mathematical model's predictions as close as possible to observed data.
+[**Definition:**]{style="color:tomato"} The process of finding parameter values that make a mathematical model's predictions as close as possible to observed data.
 
 ------------------------------------------------------------------------
 
@@ -14,9 +14,9 @@ $$\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})$$
 
 Where:
 
--   $\theta$ = parameter vector (e.g., $\beta, \gamma$)
--   $\mathbf{y}$ = observed data
--   $\mathcal{L}$ = loss/objective function
+- $\theta$ = parameter vector (e.g., $\beta, \gamma$)
+- $\mathbf{y}$ = observed data
+- $\mathcal{L}$ = loss/objective function
 
 ------------------------------------------------------------------------
 
@@ -30,19 +30,16 @@ Where:
 \frac{dR}{dt} &= \gamma I
 \end{align}
 
-------------------------------------------------------------------------
-
-### Parameters to estimate
-
--   [$\beta$ = transmission rate]{style="color: tomato;"}
--   [$\gamma$ = recovery rate]{style="color: tomato;"}
+- Parameters to estimate:
+    - [$\beta$ = transmission rate]{style="color: tomato;"}
+    - [$\gamma$ = recovery rate]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ## Key quantities
 
--   [$R_0 = \frac{\beta}{\gamma}$ (basic reproduction number)]{style="color: #FFFF00;"}
--   [Infectious period = $\frac{1}{\gamma}$]{style="color: #FFFF00;"}
+- $R_0 = \frac{\beta}{\gamma}$ (basic reproduction number)
+- Infectious period = $\frac{1}{\gamma}$
 
 ------------------------------------------------------------------------
 
@@ -50,30 +47,30 @@ Where:
 
 ### Model uncertainty
 
--   Wrong model structure
--   Missing compartments or processes
+- Wrong model structure
+- Missing compartments or processes
 
 ------------------------------------------------------------------------
 
 ### Parameter uncertainty
 
--   True parameter values unknown
--   Multiple parameter sets give similar fits
+- True parameter values unknown
+- Multiple parameter sets give similar fits
 
 ------------------------------------------------------------------------
 
 ### Observation uncertainty
 
--   Measurement error
--   Reporting delays
--   Underreporting
+- Measurement error
+- Reporting delays
+- Underreporting
 
 ------------------------------------------------------------------------
 
 ### Process uncertainty
 
--   Stochasticity in disease transmission
--   Environmental variability
+- Stochasticity in disease transmission
+- Environmental variability
 
 ------------------------------------------------------------------------
 
@@ -83,9 +80,9 @@ Where:
 
 **Example:**
 
--   High $\beta$, high $\gamma$
--   Low $\beta$, low $\gamma$
+- High $\beta$, high $\gamma$
+- Low $\beta$, low $\gamma$
 
 Both might give similar epidemic curves!
 
-[**Solution:**]{style="color: #FFFF00;"} Use additional information (e.g., known infectious period)
+[**Solution:**]{style="color:tomato"} Use additional information (e.g., known infectious period)

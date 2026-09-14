@@ -4,7 +4,7 @@
 
 ## Maximum likelihood: the probabilistic approach
 
-[**Core Idea:**]{style="color: #FFFF00;"} Find parameter values that make the observed data most probable
+**Core Idea:** Find parameter values that make the observed data most probable
 
 ------------------------------------------------------------------------
 
@@ -25,10 +25,10 @@ Where:
 
 ### Theoretical advantages:
 
--   Principled [statistical framework]{style="color: #FFFF00;"} 
--   Provides [uncertainty quantification]{style="color: #FFFF00;"}
--   Enables [model comparison (AIC, BIC)]{style="color: #FFFF00;"}
--   [Asymptotically]{style="color: #FFFF00;"} optimal properties
+-   Principled statistical framework 
+-   Provides uncertainty quantification
+-   Enables model comparison (AIC, BIC)
+-   Asymptotically optimal properties
 
 ------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ Where:
 
 ## Choosing a probability distribution
 
-**For [Count Data]{style="color: #FFFF00;"} (e.g., Cases):**
+**For Count Data (e.g., Cases):**
 
 -   **Poisson**: $Y_i \sim \text{Poisson}(\lambda_i)$
 -   **Negative Binomial**: $Y_i \sim \text{NB}(\mu_i, \phi)$
@@ -52,139 +52,73 @@ Where:
 
 ## Choosing a probability distribution
 
-**For [Continuous Data:]{style="color: #FFFF00;"}**
+**For Continuous Data:**
 
 -   **Normal**: $Y_i \sim N(\mu_i, \sigma^2)$
 -   **Log-normal**: $\log Y_i \sim N(\log \mu_i, \sigma^2)$
 
 ::: {.callout-note}
-[**For Our SIR Example:**]{style="color:yellow"} We'll use [Poisson]{style="yellow"} since we're modeling case counts
+**For Our SIR Example:** We'll use Poisson since we're modeling case counts
 :::
 
 ------------------------------------------------------------------------
 
 ## MLE implementation: Poisson likelihood
 
-```{r mle-implementation, echo=TRUE}
-#| code-line-numbers: "1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27" 
-# Define negative log-likelihood function
-nll_function <- function(beta, gamma, data) {
-  # Simulate model
-  out <- ode(y = init_conds, times = data$time,
-             func = sir_model, parms = c(beta = beta, gamma = gamma))
-
-  # Model predictions (scaled to cases)
-  predicted <- out[,"I"] * 1000
-
-  # Poisson negative log-likelihood
-  nll <- -sum(dpois(data$observed, lambda = predicted, log = TRUE))
-
-  return(nll)
-}
+```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_implementation" code-line-numbers="1-2|3-6|7-8|10-13|16-17|18|18-24|25-26|27"}
 ```
 
 ------------------------------------------------------------------------
 
-```{r mle-fitting, echo=TRUE}
-#| code-line-numbers: "1-2|3|4|6|7-8|1-8|10-11|12" 
-# Use optimization to find MLE
-library(bbmle)
-fit_mle <- mle2(nll_function,
-                start = list(beta = 0.2, gamma = 0.1),
-                data = list(data = data),
-                method = "L-BFGS-B",
-                lower = c(0.01, 0.01),
-                upper = c(1.0, 0.5))
-
-# Extract results
-mle_params <- coef(fit_mle)
-mle_se <- sqrt(diag(vcov(fit_mle)))
+```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_fitting" code-line-numbers="1-2|3|4|6|7-8|1-8|10-11|12"}
 ```
 
 ------------------------------------------------------------------------
 
 ### MLE results
 
-```{r mle-results, echo=FALSE}
-cat("Beta:", round(mle_params[1], 3), "±", round(mle_se[1], 3), "\n")
-cat("Gamma:", round(mle_params[2], 3), "±", round(mle_se[2], 3), "\n")
-cat("R0:", round(mle_params[1]/mle_params[2], 2), "\n")
+```{.default include="results/04_mle_estimates.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------
 
 ## Uncertainty quantification with MLE
 
-```{r mle-uncertainty, echo=TRUE, fig.width=10, fig.height=6}
-# Profile likelihood for uncertainty
-prof <- profile(fit_mle)
-plot(prof, absVal = TRUE, main = "Profile Likelihood")
+```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_uncertainty"}
 ```
+
+![](figures/04_profile_likelihood.png)
 
 ------------------------------------------------------------------------
 
-```{r mle-ci, echo=TRUE}
-# Confidence intervals
-confint(fit_mle, level = 0.95)
+```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_ci"}
+```
+
+```{.default include="results/04_mle_confint.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------
 
 ### MLE estimates vs true values
-```{r mle-comparison, echo=FALSE}
-# Compare with true values
-cat("True Beta:", true_params[1], "\n")
-cat("MLE Beta:", round(mle_params[1], 3), "\n")
-cat("True Gamma:", true_params[2], "\n")
-cat("MLE Gamma:", round(mle_params[2], 3), "\n")
+```{.default include="results/04_mle_vs_true.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------
 
 ## Model comparison with MLE
 
-```{r model-comparison, echo=TRUE}
-#| code-line-numbers: "1|2|3|5-6|7-8|10-11|13-16" 
-# Fit different models and compare
-# Model 1: SIR with Poisson
-# Model 2: SIR with negative binomial
-
-# Negative binomial likelihood
-nll_nb <- function(beta, gamma, phi, data) {
-  out <- ode(y = init_conds, times = data$time,
-             func = sir_model, parms = c(beta = beta, gamma = gamma))
-
-  # Extract and scale predictions to cases
-  predicted <- out[,"I"] * 1000
-
-  # Negative Binomial negative log-likelihood
-  nll <- -sum(dnbinom(data$observed, mu = predicted, size = phi, log = TRUE))
-
-  return(nll)
-}
+```{.r include="scripts/04_maximum_likelihood.R" snippet="model_comparison" code-line-numbers="1|2|3|5-6|7-8|10-11|13-16"}
 ```
 
 ------------------------------------------------------------------------
 
-```{r model-fit, echo=TRUE}
-#| code-line-numbers: "1-2|3|5|6-7|1-7" 
-# Fit NB model
-fit_nb <- mle2(nll_nb,
-               start = list(beta = 0.2, gamma = 0.1, phi = 10),
-               data = list(data = data),
-               method = "L-BFGS-B",
-               lower = c(0.01, 0.01, 0.1),
-               upper = c(1.0, 0.5, 100))
+```{.r include="scripts/04_maximum_likelihood.R" snippet="model_fit" code-line-numbers="1-2|3|5|6-7|1-7"}
 ```
 
 ------------------------------------------------------------------------
 
 ### Model comparison
-```{r model-comparison-results, echo=FALSE}
-# Compare models
-cat("Poisson AIC:", AIC(fit_mle), "\n")
-cat("Negative Binomial AIC:", AIC(fit_nb), "\n")
-cat("Delta AIC:", AIC(fit_nb) - AIC(fit_mle), "\n")
+```{.default include="results/04_model_comparison.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------

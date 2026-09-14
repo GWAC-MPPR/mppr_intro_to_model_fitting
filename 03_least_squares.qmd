@@ -4,7 +4,7 @@
 
 ## Least squares: the intuitive approach
 
-[**Core Idea:**]{style="color: #FFFF00;"} Minimize the sum of squared differences between model predictions and observations
+**Core Idea:** Minimize the sum of squared differences between model predictions and observations
 
 ------------------------------------------------------------------------
 
@@ -20,135 +20,50 @@ Where:
 
 ### Why squared errors?
 
-[**Advantages:**]{style="color: #FFFF00;"}
+**Advantages:**
 
-- [Penalizes large errors more heavily]{style="color: #FFFF00;"}
-- [Differentiable (smooth optimization)]{style="color: #FFFF00;"}
-- [Mathematically tractable]{style="color: #FFFF00;"}
-- [Gives maximum likelihood estimates when errors are normal distributed]{style="color: #FFFF00;"}
+- Penalizes large errors more heavily
+- Differentiable (smooth optimization)
+- Mathematically tractable
+- Gives maximum likelihood estimates when errors are normal distributed
 
 ------------------------------------------------------------------------
 
-### [Disadvantages]{style="color: tomato;"}
+### Disadvantages
 
-- [Sensitive to outliers]{style="color: tomato;"}
-- [Assumes constant variance]{style="color: tomato;"}
-- [No probabilistic interpretation]{style="color: tomato;"}
+- Sensitive to outliers
+- Assumes constant variance
+- No probabilistic interpretation
 
 ------------------------------------------------------------------------
 
 ## Least squares example: SIR model
 
-```{r ls-example, echo=FALSE, fig.width=10, fig.height=6}
-# Load required packages
-library(deSolve)
-library(ggplot2)
-
-# Define SIR model
-sir_model <- function(t, y, params) {
-  with(as.list(c(y, params)), {
-    dS <- -beta * S * I
-    dI <- beta * S * I - gamma * I
-    dR <- gamma * I
-    list(c(dS, dI, dR))
-  })
-}
-
-# Generate synthetic data
-set.seed(42)
-true_params <- c(beta = 0.3, gamma = 0.1)
-init_conds <- c(S = 0.99, I = 0.01, R = 0)
-times <- seq(0, 365, by = 1)
-
-# Simulate true model
-out <- ode(y = init_conds, times = times, func = sir_model, parms = true_params)
-true_cases <- out[,"I"] * 1000  # Scale to cases
-
-# Add noise
-observed_cases <- rpois(length(times), true_cases + 5)
-
-# Plot
-plot_data <- data.frame(
-  time = times,
-  observed = observed_cases,
-  true_model = true_cases
-)
-
-ggplot(plot_data, aes(x = time)) +
-  geom_point(aes(y = observed), color = "red", alpha = 0.7) +
-  geom_line(aes(y = true_model), color = "blue", linewidth = 1) +
-  labs(x = "Time (days)", y = "Number of Cases",
-       title = "SIR Model: True vs Observed Data") +
-  theme_minimal()
-```
+![](figures/03_sir_true_vs_observed.png)
 
 ------------------------------------------------------------------------
 
 ## Implementing least squares
 
-```{r ls-implementation, echo=TRUE, size="tiny"}
-#| code-line-numbers: "1-2|3-12|14-15|16-19|1-15"
-# Define objective function
-sse_function <- function(params, data) {
-  beta <- params[1]
-  gamma <- params[2]
-  
-  # Simulate model
-  out <- ode(
-    y = init_conds,
-    times = data$time,
-    func = sir_model,
-    parms = c(beta = beta, gamma = gamma)
-  )
-  
-  #  Extract and rescale the predicted cases
-  predicted <- out[, "I"] * 1000
-  # Calculate sum of squared errors
-  sse <- sum((data$observed - predicted)^2)
-  
-  return(sse)
-}
+``` {.r include="scripts/03_least_squares.R" snippet="ls_implementation" code-line-numbers="1-2|3-12|14-15|16-19|1-15"}
 ```
 
 ------------------------------------------------------------------------
 
-```{r ls-fitting, echo=TRUE}
-#| code-line-numbers: "1-2|4-8|6|7|4-7" 
-# Prepare data
-data <- data.frame(time = times, observed = observed_cases)
-
-# Test different parameter values
-test_params <- expand.grid(
-  beta = seq(0.1, 0.5, length.out = 10),
-  gamma = seq(0.05, 0.2, length.out = 10)
-)
+``` {.r include="scripts/03_least_squares.R" snippet="ls_fitting" code-line-numbers="1-2|4-8|6|7|4-7"}
 ```
 
 ------------------------------------------------------------------------
 
-```{r ls-fitting-2, echo=TRUE}
-#| code-line-numbers: "1-2|3|4-7|8|1-7"
-# Calculate SSE for each combination
-for (i in 1:nrow(test_params)) {
-  test_params$sse[i] <- sse_function(
-    c(
-      test_params[i, 1],
-      test_params[i, 2]
-    ),
-    data
-  )
-}
+``` {.r include="scripts/03_least_squares.R" snippet="ls_fitting_2" code-line-numbers="1-2|3|4-7|8|1-7"}
 ```
 
 ------------------------------------------------------------------------
 
-```{r ls-results, echo=TRUE}
-#| code-line-numbers: "1-2|3|4-7|1-7"
-# Find minimum
-best_idx <- which.min(test_params$sse)
-best_params <- test_params[best_idx, ]
-cat("True parameters: Beta =", true_params[1], ", Gamma =", true_params[2])
-cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", round(best_params$gamma, 3), "\n")
+``` {.r include="scripts/03_least_squares.R" snippet="ls_results" code-line-numbers="1-2|3|4-7|1-7"}
+```
+
+``` {.default include="results/03_least_squares_fit.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------

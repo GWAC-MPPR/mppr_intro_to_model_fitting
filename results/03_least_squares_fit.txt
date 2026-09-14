@@ -1,0 +1,2 @@
+True parameters: Beta = 0.3 , Gamma = 0.1 
+Best fit parameters: Beta = 0.322 , Gamma = 0.1 
