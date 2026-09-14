@@ -875,8 +875,9 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="the-bayesian-formulation">The Bayesian formulation</h3>
-<p>So far we have asked <em>which</em> <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> fits best. A Bayesian asks</p>
-<p><span style="color: tomato;">**“How plausible is each value of** <span class="math inline">\(\theta\)</span>, given the data?”</span></p>
+<p>So far we have asked <em>which</em> <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> fits best.</p>
+<p>A Bayesian asks</p>
+<p><span style="color: tomato;">“How plausible is each value of <span class="math inline">\(\theta\)</span>, given the data?”</span></p>
 <ul>
 <li>The answer is a <span style="color: tomato;">probability distribution</span> over <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span></li>
 <li>Every estimate, interval and prediction we report comes from that one distribution</li>
@@ -891,7 +892,6 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>The data then make some values more believable and others less</li>
 <li><span style="color: tomato;">Bayes’ rule</span> is the rule for moving credibility towards the values that explain the data well</li>
 </ul>
-<p><em>Bayesian analysis is reallocation of credibility across possibilities. The rest is details.</em></p>
 </div><div class="column" style="width:58%;">
 <p><a href="figures/06_bayes_update.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="figures/06_bayes_update.png"></a></p>
 </div></div>
@@ -922,7 +922,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="vague-and-informative-priors">Vague and informative priors</h3>
+<h3 id="types-of-priors-vague-and-informative-priors">Types of priors: vague and informative priors</h3>
 <ul>
 <li>A <span style="color: tomato;">vague</span> prior spreads credibility widely and leaves the work to the data</li>
 <li>An <span style="color: tomato;">informative</span> prior writes down what we already know. It matters most when the data are thin</li>
@@ -963,15 +963,66 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="the-posterior" class="slide level2">
 <h2>The posterior</h2>
-<h3 id="posterior-summaries">Posterior summaries</h3>
-<div style="font-size: 0.8em;">
+<h3 id="posterior-summaries-point-estimates">Posterior summaries: point estimates</h3>
+<div style="font-size: 0.75em;">
+<div class="columns">
+<div class="column" style="width:38%;">
 <ul>
-<li>A <span style="color: tomato;">point estimate</span>, if you want one: the posterior mean or median</li>
-<li>A <span style="color: tomato;">95% credible interval</span>, the range that holds 95% of the posterior probability</li>
-<li>You can read it literally: *“there is a 95% probability that* <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span> lies between <span style="color: steelblue;">3.4 and 3.7</span>”. A confidence interval does not allow that sentence</li>
-<li>Anything you can compute from the parameters, such as <span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span>, comes with its own distribution at no extra cost</li>
-<li><span style="color: tomato;">Predictions</span> that carry the parameter uncertainty through</li>
+<li>If you want a single number, the posterior gives you three to choose from: the <span style="color: tomato;">mode</span>, the <span style="color: tomato;">median</span> and the <span style="color: tomato;">mean</span></li>
+<li>They agree when the posterior is symmetric and differ when it is skewed, as it usually is for a rate</li>
+<li>The median is the usual choice: it does not move when the tail is long</li>
 </ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_posterior_point.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="figures/06_posterior_point.png"></a></p>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="posterior-summaries-credible-intervals">Posterior summaries: credible intervals</h3>
+<div style="font-size: 0.75em;">
+<div class="columns">
+<div class="column" style="width:38%;">
+<ul>
+<li>A <span style="color: tomato;">95% credible interval</span> is the range holding 95% of the posterior probability, here the 2.5% and 97.5% quantiles</li>
+<li>You can read it literally: “there is a 95% probability that <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span> lies between <span style="color: steelblue;">1.5 and 4.1</span>”</li>
+<li>A confidence interval does not allow that sentence; it is a statement about repeated sampling, not about <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span></li>
+</ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_posterior_interval.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="figures/06_posterior_interval.png"></a></p>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="posterior-summaries-derived-quantities">Posterior summaries: derived quantities</h3>
+<div style="font-size: 0.75em;">
+<div class="columns">
+<div class="column" style="width:38%;">
+<ul>
+<li>We sample <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span>, but what we want is <span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span></li>
+<li>Compute it for every draw and you have its posterior, correlation between the parameters included, at no extra cost</li>
+<li>The same goes for the infectious period, the peak size, or the final attack rate</li>
+</ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_posterior_derived.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="figures/06_posterior_derived.png"></a></p>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="posterior-summaries-predictions">Posterior summaries: predictions</h3>
+<div style="font-size: 0.75em;">
+<div class="columns">
+<div class="column" style="width:38%;">
+<ul>
+<li>Run the model once for each draw and you get a whole family of epidemic curves rather than one</li>
+<li>Their spread is the <span style="color: tomato;">prediction uncertainty</span> that comes from not knowing the parameters exactly</li>
+<li>Summarise them as a median curve and a 95% band, and compare the band with the data</li>
+</ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_posterior_predictive.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="figures/06_posterior_predictive.png"></a></p>
+</div></div>
 </div>
 </section>
 <section id="the-posterior-is-intractable" class="slide level2">
@@ -1022,7 +1073,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="grid-evaluation-for-the-influenza-outbreak">Grid evaluation for the influenza outbreak</h3>
-<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
+<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
 <p><span style="color: steelblue;">3,600</span> model runs, and <span style="color: tomato;">nearly all of them landed where the posterior is zero</span></p>
 </section>
 <section id="section-10" class="slide level2" data-background-color="#447099" data-transition="fade-in">
@@ -1040,7 +1091,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>A posterior can be treated the same way. Given enough draws of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, the <span style="color: tomato;">mean, the quantiles and the histogram of the sample</span> are as good as the real thing</li>
 </ul>
 </div><div class="column" style="width:58%;">
-<p><a href="figures/06_monte_carlo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="figures/06_monte_carlo.png"></a></p>
+<p><a href="figures/06_monte_carlo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="figures/06_monte_carlo.png"></a></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -1073,13 +1124,13 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>Record <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> and go back to step 2</li>
 </ol>
 </div><div class="column" style="width:50%;">
-<p><a href="figures/06_metropolis_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="figures/06_metropolis_flowchart.png"></a></p>
+<p><a href="figures/06_metropolis_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_metropolis_flowchart.png"></a></p>
 </div></div>
 </section>
 <section class="slide level2">
 
 <h3 id="the-acceptance-rule">The acceptance rule</h3>
-<p><a href="figures/06_metropolis_step.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="figures/06_metropolis_step.png"></a></p>
+<p><a href="figures/06_metropolis_step.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="figures/06_metropolis_step.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1135,7 +1186,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p>The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on <span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span>, where we know what the answer should look like.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb20-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="figures/06_metropolis_normal.png"></a></p>
+<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="figures/06_metropolis_normal.png"></a></p>
 </section>
 <section id="section-11" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1146,7 +1197,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section id="practical-implementation" class="slide level2">
 <h2>Practical implementation</h2>
 <h3 id="tuning-the-proposal">Tuning the proposal</h3>
-<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="figures/06_proposal_tuning.png"></a></p>
+<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="figures/06_proposal_tuning.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1161,7 +1212,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="burn-in">Burn-in</h3>
-<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_burn_in.png"></a></p>
+<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_burn_in.png"></a></p>
 <ul>
 <li>We chose the starting point, so the first part of the chain says more about that choice than about the posterior</li>
 <li>Throw those early samples away. This is the <span style="color: tomato;">burn-in</span>. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it</li>
@@ -1171,7 +1222,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="convergence-assessment-with-multiple-chains">Convergence assessment with multiple chains</h3>
-<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="figures/06_convergence.png"></a></p>
+<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_convergence.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1298,12 +1349,12 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="convergence-diagnostics-for-the-influenza-fit">Convergence diagnostics for the influenza fit</h3>
-<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="figures/06_flu_traces.png"></a></p>
+<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_flu_traces.png"></a></p>
 </section>
 <section class="slide level2">
 
 <h3 id="marginal-and-joint-posterior-distributions">Marginal and joint posterior distributions</h3>
-<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="figures/06_flu_posterior.png"></a></p>
+<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="figures/06_flu_posterior.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1323,7 +1374,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="posterior-predictive-fit">Posterior predictive fit</h3>
-<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_flu_fit.png"></a></p>
+<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="figures/06_flu_fit.png"></a></p>
 </section>
 <section id="section-14" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
