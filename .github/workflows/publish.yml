@@ -13,5 +13,5 @@ jobs:
       contents: write
     uses: GWAC-MPPR/.github/.github/workflows/quarto-slides.yml@v1
     with:
-      use-renv: true
+      use-renv: false
       release-tag: slides-2026
