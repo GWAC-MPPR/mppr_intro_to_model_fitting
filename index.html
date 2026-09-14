@@ -1032,7 +1032,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p><span class="math display">\[p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta\]</span></p>
 </div>
 <ul>
-<li>This is an <span style="color: tomato;">integral over every combination of parameter values</span>, and for an ODE model there is no formula for it</li>
+<li>This is an <span style="color: tomato;">integral over every combination of parameter values</span>, and for an ODE model there is <span style="color:tomato">no formula for it</span>.</li>
 <li>What we <em>can</em> do is evaluate <span style="color: steelblue;"><span class="math inline">\(p(y \mid \theta)\, p(\theta)\)</span></span> at any <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> we like, which gives us the posterior <span style="color: tomato;">up to that unknown constant</span></li>
 </ul>
 </section>
@@ -1114,12 +1114,50 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
+<h3 id="two-things-you-can-do-with-a-distribution">Two things you can do with a distribution</h3>
+<div style="font-size: 0.8em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span style="color: tomato;">Evaluate</span> it at a point</th>
+<th><span style="color: tomato;">Sample</span> from it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span></td>
+<td><code>dnorm(6, 5, 2)</code> gives 0.176</td>
+<td><code>rnorm(3, 5, 2)</code> gives 6.3, 4.1, 7.8</td>
+</tr>
+<tr class="even">
+<td>The posterior</td>
+<td><code>log_posterior(theta)</code>: one model run</td>
+<td>there is no <code>rposterior()</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>R provides both for the familiar distributions, so we never notice they are different abilities</li>
+<li>For the posterior we have only the first: any <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> can be scored, up to the constant <span style="color: steelblue;"><span class="math inline">\(p(y)\)</span></span></li>
+<li>No function returns random draws from <em>this</em> posterior: it has no formula, it is whatever shape the model, the likelihood and the prior produce together</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="sampling-from-an-unnormalised-density">Sampling from an unnormalised density</h3>
 <ul>
-<li>Monte Carlo needs <span style="color: tomato;">samples</span> from the posterior</li>
-<li>All we can do is <span style="color: tomato;">evaluate</span> the posterior, up to a constant, at any point we choose</li>
+<li>Monte Carlo needs <span style="color: tomato;">samples</span>: a bag of draws of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> from which means, intervals and predictions are read off</li>
+<li>All we have is the ability to <span style="color: tomato;">evaluate</span>: to score any candidate <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> and say how plausible it is relative to any other</li>
 </ul>
 <p><span style="color: tomato;"><strong>How do you draw samples from something you can only evaluate?</strong></span></p>
+<p>The answer is to stop trying to draw independent samples at all, and instead to walk through parameter space one step at a time, deciding each step from the scores of two candidates. The rest of this section is that walk</p>
 </section>
 <section id="markov-chain-monte-carlo" class="slide level2 smaller">
 <h2>Markov chain Monte Carlo</h2>
