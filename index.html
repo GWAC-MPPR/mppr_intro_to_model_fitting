@@ -970,7 +970,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <ul>
 <li>If you want a single number, the posterior gives you three to choose from: the <span style="color: tomato;">mode</span>, the <span style="color: tomato;">median</span> and the <span style="color: tomato;">mean</span></li>
 <li>They agree when the posterior is symmetric and differ when it is skewed, as it usually is for a rate</li>
-<li>The median is the usual choice: it does not move when the tail is long</li>
+<li>The <span style="color:tomato">median is the usual choice</span>: it does not move when the tail is long</li>
 </ul>
 </div><div class="column" style="width:62%;">
 <p><a href="figures/06_posterior_point.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="figures/06_posterior_point.png"></a></p>
@@ -985,8 +985,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <div class="column" style="width:38%;">
 <ul>
 <li>A <span style="color: tomato;">95% credible interval</span> is the range holding 95% of the posterior probability, here the 2.5% and 97.5% quantiles</li>
-<li>You can read it literally: “there is a 95% probability that <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span> lies between <span style="color: steelblue;">1.5 and 4.1</span>”</li>
-<li>A confidence interval does not allow that sentence; it is a statement about repeated sampling, not about <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span></li>
+<li>You can read it literally: <span style="color: tomato;">“there is a 95% probability that <span class="math inline">\(R_0\)</span></span> lies between <span style="color: steelblue;">1.5 and 4.1</span>”</li>
+<li>A confidence interval is rather a statement about repeated sampling, not about <span style="color: steelblue;"><span class="math inline">\(R_0\)</span></span></li>
 </ul>
 </div><div class="column" style="width:62%;">
 <p><a href="figures/06_posterior_interval.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="figures/06_posterior_interval.png"></a></p>
@@ -1001,7 +1001,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <div class="column" style="width:38%;">
 <ul>
 <li>We sample <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span>, but what we want is <span style="color: steelblue;"><span class="math inline">\(R_0 = \beta N / \gamma\)</span></span></li>
-<li>Compute it for every draw and you have its posterior, correlation between the parameters included, at no extra cost</li>
+<li>Compute it for every draw and you have its posterior, <span style="color:tomato">correlation between the parameters</span> included, at no extra cost</li>
 <li>The same goes for the infectious period, the peak size, or the final attack rate</li>
 </ul>
 </div><div class="column" style="width:62%;">
@@ -1016,9 +1016,9 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <div class="columns">
 <div class="column" style="width:38%;">
 <ul>
-<li>Run the model once for each draw and you get a whole family of epidemic curves rather than one</li>
+<li>Run the model <span style="color:tomato">once for each draw</span> and you get a whole <span style="color:tomato">family of epidemic curves</span> rather than one</li>
 <li>Their spread is the <span style="color: tomato;">prediction uncertainty</span> that comes from not knowing the parameters exactly</li>
-<li>Summarise them as a median curve and a 95% band, and compare the band with the data</li>
+<li><span style="color:tomato">Summarise them</span> as a median curve and a 95% band, and compare the band with the data</li>
 </ul>
 </div><div class="column" style="width:62%;">
 <p><a href="figures/06_posterior_predictive.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="figures/06_posterior_predictive.png"></a></p>
@@ -1038,43 +1038,61 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="grid-evaluation-does-not-scale">Grid evaluation does not scale</h3>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Parameters</th>
-<th style="text-align: right;">Grid points at 15 values each</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">225</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">50,625</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">11,390,625</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">576,650,390,625</td>
-</tr>
-</tbody>
-</table>
+<h3 id="the-obvious-approach-evaluate-the-posterior-on-a-grid">The obvious approach: evaluate the posterior on a grid</h3>
+<div style="font-size: 0.8em;">
+<div class="columns">
+<div class="column" style="width:38%;">
 <ul>
-<li>With two parameters a grid is a fine way to <em>look at</em> the posterior</li>
-<li>With six it is <span style="color: tomato;">out of the question</span></li>
+<li>We cannot integrate the posterior, but we can <span style="color: tomato;">evaluate it anywhere</span></li>
+<li>So choose a set of values for <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span>, run the model at each, and record <span style="color: steelblue;"><span class="math inline">\(p(y \mid \beta)\, p(\beta)\)</span></span></li>
+<li>With <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span> held fixed, 15 values means <span style="color: tomato;">15 model runs</span>, and the shape of the posterior appears</li>
+</ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_grid_1d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="figures/06_grid_1d.png"></a></p>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="two-parameters-a-grid-of-grids">Two parameters: a grid of grids</h3>
+<div style="font-size: 0.8em;">
+<div class="columns">
+<div class="column" style="width:38%;">
+<ul>
+<li>Now let <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span> vary too: 15 values of each, so every value of <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> is paired with every value of <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span></li>
+<li>That is <span style="color: steelblue;"><span class="math inline">\(15 \times 15 = 225\)</span></span> combinations, and <span style="color: tomato;">225 model runs</span></li>
+<li>A third parameter would multiply that by 15 again: a cube of <span style="color: steelblue;">3,375</span> points</li>
+</ul>
+</div><div class="column" style="width:62%;">
+<p><a href="figures/06_grid_2d.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="figures/06_grid_2d.png"></a></p>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="every-extra-parameter-multiplies-the-cost-by-15">Every extra parameter multiplies the cost by 15</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a>One model run takes about 0.6 ms on this laptop</span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="" aria-hidden="true" tabindex="-1"></a>parameters  grid points (15^p)             time</span>
+<span id="cb19-4"><a href="" aria-hidden="true" tabindex="-1"></a>1                           15      0.0 seconds</span>
+<span id="cb19-5"><a href="" aria-hidden="true" tabindex="-1"></a>2                          225      0.1 seconds</span>
+<span id="cb19-6"><a href="" aria-hidden="true" tabindex="-1"></a>3                        3,375      2.0 seconds</span>
+<span id="cb19-7"><a href="" aria-hidden="true" tabindex="-1"></a>4                       50,625     30.6 seconds</span>
+<span id="cb19-8"><a href="" aria-hidden="true" tabindex="-1"></a>6                   11,390,625          2 hours</span>
+<span id="cb19-9"><a href="" aria-hidden="true" tabindex="-1"></a>10             576,650,390,625         11 years</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The number of runs is <span style="color: steelblue;"><span class="math inline">\(15^p\)</span></span> for <span style="color: steelblue;"><span class="math inline">\(p\)</span></span> parameters: this is the <span style="color: tomato;">curse of dimensionality</span></li>
+<li>With two parameters a grid is a fine way to <em>look at</em> the posterior; an SEIR model with reporting and a latent period has six or more, and is <span style="color: tomato;">out of the question</span></li>
 </ul>
 </section>
 <section class="slide level2">
 
 <h3 id="grid-evaluation-for-the-influenza-outbreak">Grid evaluation for the influenza outbreak</h3>
-<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
-<p><span style="color: steelblue;">3,600</span> model runs, and <span style="color: tomato;">nearly all of them landed where the posterior is zero</span></p>
+<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
+<ul>
+<li>Worse, a grid spends its runs evenly, and the posterior is not spread evenly: over the range of the prior, <span style="color: steelblue;">3,600</span> runs and <span style="color: tomato;">nearly all of them landed where the posterior is zero</span></li>
+<li>What we want is a method that spends its model runs <span style="color: tomato;">where the posterior is large</span>, and that is what MCMC does</li>
+</ul>
 </section>
 <section id="section-10" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1091,7 +1109,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>A posterior can be treated the same way. Given enough draws of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span>, the <span style="color: tomato;">mean, the quantiles and the histogram of the sample</span> are as good as the real thing</li>
 </ul>
 </div><div class="column" style="width:58%;">
-<p><a href="figures/06_monte_carlo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="figures/06_monte_carlo.png"></a></p>
+<p><a href="figures/06_monte_carlo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="figures/06_monte_carlo.png"></a></p>
 </div></div>
 </section>
 <section class="slide level2">
@@ -1124,13 +1142,13 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>Record <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> and go back to step 2</li>
 </ol>
 </div><div class="column" style="width:50%;">
-<p><a href="figures/06_metropolis_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_metropolis_flowchart.png"></a></p>
+<p><a href="figures/06_metropolis_flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="figures/06_metropolis_flowchart.png"></a></p>
 </div></div>
 </section>
 <section class="slide level2">
 
 <h3 id="the-acceptance-rule">The acceptance rule</h3>
-<p><a href="figures/06_metropolis_step.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="figures/06_metropolis_step.png"></a></p>
+<p><a href="figures/06_metropolis_step.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="figures/06_metropolis_step.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1157,36 +1175,36 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="implementation-in-r">Implementation in R</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-code-line-numbers="1-5|7-9|10-16|17-18|20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>metropolis_1d <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_sd) {</span>
-<span id="cb19-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_iter)</span>
-<span id="cb19-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
-<span id="cb19-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
-<span id="cb19-5"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb19-6"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
-<span id="cb19-7"><a href=""></a>    <span class="co"># 1. propose a move: current value plus symmetric noise</span></span>
-<span id="cb19-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> proposal_sd)</span>
-<span id="cb19-9"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
-<span id="cb19-10"><a href=""></a>    <span class="co"># 2. accept with probability min(1, p(proposal) / p(theta)); on the log</span></span>
-<span id="cb19-11"><a href=""></a>    <span class="co">#    scale that is: accept if log(u) &lt; log_p_proposal - log_p</span></span>
-<span id="cb19-12"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
-<span id="cb19-13"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
-<span id="cb19-14"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
-<span id="cb19-15"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb19-16"><a href=""></a>    }</span>
-<span id="cb19-17"><a href=""></a>    <span class="co"># 3. record where the chain is (the old value again, if we rejected)</span></span>
-<span id="cb19-18"><a href=""></a>    samples[i] <span class="ot">&lt;-</span> theta</span>
-<span id="cb19-19"><a href=""></a>  }</span>
-<span id="cb19-20"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
-<span id="cb19-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-code-line-numbers="1-5|7-9|10-16|17-18|20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>metropolis_1d <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_sd) {</span>
+<span id="cb20-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_iter)</span>
+<span id="cb20-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
+<span id="cb20-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
+<span id="cb20-5"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-6"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
+<span id="cb20-7"><a href=""></a>    <span class="co"># 1. propose a move: current value plus symmetric noise</span></span>
+<span id="cb20-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> proposal_sd)</span>
+<span id="cb20-9"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
+<span id="cb20-10"><a href=""></a>    <span class="co"># 2. accept with probability min(1, p(proposal) / p(theta)); on the log</span></span>
+<span id="cb20-11"><a href=""></a>    <span class="co">#    scale that is: accept if log(u) &lt; log_p_proposal - log_p</span></span>
+<span id="cb20-12"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
+<span id="cb20-13"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
+<span id="cb20-14"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
+<span id="cb20-15"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb20-16"><a href=""></a>    }</span>
+<span id="cb20-17"><a href=""></a>    <span class="co"># 3. record where the chain is (the old value again, if we rejected)</span></span>
+<span id="cb20-18"><a href=""></a>    samples[i] <span class="ot">&lt;-</span> theta</span>
+<span id="cb20-19"><a href=""></a>  }</span>
+<span id="cb20-20"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
+<span id="cb20-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Everything is done on the <span style="color: tomato;">log scale</span>, so the products become sums and the tiny likelihoods do not underflow to zero</p>
 </section>
 <section class="slide level2">
 
 <h3 id="validation-on-a-known-target-distribution">Validation on a known target distribution</h3>
 <p>The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on <span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span>, where we know what the answer should look like.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="figures/06_metropolis_normal.png"></a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_metropolis_normal.png"></a></p>
 </section>
 <section id="section-11" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1197,7 +1215,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section id="practical-implementation" class="slide level2">
 <h2>Practical implementation</h2>
 <h3 id="tuning-the-proposal">Tuning the proposal</h3>
-<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="figures/06_proposal_tuning.png"></a></p>
+<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_proposal_tuning.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1212,7 +1230,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="burn-in">Burn-in</h3>
-<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_burn_in.png"></a></p>
+<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_burn_in.png"></a></p>
 <ul>
 <li>We chose the starting point, so the first part of the chain says more about that choice than about the posterior</li>
 <li>Throw those early samples away. This is the <span style="color: tomato;">burn-in</span>. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it</li>
@@ -1222,7 +1240,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="convergence-assessment-with-multiple-chains">Convergence assessment with multiple chains</h3>
-<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_convergence.png"></a></p>
+<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="figures/06_convergence.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1234,14 +1252,14 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li><span style="color: tomato;"><span class="math inline">\(\hat{R}\)</span></span> turns that into a number by comparing the variance between chains with the variance within them. We want <span style="color: steelblue;"><span class="math inline">\(\hat{R}\)</span> below 1.01</span></li>
 <li>Consecutive draws are correlated, so 20,000 of them carry less information than 20,000 independent draws would. The <span style="color: tomato;">effective sample size</span> is the number that matters</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Gelman-Rubin R-hat: variance between chains relative to variance within them.</span></span>
-<span id="cb21-2"><a href=""></a><span class="co"># Chains that have found the same distribution give R-hat close to 1.</span></span>
-<span id="cb21-3"><a href=""></a>rhat <span class="ot">&lt;-</span> <span class="cf">function</span>(chains) {</span>
-<span id="cb21-4"><a href=""></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(chains[[<span class="dv">1</span>]])</span>
-<span id="cb21-5"><a href=""></a>  W <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(chains, var))            <span class="co"># mean within-chain variance</span></span>
-<span id="cb21-6"><a href=""></a>  B <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="fu">var</span>(<span class="fu">sapply</span>(chains, mean))        <span class="co"># n x variance of the chain means</span></span>
-<span id="cb21-7"><a href=""></a>  <span class="fu">sqrt</span>(((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> W <span class="sc">+</span> B <span class="sc">/</span> n) <span class="sc">/</span> W)</span>
-<span id="cb21-8"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># Gelman-Rubin R-hat: variance between chains relative to variance within them.</span></span>
+<span id="cb22-2"><a href=""></a><span class="co"># Chains that have found the same distribution give R-hat close to 1.</span></span>
+<span id="cb22-3"><a href=""></a>rhat <span class="ot">&lt;-</span> <span class="cf">function</span>(chains) {</span>
+<span id="cb22-4"><a href=""></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(chains[[<span class="dv">1</span>]])</span>
+<span id="cb22-5"><a href=""></a>  W <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(chains, var))            <span class="co"># mean within-chain variance</span></span>
+<span id="cb22-6"><a href=""></a>  B <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="fu">var</span>(<span class="fu">sapply</span>(chains, mean))        <span class="co"># n x variance of the chain means</span></span>
+<span id="cb22-7"><a href=""></a>  <span class="fu">sqrt</span>(((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> W <span class="sc">+</span> B <span class="sc">/</span> n) <span class="sc">/</span> W)</span>
+<span id="cb22-8"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1283,98 +1301,98 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="prior-likelihood-posterior">Prior, likelihood, posterior</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-code-line-numbers="1|3-8|10-15|17-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="co"># Sample theta = (log beta, log gamma): the chain roams freely, the rates stay positive</span></span>
-<span id="cb22-2"><a href=""></a></span>
-<span id="cb22-3"><a href=""></a><span class="co"># Prior: normal on the logs (lognormal on beta and gamma), centred on R0 = 2 and a</span></span>
-<span id="cb22-4"><a href=""></a><span class="co"># 2-day infectious period, with sd 1 on the log scale (a factor of ~2.7 either way)</span></span>
-<span id="cb22-5"><a href=""></a>log_prior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
-<span id="cb22-6"><a href=""></a>  <span class="fu">dnorm</span>(theta[<span class="dv">1</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a href=""></a>    <span class="fu">dnorm</span>(theta[<span class="dv">2</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.5</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-8"><a href=""></a>}</span>
-<span id="cb22-9"><a href=""></a></span>
-<span id="cb22-10"><a href=""></a><span class="co"># Likelihood: Poisson counts around the model trajectory, as in the MLE section</span></span>
-<span id="cb22-11"><a href=""></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
-<span id="cb22-12"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(<span class="at">beta =</span> <span class="fu">exp</span>(theta[<span class="dv">1</span>]), <span class="at">gamma =</span> <span class="fu">exp</span>(theta[<span class="dv">2</span>]))</span>
-<span id="cb22-13"><a href=""></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(predicted)) <span class="sc">||</span> <span class="fu">any</span>(predicted <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="cn">Inf</span>)  <span class="co"># solver hiccup</span></span>
-<span id="cb22-14"><a href=""></a>  <span class="fu">sum</span>(<span class="fu">dpois</span>(flu<span class="sc">$</span>cases, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb22-15"><a href=""></a>}</span>
-<span id="cb22-16"><a href=""></a></span>
-<span id="cb22-17"><a href=""></a><span class="co"># Posterior up to a constant: all the Metropolis ratio needs</span></span>
-<span id="cb22-18"><a href=""></a>log_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">log_prior</span>(theta) <span class="sc">+</span> <span class="fu">log_likelihood</span>(theta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-code-line-numbers="1|3-8|10-15|17-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="co"># Sample theta = (log beta, log gamma): the chain roams freely, the rates stay positive</span></span>
+<span id="cb23-2"><a href=""></a></span>
+<span id="cb23-3"><a href=""></a><span class="co"># Prior: normal on the logs (lognormal on beta and gamma), centred on R0 = 2 and a</span></span>
+<span id="cb23-4"><a href=""></a><span class="co"># 2-day infectious period, with sd 1 on the log scale (a factor of ~2.7 either way)</span></span>
+<span id="cb23-5"><a href=""></a>log_prior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
+<span id="cb23-6"><a href=""></a>  <span class="fu">dnorm</span>(theta[<span class="dv">1</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href=""></a>    <span class="fu">dnorm</span>(theta[<span class="dv">2</span>], <span class="at">mean =</span> <span class="fu">log</span>(<span class="fl">0.5</span>), <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-8"><a href=""></a>}</span>
+<span id="cb23-9"><a href=""></a></span>
+<span id="cb23-10"><a href=""></a><span class="co"># Likelihood: Poisson counts around the model trajectory, as in the MLE section</span></span>
+<span id="cb23-11"><a href=""></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) {</span>
+<span id="cb23-12"><a href=""></a>  predicted <span class="ot">&lt;-</span> <span class="fu">predict_cases</span>(<span class="at">beta =</span> <span class="fu">exp</span>(theta[<span class="dv">1</span>]), <span class="at">gamma =</span> <span class="fu">exp</span>(theta[<span class="dv">2</span>]))</span>
+<span id="cb23-13"><a href=""></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="sc">!</span><span class="fu">is.finite</span>(predicted)) <span class="sc">||</span> <span class="fu">any</span>(predicted <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">return</span>(<span class="sc">-</span><span class="cn">Inf</span>)  <span class="co"># solver hiccup</span></span>
+<span id="cb23-14"><a href=""></a>  <span class="fu">sum</span>(<span class="fu">dpois</span>(flu<span class="sc">$</span>cases, <span class="at">lambda =</span> predicted, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb23-15"><a href=""></a>}</span>
+<span id="cb23-16"><a href=""></a></span>
+<span id="cb23-17"><a href=""></a><span class="co"># Posterior up to a constant: all the Metropolis ratio needs</span></span>
+<span id="cb23-18"><a href=""></a>log_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">log_prior</span>(theta) <span class="sc">+</span> <span class="fu">log_likelihood</span>(theta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="the-multivariate-metropolis-sampler">The multivariate Metropolis sampler</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-code-line-numbers="1-6|8-10|11-15|16|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>metropolis <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_cov) {</span>
-<span id="cb23-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_iter, <span class="at">ncol =</span> <span class="fu">length</span>(init))</span>
-<span id="cb23-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
-<span id="cb23-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
-<span id="cb23-5"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.finite</span>(log_p)) <span class="fu">stop</span>(<span class="st">"the starting value has zero posterior density"</span>)</span>
-<span id="cb23-6"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb23-7"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
-<span id="cb23-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(<span class="dv">1</span>, <span class="at">mu =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(init)),</span>
-<span id="cb23-9"><a href=""></a>                                      <span class="at">Sigma =</span> proposal_cov)</span>
-<span id="cb23-10"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
-<span id="cb23-11"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
-<span id="cb23-12"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
-<span id="cb23-13"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
-<span id="cb23-14"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb23-15"><a href=""></a>    }</span>
-<span id="cb23-16"><a href=""></a>    samples[i, ] <span class="ot">&lt;-</span> theta</span>
-<span id="cb23-17"><a href=""></a>  }</span>
-<span id="cb23-18"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
-<span id="cb23-19"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-code-line-numbers="1-6|8-10|11-15|16|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>metropolis <span class="ot">&lt;-</span> <span class="cf">function</span>(log_target, n_iter, init, proposal_cov) {</span>
+<span id="cb24-2"><a href=""></a>  samples <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_iter, <span class="at">ncol =</span> <span class="fu">length</span>(init))</span>
+<span id="cb24-3"><a href=""></a>  theta <span class="ot">&lt;-</span> init</span>
+<span id="cb24-4"><a href=""></a>  log_p <span class="ot">&lt;-</span> <span class="fu">log_target</span>(theta)</span>
+<span id="cb24-5"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.finite</span>(log_p)) <span class="fu">stop</span>(<span class="st">"the starting value has zero posterior density"</span>)</span>
+<span id="cb24-6"><a href=""></a>  n_accepted <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb24-7"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n_iter)) {</span>
+<span id="cb24-8"><a href=""></a>    proposal <span class="ot">&lt;-</span> theta <span class="sc">+</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(<span class="dv">1</span>, <span class="at">mu =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(init)),</span>
+<span id="cb24-9"><a href=""></a>                                      <span class="at">Sigma =</span> proposal_cov)</span>
+<span id="cb24-10"><a href=""></a>    log_p_proposal <span class="ot">&lt;-</span> <span class="fu">log_target</span>(proposal)</span>
+<span id="cb24-11"><a href=""></a>    <span class="cf">if</span> (<span class="fu">log</span>(<span class="fu">runif</span>(<span class="dv">1</span>)) <span class="sc">&lt;</span> log_p_proposal <span class="sc">-</span> log_p) {</span>
+<span id="cb24-12"><a href=""></a>      theta <span class="ot">&lt;-</span> proposal</span>
+<span id="cb24-13"><a href=""></a>      log_p <span class="ot">&lt;-</span> log_p_proposal</span>
+<span id="cb24-14"><a href=""></a>      n_accepted <span class="ot">&lt;-</span> n_accepted <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb24-15"><a href=""></a>    }</span>
+<span id="cb24-16"><a href=""></a>    samples[i, ] <span class="ot">&lt;-</span> theta</span>
+<span id="cb24-17"><a href=""></a>  }</span>
+<span id="cb24-18"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
+<span id="cb24-19"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="adaptive-tuning-and-multiple-chains">Adaptive tuning and multiple chains</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-code-line-numbers="1-4|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="co"># Pilot run: a rough, uncorrelated proposal to find the region of high posterior</span></span>
-<span id="cb24-2"><a href=""></a>pilot <span class="ot">&lt;-</span> <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">3000</span>,</span>
-<span id="cb24-3"><a href=""></a>                    <span class="at">init =</span> <span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="fu">log</span>(<span class="fl">0.5</span>)),</span>
-<span id="cb24-4"><a href=""></a>                    <span class="at">proposal_cov =</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb24-5"><a href=""></a></span>
-<span id="cb24-6"><a href=""></a><span class="co"># Tune: scale the covariance of the pilot samples (Roberts &amp; Rosenthal's 2.38^2/d)</span></span>
-<span id="cb24-7"><a href=""></a>tuned_cov <span class="ot">&lt;-</span> <span class="fl">2.38</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cov</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-code-line-numbers="1-6|7-8|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co"># Four chains from starting points spread well beyond the posterior (a factor</span></span>
-<span id="cb25-2"><a href=""></a><span class="co"># of ~1.6 either side of the pilot centre), so that agreement between them means</span></span>
-<span id="cb25-3"><a href=""></a><span class="co"># something</span></span>
-<span id="cb25-4"><a href=""></a>centre <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span>
-<span id="cb25-5"><a href=""></a>starts <span class="ot">&lt;-</span> <span class="fu">list</span>(centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>),</span>
-<span id="cb25-6"><a href=""></a>               centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
-<span id="cb25-7"><a href=""></a>chains <span class="ot">&lt;-</span> <span class="fu">lapply</span>(starts, <span class="cf">function</span>(s) <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">6000</span>,</span>
-<span id="cb25-8"><a href=""></a>                                                 <span class="at">init =</span> s, <span class="at">proposal_cov =</span> tuned_cov))</span>
-<span id="cb25-9"><a href=""></a>burn_in <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb25-10"><a href=""></a>posterior_samples <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(chains, <span class="cf">function</span>(ch) ch<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burn_in), ]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-code-line-numbers="1-4|6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="co"># Pilot run: a rough, uncorrelated proposal to find the region of high posterior</span></span>
+<span id="cb25-2"><a href=""></a>pilot <span class="ot">&lt;-</span> <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">3000</span>,</span>
+<span id="cb25-3"><a href=""></a>                    <span class="at">init =</span> <span class="fu">c</span>(<span class="fu">log</span>(<span class="fl">0.0013</span>), <span class="fu">log</span>(<span class="fl">0.5</span>)),</span>
+<span id="cb25-4"><a href=""></a>                    <span class="at">proposal_cov =</span> <span class="fu">diag</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb25-5"><a href=""></a></span>
+<span id="cb25-6"><a href=""></a><span class="co"># Tune: scale the covariance of the pilot samples (Roberts &amp; Rosenthal's 2.38^2/d)</span></span>
+<span id="cb25-7"><a href=""></a>tuned_cov <span class="ot">&lt;-</span> <span class="fl">2.38</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">cov</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" data-code-line-numbers="1-6|7-8|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># Four chains from starting points spread well beyond the posterior (a factor</span></span>
+<span id="cb26-2"><a href=""></a><span class="co"># of ~1.6 either side of the pilot centre), so that agreement between them means</span></span>
+<span id="cb26-3"><a href=""></a><span class="co"># something</span></span>
+<span id="cb26-4"><a href=""></a>centre <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(pilot<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>), ])</span>
+<span id="cb26-5"><a href=""></a>starts <span class="ot">&lt;-</span> <span class="fu">list</span>(centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>),</span>
+<span id="cb26-6"><a href=""></a>               centre <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>), centre <span class="sc">+</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
+<span id="cb26-7"><a href=""></a>chains <span class="ot">&lt;-</span> <span class="fu">lapply</span>(starts, <span class="cf">function</span>(s) <span class="fu">metropolis</span>(log_posterior, <span class="at">n_iter =</span> <span class="dv">6000</span>,</span>
+<span id="cb26-8"><a href=""></a>                                                 <span class="at">init =</span> s, <span class="at">proposal_cov =</span> tuned_cov))</span>
+<span id="cb26-9"><a href=""></a>burn_in <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb26-10"><a href=""></a>posterior_samples <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(chains, <span class="cf">function</span>(ch) ch<span class="sc">$</span>samples[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span>burn_in), ]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="convergence-diagnostics-for-the-influenza-fit">Convergence diagnostics for the influenza fit</h3>
-<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_flu_traces.png"></a></p>
+<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="figures/06_flu_traces.png"></a></p>
 </section>
 <section class="slide level2">
 
 <h3 id="marginal-and-joint-posterior-distributions">Marginal and joint posterior distributions</h3>
-<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="figures/06_flu_posterior.png"></a></p>
+<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img data-src="figures/06_flu_posterior.png"></a></p>
 </section>
 <section class="slide level2">
 
 <h3 id="posterior-estimates">Posterior estimates</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a>Posterior summaries: 4 chains x 5,000 draws after burn-in</span>
-<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>                       mean    median  2.5%    97.5%  </span>
-<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a>beta                   0.00221 0.00221 0.00218 0.00225</span>
-<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a>gamma                  0.476   0.476   0.455   0.497  </span>
-<span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a>R0                     3.55    3.55    3.40    3.71   </span>
-<span id="cb26-7"><a href="" aria-hidden="true" tabindex="-1"></a>infectious_period_days 2.10    2.10    2.01    2.20   </span>
-<span id="cb26-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="" aria-hidden="true" tabindex="-1"></a>Acceptance rates: 45%, 44%, 45%, 44% </span>
-<span id="cb26-10"><a href="" aria-hidden="true" tabindex="-1"></a>R-hat: beta 1.000, gamma 1.001</span>
-<span id="cb26-11"><a href="" aria-hidden="true" tabindex="-1"></a>Effective sample size: beta 2456, gamma 2799 of 20000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a>Posterior summaries: 4 chains x 5,000 draws after burn-in</span>
+<span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a>                       mean    median  2.5%    97.5%  </span>
+<span id="cb27-4"><a href="" aria-hidden="true" tabindex="-1"></a>beta                   0.00221 0.00221 0.00218 0.00225</span>
+<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a>gamma                  0.476   0.476   0.455   0.497  </span>
+<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a>R0                     3.55    3.55    3.40    3.71   </span>
+<span id="cb27-7"><a href="" aria-hidden="true" tabindex="-1"></a>infectious_period_days 2.10    2.10    2.01    2.20   </span>
+<span id="cb27-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="" aria-hidden="true" tabindex="-1"></a>Acceptance rates: 45%, 44%, 45%, 44% </span>
+<span id="cb27-10"><a href="" aria-hidden="true" tabindex="-1"></a>R-hat: beta 1.000, gamma 1.001</span>
+<span id="cb27-11"><a href="" aria-hidden="true" tabindex="-1"></a>Effective sample size: beta 2456, gamma 2799 of 20000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="posterior-predictive-fit">Posterior predictive fit</h3>
-<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="figures/06_flu_fit.png"></a></p>
+<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="figures/06_flu_fit.png"></a></p>
 </section>
 <section id="section-14" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1412,56 +1430,56 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="example-the-sir-model-in-stan">Example: the SIR model in Stan</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-code-line-numbers="1-13|15-22|24-28|30-38|40-45|47-50"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb27-1"><a href=""></a><span class="co">// SIR model in Stan (walkthrough)</span></span>
-<span id="cb27-2"><a href=""></a><span class="co">// Functions block: derivative of [S, I, R]</span></span>
-<span id="cb27-3"><a href=""></a><span class="kw">functions</span> {</span>
-<span id="cb27-4"><a href=""></a>  <span class="dt">vector</span> SIR(<span class="dt">real</span> t, <span class="dt">vector</span> y, <span class="dt">array</span>[] <span class="dt">real</span> theta) {</span>
-<span id="cb27-5"><a href=""></a>    <span class="dt">real</span> S = y[<span class="dv">1</span>]; <span class="dt">real</span> I = y[<span class="dv">2</span>]; <span class="dt">real</span> R = y[<span class="dv">3</span>];</span>
-<span id="cb27-6"><a href=""></a>    <span class="dt">real</span> beta = theta[<span class="dv">1</span>]; <span class="dt">real</span> gamma = theta[<span class="dv">2</span>];</span>
-<span id="cb27-7"><a href=""></a>    <span class="dt">vector</span>[<span class="dv">3</span>] dydt;</span>
-<span id="cb27-8"><a href=""></a>    dydt[<span class="dv">1</span>] = -beta * S * I;</span>
-<span id="cb27-9"><a href=""></a>    dydt[<span class="dv">2</span>] =  beta * S * I - gamma * I;</span>
-<span id="cb27-10"><a href=""></a>    dydt[<span class="dv">3</span>] =  gamma * I;</span>
-<span id="cb27-11"><a href=""></a>    <span class="cf">return</span> dydt;</span>
-<span id="cb27-12"><a href=""></a>  }</span>
-<span id="cb27-13"><a href=""></a>}</span>
-<span id="cb27-14"><a href=""></a></span>
-<span id="cb27-15"><a href=""></a><span class="co">// Data block: obs counts &amp; time grid</span></span>
-<span id="cb27-16"><a href=""></a><span class="kw">data</span> {</span>
-<span id="cb27-17"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_obs;</span>
-<span id="cb27-18"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_pop;</span>
-<span id="cb27-19"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">int</span> y;</span>
-<span id="cb27-20"><a href=""></a>  <span class="dt">real</span> t0;</span>
-<span id="cb27-21"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> ts;</span>
-<span id="cb27-22"><a href=""></a>}</span>
-<span id="cb27-23"><a href=""></a></span>
-<span id="cb27-24"><a href=""></a><span class="co">// Parameters: beta, gamma, S0</span></span>
-<span id="cb27-25"><a href=""></a><span class="kw">parameters</span> {</span>
-<span id="cb27-26"><a href=""></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; theta;     <span class="co">// {beta, gamma}</span></span>
-<span id="cb27-27"><a href=""></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; S0;         <span class="co">// initial susceptible fraction</span></span>
-<span id="cb27-28"><a href=""></a>}</span>
-<span id="cb27-29"><a href=""></a></span>
-<span id="cb27-30"><a href=""></a><span class="co">// Transformed params: ODE solve + Poisson rate</span></span>
-<span id="cb27-31"><a href=""></a><span class="kw">transformed parameters</span> {</span>
-<span id="cb27-32"><a href=""></a>  <span class="dt">vector</span>[<span class="dv">3</span>] y_init;</span>
-<span id="cb27-33"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">vector</span>[<span class="dv">3</span>] y_hat;</span>
-<span id="cb27-34"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> lambda;</span>
-<span id="cb27-35"><a href=""></a>  y_init[<span class="dv">1</span>] = S0; y_init[<span class="dv">2</span>] = <span class="dv">1</span> - S0; y_init[<span class="dv">3</span>] = <span class="dv">0</span>;</span>
-<span id="cb27-36"><a href=""></a>  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span>
-<span id="cb27-37"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span>:n_obs) lambda[i] = y_hat[i, <span class="dv">2</span>] * n_pop;</span>
-<span id="cb27-38"><a href=""></a>}</span>
-<span id="cb27-39"><a href=""></a></span>
-<span id="cb27-40"><a href=""></a><span class="co">// Model: priors + likelihood</span></span>
-<span id="cb27-41"><a href=""></a><span class="kw">model</span> {</span>
-<span id="cb27-42"><a href=""></a>  theta ~ lognormal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
-<span id="cb27-43"><a href=""></a>  S0    ~ beta(<span class="dv">1</span>, <span class="dv">1</span>);</span>
-<span id="cb27-44"><a href=""></a>  y     ~ poisson(lambda);</span>
-<span id="cb27-45"><a href=""></a>}</span>
-<span id="cb27-46"><a href=""></a></span>
-<span id="cb27-47"><a href=""></a><span class="co">// GQ: derived R0</span></span>
-<span id="cb27-48"><a href=""></a><span class="kw">generated quantities</span> {</span>
-<span id="cb27-49"><a href=""></a>  <span class="dt">real</span> R_0 = theta[<span class="dv">1</span>] / theta[<span class="dv">2</span>];</span>
-<span id="cb27-50"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" data-code-line-numbers="1-13|15-22|24-28|30-38|40-45|47-50"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb28-1"><a href=""></a><span class="co">// SIR model in Stan (walkthrough)</span></span>
+<span id="cb28-2"><a href=""></a><span class="co">// Functions block: derivative of [S, I, R]</span></span>
+<span id="cb28-3"><a href=""></a><span class="kw">functions</span> {</span>
+<span id="cb28-4"><a href=""></a>  <span class="dt">vector</span> SIR(<span class="dt">real</span> t, <span class="dt">vector</span> y, <span class="dt">array</span>[] <span class="dt">real</span> theta) {</span>
+<span id="cb28-5"><a href=""></a>    <span class="dt">real</span> S = y[<span class="dv">1</span>]; <span class="dt">real</span> I = y[<span class="dv">2</span>]; <span class="dt">real</span> R = y[<span class="dv">3</span>];</span>
+<span id="cb28-6"><a href=""></a>    <span class="dt">real</span> beta = theta[<span class="dv">1</span>]; <span class="dt">real</span> gamma = theta[<span class="dv">2</span>];</span>
+<span id="cb28-7"><a href=""></a>    <span class="dt">vector</span>[<span class="dv">3</span>] dydt;</span>
+<span id="cb28-8"><a href=""></a>    dydt[<span class="dv">1</span>] = -beta * S * I;</span>
+<span id="cb28-9"><a href=""></a>    dydt[<span class="dv">2</span>] =  beta * S * I - gamma * I;</span>
+<span id="cb28-10"><a href=""></a>    dydt[<span class="dv">3</span>] =  gamma * I;</span>
+<span id="cb28-11"><a href=""></a>    <span class="cf">return</span> dydt;</span>
+<span id="cb28-12"><a href=""></a>  }</span>
+<span id="cb28-13"><a href=""></a>}</span>
+<span id="cb28-14"><a href=""></a></span>
+<span id="cb28-15"><a href=""></a><span class="co">// Data block: obs counts &amp; time grid</span></span>
+<span id="cb28-16"><a href=""></a><span class="kw">data</span> {</span>
+<span id="cb28-17"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_obs;</span>
+<span id="cb28-18"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_pop;</span>
+<span id="cb28-19"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">int</span> y;</span>
+<span id="cb28-20"><a href=""></a>  <span class="dt">real</span> t0;</span>
+<span id="cb28-21"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> ts;</span>
+<span id="cb28-22"><a href=""></a>}</span>
+<span id="cb28-23"><a href=""></a></span>
+<span id="cb28-24"><a href=""></a><span class="co">// Parameters: beta, gamma, S0</span></span>
+<span id="cb28-25"><a href=""></a><span class="kw">parameters</span> {</span>
+<span id="cb28-26"><a href=""></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; theta;     <span class="co">// {beta, gamma}</span></span>
+<span id="cb28-27"><a href=""></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; S0;         <span class="co">// initial susceptible fraction</span></span>
+<span id="cb28-28"><a href=""></a>}</span>
+<span id="cb28-29"><a href=""></a></span>
+<span id="cb28-30"><a href=""></a><span class="co">// Transformed params: ODE solve + Poisson rate</span></span>
+<span id="cb28-31"><a href=""></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb28-32"><a href=""></a>  <span class="dt">vector</span>[<span class="dv">3</span>] y_init;</span>
+<span id="cb28-33"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">vector</span>[<span class="dv">3</span>] y_hat;</span>
+<span id="cb28-34"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> lambda;</span>
+<span id="cb28-35"><a href=""></a>  y_init[<span class="dv">1</span>] = S0; y_init[<span class="dv">2</span>] = <span class="dv">1</span> - S0; y_init[<span class="dv">3</span>] = <span class="dv">0</span>;</span>
+<span id="cb28-36"><a href=""></a>  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span>
+<span id="cb28-37"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span>:n_obs) lambda[i] = y_hat[i, <span class="dv">2</span>] * n_pop;</span>
+<span id="cb28-38"><a href=""></a>}</span>
+<span id="cb28-39"><a href=""></a></span>
+<span id="cb28-40"><a href=""></a><span class="co">// Model: priors + likelihood</span></span>
+<span id="cb28-41"><a href=""></a><span class="kw">model</span> {</span>
+<span id="cb28-42"><a href=""></a>  theta ~ lognormal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb28-43"><a href=""></a>  S0    ~ beta(<span class="dv">1</span>, <span class="dv">1</span>);</span>
+<span id="cb28-44"><a href=""></a>  y     ~ poisson(lambda);</span>
+<span id="cb28-45"><a href=""></a>}</span>
+<span id="cb28-46"><a href=""></a></span>
+<span id="cb28-47"><a href=""></a><span class="co">// GQ: derived R0</span></span>
+<span id="cb28-48"><a href=""></a><span class="kw">generated quantities</span> {</span>
+<span id="cb28-49"><a href=""></a>  <span class="dt">real</span> R_0 = theta[<span class="dv">1</span>] / theta[<span class="dv">2</span>];</span>
+<span id="cb28-50"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="the-bayesian-workflow" class="slide level2 scrollable">
 <h2>The Bayesian workflow</h2>
@@ -1487,8 +1505,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li><p>Fit the SIR model to the influenza data with a Metropolis sampler you write yourself, following <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals"><code>02_mcmc_practicals.qmd</code></a></p></li>
 <li><p>Download the file <code>Day05-pack</code> from Moodle or clone it from GitHub using the following command in your terminal</p></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
-<span id="cb28-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
+<span id="cb29-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="advanced-methods" class="title-slide slide level1 center">
@@ -1532,27 +1550,27 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="particle-filtering-in-pomp" class="slide level2">
 <h2>Particle filtering in <code>pomp</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
-<span id="cb29-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
-<span id="cb29-3"><a href=""></a></span>
-<span id="cb29-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
-<span id="cb29-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
-<span id="cb29-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
-<span id="cb29-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
-<span id="cb29-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
-<span id="cb29-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
-<span id="cb29-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
-<span id="cb29-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
-<span id="cb29-12"><a href=""></a>  ),</span>
-<span id="cb29-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
-<span id="cb29-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
-<span id="cb29-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
-<span id="cb29-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
-<span id="cb29-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
-<span id="cb29-18"><a href=""></a>)</span>
-<span id="cb29-19"><a href=""></a></span>
-<span id="cb29-20"><a href=""></a><span class="co"># Run particle filter</span></span>
-<span id="cb29-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
+<span id="cb30-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
+<span id="cb30-3"><a href=""></a></span>
+<span id="cb30-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
+<span id="cb30-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
+<span id="cb30-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
+<span id="cb30-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
+<span id="cb30-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
+<span id="cb30-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
+<span id="cb30-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
+<span id="cb30-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
+<span id="cb30-12"><a href=""></a>  ),</span>
+<span id="cb30-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
+<span id="cb30-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
+<span id="cb30-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
+<span id="cb30-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
+<span id="cb30-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
+<span id="cb30-18"><a href=""></a>)</span>
+<span id="cb30-19"><a href=""></a></span>
+<span id="cb30-20"><a href=""></a><span class="co"># Run particle filter</span></span>
+<span id="cb30-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="approximate-bayesian-computation" class="slide level2 smaller scrollable">
 <h2>Approximate Bayesian computation</h2>
