@@ -438,4 +438,14 @@ Any Questions?
 
 ## R implementation practicals {background-color="#447099" transition="fade-in"}
 
-- Let's turn to the [MCMC practical](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals), where you fit the SIR model to the influenza data with a Metropolis sampler you write yourself
+#### R Practicals
+
+- Fit the SIR model to the influenza data with a Metropolis sampler you write yourself, following [`02_mcmc_practicals.qmd`](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals)
+
+- Download the file `Day05-pack` from Moodle or clone it from GitHub using the following command in your terminal
+
+``` bash
+git clone \
+https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git
+```
+

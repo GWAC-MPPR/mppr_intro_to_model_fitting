@@ -169,9 +169,3 @@ The negative binomial model is [strongly preferred]{style="color: tomato;"}: the
 ::: {.fragment style="font-size: 450%"}
 Any Questions?
 :::
-
-------------------------------------------------------------------------
-
-## R implementation practicals {background-color="#447099" transition="fade-in"}
-
--   Let's turn to the [tutorials](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals)

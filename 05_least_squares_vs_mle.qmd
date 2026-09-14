@@ -18,3 +18,18 @@
 - [Model comparison and selection]{style="color: tomato;"} between candidate models
 - Data with [overdispersion]{style="color: tomato;"} or other non-constant error structures
 - [Formal statistical inference]{style="color: tomato;"} for reports and publications
+
+------------------------------------------------------------------------
+
+## R implementation practicals {background-color="#447099" transition="fade-in"}
+
+#### R Practicals
+
+- Fit the SIR model to the influenza data by least squares and by maximum likelihood, following [`01_model_fitting_practicals.qmd`](https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals)
+
+- Download the file `Day05-pack` from Moodle or clone it from GitHub using the following command in your terminal
+
+``` bash
+git clone \
+https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git
+```
