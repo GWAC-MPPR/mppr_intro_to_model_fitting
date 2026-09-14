@@ -14,16 +14,20 @@ plot.new()
 plot.window(xlim = c(0, 13), ylim = c(0, 6.2))
 
 box <- function(x, y, w, h, title, lines, lty = 2, border = "grey40", fill = "white",
-                title_col = border, text_col = "grey20") {
+                title_col = border, text_col = "grey20", fonts = rep(1, length(lines))) {
   rect(x - w / 2, y - h / 2, x + w / 2, y + h / 2, col = fill, border = border, lty = lty, lwd = 3)
   text(x, y + h / 2 - 0.42, title, font = 2, cex = 1.05, col = title_col)
-  text(x, y + h / 2 - 0.75, paste(lines, collapse = "\n"), cex = 0.82, col = text_col, adj = c(0.5, 1))
+  # one text() call per line so that individual lines can be bold
+  line_y <- y + h / 2 - 0.78 - 0.22 * (seq_along(lines) - 1)
+  for (i in seq_along(lines)) text(x, line_y[i], lines[i], cex = 0.82, col = text_col, font = fonts[i])
 }
 
 # ---- The row of modules ------------------------------------------------------
 y_top <- 4.3
-box(1.9, y_top, 3.0, 2.7, "R essentials",
-    c("data frames, plots,", "loops and functions,", "reading and writing data,", "git and GitHub for", "version control"))
+box(1.9, y_top, 3.0, 2.7, "Programming essentials",
+    c("R essentials", "data frames, plots,", "loops and functions,", "reading and writing data",
+      "Version control", "git and GitHub"),
+    fonts = c(2, 1, 1, 1, 2, 1))
 box(5.4, y_top, 3.4, 2.7, "Infectious disease\ndynamics modelling",
     c("", "compartmental models:", "SIR, SEIR and extensions", "R0, interventions,", "heterogeneity, stochasticity"))
 box(9.0, y_top, 3.4, 2.7, "Model fitting and\ncalibration",
