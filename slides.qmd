@@ -35,6 +35,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Where this lecture sits
+
+![](figures/00_course_roadmap.png)
+
 ## Learning Objectives
 
 By the end of this lecture, you will be able to:

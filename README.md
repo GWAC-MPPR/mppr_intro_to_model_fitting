@@ -30,6 +30,7 @@ To regenerate the figures and results after editing a script, run from the
 project root (the renv library provides `deSolve`, `ggplot2` and `bbmle`):
 
 ```sh
+Rscript scripts/00_course_roadmap.R        # the roadmap slide
 Rscript scripts/01_outbreak_data.R        # the data and three guesses at the parameters
 Rscript scripts/04_maximum_likelihood.R   # sources scripts/03_least_squares.R first
 Rscript scripts/06_mcmc_schematics.R      # toy-target schematics for the MCMC section
