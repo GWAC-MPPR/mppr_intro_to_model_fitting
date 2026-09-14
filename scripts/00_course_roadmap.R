@@ -30,7 +30,7 @@ box(9.0, y_top, 3.4, 2.7, "Model fitting and\ncalibration",
     c("", "connecting the model to data:", "least squares,", "maximum likelihood,", "Bayesian inference and MCMC"),
     lty = 1, border = "tomato", fill = "#fff3ef")
 box(12.0, y_top, 1.9, 2.7, "What comes\nnext",
-    c("", "scenarios,", "forecasts,", "decisions"))
+    c("", "scenario modelling,", "health economic", "modelling,", "science", "communication,", "capstone projects"))
 
 arrows(3.45, y_top, 3.65, y_top, length = 0.12, lwd = 3, col = "grey40")
 arrows(7.15, y_top, 7.25, y_top, length = 0.12, lwd = 3, col = "grey40")
