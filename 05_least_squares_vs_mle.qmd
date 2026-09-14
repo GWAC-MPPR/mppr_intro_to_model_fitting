@@ -6,15 +6,15 @@
 
 ### Least squares
 
-- Exploratory analysis, where a quick point estimate is enough
-- Obtaining initial values for likelihood-based or Bayesian methods
-- Situations where computational speed matters and a simple error structure is acceptable
+- [Exploratory analysis]{style="color: tomato;"}, where a quick point estimate is enough
+- Obtaining [initial values]{style="color: tomato;"} for likelihood-based or Bayesian methods
+- Situations where [computational speed]{style="color: tomato;"} matters and a simple error structure is acceptable
 
 ------------------------------------------------------------------------
 
 ### Maximum likelihood
 
-- Whenever uncertainty quantification is required
-- Model comparison and selection between candidate models
-- Data with overdispersion or other non-constant error structures
-- Formal statistical inference for reports and publications
+- Whenever [uncertainty quantification]{style="color: tomato;"} is required
+- [Model comparison and selection]{style="color: tomato;"} between candidate models
+- Data with [overdispersion]{style="color: tomato;"} or other non-constant error structures
+- [Formal statistical inference]{style="color: tomato;"} for reports and publications

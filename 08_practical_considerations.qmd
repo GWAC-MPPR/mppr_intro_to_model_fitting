@@ -9,30 +9,30 @@
 ::: {style="font-size: 0.8em;"}
 Usually one of four things:
 
-- Poor starting values: the search moves into parameter values where the model or the solver breaks down
-- A flat likelihood surface in some direction, so there is no gradient to follow
-- Poorly scaled parameters, as $\beta$ and $\gamma$ were today; a log transformation fixed it
-- Numerical instability at parameter bounds, or missing bounds where they were needed
+- [Poor starting values]{style="color: tomato;"}: the search moves into parameter values where the model or the solver breaks down
+- A [flat likelihood surface]{style="color: tomato;"} in some direction, so there is no gradient to follow
+- [Poorly scaled parameters]{style="color: tomato;"}, as [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="color: steelblue;"} were today; a [log transformation]{style="color: tomato;"} fixed it
+- [Numerical instability]{style="color: tomato;"} at parameter bounds, or missing bounds where they were needed
 :::
 
 ------------------------------------------------------------------------
 
 ### Parameter identifiability problems
 
-- Multiple solutions: several parameter combinations fit equally well, so the estimate depends on the starting value
-- Correlated parameters: only a combination such as the ratio $\beta / \gamma$ is determined by the data
-- Insufficient data or an overparameterised model
+- [Multiple solutions]{style="color: tomato;"}: several parameter combinations fit equally well, so the estimate depends on the starting value
+- [Correlated parameters]{style="color: tomato;"}: only a combination such as the ratio [$\beta / \gamma$]{style="color: steelblue;"} is determined by the data
+- [Insufficient data]{style="color: tomato;"} or an [overparameterised model]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### Remedies for identifiability problems
 
 ::: {style="font-size: 0.8em;"}
-- Multiple starting values, checking that they converge to the same estimate
-- Profile likelihoods or posterior distributions for each parameter, not point estimates alone
-- Fixing parameters known from other sources, or placing informative priors on them
-- Additional data that inform the parameters the outbreak curve cannot
-- Model reduction: simplify until the model is identifiable, then add complexity back one piece at a time
+- [Multiple starting values]{style="color: tomato;"}, checking that they converge to the same estimate
+- [Profile likelihoods or posterior distributions]{style="color: tomato;"} for each parameter, not point estimates alone
+- [Fixing parameters]{style="color: tomato;"} known from other sources, or placing [informative priors]{style="color: tomato;"} on them
+- [Additional data]{style="color: tomato;"} that inform the parameters the outbreak curve cannot
+- [Model reduction]{style="color: tomato;"}: simplify until the model is identifiable, then add complexity back one piece at a time
 :::
 
 ------------------------------------------------------------------------
@@ -40,11 +40,11 @@ Usually one of four things:
 ### Implausible estimates
 
 ::: {style="font-size: 0.8em;"}
-- Check the model assumptions against what is known about the disease and the setting
-- Check data quality: reporting changes, backfilled counts, case definitions that changed during the outbreak
-- Residual analysis: a pattern in the residuals over time indicates a missing process in the model
-- Sensitivity analysis: how much the estimates move when uncertain assumptions are changed
-- Fit alternative models and compare them formally
+- Check the [model assumptions]{style="color: tomato;"} against what is known about the disease and the setting
+- Check [data quality]{style="color: tomato;"}: reporting changes, backfilled counts, case definitions that changed during the outbreak
+- [Residual analysis]{style="color: tomato;"}: a pattern in the residuals over time indicates a missing process in the model
+- [Sensitivity analysis]{style="color: tomato;"}: how much the estimates move when uncertain assumptions are changed
+- Fit [alternative models]{style="color: tomato;"} and compare them formally
 :::
 
 ------------------------------------------------------------------------
@@ -55,25 +55,25 @@ Usually one of four things:
 
 - Plot the data and understand how they were collected
 - Check the model assumptions against the setting
-- Set realistic parameter bounds or priors before fitting
+- Set realistic [parameter bounds or priors]{style="color: tomato;"} before fitting
 - Prepare several starting values
 
 ------------------------------------------------------------------------
 
 ### While fitting
 
-- Monitor convergence of the optimiser or the chain, rather than reading only the final estimate
-- Check for local optima by comparing runs from different starting values
-- Document every fit, including the ones that failed
+- [Monitor convergence]{style="color: tomato;"} of the optimiser or the chain, rather than reading only the final estimate
+- Check for [local optima]{style="color: tomato;"} by comparing runs from different starting values
+- [Document every fit]{style="color: tomato;"}, including the ones that failed
 
 ------------------------------------------------------------------------
 
 ### After fitting
 
-- Assess goodness of fit by plotting the fitted model over the data with its uncertainty
-- Report confidence or credible intervals, not point estimates alone
-- Carry out a sensitivity analysis of the conclusions to the assumptions
-- Validate predictions on data not used in fitting
+- Assess [goodness of fit]{style="color: tomato;"} by plotting the fitted model over the data with its uncertainty
+- Report [confidence or credible intervals]{style="color: tomato;"}, not point estimates alone
+- Carry out a [sensitivity analysis]{style="color: tomato;"} of the conclusions to the assumptions
+- [Validate predictions]{style="color: tomato;"} on data not used in fitting
 
 ------------------------------------------------------------------------
 

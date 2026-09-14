@@ -6,18 +6,18 @@
 
 ### Point estimation: least squares and maximum likelihood
 
-- One [best]{style="color: tomato;"} value for each parameter, $\hat{\theta}$
-- Uncertainty came afterwards, from standard errors or the profile likelihood
+- One [best]{style="color: tomato;"} value for each parameter, [$\hat{\theta}$]{style="color: steelblue;"}
+- Uncertainty came afterwards, from [standard errors]{style="color: tomato;"} or the [profile likelihood]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### The Bayesian formulation
 
-So far we have asked *which* $\theta$ fits best. A Bayesian asks
+So far we have asked *which* [$\theta$]{style="color: steelblue;"} fits best. A Bayesian asks
 
 [**"How plausible is each value of** $\theta$, given the data?"]{style="color: tomato;"}
 
-- The answer is a [probability distribution]{style="color: tomato;"} over $\theta$
+- The answer is a [probability distribution]{style="color: tomato;"} over [$\theta$]{style="color: steelblue;"}
 - Every estimate, interval and prediction we report comes from that one distribution
 
 ------------------------------------------------------------------------
@@ -26,9 +26,9 @@ So far we have asked *which* $\theta$ fits best. A Bayesian asks
 
 ::::: columns
 ::: {.column width="42%"}
-- Before we see any data, each possible value of $\theta$ has some [prior]{style="color: tomato;"} credibility
+- Before we see any data, each possible value of [$\theta$]{style="color: steelblue;"} has some [prior]{style="color: tomato;"} credibility
 - The data then make some values more believable and others less
-- Bayes' rule is the rule for moving credibility towards the values that explain the data well
+- [Bayes' rule]{style="color: tomato;"} is the rule for moving credibility towards the values that explain the data well
 
 *Bayesian analysis is reallocation of credibility across possibilities. The rest is details.*
 :::
@@ -42,14 +42,18 @@ So far we have asked *which* $\theta$ fits best. A Bayesian asks
 
 ## Bayes' rule
 
+::: {style="color: steelblue;"}
 $$p(\theta \mid y) = \frac{p(y \mid \theta)\, p(\theta)}{p(y)}$$
+:::
 
-- $p(\theta)$ is the [prior]{style="color: tomato;"}, what we believed before seeing the data $y$
-- $p(y \mid \theta)$ is the [likelihood]{style="color: tomato;"}, the same function we maximised in the MLE section
-- $p(\theta \mid y)$ is the [posterior]{style="color: tomato;"}, what we believe now
-- $p(y)$ is a normalising constant. It is the same number for every $\theta$, so it does not change the shape of the posterior
+- [$p(\theta)$]{style="color: steelblue;"} is the [prior]{style="color: tomato;"}, what we believed before seeing the data $y$
+- [$p(y \mid \theta)$]{style="color: steelblue;"} is the [likelihood]{style="color: tomato;"}, the same function we maximised in the MLE section
+- [$p(\theta \mid y)$]{style="color: steelblue;"} is the [posterior]{style="color: tomato;"}, what we believe now
+- [$p(y)$]{style="color: steelblue;"} is a [normalising constant]{style="color: tomato;"}. It is the same number for every [$\theta$]{style="color: steelblue;"}, so it does not change the shape of the posterior
 
+::: {style="color: steelblue;"}
 $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
+:::
 
 ------------------------------------------------------------------------
 
@@ -57,9 +61,9 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ### Sources of prior information
 
-- Earlier outbreaks and the literature, for example the infectious period of influenza
-- Things we know must hold: rates are positive, proportions lie between 0 and 1
-- What the people who know the disease think
+- [Earlier outbreaks and the literature]{style="color: tomato;"}, for example the infectious period of influenza
+- [Constraints]{style="color: tomato;"}: rates are positive, proportions lie between 0 and 1
+- [Expert judgement]{style="color: tomato;"}: what the people who know the disease think
 
 ------------------------------------------------------------------------
 
@@ -76,8 +80,8 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 :::::: {style="font-size: 0.8em;"}
 ::::: columns
 ::: {.column width="42%"}
-- Nobody has intuition for a prior on $\beta$. Everybody has intuition for an epidemic curve
-- So draw parameter values from the prior, run the model, and look at the epidemics it produces
+- Nobody has intuition for a prior on [$\beta$]{style="color: steelblue;"}. Everybody has intuition for an epidemic curve
+- So [draw parameter values from the prior, run the model]{style="color: tomato;"}, and look at the epidemics it produces
 - If half of them put the whole school in bed by day two, the prior is telling you something you did not intend
 :::
 
@@ -94,11 +98,11 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 ### Posterior summaries
 
 ::: {style="font-size: 0.8em;"}
-- A point estimate, if you want one: the posterior mean or median
+- A [point estimate]{style="color: tomato;"}, if you want one: the posterior mean or median
 - A [95% credible interval]{style="color: tomato;"}, the range that holds 95% of the posterior probability
-- You can read it literally: *"there is a 95% probability that* $R_0$ lies between 3.4 and 3.7". A confidence interval does not allow that sentence
-- Anything you can compute from the parameters, such as $R_0 = \beta N / \gamma$, comes with its own distribution at no extra cost
-- Predictions that carry the parameter uncertainty through
+- You can read it literally: *"there is a 95% probability that* [$R_0$]{style="color: steelblue;"} lies between [3.4 and 3.7]{style="color: steelblue;"}". A confidence interval does not allow that sentence
+- Anything you can compute from the parameters, such as [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}, comes with its own distribution at no extra cost
+- [Predictions]{style="color: tomato;"} that carry the parameter uncertainty through
 :::
 
 ------------------------------------------------------------------------
@@ -107,10 +111,12 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ### The normalising constant
 
+::: {style="color: steelblue;"}
 $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
+:::
 
-- This is an integral over every combination of parameter values, and for an ODE model there is no formula for it
-- What we *can* do is evaluate $p(y \mid \theta)\, p(\theta)$ at any $\theta$ we like, which gives us the posterior [up to that unknown constant]{style="color: tomato;"}
+- This is an [integral over every combination of parameter values]{style="color: tomato;"}, and for an ODE model there is no formula for it
+- What we *can* do is evaluate [$p(y \mid \theta)\, p(\theta)$]{style="color: steelblue;"} at any [$\theta$]{style="color: steelblue;"} we like, which gives us the posterior [up to that unknown constant]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -124,7 +130,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 |         10 |               576,650,390,625 |
 
 - With two parameters a grid is a fine way to *look at* the posterior
-- With six it is out of the question
+- With six it is [out of the question]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -132,7 +138,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ![](figures/06_flu_grid_posterior.png)
 
-3,600 model runs, and nearly all of them landed where the posterior is zero
+[3,600]{style="color: steelblue;"} model runs, and [nearly all of them landed where the posterior is zero]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -140,8 +146,8 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ::::: columns
 ::: {.column width="42%"}
-- If you want the mean height of the people of Kumasi you do not measure everyone. You measure a sample
-- A posterior can be treated the same way. Given enough draws of $\theta$, the mean, the quantiles and the histogram of the sample are as good as the real thing
+- If you want the mean height of the people of Kumasi you do not measure everyone. You measure a [sample]{style="color: tomato;"}
+- A posterior can be treated the same way. Given enough draws of [$\theta$]{style="color: steelblue;"}, the [mean, the quantiles and the histogram of the sample]{style="color: tomato;"} are as good as the real thing
 :::
 
 ::: {.column width="58%"}
@@ -174,11 +180,11 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ::::: columns
 ::: {.column width="50%"}
-1.  Start at some $\theta^{(0)}$
-2.  Propose $\theta^* = \theta + \varepsilon$, where $\varepsilon$ comes from a [symmetric]{style="color: tomato;"} proposal distribution such as $N(0, \sigma^2)$
-3.  Compute $r = \dfrac{p(\theta^* \mid y)}{p(\theta \mid y)}$. The constant $p(y)$ appears top and bottom and cancels
-4.  Draw $u \sim U(0, 1)$. If $u < r$ accept the move ($\theta \leftarrow \theta^*$); otherwise stay where you are
-5.  Record $\theta$ and go back to step 2
+1.  Start at some [$\theta^{(0)}$]{style="color: steelblue;"}
+2.  Propose [$\theta^* = \theta + \varepsilon$]{style="color: steelblue;"}, where [$\varepsilon$]{style="color: steelblue;"} comes from a [symmetric]{style="color: tomato;"} proposal distribution such as [$N(0, \sigma^2)$]{style="color: steelblue;"}
+3.  Compute [$r = \dfrac{p(\theta^* \mid y)}{p(\theta \mid y)}$]{style="color: steelblue;"}. The constant [$p(y)$]{style="color: steelblue;"} appears top and bottom and [cancels]{style="color: tomato;"}
+4.  Draw [$u \sim U(0, 1)$]{style="color: steelblue;"}. If [$u < r$]{style="color: steelblue;"} [accept]{style="color: tomato;"} the move ([$\theta \leftarrow \theta^*$]{style="color: steelblue;"}); otherwise [stay where you are]{style="color: tomato;"}
+5.  Record [$\theta$]{style="color: steelblue;"} and go back to step 2
 :::
 
 ::: {.column width="50%"}
@@ -199,17 +205,17 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 - If the proposal has higher posterior density than where we are, we [always]{style="color: tomato;"} take it
 - If it has lower density we take it [with probability $r$]{style="color: tomato;"}. The chain can walk downhill, which is why it explores the distribution instead of climbing to the top and staying there
 - When a proposal is rejected the current value is [written down again]{style="color: tomato;"}. Those repeats are part of the sample, so do not throw them away
-- Put together, the chain visits each region in proportion to its posterior density
+- Put together, the chain visits each region [in proportion to its posterior density]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### Detailed balance and the stationary distribution
 
 ::: {style="font-size: 0.8em;"}
-- The acceptance rule gives the chain [detailed balance]{style="color: tomato;"}: as much probability flows from $\theta$ to $\theta^*$ as flows back, so nothing piles up anywhere $$p(\theta \mid y)\, q(\theta^* \mid \theta)\, \alpha(\theta, \theta^*) = p(\theta^* \mid y)\, q(\theta \mid \theta^*)\, \alpha(\theta^*, \theta)$$
-- $\alpha = \min(1, r)$ is the smallest correction that makes this hold
+- The acceptance rule gives the chain [detailed balance]{style="color: tomato;"}: as much probability flows from $\theta$ to $\theta^*$ as flows back, so nothing piles up anywhere [$$p(\theta \mid y)\, q(\theta^* \mid \theta)\, \alpha(\theta, \theta^*) = p(\theta^* \mid y)\, q(\theta \mid \theta^*)\, \alpha(\theta^*, \theta)$$]{style="color: steelblue;"}
+- [$\alpha = \min(1, r)$]{style="color: steelblue;"} is the smallest correction that makes this hold
 - The posterior is then the chain's [stationary distribution]{style="color: tomato;"}. Run it long enough and its values are posterior draws
-- With an asymmetric proposal the ratio needs a correction. That is [Metropolis–Hastings]{style="color: tomato;"}: $$r = \frac{p(\theta^* \mid y)\, q(\theta \mid \theta^*)}{p(\theta \mid y)\, q(\theta^* \mid \theta)}$$
+- With an asymmetric proposal the ratio needs a correction. That is [Metropolis–Hastings]{style="color: tomato;"}: [$$r = \frac{p(\theta^* \mid y)\, q(\theta \mid \theta^*)}{p(\theta \mid y)\, q(\theta^* \mid \theta)}$$]{style="color: steelblue;"}
 :::
 
 ------------------------------------------------------------------------
@@ -219,13 +225,13 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="metropolis_1d" code-line-numbers="1-5|7-9|10-16|17-18|20"}
 ```
 
-Everything is done on the log scale, so the products become sums and the tiny likelihoods do not underflow to zero
+Everything is done on the [log scale]{style="color: tomato;"}, so the products become sums and the tiny likelihoods do not underflow to zero
 
 ------------------------------------------------------------------------
 
 ### Validation on a known target distribution
 
-The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on $N(5, 2)$, where we know what the answer should look like.
+The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on [$N(5, 2)$]{style="color: steelblue;"}, where we know what the answer should look like.
 
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="metropolis_normal"}
 ```
@@ -244,10 +250,10 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ### Proposal scale and acceptance rate
 
-- Make the proposal too narrow and nearly every move is accepted, but each move is tiny and the chain crawls
-- Make it too wide and nearly every move is rejected, so the chain sits still for long stretches
+- Make the proposal [too narrow]{style="color: tomato;"} and nearly every move is accepted, but each move is tiny and the chain crawls
+- Make it [too wide]{style="color: tomato;"} and nearly every move is rejected, so the chain sits still for long stretches
 - For a random walk proposal, aim for an acceptance rate of about [44% with one parameter, down to about 23% with many]{style="color: tomato;"}
-- If the parameters are correlated in the posterior, the proposal should be correlated the same way
+- If the parameters are [correlated]{style="color: tomato;"} in the posterior, the proposal should be correlated the same way
 
 ------------------------------------------------------------------------
 
@@ -257,7 +263,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 - We chose the starting point, so the first part of the chain says more about that choice than about the posterior
 - Throw those early samples away. This is the [burn-in]{style="color: tomato;"}. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it
-- How much to discard is decided after looking at the chain, never before
+- How much to discard is decided [after looking at the chain]{style="color: tomato;"}, never before
 
 ------------------------------------------------------------------------
 
@@ -271,8 +277,8 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ::: {style="font-size: 0.8em;"}
 - A single chain cannot tell you about the places it has never been
-- So start several chains far apart. If they end up indistinguishable, they have found the same distribution
-- [$\hat{R}$]{style="color: tomato;"} turns that into a number by comparing the variance between chains with the variance within them. We want $\hat{R}$ below 1.01
+- So start [several chains far apart]{style="color: tomato;"}. If they end up indistinguishable, they have found the same distribution
+- [$\hat{R}$]{style="color: tomato;"} turns that into a number by comparing the variance between chains with the variance within them. We want [$\hat{R}$ below 1.01]{style="color: steelblue;"}
 - Consecutive draws are correlated, so 20,000 of them carry less information than 20,000 independent draws would. The [effective sample size]{style="color: tomato;"} is the number that matters
 
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="rhat"}
@@ -283,16 +289,16 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ### Convergence checklist
 
-- The trace plots show no trend, the same spread at the start as at the end, and the chains lie on top of each other
-- The acceptance rate is in a sensible range
-- $\hat{R}$ is close to 1 and the effective sample size is in the hundreds at least
+- The [trace plots]{style="color: tomato;"} show no trend, the same spread at the start as at the end, and the chains lie on top of each other
+- The [acceptance rate]{style="color: tomato;"} is in a sensible range
+- [$\hat{R}$]{style="color: steelblue;"} is close to 1 and the [effective sample size]{style="color: tomato;"} is in the hundreds at least
 - [Any of these checks can show you a problem. None of them can prove there is not one]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ## MCMC for the 1978 influenza outbreak
 
-The data, the model and `predict_cases()` are the ones from the least squares and MLE sections. From here on we do something different with the likelihood
+The data, the model and `predict_cases()` are the ones from the least squares and MLE sections. From here on we do something different with the [likelihood]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -356,7 +362,7 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ### Probabilistic programming languages
 
-- You write down the model, the prior and the likelihood. The software does the sampling and reports the diagnostics
+- You write down the [model, the prior and the likelihood]{style="color: tomato;"}. The software does the sampling and reports the diagnostics
 - Stan (through `rstan` or `cmdstanr`), `nimble`, `brms`, PyMC and Turing.jl all work this way
 
 ------------------------------------------------------------------------
@@ -370,12 +376,12 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ## The Bayesian workflow
 
-1.  Write down the model and the prior, and check the prior by simulating from it
-2.  Write down the likelihood, that is, how the data arise from the model
-3.  Sample the posterior with MCMC, using several chains started far apart
-4.  Check the chains: trace plots, acceptance rate, $\hat{R}$, effective sample size
-5.  Summarise the posterior: means, credible intervals, and derived quantities such as $R_0$
-6.  Check the fit by plotting posterior predictions against the data
+1.  Write down the [model and the prior]{style="color: tomato;"}, and check the prior by simulating from it
+2.  Write down the [likelihood]{style="color: tomato;"}, that is, how the data arise from the model
+3.  [Sample the posterior]{style="color: tomato;"} with MCMC, using several chains started far apart
+4.  [Check the chains]{style="color: tomato;"}: trace plots, acceptance rate, [$\hat{R}$]{style="color: steelblue;"}, effective sample size
+5.  [Summarise the posterior]{style="color: tomato;"}: means, credible intervals, and derived quantities such as [$R_0$]{style="color: steelblue;"}
+6.  [Check the fit]{style="color: tomato;"} by plotting posterior predictions against the data
 
 ------------------------------------------------------------------------
 

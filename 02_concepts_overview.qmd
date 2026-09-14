@@ -4,11 +4,11 @@
 
 ## Definition of model fitting
 
-Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [as close as possible]{style="color: tomato;"} to the data $\mathbf{y}$
+Choose the parameters [$\theta = (\beta, \gamma)$]{style="color: steelblue;"} so that the model's output is [as close as possible]{style="color: tomato;"} to the data [$\mathbf{y}$]{style="color: steelblue;"}
 
 - Everything depends on what we mean by *close*
-- Whatever we decide, we write it as a number: an [objective function]{style="color: tomato;"} $\mathcal{L}(\theta, \mathbf{y})$ that is small when the curve is near the data and large when it is far away
-- Fitting then means searching over $\theta$ for the values that make that number small
+- Whatever we decide, we write it as a number: an [objective function]{style="color: tomato;"} [$\mathcal{L}(\theta, \mathbf{y})$]{style="color: steelblue;"} that is small when the curve is near the data and large when it is far away
+- Fitting then means searching over [$\theta$]{style="color: steelblue;"} for the values that make that number small
 
 ------------------------------------------------------------------------
 
@@ -16,25 +16,29 @@ Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [
 
 ### Point estimation
 
+::: {style="color: steelblue;"}
 $$\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})$$
+:::
 
-The next two sections use two different choices of $\mathcal{L}$, the sum of squared errors and then the negative log-likelihood
+The next two sections use two different choices of [$\mathcal{L}$]{style="color: steelblue;"}, the [sum of squared errors]{style="color: tomato;"} and then the [negative log-likelihood]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### Posterior distribution
 
-A probability for *every* $\theta$ given the data, rather than the one best value
+A probability for *every* [$\theta$]{style="color: steelblue;"} given the data, rather than the one best value
 
+::: {style="color: steelblue;"}
 $$p(\theta \mid \mathbf{y})$$
+:::
 
-This is Bayesian inference, and it is where the lecture ends up. The two answers share the likelihood, which we build in section 4
+This is [Bayesian inference]{style="color: tomato;"}, and it is where the lecture ends up. The two answers share the [likelihood]{style="color: tomato;"}, which we build in section 4
 
 ------------------------------------------------------------------------
 
 ## Sources of uncertainty {.smaller}
 
-Even with the right $\beta$ and $\gamma$ the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere
+Even with the right [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="color: steelblue;"} the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere
 
 | Source | In the flu data | Where we deal with it |
 |---|---|---|
@@ -49,16 +53,16 @@ Even with the right $\beta$ and $\gamma$ the curve will not pass through every p
 
 [**The problem:**]{style="color: tomato;"} different parameter combinations can produce nearly the same curve
 
-- A high $\beta$ with a high $\gamma$: fast spread, quick recovery
-- A low $\beta$ with a low $\gamma$: slow spread, long infections
-- Both can give a similar epidemic, because what the data pin down is mostly the ratio $R_0 = \beta N / \gamma$
+- A high [$\beta$]{style="color: steelblue;"} with a high [$\gamma$]{style="color: steelblue;"}: fast spread, quick recovery
+- A low [$\beta$]{style="color: steelblue;"} with a low [$\gamma$]{style="color: steelblue;"}: slow spread, long infections
+- Both can give a similar epidemic, because what the data pin down is mostly the ratio [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}
 
 We will meet this three times today: as a tilted valley in the least squares surface, as wide profile likelihoods, and as a tilted cloud of posterior samples
 
-[**Remedy:**]{style="color: tomato;"} bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a prior is
+[**Remedy:**]{style="color: tomato;"} bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a [prior]{style="color: tomato;"} is
 
 ------------------------------------------------------------------------
 
 ## Starting point: least squares
 
-We start with the simplest objective function there is, the sum of squared distances between the points and the curve
+We start with the simplest objective function there is, the [sum of squared distances]{style="color: tomato;"} between the points and the curve

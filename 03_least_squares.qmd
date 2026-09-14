@@ -2,14 +2,16 @@
 
 ------------------------------------------------------------------------
 
-## The least squares criterion
+## The least squares criterion {.smaller}
 
-The residual for each day is the difference between the observation and the model prediction. The least squares criterion is the sum of squared residuals, the SSE
+The [residual]{style="color: tomato;"} for each day is the difference between the observation and the model prediction. The least squares criterion is the [sum of squared residuals]{style="color: tomato;"}, the [SSE]{style="color: steelblue;"}
 
+::: {style="color: steelblue;"}
 $$\text{SSE} = \sum_{i=1}^{n} \bigl(y_i - f(t_i, \theta)\bigr)^2$$
+:::
 
-- $y_i$ is the observation on day $t_i$
-- $f(t_i, \theta)$ is what the model predicts for that day with parameters $\theta$
+- [$y_i$]{style="color: steelblue;"} is the observation on day [$t_i$]{style="color: steelblue;"}
+- [$f(t_i, \theta)$]{style="color: steelblue;"} is what the model predicts for that day with parameters [$\theta$]{style="color: steelblue;"}
 
 The parameters that make this sum smallest are the [least squares estimates]{style="color: tomato;"}
 
@@ -18,17 +20,17 @@ The parameters that make this sum smallest are the [least squares estimates]{sty
 ### Properties of the squared error criterion
 
 - Squaring makes every residual positive, so residuals above and below the curve do not cancel
-- Large residuals are penalised much more heavily than small ones
-- The SSE is a differentiable function of $\theta$, which gradient-based optimisers rely on
-- Under normally distributed errors with constant variance (homoscedasticity), the least squares estimate is also the maximum likelihood estimate
+- Large residuals are [penalised much more heavily]{style="color: tomato;"} than small ones
+- The SSE is a [differentiable]{style="color: tomato;"} function of [$\theta$]{style="color: steelblue;"}, which gradient-based optimisers rely on
+- Under normally distributed errors with constant variance ([homoscedasticity]{style="color: tomato;"}), the least squares estimate is also the [maximum likelihood estimate]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### Limitations of the squared error criterion
 
-- The criterion is sensitive to outliers: a single extreme observation can pull the whole fit towards itself
-- It assumes constant variance, treating a day with 3 pupils in bed the same as a day with 300, which count data rarely satisfy
-- It has no probabilistic interpretation, so it provides no measure of uncertainty on its own
+- The criterion is [sensitive to outliers]{style="color: tomato;"}: a single extreme observation can pull the whole fit towards itself
+- It [assumes constant variance]{style="color: tomato;"}, treating a day with 3 pupils in bed the same as a day with 300, which count data rarely satisfy
+- It has [no probabilistic interpretation]{style="color: tomato;"}, so it provides no measure of uncertainty on its own
 
 ------------------------------------------------------------------------
 
@@ -87,16 +89,16 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ## Strengths of least squares {.smaller}
 
-- Computationally cheap, with well-established optimisation algorithms available in every statistical package
-- An intuitive criterion that is easy to explain and to implement
-- Under its assumptions the estimates are unbiased, with the minimum variance among linear unbiased estimators
-- Good initial values for the likelihood-based methods that follow, which is how we use it in the next section
+- [Computationally cheap]{style="color: tomato;"}, with well-established optimisation algorithms available in every statistical package
+- An [intuitive]{style="color: tomato;"} criterion that is easy to explain and to implement
+- Under its assumptions the estimates are [unbiased]{style="color: tomato;"}, with the [minimum variance]{style="color: tomato;"} among linear unbiased estimators
+- Good [initial values]{style="color: tomato;"} for the likelihood-based methods that follow, which is how we use it in the next section
 
 ------------------------------------------------------------------------
 
 ## Limitations of least squares {.smaller}
 
-- No uncertainty quantification: the objective function surface was visibly tilted and elongated, but the point estimate carries none of that information
-- No principled basis for model comparison
-- The constant variance assumption is violated by count data, whose variance grows with the mean
-- Parameter identifiability problems are not diagnosed, only hidden in the shape of the surface
+- [No uncertainty quantification]{style="color: tomato;"}: the objective function surface was visibly tilted and elongated, but the point estimate carries none of that information
+- [No principled basis for model comparison]{style="color: tomato;"}
+- The [constant variance assumption]{style="color: tomato;"} is violated by count data, whose variance grows with the mean
+- [Parameter identifiability]{style="color: tomato;"} problems are not diagnosed, only hidden in the shape of the surface

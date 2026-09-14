@@ -7,8 +7,8 @@
 :::: {.columns}
 
 ::: {.column width="45%"}
-- On one side, data from the real world: case counts, hospital admissions, deaths
-- On the other, mathematical models such as SIR and SEIR
+- On one side, [data]{style="color: tomato;"} from the real world: case counts, hospital admissions, deaths
+- On the other, mathematical [models]{style="color: tomato;"} such as SIR and SEIR
 - [**How do we connect the two?**]{style="color: tomato;"}
 :::
 
@@ -44,8 +44,8 @@
 :::: {.columns}
 
 ::: {.column width="45%"}
-- The school recorded how many pupils were in bed each day for 14 days
-- Nobody left or arrived, and every case was seen, which makes this about as clean as outbreak data get
+- The school recorded [how many pupils were in bed each day for 14 days]{style="color: tomato;"}
+- Nobody left or arrived, and every case was seen, which makes this [about as clean as outbreak data get]{style="color: tomato;"}
 :::
 
 ::: {.column width="55%"}
@@ -61,20 +61,22 @@
 :::: {.columns}
 
 ::: {.column width="45%"}
+::: {style="color: steelblue;"}
 \begin{align}
 \frac{dS}{dt} &= -\beta SI \\
 \frac{dI}{dt} &= \beta SI - \gamma I \\
 \frac{dR}{dt} &= \gamma I
 \end{align}
 :::
+:::
 
 ::: {.column width="55%"}
-- $S$, $I$, $R$ count pupils, so $S + I + R = N = 763$
-- Give the model 762 susceptible pupils and 1 infectious pupil on day 0 and it draws a curve of $I(t)$ for us to compare with the data
+- [$S$, $I$, $R$]{style="color: steelblue;"} count pupils, so [$S + I + R = N = 763$]{style="color: steelblue;"}
+- Give the model 762 susceptible pupils and 1 infectious pupil on day 0 and it draws a curve of [$I(t)$]{style="color: steelblue;"} for us to compare with the data
 - The quantities we actually want come from these two:
-  - $R_0 = \beta / \gamma$, the basic reproduction number
-  - $1 / \gamma$, the mean infectious period in days
-- Two unknowns: [$\beta$, the transmission rate]{style="color: tomato;"}, and [$\gamma$, the recovery rate]{style="color: tomato;"}
+  - [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}, the [basic reproduction number]{style="color: tomato;"}
+  - [$1 / \gamma$]{style="color: steelblue;"}, the mean [infectious period]{style="color: tomato;"} in days
+- Two unknowns: [$\beta$]{style="color: steelblue;"}, the [transmission rate]{style="color: tomato;"}, and [$\gamma$]{style="color: steelblue;"}, the [recovery rate]{style="color: tomato;"}
 :::
 
 ::::
@@ -89,9 +91,9 @@
 
 ### Parameter estimation and uncertainty quantification
 
-- Some guesses are obviously wrong and some are close, but by eye we cannot rank the close ones. We need a rule that says which is *best*
-- A best guess on its own is worth little without knowing [how sure we can be]{style="color: tomato;"}. Would $\gamma = 0.4$ have done just as well as $0.5$?
-- Once we have both, we can estimate $R_0$, forecast the second week, or ask what closing the school early would have changed
+- Some guesses are obviously wrong and some are close, but by eye we cannot rank the close ones. We need a rule that says which is [*best*]{style="color: tomato;"}
+- A best guess on its own is worth little without knowing [how sure we can be]{style="color: tomato;"}. Would [$\gamma = 0.4$]{style="color: steelblue;"} have done just as well as [$0.5$]{style="color: steelblue;"}?
+- Once we have both, we can estimate [$R_0$]{style="color: steelblue;"}, forecast the second week, or ask what closing the school early would have changed
 
 ------------------------------------------------------------------------
 
@@ -101,6 +103,6 @@ There are many approaches to answer the question but we'll cover:
 
 1. [**Least squares:**]{style="color: tomato;"} measure how far the curve is from the data and make that distance as small as possible. Simple and fast, but it says nothing reliable about uncertainty
 2. [**Maximum likelihood:**]{style="color: tomato;"} measure the *probability* of the data under the model instead. This gives us confidence intervals and a way to compare models
-3. [**Bayesian inference:**]{style="color: tomato;"} ask how plausible every value is, rather than which single value is best. This lets us use what we already know, and gives uncertainty that still makes sense for awkward models. The cost is that the answer has to be sampled, with MCMC
+3. [**Bayesian inference:**]{style="color: tomato;"} ask how plausible every value is, rather than which single value is best. This lets us use what we already know, and gives uncertainty that still makes sense for awkward models. The cost is that the answer has to be sampled, with [MCMC]{style="color: tomato;"}
 
-We finish with a short look at what to do when even the likelihood cannot be written down
+We finish with a short look at what to do when even the [likelihood]{style="color: tomato;"} cannot be written down

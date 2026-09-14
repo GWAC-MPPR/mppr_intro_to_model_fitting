@@ -4,31 +4,35 @@
 
 ## The likelihood function {.smaller}
 
-Instead of measuring the distance between the curve and the data, we specify a probability model for the observations and ask how probable the observed counts are under the model with parameters $\theta$. This probability, viewed as a function of $\theta$, is the [likelihood]{style="color: tomato;"}
+Instead of measuring the distance between the curve and the data, we specify a [probability model for the observations]{style="color: tomato;"} and ask how probable the observed counts are under the model with parameters [$\theta$]{style="color: steelblue;"}. This probability, viewed as a function of [$\theta$]{style="color: steelblue;"}, is the [likelihood]{style="color: tomato;"}
 
+::: {style="color: steelblue;"}
 $$L(\theta) = \prod_{i=1}^{n} f(y_i \mid \theta)$$
+:::
 
-where $f(y_i \mid \theta)$ is the probability (or density) of observation $y_i$, and the product follows from assuming the observations are conditionally independent given the model. The maximum likelihood estimate (MLE) is the $\theta$ that maximises $L(\theta)$
+where [$f(y_i \mid \theta)$]{style="color: steelblue;"} is the probability (or density) of observation [$y_i$]{style="color: steelblue;"}, and the product follows from assuming the observations are [conditionally independent]{style="color: tomato;"} given the model. The [maximum likelihood estimate (MLE)]{style="color: tomato;"} is the [$\theta$]{style="color: steelblue;"} that maximises [$L(\theta)$]{style="color: steelblue;"}
 
 ------------------------------------------------------------------------
 
 ### The log-likelihood
 
-A product of fourteen small probabilities underflows numerically. Taking logarithms turns the product into a sum, the log-likelihood $\ell(\theta)$, which has the same maximiser
+A product of fourteen small probabilities underflows numerically. Taking logarithms turns the product into a sum, the [log-likelihood]{style="color: tomato;"} [$\ell(\theta)$]{style="color: steelblue;"}, which has the same maximiser
 
+::: {style="color: steelblue;"}
 $$\hat{\theta} = \arg\max_{\theta} \ell(\theta) = \arg\max_{\theta} \sum_{i=1}^{n} \log f(y_i \mid \theta)$$
+:::
 
-Optimisation software minimises by convention, so in practice we minimise the *negative* log-likelihood
+Optimisation software minimises by convention, so in practice we minimise the [*negative* log-likelihood]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ## Advantages of maximum likelihood {.smaller}
 
-- A principled statistical framework: the likelihood follows from an explicit probability model for the data, so every assumption is stated
-- Uncertainty quantification: the curvature of the log-likelihood at its maximum gives standard errors, and the profile likelihood gives confidence intervals
-- Model comparison: models fitted to the same data can be compared through their maximised likelihoods, penalised for complexity by AIC or BIC
-- Flexible observation models: Poisson, negative binomial, normal, or whatever matches how the data arise
-- Asymptotic optimality: with enough data the MLE is consistent, asymptotically normal and efficient
+- [A principled statistical framework]{style="color: tomato;"}: the likelihood follows from an explicit probability model for the data, so every assumption is stated
+- [Uncertainty quantification]{style="color: tomato;"}: the curvature of the log-likelihood at its maximum gives [standard errors]{style="color: tomato;"}, and the [profile likelihood]{style="color: tomato;"} gives confidence intervals
+- [Model comparison]{style="color: tomato;"}: models fitted to the same data can be compared through their maximised likelihoods, penalised for complexity by [AIC]{style="color: tomato;"} or [BIC]{style="color: tomato;"}
+- [Flexible observation models]{style="color: tomato;"}: Poisson, negative binomial, normal, or whatever matches how the data arise
+- [Asymptotic optimality]{style="color: tomato;"}: with enough data the MLE is [consistent, asymptotically normal and efficient]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -36,10 +40,10 @@ Optimisation software minimises by convention, so in practice we minimise the *n
 
 The data are counts, so the natural choices are
 
-- [Poisson:]{style="color: tomato;"} $Y_i \sim \text{Poisson}(\lambda_i)$, a single parameter, with variance equal to the mean (equidispersion)
-- [Negative binomial:]{style="color: tomato;"} $Y_i \sim \text{NB}(\mu_i, \phi)$, with a dispersion parameter $\phi$ that allows the variance to exceed the mean (overdispersion)
+- [Poisson:]{style="color: tomato;"} [$Y_i \sim \text{Poisson}(\lambda_i)$]{style="color: steelblue;"}, a single parameter, with variance equal to the mean ([equidispersion]{style="color: tomato;"})
+- [Negative binomial:]{style="color: tomato;"} [$Y_i \sim \text{NB}(\mu_i, \phi)$]{style="color: steelblue;"}, with a dispersion parameter [$\phi$]{style="color: steelblue;"} that allows the variance to exceed the mean ([overdispersion]{style="color: tomato;"})
 
-For continuous measurements the usual choices are the normal, $Y_i \sim N(\mu_i, \sigma^2)$, or the log-normal, $\log Y_i \sim N(\log \mu_i, \sigma^2)$
+For continuous measurements the usual choices are the normal, [$Y_i \sim N(\mu_i, \sigma^2)$]{style="color: steelblue;"}, or the log-normal, [$\log Y_i \sim N(\log \mu_i, \sigma^2)$]{style="color: steelblue;"}
 
 We start with Poisson, and come back to the negative binomial at the end
 
@@ -57,7 +61,7 @@ We start with Poisson, and come back to the negative binomial at the end
 ```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_fitting" code-line-numbers="1|3-6|8-10"}
 ```
 
-The least squares estimates serve as initial values for the optimiser, which is one of the standard uses of least squares
+The least squares estimates serve as [initial values]{style="color: tomato;"} for the optimiser, which is one of the standard uses of least squares
 
 ------------------------------------------------------------------------
 
@@ -90,8 +94,8 @@ The least squares estimates serve as initial values for the optimiser, which is 
 ```{.default include="results/04_mle_vs_ls.txt" code-line-numbers="false"}
 ```
 
-- The two fits are close but not identical: under the Poisson model the variance scales with the mean, so the small counts at the start and end of the outbreak carry more weight than under the constant variance implied by least squares
-- Only the MLE comes with a confidence interval
+- The two fits are close but not identical: under the Poisson model the variance scales with the mean, so the small counts at the start and end of the outbreak [carry more weight]{style="color: tomato;"} than under the constant variance implied by least squares
+- Only the MLE comes with a [confidence interval]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
@@ -116,25 +120,25 @@ The least squares estimates serve as initial values for the optimiser, which is 
 ```{.default include="results/04_model_comparison.txt" code-line-numbers="false"}
 ```
 
-The negative binomial model is strongly preferred: the data are overdispersed relative to the Poisson model, whose variance is fixed at the mean
+The negative binomial model is [strongly preferred]{style="color: tomato;"}: the data are [overdispersed]{style="color: tomato;"} relative to the Poisson model, whose variance is fixed at the mean
 
 ------------------------------------------------------------------------
 
 ## Strengths of maximum likelihood {.smaller}
 
-- A principled probabilistic framework, with standard errors and confidence intervals as part of the estimate
-- Formal model comparison through likelihood ratios, AIC and BIC, as we have just used it
-- Observation models that match the data: Poisson counts, overdispersed counts, or continuous measurements
-- Asymptotic optimality: with enough data the estimates are as precise as any unbiased estimator can be
+- A [principled probabilistic framework]{style="color: tomato;"}, with standard errors and confidence intervals as part of the estimate
+- [Formal model comparison]{style="color: tomato;"} through likelihood ratios, AIC and BIC, as we have just used it
+- [Observation models that match the data]{style="color: tomato;"}: Poisson counts, overdispersed counts, or continuous measurements
+- [Asymptotic optimality]{style="color: tomato;"}: with enough data the estimates are as precise as any unbiased estimator can be
 
 ------------------------------------------------------------------------
 
 ## Assumptions and limitations of maximum likelihood {.smaller}
 
-- An explicit observation model must be specified, and can be misspecified
-- Numerical optimisation requires sensible starting values and can converge to a local maximum; we started from the least squares fit for exactly that reason
-- Standard errors and Wald intervals rest on asymptotic (large-sample) arguments that fourteen observations may not satisfy; the profile likelihood is more reliable
-- Parameter identifiability is not resolved by the method: the profiles were narrow here only because these data are unusually clean
+- An explicit [observation model]{style="color: tomato;"} must be specified, and can be [misspecified]{style="color: tomato;"}
+- Numerical optimisation requires sensible starting values and can converge to a [local maximum]{style="color: tomato;"}; we started from the least squares fit for exactly that reason
+- Standard errors and Wald intervals rest on [asymptotic (large-sample) arguments]{style="color: tomato;"} that fourteen observations may not satisfy; the profile likelihood is more reliable
+- [Parameter identifiability]{style="color: tomato;"} is not resolved by the method: the profiles were narrow here only because these data are unusually clean
 
 ------------------------------------------------------------------------
 

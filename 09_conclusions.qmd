@@ -6,38 +6,38 @@
 
 ### Least squares
 
-Fast and intuitive. It provides a point estimate and initial values for other methods, but no uncertainty quantification and no basis for model comparison
+[Fast and intuitive]{style="color: tomato;"}. It provides a point estimate and initial values for other methods, but [no uncertainty quantification]{style="color: tomato;"} and no basis for model comparison
 
 ------------------------------------------------------------------------
 
 ### Maximum likelihood
 
-A principled statistical framework built on an explicit observation model. It provides confidence intervals and formal model comparison, at the cost of specifying that observation model and managing a numerical optimiser
+A [principled statistical framework]{style="color: tomato;"} built on an explicit observation model. It provides [confidence intervals and formal model comparison]{style="color: tomato;"}, at the cost of specifying that observation model and managing a numerical optimiser
 
 ------------------------------------------------------------------------
 
 ### Bayesian inference and MCMC
 
-- Priors make assumptions explicit and allow them to be checked by prior predictive simulation
-- The posterior distribution is the complete answer: point estimates, credible intervals and predictions all come from the same samples
-- The Metropolis algorithm is a few lines of code; the effort goes into tuning the proposal and diagnosing convergence
-- Never trust a chain whose diagnostics you have not examined
+- [Priors]{style="color: tomato;"} make assumptions explicit and allow them to be checked by prior predictive simulation
+- The [posterior distribution]{style="color: tomato;"} is the complete answer: point estimates, credible intervals and predictions all come from the same samples
+- The [Metropolis algorithm]{style="color: tomato;"} is a few lines of code; the effort goes into tuning the proposal and diagnosing convergence
+- [Never trust a chain whose diagnostics you have not examined]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
 ### Advanced methods
 
-Particle filtering, approximate Bayesian computation and ensemble methods handle stochastic models, intractable likelihoods and model uncertainty. They require more expertise and more computation than anything covered today
+[Particle filtering, approximate Bayesian computation and ensemble methods]{style="color: tomato;"} handle stochastic models, intractable likelihoods and model uncertainty. They require more expertise and more computation than anything covered today
 
 ------------------------------------------------------------------------
 
 ## Choosing a method
 
-- Exploratory analysis: least squares
-- Formal inference for a report or publication: maximum likelihood
-- Many parameters, or prior information to incorporate: Bayesian inference with MCMC
-- Stochastic models, hidden states, or real-time estimation: particle filtering
-- Intractable likelihoods: approximate Bayesian computation
+- Exploratory analysis: [least squares]{style="color: tomato;"}
+- Formal inference for a report or publication: [maximum likelihood]{style="color: tomato;"}
+- Many parameters, or prior information to incorporate: [Bayesian inference with MCMC]{style="color: tomato;"}
+- Stochastic models, hidden states, or real-time estimation: [particle filtering]{style="color: tomato;"}
+- Intractable likelihoods: [approximate Bayesian computation]{style="color: tomato;"}
 
 Whatever the problem, [start simple and add complexity only when the simple version fails you]{style="color: tomato;"}
 
@@ -45,9 +45,9 @@ Whatever the problem, [start simple and add complexity only when the simple vers
 
 ## Closing remarks
 
-Model fitting requires domain expertise, statistical rigour and careful validation, all at once
+Model fitting requires [domain expertise, statistical rigour and careful validation]{style="color: tomato;"}, all at once
 
-The fit itself is not the goal. The goal is to understand the transmission dynamics, to make reliable predictions, and to inform the decisions that depend on them
+The fit itself is not the goal. The goal is to [understand the transmission dynamics]{style="color: tomato;"}, to [make reliable predictions]{style="color: tomato;"}, and to [inform the decisions]{style="color: tomato;"} that depend on them
 
 ------------------------------------------------------------------------
 
