@@ -48,7 +48,7 @@ text(12.0, y_top + 1.65, "ahead", col = "grey40", cex = 0.85)
 # ---- The calibration challenge -----------------------------------------------
 y_low <- 1.3
 box(6.2, y_low, 3.0, 1.5, "A model", c("SIR with unknown \u03b2 and \u03b3"))
-box(10.2, y_low, 3.0, 1.5, "Outbreak data", c("pupils in bed each day,", "boarding school, 1978"))
+box(10.2, y_low, 3.0, 1.5, "Outbreak data", c("cases, admissions or deaths", "counted over time"))
 # the model comes out of the modelling module; both feed today's question
 arrows(5.4, y_top - 1.35, 5.4, y_low + 0.75, length = 0.12, lwd = 2, col = "grey40")
 arrows(7.5, y_low + 0.75, 7.5, y_top - 1.35, length = 0.12, lwd = 2, col = "tomato")
