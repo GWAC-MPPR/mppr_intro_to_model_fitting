@@ -41,7 +41,7 @@ This is [Bayesian inference]{style="color: tomato;"}, and it is where the lectur
 Even with the right [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="color: steelblue;"} the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere
 
 | Source | In the flu data | Where we deal with it |
-|---|---|---|
+|:-----------|:-----------------------------------------------|:---------------------------------|
 | Observation | Not every pupil in bed was infectious, or counted | The likelihood (4) |
 | Parameter | Several $(\beta, \gamma)$ pairs fit almost as well | Confidence intervals (4), the posterior (6) |
 | Model | No latent period; everyone mixes with everyone | Model comparison (4) |

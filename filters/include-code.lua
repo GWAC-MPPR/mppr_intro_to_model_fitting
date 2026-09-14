@@ -8,6 +8,9 @@
 --     ```{.r include="scripts/03_least_squares.R" snippet="ls_fitting"}
 --     ```
 --
+-- `start-line="n"` and `end-line="m"` (1-based, inclusive) keep only that
+-- range of the file or snippet, for splitting a long listing over slides.
+--
 -- Same attributes as quarto-ext/include-code-files, with three differences
 -- that matter for a deck: a missing file or snippet stops the render instead
 -- of silently dumping the whole file onto a slide, marker names are matched
@@ -51,8 +54,17 @@ function CodeBlock(cb)
   if cb.attributes.snippet then
     lines = snippet(lines, cb.attributes.snippet, path)
   end
+  if cb.attributes["start-line"] or cb.attributes["end-line"] then
+    local first = tonumber(cb.attributes["start-line"]) or 1
+    local last = tonumber(cb.attributes["end-line"]) or #lines
+    local kept = {}
+    for i = first, math.min(last, #lines) do kept[#kept + 1] = lines[i] end
+    lines = kept
+  end
   cb.attributes.include = nil
   cb.attributes.snippet = nil
+  cb.attributes["start-line"] = nil
+  cb.attributes["end-line"] = nil
   cb.text = table.concat(lines, "\n")
   return cb
 end

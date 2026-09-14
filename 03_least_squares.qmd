@@ -34,9 +34,7 @@ The parameters that make this sum smallest are the [least squares estimates]{sty
 
 ------------------------------------------------------------------------
 
-## Least squares for the flu outbreak
-
-### Step 1: model implementation
+## Least squares for the flu outbreak: step 1, model implementation
 
 ```{.r include="scripts/00_flu_sir_model.R" snippet="sir_model" code-line-numbers="1|3-10|12-14|16-21"}
 ```

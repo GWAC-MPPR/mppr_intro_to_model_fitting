@@ -96,7 +96,7 @@ The least squares estimates serve as [initial values]{style="color: tomato;"} fo
 ```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_uncertainty"}
 ```
 
-![](figures/04_profile_likelihood.png)
+![](figures/04_profile_likelihood.png){width="80%"}
 
 ------------------------------------------------------------------------
 

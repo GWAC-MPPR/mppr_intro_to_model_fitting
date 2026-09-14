@@ -104,9 +104,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
-## The posterior
-
-### Posterior summaries: point estimates
+## Posterior summaries: point estimates
 
 ::: {style="font-size: 0.75em;"}
 ::::: columns
@@ -239,7 +237,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ### Grid evaluation for the influenza outbreak
 
-![](figures/06_flu_grid_posterior.png)
+![](figures/06_flu_grid_posterior.png){width="85%"}
 
 - Worse, a grid spends its runs evenly, and the posterior is not spread evenly: over the range of the prior, [3,600]{style="color: steelblue;"} runs and [nearly all of them landed where the posterior is zero]{style="color: tomato;"}
 - What we want is a method that spends its model runs [where the posterior is large]{style="color: tomato;"}, and that is what MCMC does
@@ -289,6 +287,8 @@ Any Questions?
 - Monte Carlo needs [samples]{style="color: tomato;"}: a bag of draws of [$\theta$]{style="color: steelblue;"} from which means, intervals and predictions are read off
 - All we have is the ability to [evaluate]{style="color: tomato;"}: to score any candidate [$\theta$]{style="color: steelblue;"} and say how plausible it is relative to any other
 
+------------------------------------------------------------------------
+
 [**How do you draw samples from something you can only evaluate?**]{style="color: tomato;"}
 
 The answer is to stop trying to draw independent samples at all, and instead to walk through parameter space one step at a time, deciding each step from the scores of two candidates. The rest of this section is that walk
@@ -335,6 +335,7 @@ The answer is to stop trying to draw independent samples at all, and instead to 
 - If it has lower density we take it [with probability $r$]{style="color: tomato;"}. The chain can walk downhill, which is why it explores the distribution instead of climbing to the top and staying there
 - When a proposal is rejected the current value is [written down again]{style="color: tomato;"}. Those repeats are part of the sample, so do not throw them away
 - Put together, the chain visits each region [in proportion to its posterior density]{style="color: tomato;"}
+- In code everything is done on the [log scale]{style="color: tomato;"}, so the products become sums and the tiny likelihoods do not underflow to zero
 
 ------------------------------------------------------------------------
 
@@ -354,8 +355,6 @@ The answer is to stop trying to draw independent samples at all, and instead to 
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="metropolis_1d" code-line-numbers="1-5|7-9|10-16|17-18|20"}
 ```
 
-Everything is done on the [log scale]{style="color: tomato;"}, so the products become sums and the tiny likelihoods do not underflow to zero
-
 ------------------------------------------------------------------------
 
 ### Validation on a known target distribution
@@ -365,7 +364,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="metropolis_normal"}
 ```
 
-![](figures/06_metropolis_normal.png)
+![](figures/06_metropolis_normal.png){width="70%"}
 
 ------------------------------------------------------------------------
 
@@ -377,9 +376,7 @@ Any Questions?
 
 ------------------------------------------------------------------------
 
-## Practical implementation
-
-### Tuning the proposal
+## Practical implementation: tuning the proposal
 
 ![](figures/06_proposal_tuning.png)
 
@@ -396,7 +393,7 @@ Any Questions?
 
 ### Burn-in
 
-![](figures/06_burn_in.png)
+![](figures/06_burn_in.png){width="85%"}
 
 - We chose the starting point, so the first part of the chain says more about that choice than about the posterior
 - Throw those early samples away. This is the [burn-in]{style="color: tomato;"}. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it
@@ -534,9 +531,23 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
-### Example: the SIR model in Stan
+### Example: the SIR model in Stan (1 of 3)
 
-``` {.stan include="scripts/06_sir_model.stan" code-line-numbers="1-13|15-22|24-28|30-38|40-45|47-50"}
+```{.stan include="scripts/06_sir_model.stan" end-line="13" code-line-numbers="1-2|3-13"}
+```
+
+------------------------------------------------------------------------
+
+### Example: the SIR model in Stan (2 of 3)
+
+```{.stan include="scripts/06_sir_model.stan" start-line="15" end-line="28" code-line-numbers="1-8|10-14"}
+```
+
+------------------------------------------------------------------------
+
+### Example: the SIR model in Stan (3 of 3)
+
+```{.stan include="scripts/06_sir_model.stan" start-line="30" code-line-numbers="1-9|11-16|18-21"}
 ```
 
 ------------------------------------------------------------------------

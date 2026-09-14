@@ -4,7 +4,29 @@
 # — and `quarto publish gh-pages` in particular — sees revealjs only. When both
 # formats are declared on the document, publish sweeps the rendered slides.pdf
 # into the gh-pages branch alongside the site.
+#
+# A beamer frame holds far less than a revealjs slide (which scrolls), so the
+# PDF gets a smaller body font, small wrapped code, and images capped at a
+# fraction of the frame height so a title plus a figure still fits.
 format:
   beamer:
     theme: metropolis
     code-annotations: hover
+    fontsize: 10pt
+    include-in-header:
+      text: |
+        \usepackage{fvextra}
+        \fvset{breaklines, breakanywhere, fontsize=\scriptsize}
+    include-before-body:
+      text: |
+        \makeatletter
+        \renewcommand*\pandocbounded[1]{%
+          \sbox\pandoc@box{#1}%
+          \Gscale@div\@tempa{0.62\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+          \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+          \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi
+          \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+          \else\usebox{\pandoc@box}%
+          \fi%
+        }
+        \makeatother
