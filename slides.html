@@ -400,37 +400,37 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p>Even with the right <span style="color: steelblue;"><span class="math inline">\(\beta\)</span></span> and <span style="color: steelblue;"><span class="math inline">\(\gamma\)</span></span> the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere</p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 12%">
+<col style="width: 51%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Source</th>
-<th>In the flu data</th>
-<th>Where we deal with it</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">In the flu data</th>
+<th style="text-align: left;">Where we deal with it</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Observation</td>
-<td>Not every pupil in bed was infectious, or counted</td>
-<td>The likelihood (4)</td>
+<td style="text-align: left;">Observation</td>
+<td style="text-align: left;">Not every pupil in bed was infectious, or counted</td>
+<td style="text-align: left;">The likelihood (4)</td>
 </tr>
 <tr class="even">
-<td>Parameter</td>
-<td>Several <span class="math inline">\((\beta, \gamma)\)</span> pairs fit almost as well</td>
-<td>Confidence intervals (4), the posterior (6)</td>
+<td style="text-align: left;">Parameter</td>
+<td style="text-align: left;">Several <span class="math inline">\((\beta, \gamma)\)</span> pairs fit almost as well</td>
+<td style="text-align: left;">Confidence intervals (4), the posterior (6)</td>
 </tr>
 <tr class="odd">
-<td>Model</td>
-<td>No latent period; everyone mixes with everyone</td>
-<td>Model comparison (4)</td>
+<td style="text-align: left;">Model</td>
+<td style="text-align: left;">No latent period; everyone mixes with everyone</td>
+<td style="text-align: left;">Model comparison (4)</td>
 </tr>
 <tr class="even">
-<td>Process</td>
-<td>Chance in who infected whom, day by day</td>
-<td>Particle filtering (7)</td>
+<td style="text-align: left;">Process</td>
+<td style="text-align: left;">Chance in who infected whom, day by day</td>
+<td style="text-align: left;">Particle filtering (7)</td>
 </tr>
 </tbody>
 </table>
@@ -508,9 +508,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>It has <span style="color: tomato;">no probabilistic interpretation</span>, so it provides no measure of uncertainty on its own</li>
 </ul>
 </section>
-<section id="least-squares-for-the-flu-outbreak" class="slide level2">
-<h2>Least squares for the flu outbreak</h2>
-<h3 id="step-1-model-implementation">Step 1: model implementation</h3>
+<section id="least-squares-for-the-flu-outbreak-step-1-model-implementation" class="slide level2">
+<h2>Least squares for the flu outbreak: step 1, model implementation</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-code-line-numbers="1|3-10|12-14|16-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(deSolve)</span>
 <span id="cb1-2"><a href=""></a></span>
 <span id="cb1-3"><a href=""></a>sir_model <span class="ot">&lt;-</span> <span class="cf">function</span>(t, y, params) {</span>
@@ -734,7 +733,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Profile likelihood for each parameter</span></span>
 <span id="cb11-2"><a href=""></a>prof <span class="ot">&lt;-</span> <span class="fu">profile</span>(fit_mle)</span>
 <span id="cb11-3"><a href=""></a><span class="fu">plot</span>(prof, <span class="at">absVal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="figures/04_profile_likelihood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="figures/04_profile_likelihood.png"></a></p>
+<p><a href="figures/04_profile_likelihood.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="figures/04_profile_likelihood.png" style="width:80.0%"></a></p>
 </section>
 <section class="slide level2">
 
@@ -961,9 +960,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </div>
 </div>
 </section>
-<section id="the-posterior" class="slide level2">
-<h2>The posterior</h2>
-<h3 id="posterior-summaries-point-estimates">Posterior summaries: point estimates</h3>
+<section id="posterior-summaries-point-estimates" class="slide level2">
+<h2>Posterior summaries: point estimates</h2>
 <div style="font-size: 0.75em;">
 <div class="columns">
 <div class="column" style="width:38%;">
@@ -1088,7 +1086,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="grid-evaluation-for-the-influenza-outbreak">Grid evaluation for the influenza outbreak</h3>
-<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_flu_grid_posterior.png"></a></p>
+<p><a href="figures/06_flu_grid_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="figures/06_flu_grid_posterior.png" style="width:85.0%"></a></p>
 <ul>
 <li>Worse, a grid spends its runs evenly, and the posterior is not spread evenly: over the range of the prior, <span style="color: steelblue;">3,600</span> runs and <span style="color: tomato;">nearly all of them landed where the posterior is zero</span></li>
 <li>What we want is a method that spends its model runs <span style="color: tomato;">where the posterior is large</span>, and that is what MCMC does</li>
@@ -1156,6 +1154,9 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>Monte Carlo needs <span style="color: tomato;">samples</span>: a bag of draws of <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> from which means, intervals and predictions are read off</li>
 <li>All we have is the ability to <span style="color: tomato;">evaluate</span>: to score any candidate <span style="color: steelblue;"><span class="math inline">\(\theta\)</span></span> and say how plausible it is relative to any other</li>
 </ul>
+</section>
+<section class="slide level2">
+
 <p><span style="color: tomato;"><strong>How do you draw samples from something you can only evaluate?</strong></span></p>
 <p>The answer is to stop trying to draw independent samples at all, and instead to walk through parameter space one step at a time, deciding each step from the scores of two candidates. The rest of this section is that walk</p>
 </section>
@@ -1196,6 +1197,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>If it has lower density we take it <span style="color: tomato;">with probability <span class="math inline">\(r\)</span></span>. The chain can walk downhill, which is why it explores the distribution instead of climbing to the top and staying there</li>
 <li>When a proposal is rejected the current value is <span style="color: tomato;">written down again</span>. Those repeats are part of the sample, so do not throw them away</li>
 <li>Put together, the chain visits each region <span style="color: tomato;">in proportion to its posterior density</span></li>
+<li>In code everything is done on the <span style="color: tomato;">log scale</span>, so the products become sums and the tiny likelihoods do not underflow to zero</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1234,7 +1236,6 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <span id="cb20-19"><a href=""></a>  }</span>
 <span id="cb20-20"><a href=""></a>  <span class="fu">list</span>(<span class="at">samples =</span> samples, <span class="at">acceptance_rate =</span> n_accepted <span class="sc">/</span> n_iter)</span>
 <span id="cb20-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Everything is done on the <span style="color: tomato;">log scale</span>, so the products become sums and the tiny likelihoods do not underflow to zero</p>
 </section>
 <section class="slide level2">
 
@@ -1242,7 +1243,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p>The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on <span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span>, where we know what the answer should look like.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_metropolis_normal.png"></a></p>
+<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_metropolis_normal.png" style="width:70.0%"></a></p>
 </section>
 <section id="section-11" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1250,9 +1251,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p>Any Questions?</p>
 </div>
 </section>
-<section id="practical-implementation" class="slide level2">
-<h2>Practical implementation</h2>
-<h3 id="tuning-the-proposal">Tuning the proposal</h3>
+<section id="practical-implementation-tuning-the-proposal" class="slide level2">
+<h2>Practical implementation: tuning the proposal</h2>
 <p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_proposal_tuning.png"></a></p>
 </section>
 <section class="slide level2">
@@ -1268,7 +1268,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="burn-in">Burn-in</h3>
-<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_burn_in.png"></a></p>
+<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_burn_in.png" style="width:85.0%"></a></p>
 <ul>
 <li>We chose the starting point, so the first part of the chain says more about that choice than about the posterior</li>
 <li>Throw those early samples away. This is the <span style="color: tomato;">burn-in</span>. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it</li>
@@ -1467,8 +1467,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
-<h3 id="example-the-sir-model-in-stan">Example: the SIR model in Stan</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" data-code-line-numbers="1-13|15-22|24-28|30-38|40-45|47-50"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb28-1"><a href=""></a><span class="co">// SIR model in Stan (walkthrough)</span></span>
+<h3 id="example-the-sir-model-in-stan-1-of-3">Example: the SIR model in Stan (1 of 3)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" data-code-line-numbers="1-2|3-13"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb28-1"><a href=""></a><span class="co">// SIR model in Stan (walkthrough)</span></span>
 <span id="cb28-2"><a href=""></a><span class="co">// Functions block: derivative of [S, I, R]</span></span>
 <span id="cb28-3"><a href=""></a><span class="kw">functions</span> {</span>
 <span id="cb28-4"><a href=""></a>  <span class="dt">vector</span> SIR(<span class="dt">real</span> t, <span class="dt">vector</span> y, <span class="dt">array</span>[] <span class="dt">real</span> theta) {</span>
@@ -1480,44 +1480,50 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <span id="cb28-10"><a href=""></a>    dydt[<span class="dv">3</span>] =  gamma * I;</span>
 <span id="cb28-11"><a href=""></a>    <span class="cf">return</span> dydt;</span>
 <span id="cb28-12"><a href=""></a>  }</span>
-<span id="cb28-13"><a href=""></a>}</span>
-<span id="cb28-14"><a href=""></a></span>
-<span id="cb28-15"><a href=""></a><span class="co">// Data block: obs counts &amp; time grid</span></span>
-<span id="cb28-16"><a href=""></a><span class="kw">data</span> {</span>
-<span id="cb28-17"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_obs;</span>
-<span id="cb28-18"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_pop;</span>
-<span id="cb28-19"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">int</span> y;</span>
-<span id="cb28-20"><a href=""></a>  <span class="dt">real</span> t0;</span>
-<span id="cb28-21"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> ts;</span>
-<span id="cb28-22"><a href=""></a>}</span>
-<span id="cb28-23"><a href=""></a></span>
-<span id="cb28-24"><a href=""></a><span class="co">// Parameters: beta, gamma, S0</span></span>
-<span id="cb28-25"><a href=""></a><span class="kw">parameters</span> {</span>
-<span id="cb28-26"><a href=""></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; theta;     <span class="co">// {beta, gamma}</span></span>
-<span id="cb28-27"><a href=""></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; S0;         <span class="co">// initial susceptible fraction</span></span>
-<span id="cb28-28"><a href=""></a>}</span>
-<span id="cb28-29"><a href=""></a></span>
-<span id="cb28-30"><a href=""></a><span class="co">// Transformed params: ODE solve + Poisson rate</span></span>
-<span id="cb28-31"><a href=""></a><span class="kw">transformed parameters</span> {</span>
-<span id="cb28-32"><a href=""></a>  <span class="dt">vector</span>[<span class="dv">3</span>] y_init;</span>
-<span id="cb28-33"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">vector</span>[<span class="dv">3</span>] y_hat;</span>
-<span id="cb28-34"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> lambda;</span>
-<span id="cb28-35"><a href=""></a>  y_init[<span class="dv">1</span>] = S0; y_init[<span class="dv">2</span>] = <span class="dv">1</span> - S0; y_init[<span class="dv">3</span>] = <span class="dv">0</span>;</span>
-<span id="cb28-36"><a href=""></a>  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span>
-<span id="cb28-37"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span>:n_obs) lambda[i] = y_hat[i, <span class="dv">2</span>] * n_pop;</span>
-<span id="cb28-38"><a href=""></a>}</span>
-<span id="cb28-39"><a href=""></a></span>
-<span id="cb28-40"><a href=""></a><span class="co">// Model: priors + likelihood</span></span>
-<span id="cb28-41"><a href=""></a><span class="kw">model</span> {</span>
-<span id="cb28-42"><a href=""></a>  theta ~ lognormal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
-<span id="cb28-43"><a href=""></a>  S0    ~ beta(<span class="dv">1</span>, <span class="dv">1</span>);</span>
-<span id="cb28-44"><a href=""></a>  y     ~ poisson(lambda);</span>
-<span id="cb28-45"><a href=""></a>}</span>
-<span id="cb28-46"><a href=""></a></span>
-<span id="cb28-47"><a href=""></a><span class="co">// GQ: derived R0</span></span>
-<span id="cb28-48"><a href=""></a><span class="kw">generated quantities</span> {</span>
-<span id="cb28-49"><a href=""></a>  <span class="dt">real</span> R_0 = theta[<span class="dv">1</span>] / theta[<span class="dv">2</span>];</span>
-<span id="cb28-50"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-13"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="example-the-sir-model-in-stan-2-of-3">Example: the SIR model in Stan (2 of 3)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29" data-code-line-numbers="1-8|10-14"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb29-1"><a href=""></a><span class="co">// Data block: obs counts &amp; time grid</span></span>
+<span id="cb29-2"><a href=""></a><span class="kw">data</span> {</span>
+<span id="cb29-3"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_obs;</span>
+<span id="cb29-4"><a href=""></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>&gt; n_pop;</span>
+<span id="cb29-5"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">int</span> y;</span>
+<span id="cb29-6"><a href=""></a>  <span class="dt">real</span> t0;</span>
+<span id="cb29-7"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> ts;</span>
+<span id="cb29-8"><a href=""></a>}</span>
+<span id="cb29-9"><a href=""></a></span>
+<span id="cb29-10"><a href=""></a><span class="co">// Parameters: beta, gamma, S0</span></span>
+<span id="cb29-11"><a href=""></a><span class="kw">parameters</span> {</span>
+<span id="cb29-12"><a href=""></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; theta;     <span class="co">// {beta, gamma}</span></span>
+<span id="cb29-13"><a href=""></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; S0;         <span class="co">// initial susceptible fraction</span></span>
+<span id="cb29-14"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+
+<h3 id="example-the-sir-model-in-stan-3-of-3">Example: the SIR model in Stan (3 of 3)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30" data-code-line-numbers="1-9|11-16|18-21"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb30-1"><a href=""></a><span class="co">// Transformed params: ODE solve + Poisson rate</span></span>
+<span id="cb30-2"><a href=""></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb30-3"><a href=""></a>  <span class="dt">vector</span>[<span class="dv">3</span>] y_init;</span>
+<span id="cb30-4"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">vector</span>[<span class="dv">3</span>] y_hat;</span>
+<span id="cb30-5"><a href=""></a>  <span class="dt">array</span>[n_obs] <span class="dt">real</span> lambda;</span>
+<span id="cb30-6"><a href=""></a>  y_init[<span class="dv">1</span>] = S0; y_init[<span class="dv">2</span>] = <span class="dv">1</span> - S0; y_init[<span class="dv">3</span>] = <span class="dv">0</span>;</span>
+<span id="cb30-7"><a href=""></a>  y_hat = ode_rk45(SIR, y_init, t0, ts, theta);</span>
+<span id="cb30-8"><a href=""></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span>:n_obs) lambda[i] = y_hat[i, <span class="dv">2</span>] * n_pop;</span>
+<span id="cb30-9"><a href=""></a>}</span>
+<span id="cb30-10"><a href=""></a></span>
+<span id="cb30-11"><a href=""></a><span class="co">// Model: priors + likelihood</span></span>
+<span id="cb30-12"><a href=""></a><span class="kw">model</span> {</span>
+<span id="cb30-13"><a href=""></a>  theta ~ lognormal(<span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb30-14"><a href=""></a>  S0    ~ beta(<span class="dv">1</span>, <span class="dv">1</span>);</span>
+<span id="cb30-15"><a href=""></a>  y     ~ poisson(lambda);</span>
+<span id="cb30-16"><a href=""></a>}</span>
+<span id="cb30-17"><a href=""></a></span>
+<span id="cb30-18"><a href=""></a><span class="co">// GQ: derived R0</span></span>
+<span id="cb30-19"><a href=""></a><span class="kw">generated quantities</span> {</span>
+<span id="cb30-20"><a href=""></a>  <span class="dt">real</span> R_0 = theta[<span class="dv">1</span>] / theta[<span class="dv">2</span>];</span>
+<span id="cb30-21"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="the-bayesian-workflow" class="slide level2 scrollable">
 <h2>The Bayesian workflow</h2>
@@ -1543,8 +1549,8 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li><p>Fit the SIR model to the influenza data with a Metropolis sampler you write yourself, following <a href="https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals/tree/main/practicals"><code>02_mcmc_practicals.qmd</code></a></p></li>
 <li><p>Download the file <code>Day05-pack</code> from Moodle or clone it from GitHub using the following command in your terminal</p></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
-<span id="cb29-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href=""></a><span class="fu">git</span> clone <span class="dt">\</span></span>
+<span id="cb31-2"><a href=""></a>https://github.com/GWAC-MPPR/mppr_intro_to_model_fitting_r_practicals.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="advanced-methods" class="title-slide slide level1 center">
@@ -1588,27 +1594,27 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="particle-filtering-in-pomp" class="slide level2">
 <h2>Particle filtering in <code>pomp</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
-<span id="cb30-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
-<span id="cb30-3"><a href=""></a></span>
-<span id="cb30-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
-<span id="cb30-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
-<span id="cb30-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
-<span id="cb30-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
-<span id="cb30-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
-<span id="cb30-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
-<span id="cb30-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
-<span id="cb30-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
-<span id="cb30-12"><a href=""></a>  ),</span>
-<span id="cb30-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
-<span id="cb30-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
-<span id="cb30-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
-<span id="cb30-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
-<span id="cb30-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
-<span id="cb30-18"><a href=""></a>)</span>
-<span id="cb30-19"><a href=""></a></span>
-<span id="cb30-20"><a href=""></a><span class="co"># Run particle filter</span></span>
-<span id="cb30-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="co"># Particle filter for SIR model</span></span>
+<span id="cb32-2"><a href=""></a><span class="fu">library</span>(pomp)</span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a><span class="co"># Define SIR model with stochasticity</span></span>
+<span id="cb32-5"><a href=""></a>sir_pomp <span class="ot">&lt;-</span> <span class="fu">pomp</span>(</span>
+<span id="cb32-6"><a href=""></a>  <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">time =</span> covid_times, <span class="at">cases =</span> covid_observed),</span>
+<span id="cb32-7"><a href=""></a>  <span class="at">times =</span> <span class="st">"time"</span>,</span>
+<span id="cb32-8"><a href=""></a>  <span class="at">t0 =</span> <span class="dv">0</span>,</span>
+<span id="cb32-9"><a href=""></a>  <span class="at">rprocess =</span> <span class="fu">euler.sim</span>(</span>
+<span id="cb32-10"><a href=""></a>    <span class="at">step.fun =</span> <span class="st">"sir_step"</span>,</span>
+<span id="cb32-11"><a href=""></a>    <span class="at">delta.t =</span> <span class="fl">0.1</span></span>
+<span id="cb32-12"><a href=""></a>  ),</span>
+<span id="cb32-13"><a href=""></a>  <span class="at">rmeasure =</span> <span class="st">"cases_measure"</span>,</span>
+<span id="cb32-14"><a href=""></a>  <span class="at">dmeasure =</span> <span class="st">"cases_dmeasure"</span>,</span>
+<span id="cb32-15"><a href=""></a>  <span class="at">initializer =</span> <span class="st">"sir_init"</span>,</span>
+<span id="cb32-16"><a href=""></a>  <span class="at">paramnames =</span> <span class="fu">c</span>(<span class="st">"beta"</span>, <span class="st">"gamma"</span>, <span class="st">"sigma"</span>),</span>
+<span id="cb32-17"><a href=""></a>  <span class="at">statenames =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"I"</span>, <span class="st">"R"</span>)</span>
+<span id="cb32-18"><a href=""></a>)</span>
+<span id="cb32-19"><a href=""></a></span>
+<span id="cb32-20"><a href=""></a><span class="co"># Run particle filter</span></span>
+<span id="cb32-21"><a href=""></a>pf <span class="ot">&lt;-</span> <span class="fu">pfilter</span>(sir_pomp, <span class="at">Np =</span> <span class="dv">1000</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">beta =</span> <span class="fl">0.3</span>, <span class="at">gamma =</span> <span class="fl">0.1</span>, <span class="at">sigma =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="approximate-bayesian-computation" class="slide level2 smaller scrollable">
 <h2>Approximate Bayesian computation</h2>
