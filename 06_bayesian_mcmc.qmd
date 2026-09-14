@@ -186,7 +186,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 :::
 
-- This is an [integral over every combination of parameter values]{style="color: tomato;"}, and for an ODE model there is no formula for it
+- This is an [integral over every combination of parameter values]{style="color: tomato;"}, and for an ODE model there is [no formula for it]{style="color:tomato"}.
 - What we *can* do is evaluate [$p(y \mid \theta)\, p(\theta)$]{style="color: steelblue;"} at any [$\theta$]{style="color: steelblue;"} we like, which gives us the posterior [up to that unknown constant]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
@@ -269,12 +269,29 @@ Any Questions?
 
 ------------------------------------------------------------------------
 
+### Two things you can do with a distribution
+
+::: {style="font-size: 0.8em;"}
+| | [Evaluate]{style="color: tomato;"} it at a point | [Sample]{style="color: tomato;"} from it |
+|---|---|---|
+| [$N(5, 2)$]{style="color: steelblue;"} | `dnorm(6, 5, 2)` gives 0.176 | `rnorm(3, 5, 2)` gives 6.3, 4.1, 7.8 |
+| The posterior | `log_posterior(theta)`: one model run | there is no `rposterior()` |
+
+- R provides both for the familiar distributions, so we never notice they are different abilities
+- For the posterior we have only the first: any [$\theta$]{style="color: steelblue;"} can be scored, up to the constant [$p(y)$]{style="color: steelblue;"}
+- No function returns random draws from *this* posterior: it has no formula, it is whatever shape the model, the likelihood and the prior produce together
+:::
+
+------------------------------------------------------------------------
+
 ### Sampling from an unnormalised density
 
-- Monte Carlo needs [samples]{style="color: tomato;"} from the posterior
-- All we can do is [evaluate]{style="color: tomato;"} the posterior, up to a constant, at any point we choose
+- Monte Carlo needs [samples]{style="color: tomato;"}: a bag of draws of [$\theta$]{style="color: steelblue;"} from which means, intervals and predictions are read off
+- All we have is the ability to [evaluate]{style="color: tomato;"}: to score any candidate [$\theta$]{style="color: steelblue;"} and say how plausible it is relative to any other
 
 [**How do you draw samples from something you can only evaluate?**]{style="color: tomato;"}
+
+The answer is to stop trying to draw independent samples at all, and instead to walk through parameter space one step at a time, deciding each step from the scores of two candidates. The rest of this section is that walk
 
 ------------------------------------------------------------------------
 
