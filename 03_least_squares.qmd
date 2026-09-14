@@ -68,6 +68,15 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- The valley in the surface is tilted. What does that tell you about how well $\beta$ and $\gamma$ are determined separately, and about $R_0 = \beta N / \gamma$?
+- If you had to report one number from this fit with a straight face, which would it be?
+:::
+
+------------------------------------------------------------------------
+
 ### Step 4: numerical optimisation
 
 ```{.r include="scripts/03_least_squares.R" snippet="ls_optim"}
@@ -102,3 +111,9 @@ The numbers agree with what we saw: guess C was closest and guess A was worst
 - [No principled basis for model comparison]{style="color: tomato;"}
 - The [constant variance assumption]{style="color: tomato;"} is violated by count data, whose variance grows with the mean
 - [Parameter identifiability]{style="color: tomato;"} problems are not diagnosed, only hidden in the shape of the surface
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::

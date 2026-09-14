@@ -97,6 +97,15 @@
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- Look at the three guesses again. Which of the two parameters do you think the data pin down better, and why?
+- What else could the school have recorded in 1978 that would help us estimate $\gamma$ directly?
+:::
+
+------------------------------------------------------------------------
+
 ## Approaches to parameter estimation {.smaller}
 
 There are many approaches to answer the question but we'll cover:

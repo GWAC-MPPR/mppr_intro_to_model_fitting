@@ -71,3 +71,17 @@ Ensemble methods combine several models, methods or fits rather than relying on 
 - [bootstrap ensembles]{style="color: tomato;"}: refit the same model to resampled versions of the data
 
 The spread across the ensemble quantifies [model and method uncertainty]{style="color: tomato;"}, which no single fit can show, and averaged predictions are more robust and less prone to overfitting than any single member
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
+
+------------------------------------------------------------------------
+
+::: {.callout-important icon="false"}
+### Discussion
+
+Which of today's methods would you reach for, and why: real-time estimation of Ebola transmission with under-reporting; a within-host model whose likelihood cannot be written; a forecast to be presented to a minister next week?
+:::

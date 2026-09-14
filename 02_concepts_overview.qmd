@@ -49,6 +49,15 @@ Even with the right [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="c
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- Which of these four sources do you expect to matter most for the boarding-school data?
+- And for weekly reported COVID-19 cases in a district of Ghana? What changes?
+:::
+
+------------------------------------------------------------------------
+
 ## Identifiability {.smaller}
 
 [**The problem:**]{style="color: tomato;"} different parameter combinations can produce nearly the same curve
@@ -66,3 +75,9 @@ We will meet this three times today: as a tilted valley in the least squares sur
 ## Starting point: least squares
 
 We start with the simplest objective function there is, the [sum of squared distances]{style="color: tomato;"} between the points and the curve
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::

@@ -93,6 +93,15 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- What prior would you put on the infectious period of influenza? Of Ebola? Where would you get it from?
+- Is a prior that puts the whole school in bed by day two "wrong", or just vague?
+:::
+
+------------------------------------------------------------------------
+
 ## The posterior
 
 ### Posterior summaries
@@ -139,6 +148,12 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 ![](figures/06_flu_grid_posterior.png)
 
 [3,600]{style="color: steelblue;"} model runs, and [nearly all of them landed where the posterior is zero]{style="color: tomato;"}
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
 
 ------------------------------------------------------------------------
 
@@ -240,6 +255,12 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
+
+------------------------------------------------------------------------
+
 ## Practical implementation
 
 ### Tuning the proposal
@@ -293,6 +314,21 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 - The [acceptance rate]{style="color: tomato;"} is in a sensible range
 - [$\hat{R}$]{style="color: steelblue;"} is close to 1 and the [effective sample size]{style="color: tomato;"} is in the hundreds at least
 - [Any of these checks can show you a problem. None of them can prove there is not one]{style="color: tomato;"}
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
+
+------------------------------------------------------------------------
+
+::: {.callout-important icon="false"}
+### Discussion
+
+- You run one chain for a million iterations and its trace plot looks perfect. What can it still not tell you?
+- The acceptance rate is 95%. Is that good news?
+:::
 
 ------------------------------------------------------------------------
 
@@ -351,6 +387,15 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- The 95% credible interval for $R_0$ is 3.40 to 3.71. What does that interval assume, and what could make it wrong?
+- The posterior predictive band misses the peak. Which of the sources of uncertainty from section 2 is the model missing?
+:::
+
+------------------------------------------------------------------------
+
 ## Beyond the Metropolis algorithm {.smaller}
 
 - [Metropolis-within-Gibbs]{style="color: tomato;"} updates one parameter, or one block of parameters, at a time, which helps when the parameters are correlated
@@ -382,6 +427,12 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 4.  [Check the chains]{style="color: tomato;"}: trace plots, acceptance rate, [$\hat{R}$]{style="color: steelblue;"}, effective sample size
 5.  [Summarise the posterior]{style="color: tomato;"}: means, credible intervals, and derived quantities such as [$R_0$]{style="color: steelblue;"}
 6.  [Check the fit]{style="color: tomato;"} by plotting posterior predictions against the data
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
 
 ------------------------------------------------------------------------
 

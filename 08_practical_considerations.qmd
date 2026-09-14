@@ -49,6 +49,14 @@ Usually one of four things:
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+Think of a fitting problem from your own work or reading. Which of these failure modes have you met, and what did you do about it?
+:::
+
+------------------------------------------------------------------------
+
 ## Best practices
 
 ### Before fitting

@@ -26,6 +26,12 @@ Optimisation software minimises by convention, so in practice we minimise the [*
 
 ------------------------------------------------------------------------
 
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
+
+------------------------------------------------------------------------
+
 ## Advantages of maximum likelihood {.smaller}
 
 - [A principled statistical framework]{style="color: tomato;"}: the likelihood follows from an explicit probability model for the data, so every assumption is stated
@@ -46,6 +52,15 @@ The data are counts, so the natural choices are
 For continuous measurements the usual choices are the normal, [$Y_i \sim N(\mu_i, \sigma^2)$]{style="color: steelblue;"}, or the log-normal, [$\log Y_i \sim N(\log \mu_i, \sigma^2)$]{style="color: steelblue;"}
 
 We start with Poisson, and come back to the negative binomial at the end
+
+------------------------------------------------------------------------
+
+::: {.callout-important icon="false"}
+### Discussion
+
+- Which observation model would you choose for daily deaths? For weekly reported cases with under-reporting? For a serological survey?
+- What goes wrong if you use a Poisson model on data that are overdispersed?
+:::
 
 ------------------------------------------------------------------------
 
@@ -124,6 +139,15 @@ The negative binomial model is [strongly preferred]{style="color: tomato;"}: the
 
 ------------------------------------------------------------------------
 
+::: {.callout-important icon="false"}
+### Discussion
+
+- The negative binomial model fits better by AIC. Does that mean the SIR model is right?
+- What would you look at next before trusting the negative binomial fit for prediction?
+:::
+
+------------------------------------------------------------------------
+
 ## Strengths of maximum likelihood {.smaller}
 
 - A [principled probabilistic framework]{style="color: tomato;"}, with standard errors and confidence intervals as part of the estimate
@@ -139,6 +163,12 @@ The negative binomial model is [strongly preferred]{style="color: tomato;"}: the
 - Numerical optimisation requires sensible starting values and can converge to a [local maximum]{style="color: tomato;"}; we started from the least squares fit for exactly that reason
 - Standard errors and Wald intervals rest on [asymptotic (large-sample) arguments]{style="color: tomato;"} that fourteen observations may not satisfy; the profile likelihood is more reliable
 - [Parameter identifiability]{style="color: tomato;"} is not resolved by the method: the profiles were narrow here only because these data are unusually clean
+
+------------------------------------------------------------------------
+
+::: {.fragment style="font-size: 450%"}
+Any Questions?
+:::
 
 ------------------------------------------------------------------------
 
