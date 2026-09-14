@@ -35,7 +35,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Where this lecture sits
+## Course roadmap
 
 ![](figures/00_course_roadmap.png)
 

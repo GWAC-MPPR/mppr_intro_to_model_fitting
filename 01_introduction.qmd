@@ -14,6 +14,8 @@
 
 ::: {.column width="55%"}
 ![](figures/01_flu_data.png)
+
+![](figures/01_sir_schematic.png)
 :::
 
 ::::
