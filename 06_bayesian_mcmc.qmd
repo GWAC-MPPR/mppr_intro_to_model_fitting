@@ -292,7 +292,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ## MCMC for the 1978 influenza outbreak
 
-Same data, same model, same `predict_cases()` as the least squares and MLE sections. What changes is what we do with the likelihood
+The data, the model and `predict_cases()` are the ones from the least squares and MLE sections. From here on we do something different with the likelihood
 
 ------------------------------------------------------------------------
 

@@ -75,7 +75,7 @@ Where:
 ```{.r include="scripts/04_maximum_likelihood.R" snippet="mle_fitting" code-line-numbers="1|3-6|8-10"}
 ```
 
-The least squares estimates make a good starting point: that is one of the things least squares is for
+The least squares estimates are a good place to start the optimiser, which is one of the things least squares is for
 
 ------------------------------------------------------------------------
 
@@ -108,7 +108,7 @@ The least squares estimates make a good starting point: that is one of the thing
 ```{.default include="results/04_mle_vs_ls.txt" code-line-numbers="false"}
 ```
 
-- Close, but not the same: the Poisson likelihood weights the small counts at the start and end of the outbreak more than squared errors do
+- The two fits are close but not identical, because the Poisson likelihood pays more attention to the small counts at the start and end of the outbreak than squared errors do
 - Only the MLE comes with an interval
 
 ------------------------------------------------------------------------
@@ -134,7 +134,7 @@ The least squares estimates make a good starting point: that is one of the thing
 ```{.default include="results/04_model_comparison.txt" code-line-numbers="false"}
 ```
 
-The negative binomial wins clearly: the counts scatter more around the curve than a Poisson model allows
+The negative binomial wins by a wide margin. The counts scatter around the curve more than a Poisson model allows
 
 ------------------------------------------------------------------------
 

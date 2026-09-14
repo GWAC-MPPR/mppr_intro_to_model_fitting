@@ -6,9 +6,9 @@
 
 Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [as close as possible]{style="color: tomato;"} to the data $\mathbf{y}$
 
-- The whole question is what *close* means
+- Everything depends on what we mean by *close*
 - Whatever we decide, we write it as a number: an [objective function]{style="color: tomato;"} $\mathcal{L}(\theta, \mathbf{y})$ that is small when the curve is near the data and large when it is far away
-- Fitting is then a search over $\theta$
+- Fitting then means searching over $\theta$ for the values that make that number small
 
 ------------------------------------------------------------------------
 
@@ -18,23 +18,23 @@ Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [
 
 $$\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})$$
 
-The next two sections are two choices of $\mathcal{L}$: the sum of squared errors, then the negative log-likelihood
+The next two sections use two different choices of $\mathcal{L}$, the sum of squared errors and then the negative log-likelihood
 
 ------------------------------------------------------------------------
 
 ### A distribution
 
-Instead of the one best $\theta$, a probability for *every* $\theta$ given the data
+A probability for *every* $\theta$ given the data, rather than the one best value
 
 $$p(\theta \mid \mathbf{y})$$
 
-That is Bayesian inference, and it is where the lecture ends up. The likelihood we build in section 4 is the bridge between the two answers
+This is Bayesian inference, and it is where the lecture ends up. The two answers share the likelihood, which we build in section 4
 
 ------------------------------------------------------------------------
 
 ## Why the model will never match the data exactly {.smaller}
 
-Even with the right $\beta$ and $\gamma$ the curve will not pass through every point. The mismatch has several sources, and each is handled somewhere in this lecture
+Even with the right $\beta$ and $\gamma$ the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere
 
 | Source | In the flu data | Where we deal with it |
 |---|---|---|
@@ -51,14 +51,14 @@ Even with the right $\beta$ and $\gamma$ the curve will not pass through every p
 
 - A high $\beta$ with a high $\gamma$: fast spread, quick recovery
 - A low $\beta$ with a low $\gamma$: slow spread, long infections
-- Both can give a similar epidemic, because the data mostly pin down $R_0 = \beta N / \gamma$, not $\beta$ and $\gamma$ separately
+- Both can give a similar epidemic, because what the data pin down is mostly the ratio $R_0 = \beta N / \gamma$
 
-You will see this as a tilted valley in the least squares surface, as wide profile likelihoods, and as a tilted cloud of posterior samples
+We will meet this three times today: as a tilted valley in the least squares surface, as wide profile likelihoods, and as a tilted cloud of posterior samples
 
-[**The way out:**]{style="color: tomato;"} bring in what you already know, such as a plausible infectious period for influenza. In the Bayesian section that is exactly what a prior is
+[**The way out:**]{style="color: tomato;"} bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a prior is
 
 ------------------------------------------------------------------------
 
 ## Where to start
 
-The simplest possible objective function: the sum of squared distances between the points and the curve
+We start with the simplest objective function there is, the sum of squared distances between the points and the curve

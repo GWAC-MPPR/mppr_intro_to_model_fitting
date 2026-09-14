@@ -54,7 +54,7 @@ Where:
 ```{.default include="results/03_sse_guesses.txt" code-line-numbers="false"}
 ```
 
-The numbers agree with our eyes: guess C was closest, guess A was worst
+The numbers agree with what we saw: guess C was closest and guess A was worst
 
 ------------------------------------------------------------------------
 
