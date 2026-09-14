@@ -1,119 +1,95 @@
-# Least squares example for 03_least_squares.qmd.
+# Least squares fit of the SIR model to the 1978 influenza outbreak
+# (03_least_squares.qmd).
 #
-# Simulates synthetic SIR case data, saves the "true vs observed" plot to
-# figures/03_sir_true_vs_observed.png, then fits beta and gamma by a grid
-# search on the sum of squared errors and writes the best fit to
-# results/03_least_squares_fit.txt.
+# Writes:
+#   figures/03_sse_surface.png       the sum of squared errors over a grid
+#   figures/03_ls_fit.png            the least squares fit against the data
+#   results/03_least_squares_fit.txt the estimates
 #
 # The slides pull code from the regions between `# start snippet <name>` and
-# `# end snippet <name>` markers (see _extensions/quarto-ext/include-code-files).
-# Everything outside the markers is plumbing that stays off the slides, so keep
-# the code inside them exactly as it should appear on the slide.
+# `# end snippet <name>` markers (see filters/include-code.lua). Everything
+# outside the markers is plumbing that stays off the slides, so keep the code
+# inside them exactly as it should appear on the slide.
 #
 # Run from the project root: Rscript scripts/03_least_squares.R
 
-# Load required packages
-library(deSolve)
-library(ggplot2)
-
+source("scripts/00_flu_sir_model.R")
 dir.create("figures", showWarnings = FALSE)
 dir.create("results", showWarnings = FALSE)
 
-# Define SIR model
-sir_model <- function(t, y, params) {
-  with(as.list(c(y, params)), {
-    dS <- -beta * S * I
-    dI <- beta * S * I - gamma * I
-    dR <- gamma * I
-    list(c(dS, dI, dR))
-  })
+fig <- function(name, width = 10, height = 6) {
+  png(file.path("figures", name), width = width, height = height,
+      units = "in", res = 150, pointsize = 15)
 }
-
-# Generate synthetic data
-set.seed(42)
-true_params <- c(beta = 0.3, gamma = 0.1)
-init_conds <- c(S = 0.99, I = 0.01, R = 0)
-times <- seq(0, 365, by = 1)
-
-# Simulate true model
-out <- ode(y = init_conds, times = times, func = sir_model, parms = true_params)
-true_cases <- out[,"I"] * 1000  # Scale to cases
-
-# Add noise
-observed_cases <- rpois(length(times), true_cases + 5)
-
-# Plot
-plot_data <- data.frame(
-  time = times,
-  observed = observed_cases,
-  true_model = true_cases
-)
-
-p <- ggplot(plot_data, aes(x = time)) +
-  geom_point(aes(y = observed), color = "red", alpha = 0.7) +
-  geom_line(aes(y = true_model), color = "blue", linewidth = 1) +
-  labs(x = "Time (days)", y = "Number of Cases",
-       title = "SIR Model: True vs Observed Data") +
-  theme_minimal()
-
-ggsave("figures/03_sir_true_vs_observed.png", p,
-       width = 10, height = 6, dpi = 150, bg = "white")
 
 # start snippet ls_implementation
-# Define objective function
-sse_function <- function(params, data) {
+# The objective function: how far is the model from the data?
+sse_function <- function(params) {
   beta <- params[1]
   gamma <- params[2]
-  
-  # Simulate model
-  out <- ode(
-    y = init_conds,
-    times = data$time,
-    func = sir_model,
-    parms = c(beta = beta, gamma = gamma)
-  )
-  
-  #  Extract and rescale the predicted cases
-  predicted <- out[, "I"] * 1000
-  # Calculate sum of squared errors
-  sse <- sum((data$observed - predicted)^2)
-  
-  return(sse)
+  predicted <- predict_cases(beta, gamma)
+  sum((flu$cases - predicted)^2)
 }
+
+# The three guesses from the introduction
+sse_guesses <- c(A = sse_function(c(0.0015, 0.5)),
+                 B = sse_function(c(0.0030, 0.6)),
+                 C = sse_function(c(0.0022, 0.4)))
 # end snippet ls_implementation
 
-# start snippet ls_fitting
-# Prepare data
-data <- data.frame(time = times, observed = observed_cases)
+sink("results/03_sse_guesses.txt", split = TRUE)
+print(round(sse_guesses))
+sink()
 
-# Test different parameter values
+# start snippet ls_grid
+# Try a grid of parameter values
 test_params <- expand.grid(
-  beta = seq(0.1, 0.5, length.out = 10),
-  gamma = seq(0.05, 0.2, length.out = 10)
+  beta = seq(0.0015, 0.0030, length.out = 20),
+  gamma = seq(0.30, 0.70, length.out = 20)
 )
-# end snippet ls_fitting
 
-# start snippet ls_fitting_2
-# Calculate SSE for each combination
-for (i in 1:nrow(test_params)) {
-  test_params$sse[i] <- sse_function(
-    c(
-      test_params[i, 1],
-      test_params[i, 2]
-    ),
-    data
-  )
+for (i in seq_len(nrow(test_params))) {
+  test_params$sse[i] <- sse_function(c(test_params$beta[i], test_params$gamma[i]))
 }
-# end snippet ls_fitting_2
 
-# Console output between the sink() calls also goes to the results file, which
-# the slides include verbatim.
+best <- test_params[which.min(test_params$sse), ]
+# end snippet ls_grid
+
+fig("03_sse_surface.png")
+par(mar = c(4.5, 4.5, 3, 1))
+sse_matrix <- matrix(log10(test_params$sse), nrow = 20)
+image(unique(test_params$beta), unique(test_params$gamma), sse_matrix,
+      col = hcl.colors(50, "YlOrRd"), xlab = expression(beta), ylab = expression(gamma),
+      main = "Sum of squared errors over the grid (log scale, darker = smaller)")
+contour(unique(test_params$beta), unique(test_params$gamma), sse_matrix, add = TRUE, col = "grey30", nlevels = 8)
+points(best$beta, best$gamma, pch = 4, cex = 2, lwd = 3)
+dev.off()
+
+# start snippet ls_optim
+# Let an optimiser polish the best grid point
+fit_ls <- optim(par = c(best$beta, best$gamma), fn = sse_function)
+ls_estimates <- c(beta = fit_ls$par[1], gamma = fit_ls$par[2])
+# end snippet ls_optim
+
 sink("results/03_least_squares_fit.txt", split = TRUE)
 # start snippet ls_results
-# Find minimum
-best_idx <- which.min(test_params$sse)
-best_params <- test_params[best_idx, ]
-cat("True parameters: Beta =", true_params[1], ", Gamma =", true_params[2], "\n")
-cat("Best fit parameters: Beta =", round(best_params$beta, 3), ", Gamma =", round(best_params$gamma, 3), "\n")
+cat("Best grid point:  beta =", signif(best$beta, 3), " gamma =", signif(best$gamma, 3),
+    " SSE =", round(best$sse), "\n")
+cat("After optim():    beta =", signif(ls_estimates["beta"], 3),
+    " gamma =", signif(ls_estimates["gamma"], 3), " SSE =", round(fit_ls$value), "\n")
+cat("R0 = beta N / gamma =", round(ls_estimates["beta"] * N / ls_estimates["gamma"], 2),
+    "  infectious period =", round(1 / ls_estimates["gamma"], 2), "days\n")
 # end snippet ls_results
 sink()
+
+fine_times <- seq(0, 14, by = 0.1)
+ls_curve <- ode(y = init, times = fine_times, func = sir_model, parms = ls_estimates)[, "I"]
+
+fig("03_ls_fit.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(flu$day, flu$cases, pch = 16, cex = 1.3, ylim = c(0, 320),
+     xlab = "Day", ylab = "Pupils in bed", main = "Least squares fit")
+lines(fine_times, ls_curve, col = "tomato", lwd = 3)
+legend("topright", bty = "n", pch = c(16, NA), lwd = c(NA, 3), col = c("black", "tomato"),
+       legend = c("data", sprintf("SIR, beta = %.5f, gamma = %.3f", ls_estimates["beta"], ls_estimates["gamma"])))
+dev.off()

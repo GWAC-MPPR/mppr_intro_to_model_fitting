@@ -30,11 +30,15 @@ To regenerate the figures and results after editing a script, run from the
 project root (the renv library provides `deSolve`, `ggplot2` and `bbmle`):
 
 ```sh
-Rscript scripts/01_outbreak_data.R
+Rscript scripts/01_outbreak_data.R        # the data and three guesses at the parameters
 Rscript scripts/04_maximum_likelihood.R   # sources scripts/03_least_squares.R first
 Rscript scripts/06_mcmc_schematics.R      # toy-target schematics for the MCMC section
-Rscript scripts/06_mcmc_flu.R             # Metropolis fit to the influenza data in data/ (~30 s)
+Rscript scripts/06_mcmc_flu.R             # Metropolis fit to the influenza data (~30 s)
 ```
+
+Every fitting example in the deck uses the 1978 boarding-school influenza
+outbreak in `data/`; `scripts/00_flu_sir_model.R` loads it and defines the SIR
+model, and the other scripts source it.
 
 The code shown on the slides is pulled from the same scripts by
 `filters/include-code.lua`: a code block with `include="scripts/x.R"

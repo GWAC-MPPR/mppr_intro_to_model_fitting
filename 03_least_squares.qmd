@@ -37,34 +37,56 @@ Where:
 
 ------------------------------------------------------------------------
 
-## Least squares example: SIR model
+## Least squares for the flu outbreak
 
-![](figures/03_sir_true_vs_observed.png)
+### Step 1: the model in code
 
-------------------------------------------------------------------------
-
-## Implementing least squares
-
-``` {.r include="scripts/03_least_squares.R" snippet="ls_implementation" code-line-numbers="1-2|3-12|14-15|16-19|1-15"}
+```{.r include="scripts/00_flu_sir_model.R" snippet="sir_model" code-line-numbers="1|3-10|12-14|16-21"}
 ```
 
 ------------------------------------------------------------------------
 
-``` {.r include="scripts/03_least_squares.R" snippet="ls_fitting" code-line-numbers="1-2|4-8|6|7|4-7"}
+### Step 2: the objective function
+
+```{.r include="scripts/03_least_squares.R" snippet="ls_implementation" code-line-numbers="1-7|9-12"}
+```
+
+```{.default include="results/03_sse_guesses.txt" code-line-numbers="false"}
+```
+
+The numbers agree with our eyes: guess C was closest, guess A was worst
+
+------------------------------------------------------------------------
+
+### Step 3: search
+
+```{.r include="scripts/03_least_squares.R" snippet="ls_grid" code-line-numbers="1-5|7-9|11"}
 ```
 
 ------------------------------------------------------------------------
 
-``` {.r include="scripts/03_least_squares.R" snippet="ls_fitting_2" code-line-numbers="1-2|3|4-7|8|1-7"}
+### The objective function as a landscape
+
+![](figures/03_sse_surface.png)
+
+------------------------------------------------------------------------
+
+### Step 4: let an optimiser finish the job
+
+```{.r include="scripts/03_least_squares.R" snippet="ls_optim"}
+```
+
+```{.r include="scripts/03_least_squares.R" snippet="ls_results"}
+```
+
+```{.default include="results/03_least_squares_fit.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------
 
-``` {.r include="scripts/03_least_squares.R" snippet="ls_results" code-line-numbers="1-2|3|4-7|1-7"}
-```
+### The fit
 
-``` {.default include="results/03_least_squares_fit.txt" code-line-numbers="false"}
-```
+![](figures/03_ls_fit.png)
 
 ------------------------------------------------------------------------
 

@@ -2,68 +2,89 @@
 
 ------------------------------------------------------------------------
 
-## Why model fitting matters
-
-### The challenge
+## The challenge
 
 :::: {.columns}
 
 ::: {.column width="45%"}
-- We have real-world data (case counts, hospitalizations)
-- We have mathematical models (e.g., SIR, SEIR)
-- [**How do we connect them?**]{style="color: tomato;"}
+- We have real-world data: case counts, hospitalisations, deaths
+- We have mathematical models: SIR, SEIR and their relatives
+- [**How do we connect the two?**]{style="color: tomato;"}
 :::
 
 ::: {.column width="55%"}
-![](figures/01_outbreak_data.png)
+![](figures/01_flu_data.png)
 :::
 
 ::::
 
 ------------------------------------------------------------------------
 
-### The goal
-
-- Find parameter values that make our model predictions match observed data
-- Quantify uncertainty in our estimates
-- Make reliable predictions and policy recommendations
-
-------------------------------------------------------------------------
-
-## Example: outbreak data
+## The data we will use all day
 
 :::: {.columns}
 
 ::: {.column width="45%"}
-[**Question:**]{style="color: tomato;"} How do we estimate $\beta$ and $\gamma$ from noisy data?
+- Influenza in a boarding school in England, January 1978
+- 763 pupils, one of whom brought the virus back from holiday
+- The number of pupils in bed was recorded every day for 14 days
+- A closed population, complete reporting, a short outbreak: about as clean as outbreak data get
+:::
 
+::: {.column width="55%"}
+![](figures/01_flu_data.png)
+:::
+
+::::
+
+------------------------------------------------------------------------
+
+## The model we will use all day {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
 \begin{align}
 \frac{dS}{dt} &= -\beta SI \\
 \frac{dI}{dt} &= \beta SI - \gamma I \\
 \frac{dR}{dt} &= \gamma I
 \end{align}
+
+- $S$, $I$, $R$ count pupils, so $S + I + R = N = 763$
+- Two unknowns: [$\beta$, the transmission rate]{style="color: tomato;"}, and [$\gamma$, the recovery rate]{style="color: tomato;"}
 :::
 
 ::: {.column width="55%"}
-![](figures/01_outbreak_data.png)
+- Everything else we care about follows from them:
+  - $R_0 = \beta N / \gamma$, the basic reproduction number
+  - $1 / \gamma$, the mean infectious period in days
+- Start with 762 susceptible pupils and 1 infectious on day 0, and the model draws a curve of $I(t)$
 :::
-:::
 
-
-## Types of fitting methods
-
-### Frequentist methods
-
-- Method of Least Squares
-- Maximum Likelihood Estimation (MLE)
+::::
 
 ------------------------------------------------------------------------
 
-### Bayesian methods
+## The question
 
-- Markov Chain Monte Carlo (MCMC)
-- Sequential Monte Carlo (SMC)
-- Particle MCMC (pMCMC)
-- Approximate Bayesian Computation (ABC)
+![](figures/01_candidate_fits.png)
 
-[**Today's Focus:**]{style="color: tomato;"} Frequentist methods: Least Squares and Maximum Likelihood Estimation 
+------------------------------------------------------------------------
+
+### Which parameter values produced this outbreak?
+
+- Some guesses are clearly wrong, some are close. We need a rule that says which is *best*
+- And a best guess is not enough: [how sure can we be?]{style="color: tomato;"} Would $\gamma = 0.4$ have done just as well as $0.5$?
+- Get those two things right and the rest follows: an estimate of $R_0$, a forecast for the second week, a judgement about what closing the school would have done
+
+------------------------------------------------------------------------
+
+## Three answers to the question {.smaller}
+
+Each one fixes a problem with the one before
+
+1. [**Least squares:**]{style="color: tomato;"} measure the distance between curve and data and make it as small as possible. Simple and fast, but no honest measure of uncertainty
+2. [**Maximum likelihood:**]{style="color: tomato;"} measure the *probability* of the data under the model instead. Now we get confidence intervals and a way to compare models
+3. [**Bayesian inference:**]{style="color: tomato;"} stop looking for the single best value and ask how plausible every value is. That buys prior knowledge and uncertainty that survives hard models, at the price of sampling the answer with MCMC
+
+Then a short look at what to do when even the likelihood cannot be written down

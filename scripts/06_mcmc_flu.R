@@ -3,7 +3,6 @@
 # analysis is worked through step by step in 02_mcmc_practicals.qmd.
 #
 # Writes:
-#   figures/06_flu_data.png              the data
 #   figures/06_flu_prior_predictive.png  epidemics simulated from the prior
 #   figures/06_flu_grid_posterior.png    the posterior on a (beta, gamma) grid
 #   figures/06_flu_traces.png            four chains, after burn-in
@@ -18,7 +17,7 @@
 #
 # Run from the project root: Rscript scripts/06_mcmc_flu.R   (about a minute)
 
-library(deSolve)
+source("scripts/00_flu_sir_model.R")   # the data, the SIR model, predict_cases()
 library(MASS)     # mvrnorm, for a proposal with a covariance matrix
 
 dir.create("figures", showWarnings = FALSE)
@@ -29,41 +28,6 @@ fig <- function(name, width = 10, height = 6) {
   png(file.path("figures", name), width = width, height = height,
       units = "in", res = 150, pointsize = 15)
 }
-
-# ---- Data and model ---------------------------------------------------------
-
-# start snippet flu_data
-flu <- read.csv("data/influenza_england_1978_school.csv")
-flu$day <- seq_len(nrow(flu))      # days 1 to 14
-flu$cases <- flu$in_bed            # pupils in bed with flu on each day
-# end snippet flu_data
-
-fig("06_flu_data.png")
-par(mar = c(4.5, 4.5, 3, 1))
-plot(flu$day, flu$cases, type = "b", pch = 16, lwd = 2, col = "grey20",
-     xlab = "Day", ylab = "Pupils in bed", main = "Influenza in a boarding school, 1978 (763 pupils)")
-dev.off()
-
-# start snippet flu_model
-sir_model <- function(t, y, params) {
-  with(as.list(c(y, params)), {
-    dS <- -beta * S * I
-    dI <- beta * S * I - gamma * I
-    dR <- gamma * I
-    list(c(dS, dI, dR))
-  })
-}
-
-init <- c(S = 762, I = 1, R = 0)   # one index case in a school of 763
-times <- 0:14                       # day 0 is the index case, data are days 1-14
-
-# Model prediction of pupils in bed on days 1 to 14
-predict_cases <- function(beta, gamma) {
-  out <- ode(y = init, times = times, func = sir_model,
-             parms = c(beta = beta, gamma = gamma))
-  out[-1, "I"]
-}
-# end snippet flu_model
 
 # ---- Prior, likelihood, posterior ------------------------------------------
 
@@ -212,7 +176,7 @@ dev.off()
 
 beta_post <- exp(posterior_samples[, 1])
 gamma_post <- exp(posterior_samples[, 2])
-R0_post <- beta_post * 763 / gamma_post
+R0_post <- beta_post * N / gamma_post
 period_post <- 1 / gamma_post
 
 fig("06_flu_posterior.png", height = 6.5)
