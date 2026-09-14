@@ -81,13 +81,13 @@
 
 ------------------------------------------------------------------------
 
-## The question
+## The calibration problem
 
 ![](figures/01_candidate_fits.png)
 
 ------------------------------------------------------------------------
 
-### Which parameter values produced this outbreak?
+### Parameter estimation and uncertainty quantification
 
 - Some guesses are obviously wrong and some are close, but by eye we cannot rank the close ones. We need a rule that says which is *best*
 - A best guess on its own is worth little without knowing [how sure we can be]{style="color: tomato;"}. Would $\gamma = 0.4$ have done just as well as $0.5$?
@@ -95,7 +95,7 @@
 
 ------------------------------------------------------------------------
 
-## Approaches to answer the question {.smaller}
+## Approaches to parameter estimation {.smaller}
 
 There are many approaches to answer the question but we'll cover:
 

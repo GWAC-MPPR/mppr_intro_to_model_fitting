@@ -2,7 +2,7 @@
 
 ------------------------------------------------------------------------
 
-## What fitting means
+## Definition of model fitting
 
 Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [as close as possible]{style="color: tomato;"} to the data $\mathbf{y}$
 
@@ -12,9 +12,9 @@ Choose the parameters $\theta = (\beta, \gamma)$ so that the model's output is [
 
 ------------------------------------------------------------------------
 
-## Two ways to answer
+## Two formulations of the fitting problem
 
-### A point estimate
+### Point estimation
 
 $$\hat{\theta} = \arg\min_{\theta} \mathcal{L}(\theta, \mathbf{y})$$
 
@@ -22,7 +22,7 @@ The next two sections use two different choices of $\mathcal{L}$, the sum of squ
 
 ------------------------------------------------------------------------
 
-### A distribution
+### Posterior distribution
 
 A probability for *every* $\theta$ given the data, rather than the one best value
 
@@ -32,7 +32,7 @@ This is Bayesian inference, and it is where the lecture ends up. The two answers
 
 ------------------------------------------------------------------------
 
-## Why the model will never match the data exactly {.smaller}
+## Sources of uncertainty {.smaller}
 
 Even with the right $\beta$ and $\gamma$ the curve will not pass through every point. There are several reasons for the mismatch, and the lecture deals with each of them somewhere
 
@@ -55,10 +55,10 @@ Even with the right $\beta$ and $\gamma$ the curve will not pass through every p
 
 We will meet this three times today: as a tilted valley in the least squares surface, as wide profile likelihoods, and as a tilted cloud of posterior samples
 
-[**The way out:**]{style="color: tomato;"} bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a prior is
+[**Remedy:**]{style="color: tomato;"} bring in what you already know, for instance a plausible infectious period for influenza. In the Bayesian section that is exactly what a prior is
 
 ------------------------------------------------------------------------
 
-## Where to start
+## Starting point: least squares
 
 We start with the simplest objective function there is, the sum of squared distances between the points and the curve

@@ -2,19 +2,19 @@
 
 ------------------------------------------------------------------------
 
-## When to reach for each
+## When to use each method
 
 ### Least squares
 
-- When you want a first look at the data and a rough answer quickly
-- When you need starting values for something better
-- When the fit itself is what matters and nobody will ask for an interval
+- Exploratory analysis, where a quick point estimate is enough
+- Obtaining initial values for likelihood-based or Bayesian methods
+- Situations where computational speed matters and a simple error structure is acceptable
 
 ------------------------------------------------------------------------
 
 ### Maximum likelihood
 
-- When you need to say how sure you are
-- When you have more than one candidate model and have to choose
-- When the counts are overdispersed, or the errors are otherwise not the same everywhere
-- When the result is going into a report or a paper
+- Whenever uncertainty quantification is required
+- Model comparison and selection between candidate models
+- Data with overdispersion or other non-constant error structures
+- Formal statistical inference for reports and publications

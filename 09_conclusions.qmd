@@ -2,52 +2,52 @@
 
 ------------------------------------------------------------------------
 
-## What to take away
+## Key takeaways
 
 ### Least squares
 
-Fast, and everyone understands it. It gives you a fit and a starting point for everything else, and nothing about how sure you should be
+Fast and intuitive. It provides a point estimate and initial values for other methods, but no uncertainty quantification and no basis for model comparison
 
 ------------------------------------------------------------------------
 
 ### Maximum likelihood
 
-Rests on a probability model for the data, so it gives you intervals and lets you compare models. It costs you a choice of that probability model and an optimiser to look after
+A principled statistical framework built on an explicit observation model. It provides confidence intervals and formal model comparison, at the cost of specifying that observation model and managing a numerical optimiser
 
 ------------------------------------------------------------------------
 
 ### Bayesian inference and MCMC
 
-- Priors put your assumptions on the table, where they can be checked
-- The posterior is the whole answer: estimates, credible intervals and predictions all come from the same samples
-- The Metropolis algorithm is a few lines of code. The effort goes into tuning it and checking the chains
-- Never trust a chain you have not looked at
+- Priors make assumptions explicit and allow them to be checked by prior predictive simulation
+- The posterior distribution is the complete answer: point estimates, credible intervals and predictions all come from the same samples
+- The Metropolis algorithm is a few lines of code; the effort goes into tuning the proposal and diagnosing convergence
+- Never trust a chain whose diagnostics you have not examined
 
 ------------------------------------------------------------------------
 
-### Beyond that
+### Advanced methods
 
-Particle filters, ABC and ensembles handle stochastic models, missing likelihoods and model uncertainty. They need more expertise and more computing than anything we did today
+Particle filtering, approximate Bayesian computation and ensemble methods handle stochastic models, intractable likelihoods and model uncertainty. They require more expertise and more computation than anything covered today
 
 ------------------------------------------------------------------------
 
-## Which method, when
+## Choosing a method
 
-- A quick look at the data: least squares
-- A result for a report: maximum likelihood
-- A model with many parameters, or prior knowledge you want to use: Bayesian inference
-- A stochastic model, or estimates that must update in real time: particle filtering
-- A model whose likelihood you cannot write: ABC
+- Exploratory analysis: least squares
+- Formal inference for a report or publication: maximum likelihood
+- Many parameters, or prior information to incorporate: Bayesian inference with MCMC
+- Stochastic models, hidden states, or real-time estimation: particle filtering
+- Intractable likelihoods: approximate Bayesian computation
 
 Whatever the problem, [start simple and add complexity only when the simple version fails you]{style="color: tomato;"}
 
 ------------------------------------------------------------------------
 
-## A last thought
+## Closing remarks
 
-Fitting a model well takes three things at once: knowledge of the disease and the setting, statistical care, and the patience to check everything
+Model fitting requires domain expertise, statistical rigour and careful validation, all at once
 
-The fit is never the point. The point is to understand how the disease spreads, to predict what happens next, and to give the people making decisions something they can rely on
+The fit itself is not the goal. The goal is to understand the transmission dynamics, to make reliable predictions, and to inform the decisions that depend on them
 
 ------------------------------------------------------------------------
 

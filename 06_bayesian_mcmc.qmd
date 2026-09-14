@@ -2,16 +2,16 @@
 
 ------------------------------------------------------------------------
 
-## From a best fit to a distribution
+## From point estimates to posterior distributions
 
-### What least squares and MLE gave us
+### Point estimation: least squares and maximum likelihood
 
 - One [best]{style="color: tomato;"} value for each parameter, $\hat{\theta}$
 - Uncertainty came afterwards, from standard errors or the profile likelihood
 
 ------------------------------------------------------------------------
 
-### The Bayesian question
+### The Bayesian formulation
 
 So far we have asked *which* $\theta$ fits best. A Bayesian asks
 
@@ -55,7 +55,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ## The prior
 
-### Where priors come from
+### Sources of prior information
 
 - Earlier outbreaks and the literature, for example the infectious period of influenza
 - Things we know must hold: rates are positive, proportions lie between 0 and 1
@@ -63,7 +63,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
-### Vague or informative?
+### Vague and informative priors
 
 - A [vague]{style="color: tomato;"} prior spreads credibility widely and leaves the work to the data
 - An [informative]{style="color: tomato;"} prior writes down what we already know. It matters most when the data are thin
@@ -71,7 +71,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
-### Check a prior by simulating from it
+### Prior predictive checks
 
 :::::: {style="font-size: 0.8em;"}
 ::::: columns
@@ -91,7 +91,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ## The posterior
 
-### What we get out of it
+### Posterior summaries
 
 ::: {style="font-size: 0.8em;"}
 - A point estimate, if you want one: the posterior mean or median
@@ -103,7 +103,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
-## The catch: we cannot compute the posterior
+## The posterior is intractable
 
 ### The normalising constant
 
@@ -114,7 +114,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### Why not a grid?
+### Grid evaluation does not scale
 
 | Parameters | Grid points at 15 values each |
 |-----------:|------------------------------:|
@@ -128,7 +128,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### A grid for the flu outbreak
+### Grid evaluation for the influenza outbreak
 
 ![](figures/06_flu_grid_posterior.png)
 
@@ -136,7 +136,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-## Monte Carlo: learn a distribution from samples {.smaller}
+## Monte Carlo estimation {.smaller}
 
 ::::: columns
 ::: {.column width="42%"}
@@ -151,7 +151,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### The problem
+### Sampling from an unnormalised density
 
 - Monte Carlo needs [samples]{style="color: tomato;"} from the posterior
 - All we can do is [evaluate]{style="color: tomato;"} the posterior, up to a constant, at any point we choose
@@ -188,13 +188,13 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### Uphill always, downhill sometimes
+### The acceptance rule
 
 ![](figures/06_metropolis_step.png)
 
 ------------------------------------------------------------------------
 
-### What the rule achieves
+### Consequences of the acceptance rule
 
 - If the proposal has higher posterior density than where we are, we [always]{style="color: tomato;"} take it
 - If it has lower density we take it [with probability $r$]{style="color: tomato;"}. The chain can walk downhill, which is why it explores the distribution instead of climbing to the top and staying there
@@ -203,7 +203,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### Why it works
+### Detailed balance and the stationary distribution
 
 ::: {style="font-size: 0.8em;"}
 - The acceptance rule gives the chain [detailed balance]{style="color: tomato;"}: as much probability flows from $\theta$ to $\theta^*$ as flows back, so nothing piles up anywhere $$p(\theta \mid y)\, q(\theta^* \mid \theta)\, \alpha(\theta, \theta^*) = p(\theta^* \mid y)\, q(\theta \mid \theta^*)\, \alpha(\theta^*, \theta)$$
@@ -214,7 +214,7 @@ $$p(y) = \int p(y \mid \theta)\, p(\theta)\, d\theta$$
 
 ------------------------------------------------------------------------
 
-### The whole sampler in R
+### Implementation in R
 
 ``` {.r include="scripts/06_mcmc_schematics.R" snippet="metropolis_1d" code-line-numbers="1-5|7-9|10-16|17-18|20"}
 ```
@@ -223,7 +223,7 @@ Everything is done on the log scale, so the products become sums and the tiny li
 
 ------------------------------------------------------------------------
 
-### A test on a known target
+### Validation on a known target distribution
 
 The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on $N(5, 2)$, where we know what the answer should look like.
 
@@ -234,7 +234,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
-## Making it work in practice
+## Practical implementation
 
 ### Tuning the proposal
 
@@ -242,7 +242,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
-### The proposal width is a tuning parameter
+### Proposal scale and acceptance rate
 
 - Make the proposal too narrow and nearly every move is accepted, but each move is tiny and the chain crawls
 - Make it too wide and nearly every move is rejected, so the chain sits still for long stretches
@@ -261,7 +261,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
-### Has it converged? Run several chains
+### Convergence assessment with multiple chains
 
 ![](figures/06_convergence.png)
 
@@ -281,7 +281,7 @@ The sampler knows nothing about Bayes. It will sample from anything you can eval
 
 ------------------------------------------------------------------------
 
-### The hairy caterpillar checklist
+### Convergence checklist
 
 - The trace plots show no trend, the same spread at the start as at the end, and the chains lie on top of each other
 - The acceptance rate is in a sensible range
@@ -303,14 +303,14 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
-### Two parameters: the same sampler with a 2-d proposal
+### The multivariate Metropolis sampler
 
 ``` {.r include="scripts/06_mcmc_flu.R" snippet="metropolis" code-line-numbers="1-6|8-10|11-15|16|18"}
 ```
 
 ------------------------------------------------------------------------
 
-### Tune, then run several chains
+### Adaptive tuning and multiple chains
 
 ``` {.r include="scripts/06_mcmc_flu.R" snippet="flu_pilot" code-line-numbers="1-4|6-7"}
 ```
@@ -320,26 +320,26 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
-### Diagnostics
+### Convergence diagnostics for the influenza fit
 
 ![](figures/06_flu_traces.png)
 
 ------------------------------------------------------------------------
 
-### The posterior
+### Marginal and joint posterior distributions
 
 ![](figures/06_flu_posterior.png)
 
 ------------------------------------------------------------------------
 
-### Estimates
+### Posterior estimates
 
 ``` {.default include="results/06_flu_mcmc_summary.txt" code-line-numbers="false"}
 ```
 
 ------------------------------------------------------------------------
 
-### The fit, with its uncertainty
+### Posterior predictive fit
 
 ![](figures/06_flu_fit.png)
 
@@ -354,7 +354,7 @@ The data, the model and `predict_cases()` are the ones from the least squares an
 
 ------------------------------------------------------------------------
 
-### In practice: probabilistic programming
+### Probabilistic programming languages
 
 - You write down the model, the prior and the likelihood. The software does the sampling and reports the diagnostics
 - Stan (through `rstan` or `cmdstanr`), `nimble`, `brms`, PyMC and Turing.jl all work this way

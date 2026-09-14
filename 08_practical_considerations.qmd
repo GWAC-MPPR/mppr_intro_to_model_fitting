@@ -2,77 +2,78 @@
 
 ------------------------------------------------------------------------
 
-## When the fit goes wrong
+## Common fitting problems
 
-### The optimiser does not converge
+### Convergence failure
 
 ::: {style="font-size: 0.8em;"}
 Usually one of four things:
 
-- the starting values are far from any reasonable fit, so the search walks off into parameter values where the model breaks
-- the likelihood is flat in some direction, so there is no slope to follow
-- the parameters live on wildly different scales, as $\beta$ and $\gamma$ did today
-- the optimiser has hit a bound, or has no bound where it needed one
+- Poor starting values: the search moves into parameter values where the model or the solver breaks down
+- A flat likelihood surface in some direction, so there is no gradient to follow
+- Poorly scaled parameters, as $\beta$ and $\gamma$ were today; a log transformation fixed it
+- Numerical instability at parameter bounds, or missing bounds where they were needed
 :::
 
 ------------------------------------------------------------------------
 
-### The estimates cannot be pinned down
+### Parameter identifiability problems
 
-- Several parameter combinations fit equally well, so the answer depends on where you started
-- Two parameters are strongly correlated and only their ratio is determined, as with $\beta$ and $\gamma$
-- There simply are not enough data for the number of parameters you are trying to estimate
+- Multiple solutions: several parameter combinations fit equally well, so the estimate depends on the starting value
+- Correlated parameters: only a combination such as the ratio $\beta / \gamma$ is determined by the data
+- Insufficient data or an overparameterised model
 
 ------------------------------------------------------------------------
 
-### What to try
+### Remedies for identifiability problems
 
 ::: {style="font-size: 0.8em;"}
-- Start from several different places and check that they agree
-- Look at the profile likelihood or the posterior for each parameter, not just the point estimate
-- Fix a parameter you know from elsewhere, or put a prior on it
-- Bring in another kind of data that speaks to the parameter the outbreak curve cannot
-- Simplify the model until it is identifiable, then add complexity back one piece at a time
+- Multiple starting values, checking that they converge to the same estimate
+- Profile likelihoods or posterior distributions for each parameter, not point estimates alone
+- Fixing parameters known from other sources, or placing informative priors on them
+- Additional data that inform the parameters the outbreak curve cannot
+- Model reduction: simplify until the model is identifiable, then add complexity back one piece at a time
 :::
 
 ------------------------------------------------------------------------
 
-### The estimates converge, but they are nonsense
+### Implausible estimates
 
 ::: {style="font-size: 0.8em;"}
-- Check the model's assumptions against what you know about the disease and the setting
-- Check the data: reporting changes, backfilled counts, a definition that changed halfway through
-- Plot the residuals over time; a pattern in them is the model telling you what it is missing
-- See how much the estimates move when you change something you were unsure about
-- Fit a different model and compare
+- Check the model assumptions against what is known about the disease and the setting
+- Check data quality: reporting changes, backfilled counts, case definitions that changed during the outbreak
+- Residual analysis: a pattern in the residuals over time indicates a missing process in the model
+- Sensitivity analysis: how much the estimates move when uncertain assumptions are changed
+- Fit alternative models and compare them formally
 :::
 
 ------------------------------------------------------------------------
 
-## Habits that save time
+## Best practices
 
 ### Before fitting
 
 - Plot the data and understand how they were collected
-- Decide what you believe about each parameter before the data tell you, and write it down as bounds or priors
+- Check the model assumptions against the setting
+- Set realistic parameter bounds or priors before fitting
 - Prepare several starting values
 
 ------------------------------------------------------------------------
 
 ### While fitting
 
-- Watch the optimiser or the chain, rather than only reading the final number
-- Check that different starts land in the same place
-- Keep a record of every fit, including the ones that failed
+- Monitor convergence of the optimiser or the chain, rather than reading only the final estimate
+- Check for local optima by comparing runs from different starting values
+- Document every fit, including the ones that failed
 
 ------------------------------------------------------------------------
 
 ### After fitting
 
-- Plot the fit over the data, with its uncertainty
-- Report intervals, not just estimates
-- See what happens to the conclusions when the assumptions change
-- If the model will be used to predict, test it on data it has not seen
+- Assess goodness of fit by plotting the fitted model over the data with its uncertainty
+- Report confidence or credible intervals, not point estimates alone
+- Carry out a sensitivity analysis of the conclusions to the assumptions
+- Validate predictions on data not used in fitting
 
 ------------------------------------------------------------------------
 
@@ -88,7 +89,7 @@ Usually one of four things:
 
 ------------------------------------------------------------------------
 
-### Beyond R
+### Other software
 
 -   [`Stan`](https://mc-stan.org): the probabilistic programming language behind `rstan`, `cmdstanr` and `brms`
 -   [`OpenBUGS`](https://sourceforge.net/p/openbugs/wiki/Home/) and [`JAGS`](https://mcmc-jags.sourceforge.io): the older generation of Gibbs samplers, still widely used

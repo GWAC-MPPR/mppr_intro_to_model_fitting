@@ -2,7 +2,7 @@
 
 ------------------------------------------------------------------------
 
-## When the methods so far run out {.smaller}
+## Limitations of likelihood-based inference {.smaller}
 
 Everything today assumed we could write down the likelihood and evaluate it quickly. That stops being true when
 
@@ -13,7 +13,7 @@ Everything today assumed we could write down the likelihood and evaluate it quic
 
 ------------------------------------------------------------------------
 
-## Three families
+## Overview of advanced methods
 
 1.  Bayesian inference with MCMC, which we have just done
 2.  Particle filtering, for stochastic models where the state is hidden
@@ -25,7 +25,11 @@ And, cutting across all of them, ensembles: combining several models or several 
 
 ## Particle filtering {.smaller}
 
-A particle filter runs the stochastic model forward as a cloud of simulations, the *particles*. Each time a new data point arrives, the particles that agree with it are kept and multiplied, and the ones that do not are dropped. The surviving cloud is the distribution of the hidden state given the data so far
+A particle filter, or sequential Monte Carlo, treats the model as a state-space model: a hidden state (the true numbers of susceptible, infectious and recovered) observed with error. It runs the stochastic model forward as a set of simulations, the *particles*. At each observation the particles are weighted by their likelihood and resampled, so those consistent with the data are kept and multiplied and the rest are discarded. The surviving particles approximate the filtering distribution of the hidden state given the data so far
+
+------------------------------------------------------------------------
+
+### When particle filtering is appropriate
 
 It is the tool of choice when
 
@@ -34,11 +38,11 @@ It is the tool of choice when
 - parameters change over time, or data go missing for a while
 - the answer has to be updated in real time
 
-Put a particle filter inside an MCMC loop and you have particle MCMC, which estimates the parameters of a stochastic model properly
+The filter also yields an unbiased estimate of the marginal likelihood. Using that estimate inside a Metropolis–Hastings sampler gives particle MCMC (pMCMC), which performs full Bayesian inference for the parameters of a stochastic model
 
 ------------------------------------------------------------------------
 
-## What it looks like in `pomp`
+## Particle filtering in `pomp`
 
 ```{.r include="scripts/07_particle_filter.R" snippet="particle_filter"}
 ```
@@ -47,23 +51,23 @@ Put a particle filter inside an MCMC loop and you have particle MCMC, which esti
 
 ## Approximate Bayesian computation {.smaller}
 
-If you can simulate from the model but cannot write its likelihood, ABC still gets you a posterior:
+When the likelihood is intractable but the model can be simulated from, approximate Bayesian computation (ABC) replaces likelihood evaluation with simulation:
 
 1.  Draw parameters from the prior
 2.  Simulate an outbreak with them
-3.  Compare the simulated outbreak with the real one, usually through a few summary statistics
-4.  Keep the parameters if the two are close enough, throw them away otherwise
+3.  Compare the simulated outbreak with the observed one through a distance between summary statistics
+4.  Accept the parameters if the distance is below a tolerance $\epsilon$, reject them otherwise
 
-The kept parameters are draws from an approximate posterior. The approximation is only as good as the summaries and the threshold, and the method spends most of its simulations on parameters it then rejects, but it works for models nothing else can touch
+The accepted parameters are draws from an approximate posterior. The quality of the approximation depends on the summary statistics and the tolerance, and the acceptance rate is typically low, but the method applies to models for which no likelihood can be written
 
 ------------------------------------------------------------------------
 
-## Ensembles {.smaller}
+## Ensemble methods {.smaller}
 
-Rather than choosing one model, one method or one dataset and standing behind it:
+Ensemble methods combine several models, methods or fits rather than relying on a single one:
 
-- average the predictions of several models
-- combine estimates from least squares, MLE and MCMC
-- refit the same model to resampled versions of the data, the bootstrap
+- model ensembles: average the predictions of several models, weighted or unweighted
+- method ensembles: combine estimates from least squares, MLE and MCMC
+- bootstrap ensembles: refit the same model to resampled versions of the data
 
-The spread across the ensemble is a measure of the uncertainty that comes from those choices, which none of the individual fits can show you, and averaged predictions tend to overfit less than any single member
+The spread across the ensemble quantifies model and method uncertainty, which no single fit can show, and averaged predictions are more robust and less prone to overfitting than any single member
