@@ -23,7 +23,7 @@ box <- function(x, y, w, h, title, lines, lty = 2, border = "grey40", fill = "wh
 # ---- The row of modules ------------------------------------------------------
 y_top <- 4.3
 box(1.9, y_top, 3.0, 2.7, "R essentials",
-    c("data frames, plots,", "loops and functions,", "reading and writing data"))
+    c("data frames, plots,", "loops and functions,", "reading and writing data,", "git and GitHub for", "version control"))
 box(5.4, y_top, 3.4, 2.7, "Infectious disease\ndynamics modelling",
     c("", "compartmental models:", "SIR, SEIR and extensions", "R0, interventions,", "heterogeneity, stochasticity"))
 box(9.0, y_top, 3.4, 2.7, "Model fitting and\ncalibration",
