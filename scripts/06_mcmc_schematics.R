@@ -3,6 +3,10 @@
 # answer for, so the pictures isolate one idea each:
 #
 #   figures/06_bayes_update.png          prior x likelihood -> posterior
+#   figures/06_posterior_point.png       a posterior with its mode, median and mean
+#   figures/06_posterior_interval.png    the same posterior with its 95% credible interval
+#   figures/06_posterior_derived.png     draws of (beta, gamma) -> the distribution of R0
+#   figures/06_posterior_predictive.png  draws of (beta, gamma) -> a band of epidemic curves
 #   figures/06_monte_carlo.png           a distribution from 10, 100, 10000 draws
 #   figures/06_metropolis_step.png       one Metropolis step: uphill / downhill
 #   figures/06_metropolis_flowchart.png  the algorithm as a loop
@@ -226,4 +230,80 @@ for (sd in c(0.5, 4)) {
        main = sprintf("proposal sd = %g:  R-hat = %.2f", sd, rhat(chains)))
   for (k in seq_along(chains)) lines(chains[[k]], col = adjustcolor(cols[k], 0.8))
 }
+dev.off()
+
+# ---- Posterior summaries: four hypothetical posteriors --------------------
+
+# A right-skewed posterior for R0, so that mode, median and mean differ visibly
+r0_draws <- rlnorm(20000, meanlog = log(2.5), sdlog = 0.25)
+dens <- density(r0_draws, from = 1, to = 5)
+r0_mode <- dens$x[which.max(dens$y)]
+
+fig("06_posterior_point.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(dens, lwd = 3, col = "grey30", xlab = expression(R[0]), ylab = "Posterior density",
+     main = "A hypothetical posterior and three point estimates", zero.line = FALSE)
+polygon(dens, col = "grey92", border = NA); lines(dens, lwd = 3, col = "grey30")
+abline(v = r0_mode, col = "forestgreen", lwd = 3, lty = 3)
+abline(v = median(r0_draws), col = "steelblue", lwd = 3, lty = 2)
+abline(v = mean(r0_draws), col = "tomato", lwd = 3)
+legend("topright", bty = "n", lwd = 3, lty = c(3, 2, 1), col = c("forestgreen", "steelblue", "tomato"),
+       legend = c(sprintf("mode = %.2f (most probable value)", r0_mode),
+                  sprintf("median = %.2f (half the draws each side)", median(r0_draws)),
+                  sprintf("mean = %.2f (pulled by the long tail)", mean(r0_draws))))
+dev.off()
+
+ci <- quantile(r0_draws, c(0.025, 0.975))
+fig("06_posterior_interval.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(dens, lwd = 3, col = "grey30", xlab = expression(R[0]), ylab = "Posterior density",
+     main = "The same posterior with its 95% credible interval", zero.line = FALSE)
+inside <- dens$x >= ci[1] & dens$x <= ci[2]
+polygon(c(dens$x[inside], rev(dens$x[inside])), c(dens$y[inside], rep(0, sum(inside))),
+        col = adjustcolor("steelblue", 0.35), border = NA)
+lines(dens, lwd = 3, col = "grey30")
+abline(v = ci, col = "steelblue", lwd = 2, lty = 2)
+text(mean(ci), max(dens$y) * 0.35, "95% of the\nposterior probability", col = "steelblue", font = 2)
+text(ci[1], max(dens$y) * 0.9, sprintf("%.2f", ci[1]), pos = 2, col = "steelblue")
+text(ci[2], max(dens$y) * 0.9, sprintf("%.2f", ci[2]), pos = 4, col = "steelblue")
+text(1.05, max(dens$y) * 0.6, "2.5% of the\nprobability\nout here", adj = 0, cex = 0.85, col = "grey40")
+text(4.95, max(dens$y) * 0.6, "2.5%\nout here", adj = 1, cex = 0.85, col = "grey40")
+dev.off()
+
+# Derived quantities: correlated draws of (beta, gamma) on the log scale, and
+# R0 = beta N / gamma computed for every draw
+Sigma <- matrix(c(0.02^2, 0.6 * 0.02 * 0.05, 0.6 * 0.02 * 0.05, 0.05^2), 2)
+draws <- MASS::mvrnorm(4000, mu = c(log(0.0022), log(0.48)), Sigma = Sigma)
+beta_d <- exp(draws[, 1]); gamma_d <- exp(draws[, 2]); r0_d <- beta_d * 763 / gamma_d
+
+fig("06_posterior_derived.png", height = 5)
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 3, 1))
+plot(beta_d, gamma_d, pch = 16, cex = 0.4, col = adjustcolor("steelblue", 0.3),
+     xlab = expression(beta), ylab = expression(gamma), main = "Posterior draws of the parameters")
+hist(r0_d, breaks = 40, col = "grey85", border = "white", freq = FALSE,
+     xlab = expression(R[0] == beta * N / gamma), main = expression("The same draws, turned into " * R[0]))
+abline(v = quantile(r0_d, c(0.025, 0.975)), col = "steelblue", lwd = 2, lty = 2)
+dev.off()
+
+# Predictions: run the model once per draw, then summarise the curves
+source("scripts/00_flu_sir_model.R")
+fine_times <- seq(0, 14, by = 0.1)
+idx <- sample(nrow(draws), 300)
+curves <- sapply(idx, function(i) {
+  ode(y = init, times = fine_times, func = sir_model,
+      parms = c(beta = beta_d[i], gamma = gamma_d[i]))[, "I"]
+})
+band <- apply(curves, 1, quantile, probs = c(0.025, 0.5, 0.975))
+
+fig("06_posterior_predictive.png")
+par(mar = c(4.5, 4.5, 3, 1))
+plot(NA, xlim = c(0, 14), ylim = c(0, 350), xlab = "Day", ylab = "Pupils in bed",
+     main = "One epidemic curve per posterior draw")
+for (k in 1:40) lines(fine_times, curves[, k], col = adjustcolor("grey50", 0.3))
+polygon(c(fine_times, rev(fine_times)), c(band[1, ], rev(band[3, ])),
+        col = adjustcolor("tomato", 0.25), border = NA)
+lines(fine_times, band[2, ], col = "tomato", lwd = 3)
+legend("topright", bty = "n", lwd = c(1, 3, NA), pch = c(NA, NA, 15), pt.cex = 2,
+       col = c("grey50", "tomato", adjustcolor("tomato", 0.25)),
+       legend = c("40 individual draws", "median curve", "95% band from 300 draws"))
 dev.off()

@@ -13,9 +13,11 @@
 
 ### The Bayesian formulation
 
-So far we have asked *which* [$\theta$]{style="color: steelblue;"} fits best. A Bayesian asks
+So far we have asked *which* [$\theta$]{style="color: steelblue;"} fits best.
 
-[**"How plausible is each value of** $\theta$, given the data?"]{style="color: tomato;"}
+A Bayesian asks
+
+["How plausible is each value of $\theta$, given the data?"]{style="color: tomato;"}
 
 - The answer is a [probability distribution]{style="color: tomato;"} over [$\theta$]{style="color: steelblue;"}
 - Every estimate, interval and prediction we report comes from that one distribution
@@ -29,8 +31,6 @@ So far we have asked *which* [$\theta$]{style="color: steelblue;"} fits best. A 
 - Before we see any data, each possible value of [$\theta$]{style="color: steelblue;"} has some [prior]{style="color: tomato;"} credibility
 - The data then make some values more believable and others less
 - [Bayes' rule]{style="color: tomato;"} is the rule for moving credibility towards the values that explain the data well
-
-*Bayesian analysis is reallocation of credibility across possibilities. The rest is details.*
 :::
 
 ::: {.column width="58%"}
@@ -67,7 +67,7 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ------------------------------------------------------------------------
 
-### Vague and informative priors
+### Types of priors: vague and informative priors
 
 - A [vague]{style="color: tomato;"} prior spreads credibility widely and leaves the work to the data
 - An [informative]{style="color: tomato;"} prior writes down what we already know. It matters most when the data are thin
@@ -106,14 +106,74 @@ $$\text{posterior} \propto \text{likelihood} \times \text{prior}$$
 
 ## The posterior
 
-### Posterior summaries
+### Posterior summaries: point estimates
 
-::: {style="font-size: 0.8em;"}
-- A [point estimate]{style="color: tomato;"}, if you want one: the posterior mean or median
-- A [95% credible interval]{style="color: tomato;"}, the range that holds 95% of the posterior probability
-- You can read it literally: *"there is a 95% probability that* [$R_0$]{style="color: steelblue;"} lies between [3.4 and 3.7]{style="color: steelblue;"}". A confidence interval does not allow that sentence
-- Anything you can compute from the parameters, such as [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}, comes with its own distribution at no extra cost
-- [Predictions]{style="color: tomato;"} that carry the parameter uncertainty through
+::: {style="font-size: 0.75em;"}
+::::: columns
+::: {.column width="38%"}
+- If you want a single number, the posterior gives you three to choose from: the [mode]{style="color: tomato;"}, the [median]{style="color: tomato;"} and the [mean]{style="color: tomato;"}
+- They agree when the posterior is symmetric and differ when it is skewed, as it usually is for a rate
+- The median is the usual choice: it does not move when the tail is long
+:::
+
+::: {.column width="62%"}
+![](figures/06_posterior_point.png)
+:::
+:::::
+:::
+
+------------------------------------------------------------------------
+
+### Posterior summaries: credible intervals
+
+::: {style="font-size: 0.75em;"}
+::::: columns
+::: {.column width="38%"}
+- A [95% credible interval]{style="color: tomato;"} is the range holding 95% of the posterior probability, here the 2.5% and 97.5% quantiles
+- You can read it literally: "there is a 95% probability that [$R_0$]{style="color: steelblue;"} lies between [1.5 and 4.1]{style="color: steelblue;"}"
+- A confidence interval does not allow that sentence; it is a statement about repeated sampling, not about [$R_0$]{style="color: steelblue;"}
+:::
+
+::: {.column width="62%"}
+![](figures/06_posterior_interval.png)
+:::
+:::::
+:::
+
+------------------------------------------------------------------------
+
+### Posterior summaries: derived quantities
+
+::: {style="font-size: 0.75em;"}
+::::: columns
+::: {.column width="38%"}
+- We sample [$\beta$]{style="color: steelblue;"} and [$\gamma$]{style="color: steelblue;"}, but what we want is [$R_0 = \beta N / \gamma$]{style="color: steelblue;"}
+- Compute it for every draw and you have its posterior, correlation between the parameters included, at no extra cost
+- The same goes for the infectious period, the peak size, or the final attack rate
+:::
+
+::: {.column width="62%"}
+![](figures/06_posterior_derived.png)
+:::
+:::::
+:::
+
+------------------------------------------------------------------------
+
+### Posterior summaries: predictions
+
+::: {style="font-size: 0.75em;"}
+::::: columns
+::: {.column width="38%"}
+- Run the model once for each draw and you get a whole family of epidemic curves rather than one
+- Their spread is the [prediction uncertainty]{style="color: tomato;"} that comes from not knowing the parameters exactly
+- Summarise them as a median curve and a 95% band, and compare the band with the data
+:::
+
+::: {.column width="62%"}
+![](figures/06_posterior_predictive.png)
+:::
+:::::
 :::
 
 ------------------------------------------------------------------------
