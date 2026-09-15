@@ -33,9 +33,17 @@ project root (the renv library provides `deSolve`, `ggplot2` and `bbmle`):
 Rscript scripts/00_course_roadmap.R        # the roadmap slide
 Rscript scripts/01_outbreak_data.R        # the data and three guesses at the parameters
 Rscript scripts/04_maximum_likelihood.R   # sources scripts/03_least_squares.R first
-Rscript scripts/06_mcmc_schematics.R      # toy-target schematics for the MCMC section
+Rscript scripts/06_mcmc_schematics.R      # toy-target schematics for the MCMC section (GIF needs ImageMagick)
 Rscript scripts/06_mcmc_flu.R             # Metropolis fit to the influenza data (~30 s)
 ```
+
+The Metropolis walk on the slides is a frame-by-frame figure: the schematics
+script writes the frames, keeps the first ten iterations and the final
+state as PNGs, and stitches all of them into `figures/06_metropolis_walk.gif`
+with ImageMagick (`magick` on the PATH; without it the PNGs are still
+written). The web deck plays the GIF and steps through the PNGs as fragments;
+the beamer PDF, which cannot include a GIF, shows the PNGs as overlays and
+the final frame in place of the GIF.
 
 Every fitting example in the deck uses the 1978 boarding-school influenza
 outbreak in `data/`; `scripts/00_flu_sir_model.R` loads it and defines the SIR

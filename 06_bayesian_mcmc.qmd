@@ -329,6 +329,58 @@ The answer is to stop trying to draw independent samples at all, and instead to 
 
 ------------------------------------------------------------------------
 
+### The algorithm, step by step
+
+::::: {.content-visible when-format="revealjs"}
+::: {.r-stack}
+![](figures/06_metropolis_walk_1.png){width="88%"}
+
+![](figures/06_metropolis_walk_2.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_3.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_4.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_5.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_6.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_7.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_8.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_9.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_10.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_11.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_12.png){.fragment width="88%"}
+
+![](figures/06_metropolis_walk_13.png){.fragment width="88%"}
+:::
+:::::
+
+::: {.content-visible when-format="beamer"}
+```{=latex}
+\only<1>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_1.png}}%
+\only<2>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_2.png}}%
+\only<3>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_3.png}}%
+\only<4>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_4.png}}%
+\only<5>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_5.png}}%
+\only<6>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_6.png}}%
+\only<7>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_7.png}}%
+\only<8>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_8.png}}%
+\only<9>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_9.png}}%
+\only<10>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_10.png}}%
+\only<11>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_11.png}}%
+\only<12>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_12.png}}%
+\only<13>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/06_metropolis_walk_13.png}}%
+```
+:::
+
+------------------------------------------------------------------------
+
 ### Consequences of the acceptance rule
 
 - If the proposal has higher posterior density than where we are, we [always]{style="color: tomato;"} take it
@@ -336,6 +388,18 @@ The answer is to stop trying to draw independent samples at all, and instead to 
 - When a proposal is rejected the current value is [written down again]{style="color: tomato;"}. Those repeats are part of the sample, so do not throw them away
 - Put together, the chain visits each region [in proportion to its posterior density]{style="color: tomato;"}
 - In code everything is done on the [log scale]{style="color: tomato;"}, so the products become sums and the tiny likelihoods do not underflow to zero
+
+------------------------------------------------------------------------
+
+### The chain over many iterations
+
+::: {.content-visible when-format="revealjs"}
+![](figures/06_metropolis_walk.gif){width="88%"}
+:::
+
+::: {.content-visible when-format="beamer"}
+![](figures/06_metropolis_walk_final.png)
+:::
 
 ------------------------------------------------------------------------
 

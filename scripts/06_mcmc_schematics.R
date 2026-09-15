@@ -9,6 +9,8 @@
 #   figures/06_posterior_predictive.png  draws of (beta, gamma) -> a band of epidemic curves
 #   figures/06_monte_carlo.png           a distribution from 10, 100, 10000 draws
 #   figures/06_metropolis_step.png       one Metropolis step: uphill / downhill
+#   figures/06_metropolis_walk_*.png     the chain frame by frame: ten iterations, and after 5000
+#   figures/06_metropolis_walk.gif       the same frames as an animation (needs ImageMagick)
 #   figures/06_metropolis_flowchart.png  the algorithm as a loop
 #   figures/06_metropolis_normal.png     the sampler on Normal(5, 2): trace + histogram
 #   figures/06_proposal_tuning.png       proposal too narrow / about right / too wide
@@ -99,6 +101,132 @@ text(0.2, 0.255, adj = 0, col = "darkorange",
      substitute("downhill: accept with probability r = " * p(theta[2]^"*") / p(theta) == v,
                 list(v = round(r_down, 2))))
 dev.off()
+
+# ---- The walk, frame by frame ---------------------------------------------
+#
+# The one-step figure run as a chain, on the same target with the same
+# proposal. Each frame shows the current step on the target (top), the trace
+# so far (bottom left) and the histogram of the recorded values against the
+# target (bottom right). All the frames go to a temporary directory; the first
+# ten iterations and the final frame are kept as PNGs for the step-by-step
+# slide, and if ImageMagick is installed every frame is stitched into a GIF
+# for the web deck (the beamer PDF shows the PNGs, LaTeX cannot include a GIF).
+
+rng_state <- .Random.seed   # restored below, so the figures after this one do not change
+set.seed(81)   # first three steps: uphill, downhill-reject, downhill-accept
+n_walk <- 5000
+theta_0 <- 4.3
+walk <- vector("list", n_walk)
+theta <- theta_0
+for (i in seq_len(n_walk)) {
+  proposal <- theta + rnorm(1, mean = 0, sd = 0.8)
+  r <- target(proposal) / target(theta)
+  u <- runif(1)
+  walk[[i]] <- c(before = theta, proposal = proposal, r = r, u = u, accepted = u < r)
+  if (u < r) theta <- proposal
+}
+walk <- as.data.frame(do.call(rbind, walk))
+walk$recorded <- ifelse(walk$accepted == 1, walk$proposal, walk$before)
+.Random.seed <- rng_state
+
+fmt <- function(x) sprintf("%.2f", x)
+
+# One frame. In the "propose" phase the proposal is on the table but nothing
+# has been decided; in the "decide" phase the move is accepted or rejected
+# and the value is recorded.
+walk_frame <- function(i, phase = c("decide", "propose")) {
+  phase <- match.arg(phase)
+  s <- walk[i, ]
+  n_rec <- if (phase == "propose") i - 1 else i
+  recorded <- walk$recorded[seq_len(n_rec)]
+  outcome <- if (s$accepted == 1) "forestgreen" else "darkorange"
+  col_star <- if (phase == "propose") "steelblue" else outcome
+  plural <- if (n_rec == 1) "" else "s"
+
+  layout(matrix(c(1, 1, 2, 3), 2, byrow = TRUE), heights = c(1.25, 1), widths = c(1.6, 1))
+  par(mar = c(4, 4.5, 2.5, 1))
+  # top: the step on the target
+  curve(target(x), 0, 9, n = 500, lwd = 3, col = "grey30", ylim = c(0, 0.38),
+        xlab = expression(theta), ylab = expression(p(theta ~ "|" ~ data)),
+        main = sprintf("Iteration %d", i))
+  lines(xx, 0.1 * dnorm(xx, s$before, 0.8), lty = 2, col = "steelblue", lwd = 2)
+  for (p in c(s$before, s$proposal)) segments(p, 0, p, target(p), lty = 3, col = "grey50")
+  arrows(s$before, 0.02, s$proposal, 0.02, length = 0.1, lwd = 2, col = col_star)
+  points(s$before, target(s$before), pch = 21, cex = 2, lwd = 2, bg = "grey30")
+  points(s$proposal, target(s$proposal), pch = 21, cex = 2, lwd = 2, col = col_star,
+         bg = if (phase == "propose") "white" else outcome)
+  text(s$before, target(s$before), expression(theta), pos = 3, offset = 0.8)
+  text(s$proposal, target(s$proposal), expression(theta^"*"), col = col_star,
+       pos = if (s$proposal < s$before) 2 else 4)
+  eps <- s$proposal - s$before
+  eps_txt <- if (eps < 0) sprintf("(%s)", fmt(eps)) else fmt(eps)
+  text(0.2, 0.36, adj = 0, col = "steelblue",
+       bquote("propose " * theta^"*" == theta + epsilon * " = " * .(fmt(s$before)) + .(eps_txt) * " = " * .(fmt(s$proposal))))
+  if (phase == "decide") {
+    text(0.2, 0.33, adj = 0, col = outcome,
+         bquote(r == p(theta^"*") / p(theta) * " = " * .(fmt(target(s$proposal))) / .(fmt(target(s$before))) * " = " * .(fmt(s$r))))
+    verdict <- if (s$r >= 1) {
+      bquote(r >= 1 * ":  accept, no need to draw" ~ u)
+    } else if (s$accepted == 1) {
+      bquote(u == .(fmt(s$u)) ~ "<" ~ r * ":  accept")
+    } else {
+      bquote(u == .(fmt(s$u)) ~ "\u2265" ~ r * ":  reject, record" ~ theta ~ "again")
+    }
+    text(0.2, 0.30, adj = 0, col = outcome, verdict)
+  }
+  # bottom left: the trace so far
+  plot(0:n_rec, c(theta_0, recorded), type = "l", col = "grey30",
+       xlim = c(0, max(30, n_rec)), ylim = c(0, 9), xlab = "Iteration", ylab = expression(theta),
+       main = sprintf("Trace: %d value%s recorded, %.0f%% accepted", n_rec, plural,
+                      if (n_rec == 0) 0 else 100 * mean(walk$accepted[seq_len(n_rec)])))
+  if (n_rec <= 30) points(0:n_rec, c(theta_0, recorded), pch = 16, col = "grey30")
+  if (phase == "propose") {
+    points(i, s$proposal, pch = 21, cex = 1.5, lwd = 2, col = "steelblue", bg = "white")
+  } else if (n_rec <= 30) {
+    points(i, s$recorded, pch = 21, cex = 1.5, lwd = 2, col = outcome, bg = outcome)
+  }
+  # bottom right: the histogram of the recorded values against the target
+  h <- hist(recorded, breaks = seq(-2, 11, by = 0.25), plot = FALSE)
+  plot(h, freq = FALSE, col = "grey85", border = "white", xlim = c(0, 9),
+       ylim = c(0, max(0.3, h$density, na.rm = TRUE)), xlab = expression(theta),
+       main = sprintf("Histogram of the %d value%s", n_rec, plural))
+  curve(target(x), 0, 9, n = 500, add = TRUE, col = "tomato", lwd = 3)
+  if (n_rec >= 100) legend("top", bty = "n", lwd = 3, col = "tomato", legend = "target")
+}
+
+# Frame schedule: both phases of the first six iterations, slowly; one frame
+# per iteration up to 30; then snapshots of the chain as it runs on to 5000.
+frames <- rbind(
+  expand.grid(phase = c("propose", "decide"), i = 1:6, stringsAsFactors = FALSE)[, c("i", "phase")],
+  data.frame(i = 7:30, phase = "decide"),
+  data.frame(i = c(40, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000),
+             phase = "decide")
+)
+frames$delay <- c(rep(150, 12), rep(40, 24), rep(60, 13), 300)   # 1/100 s per frame
+frame_dir <- tempfile("metropolis_walk_")
+dir.create(frame_dir)
+frames$file <- file.path(frame_dir, sprintf("frame_%02d.png", seq_len(nrow(frames))))
+for (k in seq_len(nrow(frames))) {
+  png(frames$file[k], width = 10, height = 6.5, units = "in", res = 150, pointsize = 15)
+  walk_frame(frames$i[k], frames$phase[k])
+  dev.off()
+}
+
+# The step-by-step slide: both phases of the first three iterations (uphill,
+# reject, downhill-accept), then one frame per iteration up to ten so the
+# histogram has ten values in it. The final frame stands in for the GIF in the PDF
+keep <- which(frames$i <= 3 | (frames$i <= 10 & frames$phase == "decide"))
+file.copy(frames$file[keep], sprintf("figures/06_metropolis_walk_%d.png", seq_along(keep)),
+          overwrite = TRUE)
+file.copy(frames$file[nrow(frames)], "figures/06_metropolis_walk_final.png", overwrite = TRUE)
+
+if (nzchar(Sys.which("magick"))) {
+  per_frame <- unlist(Map(function(f, d) c("-delay", d, f), frames$file, frames$delay))
+  system2("magick", c(per_frame, "-loop", "0", "-resize", "1000x",
+                      "-layers", "OptimizePlus", "figures/06_metropolis_walk.gif"))
+} else {
+  message("ImageMagick (magick) not found: figures/06_metropolis_walk.gif not rebuilt")
+}
 
 # ---- The algorithm as a flowchart -----------------------------------------
 
