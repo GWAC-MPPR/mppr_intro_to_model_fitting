@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="James Mba Azam, PhD">
-  <meta name="dcterms.date" content="2026-09-14">
+  <meta name="dcterms.date" content="2026-09-15">
   <title>Introduction to Model Fitting and Calibration</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -220,7 +220,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
     </div>
 </div>
 
-  <p class="date">2026-09-14</p>
+  <p class="date">2026-09-15</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
@@ -1191,6 +1191,25 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section class="slide level2">
 
+<h3 id="the-algorithm-step-by-step">The algorithm, step by step</h3>
+<div class="r-stack">
+<p><a href="figures/06_metropolis_walk_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_metropolis_walk_1.png" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_metropolis_walk_2.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_metropolis_walk_3.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="figures/06_metropolis_walk_4.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="figures/06_metropolis_walk_5.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img data-src="figures/06_metropolis_walk_6.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="figures/06_metropolis_walk_7.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="figures/06_metropolis_walk_8.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="figures/06_metropolis_walk_9.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img data-src="figures/06_metropolis_walk_10.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img data-src="figures/06_metropolis_walk_11.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img data-src="figures/06_metropolis_walk_12.png" class="fragment" style="width:88.0%"></a></p>
+<p><a href="figures/06_metropolis_walk_13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img data-src="figures/06_metropolis_walk_13.png" class="fragment" style="width:88.0%"></a></p>
+</div>
+</section>
+<section class="slide level2">
+
 <h3 id="consequences-of-the-acceptance-rule">Consequences of the acceptance rule</h3>
 <ul>
 <li>If the proposal has higher posterior density than where we are, we <span style="color: tomato;">always</span> take it</li>
@@ -1199,6 +1218,11 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <li>Put together, the chain visits each region <span style="color: tomato;">in proportion to its posterior density</span></li>
 <li>In code everything is done on the <span style="color: tomato;">log scale</span>, so the products become sums and the tiny likelihoods do not underflow to zero</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h3 id="the-chain-over-many-iterations">The chain over many iterations</h3>
+<p><a href="figures/06_metropolis_walk.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img data-src="figures/06_metropolis_walk.gif" style="width:88.0%"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1243,7 +1267,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <p>The sampler knows nothing about Bayes. It will sample from anything you can evaluate, so try it first on <span style="color: steelblue;"><span class="math inline">\(N(5, 2)\)</span></span>, where we know what the answer should look like.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>log_target <span class="ot">&lt;-</span> <span class="cf">function</span>(theta) <span class="fu">dnorm</span>(theta, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href=""></a>run <span class="ot">&lt;-</span> <span class="fu">metropolis_1d</span>(log_target, <span class="at">n_iter =</span> <span class="dv">5000</span>, <span class="at">init =</span> <span class="dv">0</span>, <span class="at">proposal_sd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="figures/06_metropolis_normal.png" style="width:70.0%"></a></p>
+<p><a href="figures/06_metropolis_normal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img data-src="figures/06_metropolis_normal.png" style="width:70.0%"></a></p>
 </section>
 <section id="section-11" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
@@ -1253,7 +1277,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 </section>
 <section id="practical-implementation-tuning-the-proposal" class="slide level2">
 <h2>Practical implementation: tuning the proposal</h2>
-<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="figures/06_proposal_tuning.png"></a></p>
+<p><a href="figures/06_proposal_tuning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img data-src="figures/06_proposal_tuning.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1268,7 +1292,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="burn-in">Burn-in</h3>
-<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="figures/06_burn_in.png" style="width:85.0%"></a></p>
+<p><a href="figures/06_burn_in.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img data-src="figures/06_burn_in.png" style="width:85.0%"></a></p>
 <ul>
 <li>We chose the starting point, so the first part of the chain says more about that choice than about the posterior</li>
 <li>Throw those early samples away. This is the <span style="color: tomato;">burn-in</span>. Discarding a few extra costs little, and starting from a sensible place such as the MLE shortens it</li>
@@ -1278,7 +1302,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="convergence-assessment-with-multiple-chains">Convergence assessment with multiple chains</h3>
-<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="figures/06_convergence.png"></a></p>
+<p><a href="figures/06_convergence.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img data-src="figures/06_convergence.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1405,12 +1429,12 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="convergence-diagnostics-for-the-influenza-fit">Convergence diagnostics for the influenza fit</h3>
-<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="figures/06_flu_traces.png"></a></p>
+<p><a href="figures/06_flu_traces.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img data-src="figures/06_flu_traces.png"></a></p>
 </section>
 <section class="slide level2">
 
 <h3 id="marginal-and-joint-posterior-distributions">Marginal and joint posterior distributions</h3>
-<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img data-src="figures/06_flu_posterior.png"></a></p>
+<p><a href="figures/06_flu_posterior.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img data-src="figures/06_flu_posterior.png"></a></p>
 </section>
 <section class="slide level2">
 
@@ -1430,7 +1454,7 @@ James Mba Azam, PhD <a href="https://orcid.org/0000-0001-5782-7330" class="quart
 <section class="slide level2">
 
 <h3 id="posterior-predictive-fit">Posterior predictive fit</h3>
-<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img data-src="figures/06_flu_fit.png"></a></p>
+<p><a href="figures/06_flu_fit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img data-src="figures/06_flu_fit.png"></a></p>
 </section>
 <section id="section-14" class="slide level2" data-background-color="#447099" data-transition="fade-in">
 <h2></h2>
